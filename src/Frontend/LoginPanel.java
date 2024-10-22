@@ -7,10 +7,10 @@ import javax.swing.JLabel;
 import java.awt.Image;
 
 
-public final class login extends javax.swing.JFrame {
+public final class LoginPanel extends javax.swing.JFrame {
     //Formato_Imagen escalas = new Formato_Imagen();
     
-    public login() {
+    public LoginPanel() {
        initComponents();
        setLocationRelativeTo(null);
        //escalas.escalarLaber(user, "/img/login.png");
@@ -295,10 +295,10 @@ public final class login extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        MenuPrincipal mn = new MenuPrincipal();
+        MenuPrincipalPanel mn = new MenuPrincipalPanel();
         mn.setVisible(true); //entra al menu principal
         this.setVisible(false); //desaparece la ventana login
-        
+        mn.toFront();
     }//GEN-LAST:event_jButton1ActionPerformed
    //end
     
@@ -319,20 +319,21 @@ public final class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new LoginPanel().setVisible(true);
             }
         });
     }

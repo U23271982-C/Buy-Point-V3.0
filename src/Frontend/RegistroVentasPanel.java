@@ -5,7 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public final class RegistroVentas extends javax.swing.JFrame {
+public final class RegistroVentasPanel extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -333,30 +333,34 @@ public final class RegistroVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelMiniMouseExited
 
     private void InventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventarioMouseClicked
-        Inventario IV = new Inventario();
+        InventarioPanel IV = new InventarioPanel();
         IV.setVisible(true);
         this.setVisible(false);
+        IV.toFront();
     }//GEN-LAST:event_InventarioMouseClicked
 
     private void VentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaMouseClicked
-        Venta V = new Venta();
+        VentaPanel V = new VentaPanel();
         V.setVisible(true);
         this.setVisible(false);
+        V.toFront();
     }//GEN-LAST:event_VentaMouseClicked
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
-        MenuPrincipal MP = new MenuPrincipal();
+        MenuPrincipalPanel MP = new MenuPrincipalPanel();
         MP.setVisible(true);
         this.setVisible(false);
+        MP.toFront();
     }//GEN-LAST:event_MenuMouseClicked
 
     private void RegistroVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroVentasMouseClicked
-        RegistroVentas RV = new RegistroVentas();
+        RegistroVentasPanel RV = new RegistroVentasPanel();
         RV.setVisible(true);
         this.setVisible(false);
+        RV.toFront();
     }//GEN-LAST:event_RegistroVentasMouseClicked
     
-    public RegistroVentas(){
+    public RegistroVentasPanel(){
        initComponents();
        setLocationRelativeTo(null);
        this.tamañoimagen(iconoUsuario, "/img/usermenu.png");
@@ -375,7 +379,7 @@ public final class RegistroVentas extends javax.swing.JFrame {
     public static void main(String args[]) {
           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroVentas().setVisible(true);
+                new RegistroVentasPanel().setVisible(true);
             }
         });
     }
