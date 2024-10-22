@@ -336,24 +336,28 @@ public final class RegistroVentas extends javax.swing.JFrame {
         Inventario IV = new Inventario();
         IV.setVisible(true);
         this.setVisible(false);
+        //IV.toFront();
     }//GEN-LAST:event_InventarioMouseClicked
 
     private void VentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaMouseClicked
         Venta V = new Venta();
         V.setVisible(true);
         this.setVisible(false);
+        //V.toFront();
     }//GEN-LAST:event_VentaMouseClicked
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
         MenuPrincipal MP = new MenuPrincipal();
         MP.setVisible(true);
         this.setVisible(false);
+        //MP.toFront();
     }//GEN-LAST:event_MenuMouseClicked
 
     private void RegistroVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroVentasMouseClicked
         RegistroVentas RV = new RegistroVentas();
         RV.setVisible(true);
         this.setVisible(false);
+        //RV.toFront();
     }//GEN-LAST:event_RegistroVentasMouseClicked
     
     public RegistroVentas(){

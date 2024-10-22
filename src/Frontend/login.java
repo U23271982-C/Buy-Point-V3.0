@@ -298,7 +298,7 @@ public final class login extends javax.swing.JFrame {
         MenuPrincipal mn = new MenuPrincipal();
         mn.setVisible(true); //entra al menu principal
         this.setVisible(false); //desaparece la ventana login
-        
+        mn.toFront();
     }//GEN-LAST:event_jButton1ActionPerformed
    //end
     

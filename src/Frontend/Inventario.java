@@ -284,7 +284,7 @@ public final class Inventario extends javax.swing.JFrame {
                         .addGap(114, 114, 114)
                         .addComponent(AgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         MenuPrincipalLayout.setVerticalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,9 +305,9 @@ public final class Inventario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(MenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(MenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1220, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,24 +364,28 @@ public final class Inventario extends javax.swing.JFrame {
         Inventario IV = new Inventario();
         IV.setVisible(true);
         this.setVisible(false);
+        //IV.toFront();
     }//GEN-LAST:event_InventarioMouseClicked
 
     private void VentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaMouseClicked
         Venta V = new Venta();
         V.setVisible(true);
         this.setVisible(false);
+        //V.toFront();
     }//GEN-LAST:event_VentaMouseClicked
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
         MenuPrincipal MP = new MenuPrincipal();
         MP.setVisible(true);
         this.setVisible(false);
+        //MP.toFront();
     }//GEN-LAST:event_MenuMouseClicked
 
     private void RegistroVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroVentasMouseClicked
         RegistroVentas RV = new RegistroVentas();
         RV.setVisible(true);
         this.setVisible(false);
+        //RV.toFront();
     }//GEN-LAST:event_RegistroVentasMouseClicked
     
     public Inventario(){
