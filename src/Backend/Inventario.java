@@ -40,6 +40,7 @@ public class Inventario implements GestionadorRegistro {
         //quita la cantidad de productos del stock y aumenta en I.salida
     }
     public int cantidadStock(){
-        return this.stock;
+        //retorna la cantidad de stock total
+        return 0;
     }
 }
