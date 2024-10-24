@@ -10,5 +10,9 @@ public class PruebaApp {
         credencialesUsuario.setCorreoElectronico("665");
 
         credencialesUsuario.eliminarRegistro();
+
+        System.out.println("SELECT Usuario, Constrasenna\n" +
+                "FROM CredencialesTienda\n" +
+                "WHERE Usuario = 'USER1' AND Constrasenna = '123'");
     }
 }
