@@ -8,7 +8,7 @@ package Backend;
  *
  * @author ISRAEL
  */
-public class Producto implements GestionadorRegistro{
+public class Producto implements GestionadorRegistro, ConsultadorSQL{
     private int id;
     private String nombre;
     private String descripcion;
@@ -16,9 +16,7 @@ public class Producto implements GestionadorRegistro{
     private int idEmpaque;
     private int idCategoriaProducto;
 
-    public Producto(int id, String nombre, String descripcion,
-                    int codigoBarras, int idEmpaque,
-                    int idCategoriaProducto) {
+    public Producto() {
 
         this.id = id;
         this.nombre = nombre;
@@ -78,20 +76,19 @@ public class Producto implements GestionadorRegistro{
     //#endregion
 
     @Override
-    public void registrar(Object obj) {
-        obj = new Producto(getId(),getNombre(),getDescripcion(),getCodigoBarras()
-                ,getIdEmpaque(),getIdCategoriaProducto());
+    public void registrar() {
+        Producto producto = new Producto();
 
         Inventario inventario = new Inventario();
-        inventario.registrar(inventario);
+        inventario.registrar();
     }
 
     @Override
-    public void eliminarRegistro(Object obj) {
+    public void eliminarRegistro() {
         System.out.println();
     }
     public boolean productoRegistrado(String codigoBarras){
-        return GestionadorRegistro.registroEncontrado
+        return ConsultadorSQL.registroEncontrado
                 (String.format("SELECT * FROM Producto WHERE CodigoBarras = %s",
                         codigoBarras));
     }

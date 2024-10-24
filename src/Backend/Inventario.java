@@ -26,12 +26,12 @@ public class Inventario implements GestionadorRegistro {
     }
 
     @Override
-    public void eliminarRegistro(Object obj) {
+    public void eliminarRegistro() {
 
     }
 
     @Override
-    public void registrar(Object obj) {
+    public void registrar() {
 
     }
     static void ingresoProducto(int cantidad){

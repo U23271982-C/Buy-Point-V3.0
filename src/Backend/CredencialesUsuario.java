@@ -17,6 +17,7 @@ public class CredencialesUsuario implements GestionadorRegistro{
         this.direccion = "";
         this.correoElectronico = "";
     }
+
     //#region Getters and Setters
 
     public int getId() {
@@ -68,14 +69,25 @@ public class CredencialesUsuario implements GestionadorRegistro{
     }
 
     //#endregion
-    @Override
-    public void registrar(Object obj) {
 
+    @Override
+    public void registrar() {
+        CredencialesUsuario credencialesUsuario = new CredencialesUsuario();
+        String consultaSQL =
+                String.format("INSERT INTO CredencialesTienda" +
+                                "(Usuario, Constrasenna, Nombre, Direccion, CorreoElectronico) " +
+                                "VALUES ('%s','%s', '%s', '%s', '%s')",
+                        credencialesUsuario.getUsuario(),credencialesUsuario.getContrasenna(),
+                        credencialesUsuario.getNombre(),credencialesUsuario.getDireccion(),
+                        credencialesUsuario.getCorreoElectronico());
     }
 
     @Override
-    public void eliminarRegistro(Object obj) {
-
+    public void eliminarRegistro() {
+        String consultaSQL = String.format("DELETE FROM CredencialesTienda" +
+                "WHERE Usuario = '%s' AND Constrasenna = '%s'",
+                getUsuario(),getContrasenna());
+        //falta a la bd para la consulta
     }
 
 }
