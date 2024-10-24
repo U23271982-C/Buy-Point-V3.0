@@ -153,6 +153,9 @@ public final class InventarioPanel extends javax.swing.JFrame {
         PanelMax.setBackground(new java.awt.Color(255, 255, 255));
         PanelMax.setPreferredSize(new java.awt.Dimension(36, 36));
         PanelMax.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelMaxMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PanelMaxMouseEntered(evt);
             }
@@ -263,6 +266,11 @@ public final class InventarioPanel extends javax.swing.JFrame {
         AgregarProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AgregarProducto.setText("Agregar Producto");
         AgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        AgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgregarProductoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
         MenuPrincipal.setLayout(MenuPrincipalLayout);
@@ -284,7 +292,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
                         .addGap(114, 114, 114)
                         .addComponent(AgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         MenuPrincipalLayout.setVerticalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,9 +313,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(MenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,6 +393,17 @@ public final class InventarioPanel extends javax.swing.JFrame {
         this.setVisible(false);
         RV.toFront();
     }//GEN-LAST:event_RegistroVentasMouseClicked
+
+    private void AgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarProductoMouseClicked
+        AgregarProductoPanel APP = new AgregarProductoPanel();
+        APP.setVisible(true);
+        //this.setVisible(false);
+        APP.toFront();
+    }//GEN-LAST:event_AgregarProductoMouseClicked
+
+    private void PanelMaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseClicked
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_PanelMaxMouseClicked
     
     public InventarioPanel(){
        initComponents();
@@ -433,5 +450,9 @@ public final class InventarioPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelOpciones;
     // End of variables declaration//GEN-END:variables
+
+    private void setExtendedState() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
