@@ -1,13 +1,10 @@
 package Backend.ConexionBD;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public interface GestorSQLServer {
-    static void conectar() {
+    static Connection conectar() {
         //Server de USERISRAEL
         String nombreBD = "BD_BuyPoint";
         String usuario = "sa";
@@ -17,39 +14,33 @@ public interface GestorSQLServer {
                         "encrypt=true;trustServerCertificate=true", nombreBD);
         try (Connection conn =
                      DriverManager.getConnection(url, usuario, contrasena)) {
-            //System.out.println("¡Conexión exitosa a SQL Server!");
+            System.out.println("¡Conexión exitosa a SQL Server!");
+            return conn;
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog
                     (null,
                             "Error de conexión de Base de Datos");
         }
+        return null;
     }
 
-    static boolean registroEncontrado(String consulta) {
-        boolean rsp = false;
-        GestorSQLServer.conectar();
-        /*try{
-        }catch (SQLException e){
+    static boolean registroEncontrado(String consulta, String mensajeError) {
 
-        }*/
-        //Connection conexion = Conexion.conectar();
-        //Statement sta;
-        //try{
-            /*
-            //st = cn.createStatement();
-            //ResultSet = st.executeQuery(rsp);
-            while(rs.next){
-                rsp = true;
+        boolean encontrado = false;
+
+        Statement st;
+        try{
+            st = GestorSQLServer.conectar().createStatement();
+            ResultSet rs = st.executeQuery(consulta);
+            while (rs.next()){
+                encontrado = true;
             }
-
-            return rsp;
-        }catch(/*SQLException e){
-            JOptionPane.showMessageDialog
-                    (null, "Error al iniciar sesión");
+        }catch (SQLException e){
+            System.out.println("Erro al Iniciar Sesion" + e);
+            JOptionPane.showMessageDialog(null, mensajeError);
         }
-        */
-        return true;
+        return encontrado;
     }
     //da el numero de registros que hay
     static int cantidadRegistro() {
