@@ -4,11 +4,13 @@
  */
 package Backend;
 
+import Backend.ConexionBD.GestorSQLServer;
+
 /**
  *
  * @author ISRAEL
  */
-public class Producto implements GestionadorRegistro, ConsultadorSQL{
+public class Producto implements GestionadorRegistro, GestorSQLServer {
     private int id;
     private String nombre;
     private String descripcion;
@@ -88,7 +90,7 @@ public class Producto implements GestionadorRegistro, ConsultadorSQL{
         System.out.println();
     }
     public boolean productoRegistrado(String codigoBarras){
-        return ConsultadorSQL.registroEncontrado
+        return GestorSQLServer.registroEncontrado
                 (String.format("SELECT * FROM Producto WHERE CodigoBarras = %s",
                         codigoBarras));
     }
