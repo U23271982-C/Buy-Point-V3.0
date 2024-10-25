@@ -13,6 +13,4 @@ public interface GestionadorRegistro {
 
     void eliminarRegistro();
 
-
-
 }
