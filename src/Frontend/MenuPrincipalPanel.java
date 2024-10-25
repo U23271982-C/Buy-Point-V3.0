@@ -133,6 +133,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         });
 
         X.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        X.setForeground(new java.awt.Color(0, 0, 0));
         X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         X.setText("X");
 
@@ -153,6 +154,9 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         PanelMax.setBackground(new java.awt.Color(255, 255, 255));
         PanelMax.setPreferredSize(new java.awt.Dimension(36, 36));
         PanelMax.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelMaxMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PanelMaxMouseEntered(evt);
             }
@@ -187,6 +191,9 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
 
         PanelMini.setBackground(new java.awt.Color(255, 255, 255));
         PanelMini.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelMiniMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PanelMiniMouseEntered(evt);
             }
@@ -203,14 +210,14 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         PanelMiniLayout.setHorizontalGroup(
             PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         PanelMiniLayout.setVerticalGroup(
             PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -240,7 +247,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                 .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PanelMini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -263,7 +270,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         MenuPrincipalLayout.setVerticalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(52, 52, 52)
                 .addComponent(Notificaciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 468, Short.MAX_VALUE)
@@ -280,7 +287,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -357,6 +364,14 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         this.setVisible(false);
         MP.toFront();
     }//GEN-LAST:event_MenuMouseClicked
+
+    private void PanelMaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseClicked
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_PanelMaxMouseClicked
+
+    private void PanelMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMiniMouseClicked
+        setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_PanelMiniMouseClicked
     
     public MenuPrincipalPanel(){
        initComponents();
