@@ -1,11 +1,16 @@
 package Backend;
 
 import Backend.ConexionBD.GestorSQLServer;
-
+/*
+* Contralador, se encarga de controlar todos los botones de la App
+* */
 public class Controlador implements GestorSQLServer {
-    public boolean iniciarSesion(CredencialesUsuario credencialesUsuario){
 
-        String consultaSQL =
+    String consultaSQL;
+
+    //Inicar sesion de BuyPoint
+    public boolean iniciarSesion(CredencialesUsuario credencialesUsuario){
+        consultaSQL =
                 String.format("SELECT Usuario, Constrasenna\n" +
                         "FROM CredencialesTienda\n" +
                         "WHERE Usuario = '%s' AND Constrasenna = '%s'",
@@ -15,4 +20,5 @@ public class Controlador implements GestorSQLServer {
         return GestorSQLServer.registroEncontrado
                 (consultaSQL, "Error al Iniciar Sesion");
     }
+
 }
