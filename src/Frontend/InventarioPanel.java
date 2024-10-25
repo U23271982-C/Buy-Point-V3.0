@@ -9,6 +9,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JPanel();
@@ -37,7 +38,6 @@ public final class InventarioPanel extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1212, 708));
 
         MenuPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         MenuPrincipal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -132,26 +132,16 @@ public final class InventarioPanel extends javax.swing.JFrame {
                 PanelXMouseExited(evt);
             }
         });
+        PanelX.setLayout(new java.awt.GridBagLayout());
 
         X.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        X.setForeground(new java.awt.Color(0, 0, 0));
         X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         X.setText("X");
-
-        javax.swing.GroupLayout PanelXLayout = new javax.swing.GroupLayout(PanelX);
-        PanelX.setLayout(PanelXLayout);
-        PanelXLayout.setHorizontalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelXLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelXLayout.setVerticalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        PanelX.add(X, new java.awt.GridBagConstraints());
 
         PanelMax.setBackground(new java.awt.Color(255, 255, 255));
+        PanelMax.setForeground(new java.awt.Color(0, 0, 0));
         PanelMax.setPreferredSize(new java.awt.Dimension(36, 36));
         PanelMax.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -164,6 +154,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
                 PanelMaxMouseExited(evt);
             }
         });
+        PanelMax.setLayout(new java.awt.GridBagLayout());
 
         Maximizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Maximizar.setLabelFor(PanelMax);
@@ -171,23 +162,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
         Maximizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Maximizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Maximizar.setPreferredSize(new java.awt.Dimension(12, 12));
-
-        javax.swing.GroupLayout PanelMaxLayout = new javax.swing.GroupLayout(PanelMax);
-        PanelMax.setLayout(PanelMaxLayout);
-        PanelMaxLayout.setHorizontalGroup(
-            PanelMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMaxLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(Maximizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelMaxLayout.setVerticalGroup(
-            PanelMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelMaxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Maximizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
+        PanelMax.add(Maximizar, new java.awt.GridBagConstraints());
 
         PanelMini.setBackground(new java.awt.Color(255, 255, 255));
         PanelMini.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,25 +176,18 @@ public final class InventarioPanel extends javax.swing.JFrame {
                 PanelMiniMouseExited(evt);
             }
         });
+        PanelMini.setLayout(new java.awt.GridBagLayout());
 
         Minimizar.setForeground(new java.awt.Color(0, 0, 0));
         Minimizar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        javax.swing.GroupLayout PanelMiniLayout = new javax.swing.GroupLayout(PanelMini);
-        PanelMini.setLayout(PanelMiniLayout);
-        PanelMiniLayout.setHorizontalGroup(
-            PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelMiniLayout.setVerticalGroup(
-            PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
-                .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(13, 10, 0, 6);
+        PanelMini.add(Minimizar, gridBagConstraints);
 
         iconoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usermenu.png"))); // NOI18N
         iconoUsuario.setPreferredSize(new java.awt.Dimension(100, 158));
@@ -254,19 +222,23 @@ public final class InventarioPanel extends javax.swing.JFrame {
         );
 
         Producto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Producto.setForeground(new java.awt.Color(0, 0, 0));
         Producto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Producto.setText("Producto");
         Producto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Filtrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Filtrar.setForeground(new java.awt.Color(0, 0, 0));
         Filtrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Filtrar.setText("Filtrar");
         Filtrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        Categoria.setForeground(new java.awt.Color(0, 0, 0));
         Categoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Categoria.setText("Categoria");
         Categoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        AgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
         AgregarProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AgregarProducto.setText("Agregar Producto");
         AgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -303,7 +275,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
                     .addComponent(Filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 492, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 484, Short.MAX_VALUE)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -317,7 +289,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

@@ -9,6 +9,7 @@ public final class VentaPanel extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JPanel();
@@ -29,7 +30,6 @@ public final class VentaPanel extends javax.swing.JFrame {
         DetalleVenta = new javax.swing.JLabel();
         Buscador = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -120,6 +120,7 @@ public final class VentaPanel extends javax.swing.JFrame {
         });
 
         PanelX.setBackground(new java.awt.Color(255, 255, 255));
+        PanelX.setForeground(new java.awt.Color(0, 0, 0));
         PanelX.setPreferredSize(new java.awt.Dimension(36, 36));
         PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,28 +133,20 @@ public final class VentaPanel extends javax.swing.JFrame {
                 PanelXMouseExited(evt);
             }
         });
+        PanelX.setLayout(new java.awt.GridBagLayout());
 
         X.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        X.setForeground(new java.awt.Color(0, 0, 0));
         X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         X.setText("X");
-
-        javax.swing.GroupLayout PanelXLayout = new javax.swing.GroupLayout(PanelX);
-        PanelX.setLayout(PanelXLayout);
-        PanelXLayout.setHorizontalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelXLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelXLayout.setVerticalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        PanelX.add(X, new java.awt.GridBagConstraints());
 
         PanelMax.setBackground(new java.awt.Color(255, 255, 255));
         PanelMax.setPreferredSize(new java.awt.Dimension(36, 36));
         PanelMax.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelMaxMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PanelMaxMouseEntered(evt);
             }
@@ -161,6 +154,7 @@ public final class VentaPanel extends javax.swing.JFrame {
                 PanelMaxMouseExited(evt);
             }
         });
+        PanelMax.setLayout(new java.awt.GridBagLayout());
 
         Maximizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Maximizar.setLabelFor(PanelMax);
@@ -168,26 +162,13 @@ public final class VentaPanel extends javax.swing.JFrame {
         Maximizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Maximizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Maximizar.setPreferredSize(new java.awt.Dimension(12, 12));
-
-        javax.swing.GroupLayout PanelMaxLayout = new javax.swing.GroupLayout(PanelMax);
-        PanelMax.setLayout(PanelMaxLayout);
-        PanelMaxLayout.setHorizontalGroup(
-            PanelMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMaxLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(Maximizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelMaxLayout.setVerticalGroup(
-            PanelMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelMaxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Maximizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
+        PanelMax.add(Maximizar, new java.awt.GridBagConstraints());
 
         PanelMini.setBackground(new java.awt.Color(255, 255, 255));
         PanelMini.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelMiniMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PanelMiniMouseEntered(evt);
             }
@@ -195,25 +176,18 @@ public final class VentaPanel extends javax.swing.JFrame {
                 PanelMiniMouseExited(evt);
             }
         });
+        PanelMini.setLayout(new java.awt.GridBagLayout());
 
         Minimizar.setForeground(new java.awt.Color(0, 0, 0));
         Minimizar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        javax.swing.GroupLayout PanelMiniLayout = new javax.swing.GroupLayout(PanelMini);
-        PanelMini.setLayout(PanelMiniLayout);
-        PanelMiniLayout.setHorizontalGroup(
-            PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelMiniLayout.setVerticalGroup(
-            PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
-                .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(13, 10, 0, 6);
+        PanelMini.add(Minimizar, gridBagConstraints);
 
         iconoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usermenu.png"))); // NOI18N
         iconoUsuario.setPreferredSize(new java.awt.Dimension(100, 158));
@@ -269,13 +243,6 @@ public final class VentaPanel extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
         MenuPrincipal.setLayout(MenuPrincipalLayout);
         MenuPrincipalLayout.setHorizontalGroup(
@@ -288,20 +255,14 @@ public final class VentaPanel extends javax.swing.JFrame {
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
                 .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                        .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                                .addGap(89, 89, 89)
-                                .addComponent(Lupa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                                .addGap(138, 138, 138)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPrincipalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111)))
+                        .addGap(89, 89, 89)
+                        .addComponent(Lupa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(DetalleVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         MenuPrincipalLayout.setVerticalGroup(
@@ -318,9 +279,7 @@ public final class VentaPanel extends javax.swing.JFrame {
                             .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 392, Short.MAX_VALUE)))
+                        .addGap(0, 465, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -420,9 +379,13 @@ public final class VentaPanel extends javax.swing.JFrame {
         Buscador.setText("");
     }//GEN-LAST:event_BuscadorActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void PanelMaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseClicked
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_PanelMaxMouseClicked
+
+    private void PanelMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMiniMouseClicked
+        setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_PanelMiniMouseClicked
     
     public VentaPanel(){
        initComponents();
@@ -466,7 +429,6 @@ public final class VentaPanel extends javax.swing.JFrame {
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelOpciones;
