@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 
 public interface GestorSQLServer {
-    static Connection conectar() {
+    static Connection conectarBD() {
         //Server de USERISRAEL
         String nombreBD = "BD_BuyPoint";
         String usuario = "sa";
@@ -31,7 +31,7 @@ public interface GestorSQLServer {
 
         Statement st;
         try{
-            st = GestorSQLServer.conectar().createStatement();
+            st = GestorSQLServer.conectarBD().createStatement();
             ResultSet rs = st.executeQuery(consulta);
             while (rs.next()){
                 encontrado = true;

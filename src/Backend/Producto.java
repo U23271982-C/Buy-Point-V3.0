@@ -87,11 +87,8 @@ public class Producto implements GestionadorRegistro, GestorSQLServer {
 
     @Override
     public void eliminarRegistro() {
-        System.out.println();
     }
     public boolean productoRegistrado(String codigoBarras){
-        return GestorSQLServer.registroEncontrado
-                (String.format("SELECT * FROM Producto WHERE CodigoBarras = %s",
-                        codigoBarras));
+        return false;
     }
 }
