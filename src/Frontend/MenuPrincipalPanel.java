@@ -9,6 +9,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JPanel();
@@ -131,25 +132,13 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                 PanelXMouseExited(evt);
             }
         });
+        PanelX.setLayout(new java.awt.GridBagLayout());
 
         X.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         X.setForeground(new java.awt.Color(0, 0, 0));
         X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         X.setText("X");
-
-        javax.swing.GroupLayout PanelXLayout = new javax.swing.GroupLayout(PanelX);
-        PanelX.setLayout(PanelXLayout);
-        PanelXLayout.setHorizontalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelXLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelXLayout.setVerticalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        PanelX.add(X, new java.awt.GridBagConstraints());
 
         PanelMax.setBackground(new java.awt.Color(255, 255, 255));
         PanelMax.setPreferredSize(new java.awt.Dimension(36, 36));
@@ -164,6 +153,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                 PanelMaxMouseExited(evt);
             }
         });
+        PanelMax.setLayout(new java.awt.GridBagLayout());
 
         Maximizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Maximizar.setLabelFor(PanelMax);
@@ -171,23 +161,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         Maximizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Maximizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Maximizar.setPreferredSize(new java.awt.Dimension(12, 12));
-
-        javax.swing.GroupLayout PanelMaxLayout = new javax.swing.GroupLayout(PanelMax);
-        PanelMax.setLayout(PanelMaxLayout);
-        PanelMaxLayout.setHorizontalGroup(
-            PanelMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMaxLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(Maximizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelMaxLayout.setVerticalGroup(
-            PanelMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelMaxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Maximizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
+        PanelMax.add(Maximizar, new java.awt.GridBagConstraints());
 
         PanelMini.setBackground(new java.awt.Color(255, 255, 255));
         PanelMini.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,25 +175,18 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                 PanelMiniMouseExited(evt);
             }
         });
+        PanelMini.setLayout(new java.awt.GridBagLayout());
 
         Minimizar.setForeground(new java.awt.Color(0, 0, 0));
         Minimizar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        javax.swing.GroupLayout PanelMiniLayout = new javax.swing.GroupLayout(PanelMini);
-        PanelMini.setLayout(PanelMiniLayout);
-        PanelMiniLayout.setHorizontalGroup(
-            PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelMiniLayout.setVerticalGroup(
-            PanelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMiniLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 6, 0, 6);
+        PanelMini.add(Minimizar, gridBagConstraints);
 
         iconoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usermenu.png"))); // NOI18N
         iconoUsuario.setPreferredSize(new java.awt.Dimension(100, 158));
@@ -237,7 +204,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                         .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(EncabezadoLayout.createSequentialGroup()
-                        .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PanelMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -246,7 +213,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
             .addGroup(EncabezadoLayout.createSequentialGroup()
                 .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(PanelMini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,7 +240,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                 .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(52, 52, 52)
                 .addComponent(Notificaciones)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 468, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 466, Short.MAX_VALUE)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
