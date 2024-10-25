@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Inventario implements GestionadorRegistro {
 
-    public ArrayList<CategoriaProducto> catogoriasProductos;
+    //public ArrayList<CategoriaProducto> catogoriasProductos;
     private String id;
     private double precioCosto;
     private double precioVenta;
@@ -24,6 +24,74 @@ public class Inventario implements GestionadorRegistro {
 
     public Inventario() {
     }
+
+    //#region Getters and Setters
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public double getPrecioCosto() {
+        return precioCosto;
+    }
+
+    public void setPrecioCosto(double precioCosto) {
+        this.precioCosto = precioCosto;
+    }
+
+    public double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+    public double getUtilidad() {
+        return utilidad;
+    }
+
+    public void setUtilidad(double utilidad) {
+        this.utilidad = utilidad;
+    }
+
+    public double getIngreso() {
+        return ingreso;
+    }
+
+    public void setIngreso(double ingreso) {
+        this.ingreso = ingreso;
+    }
+
+    public double getSalida() {
+        return salida;
+    }
+
+    public void setSalida(double salida) {
+        this.salida = salida;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public double getValorStock() {
+        return valorStock;
+    }
+
+    public void setValorStock(double valorStock) {
+        this.valorStock = valorStock;
+    }
+
+    //#endregion
 
     @Override
     public void eliminarRegistro() {

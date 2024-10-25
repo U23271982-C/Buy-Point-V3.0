@@ -16,10 +16,37 @@ public class CategoriaProducto implements GestionadorRegistro{
     public CategoriaProducto() {
     }
 
+    //#region Getters and Setters
+
+    public String getIdCategoriaProducto() {
+        return idCategoriaProducto;
+    }
+
+    public void setIdCategoriaProducto(String idCategoriaProducto) {
+        this.idCategoriaProducto = idCategoriaProducto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getProductos() {
+        return productos;
+    }
+
+    public void setProductos(String productos) {
+        this.productos = productos;
+    }
+
     @Override
     public void registrar() {
 
     }
+    //#endregion
 
     @Override
     public void eliminarRegistro() {

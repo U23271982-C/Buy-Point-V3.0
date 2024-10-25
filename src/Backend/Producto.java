@@ -27,52 +27,53 @@ public class Producto implements GestionadorRegistro, GestorSQLServer {
         this.idEmpaque = idEmpaque;
         this.idCategoriaProducto = idCategoriaProducto;
     }
-//#region Getters and Setters
-    public int getId() {
+
+    //#region Getters and Setters
+        public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+        public void setId(int id) {
         this.id = id;
     }
 
-    public String getNombre() {
+        public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+        public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
+        public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+        public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public int getCodigoBarras() {
+        public int getCodigoBarras() {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(int codigoBarras) {
+        public void setCodigoBarras(int codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 
-    public int getIdEmpaque() {
+        public int getIdEmpaque() {
         return idEmpaque;
     }
 
-    public void setIdEmpaque(int idEmpaque) {
+        public void setIdEmpaque(int idEmpaque) {
         this.idEmpaque = idEmpaque;
     }
 
-    public int getIdCategoriaProducto() {
+        public int getIdCategoriaProducto() {
         return idCategoriaProducto;
     }
 
-    public void setIdCategoriaProducto(int idCategoriaProducto) {
+        public void setIdCategoriaProducto(int idCategoriaProducto) {
         this.idCategoriaProducto = idCategoriaProducto;
     }
     //#endregion
