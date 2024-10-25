@@ -83,7 +83,7 @@ public class CredencialesUsuario implements GestionadorRegistro{
     }
 
     @Override
-    public void eliminarRegistro() {
+    public void eliminar() {
         String consultaSQL = String.format("DELETE FROM CredencialesTienda " +
                 "WHERE Usuario = '%s' AND Constrasenna = '%s'",
                 getUsuario(),getContrasenna());

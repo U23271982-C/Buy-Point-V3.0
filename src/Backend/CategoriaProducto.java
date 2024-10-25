@@ -49,7 +49,7 @@ public class CategoriaProducto implements GestionadorRegistro{
     //#endregion
 
     @Override
-    public void eliminarRegistro() {
+    public void eliminar() {
 
     }
 }

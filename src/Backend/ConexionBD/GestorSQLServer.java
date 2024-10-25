@@ -3,7 +3,7 @@ package Backend.ConexionBD;
 import javax.swing.*;
 import java.sql.*;
 
-public interface GestorSQLServer {
+public interface                                                                                                                                                    GestorSQLServer {
     static Connection conectarBD() {
         //Server de USERISRAEL
         String nombreBD = "BD_BuyPoint";
@@ -25,7 +25,7 @@ public interface GestorSQLServer {
         return null;
     }
 
-    static boolean registroEncontrado(String consulta, String mensajeError) {
+    static boolean encontrar_Registro(String consulta, String mensajeError) {
 
         boolean encontrado = false;
 
@@ -37,13 +37,28 @@ public interface GestorSQLServer {
                 encontrado = true;
             }
         }catch (SQLException e){
-            System.out.println("Erro al Iniciar Sesion" + e);
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, mensajeError);
         }
         return encontrado;
     }
+
+    static void modificar_Registro(String consulta,
+                                   String mensajeRegistrado, String mensajeError){
+        Statement st;
+        try{
+            st = GestorSQLServer.conectarBD().createStatement();
+            int filasRegistradas = st.executeUpdate(consulta);
+
+            JOptionPane.showMessageDialog(null, mensajeRegistrado);
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, mensajeError);
+        }
+    }
+
     //da el numero de registros que hay
-    static int cantidadRegistro() {
+    static int cantidad_Registro() {
         return 0;
     }
 }

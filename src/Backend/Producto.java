@@ -87,7 +87,7 @@ public class Producto implements GestionadorRegistro, GestorSQLServer {
     }
 
     @Override
-    public void eliminarRegistro() {
+    public void eliminar() {
     }
     public boolean productoRegistrado(String codigoBarras){
         return false;

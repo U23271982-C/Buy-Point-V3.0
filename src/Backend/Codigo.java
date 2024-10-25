@@ -1,6 +1,10 @@
 package Backend;
 
-public class Codigo {
+import Backend.ConexionBD.GestorSQLServer;
+
+import java.sql.Statement;
+
+public class Codigo implements GestionadorRegistro {
     private int idCodigo;
     private String codigo;
 
@@ -27,4 +31,18 @@ public class Codigo {
 
     //#endregion
 
+    @Override
+    public void registrar() {
+
+    }
+
+    @Override
+    public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
 }

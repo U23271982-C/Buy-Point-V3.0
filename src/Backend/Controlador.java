@@ -20,7 +20,7 @@ public class Controlador implements GestorSQLServer {
                         credencialesUsuario.getUsuario(),
                         credencialesUsuario.getContrasenna());
 
-        return GestorSQLServer.registroEncontrado
+        return GestorSQLServer.encontrar_Registro
                 (consultaSQL, "Error al Iniciar Sesion");
     }
 

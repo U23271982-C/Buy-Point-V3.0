@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package Backend;
+
+import Backend.ConexionBD.GestorSQLServer;
+
 /**
  *
  * @author ISRAEL
@@ -10,7 +13,9 @@ package Backend;
 public interface GestionadorRegistro {
     //registra Producto o Categoria
     void registrar();
-
-    void eliminarRegistro();
-
+    void eliminar();
+    void actualizar();
+    static boolean validar(String consulta, String mensajeError) {
+        return GestorSQLServer.encontrar_Registro(consulta, mensajeError);
+    }
 }
