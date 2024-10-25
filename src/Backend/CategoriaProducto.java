@@ -4,11 +4,13 @@
  */
 package Backend;
 
+import Backend.ConexionBD.GestorSQLServer;
+
 /**
  *
  * @author ISRAEL
  */
-public class CategoriaProducto implements GestionadorRegistro{
+public class CategoriaProducto implements GestorSQLServer {
     private String idCategoriaProducto;
     private String nombre;
     private String productos;
@@ -41,15 +43,21 @@ public class CategoriaProducto implements GestionadorRegistro{
     public void setProductos(String productos) {
         this.productos = productos;
     }
+    //#endregion
+
 
     @Override
     public void registrar() {
 
     }
-    //#endregion
 
     @Override
     public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
 
     }
 }

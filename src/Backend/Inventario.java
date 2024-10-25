@@ -4,13 +4,15 @@
  */
 package Backend;
 
+import Backend.ConexionBD.GestorSQLServer;
+
 import java.util.ArrayList;
 
 /**
  *
  * @author ISRAEL
  */
-public class Inventario implements GestionadorRegistro {
+public class Inventario implements GestorSQLServer {
 
     //public ArrayList<CategoriaProducto> catogoriasProductos;
     private String id;
@@ -93,15 +95,22 @@ public class Inventario implements GestionadorRegistro {
 
     //#endregion
 
+
+    @Override
+    public void registrar() {
+
+    }
+
     @Override
     public void eliminar() {
 
     }
 
     @Override
-    public void registrar() {
+    public void actualizar() {
 
     }
+
     static void ingresoProducto(int cantidad){
     }
     static void salidaProducto(int cantidad){

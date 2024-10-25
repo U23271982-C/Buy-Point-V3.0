@@ -4,9 +4,10 @@ import Backend.ConexionBD.GestorSQLServer;
 
 import java.sql.Statement;
 
-public class Codigo implements GestionadorRegistro {
+public class Codigo implements GestorSQLServer {
     private int idCodigo;
     private String codigo;
+    Producto producto;
 
     public Codigo() {
     }
@@ -31,9 +32,15 @@ public class Codigo implements GestionadorRegistro {
 
     //#endregion
 
+
     @Override
     public void registrar() {
-
+        String consultaSQL = String.format("INSERT INTO Codigo(Codigo, ID_Producto)\n" +
+                "VALUES('%s', %d)", getCodigo(), producto.getId());
+        GestorSQLServer.modificar_Registro
+                (consultaSQL
+                        , "Codigo de Barras registrado en el Producto",
+                        "Codigo de Barras no registrado");
     }
 
     @Override

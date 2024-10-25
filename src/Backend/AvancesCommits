@@ -5,3 +5,7 @@ QuintoAvanceBK:
     - Agregar el constructor vacío a la clase "Controlador"
 SextoAvanceBK:
     - Todas las pricinpales clases con "Getters and Setters"
+SeptimoAvanceBK:
+    - Eliminado Interfaz Gestionador Registro
+    - Todos los métodos que tenía la interfaz anterior se han pegado
+    interfaz GestorSQLServer

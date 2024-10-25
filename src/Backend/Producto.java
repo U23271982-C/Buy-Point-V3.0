@@ -10,7 +10,7 @@ import Backend.ConexionBD.GestorSQLServer;
  *
  * @author ISRAEL
  */
-public class Producto implements GestionadorRegistro, GestorSQLServer {
+public class Producto implements GestorSQLServer {
     private int id;
     private String nombre;
     private String descripcion;
@@ -78,17 +78,22 @@ public class Producto implements GestionadorRegistro, GestorSQLServer {
     }
     //#endregion
 
+
     @Override
     public void registrar() {
-        Producto producto = new Producto();
 
-        Inventario inventario = new Inventario();
-        inventario.registrar();
     }
 
     @Override
     public void eliminar() {
+
     }
+
+    @Override
+    public void actualizar() {
+
+    }
+
     public boolean productoRegistrado(String codigoBarras){
         return false;
     }

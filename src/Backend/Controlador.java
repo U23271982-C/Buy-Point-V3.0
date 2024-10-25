@@ -4,7 +4,7 @@ import Backend.ConexionBD.GestorSQLServer;
 /*
 * Contralador, se encarga de controlar todos los botones de la App
 * */
-public class Controlador implements GestorSQLServer {
+public class Controlador {
 
     String consultaSQL;
 

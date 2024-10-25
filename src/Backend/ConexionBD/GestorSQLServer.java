@@ -3,7 +3,7 @@ package Backend.ConexionBD;
 import javax.swing.*;
 import java.sql.*;
 
-public interface                                                                                                                                                    GestorSQLServer {
+public interface GestorSQLServer {
     static Connection conectarBD() {
         //Server de USERISRAEL
         String nombreBD = "BD_BuyPoint";
@@ -61,4 +61,8 @@ public interface                                                                
     static int cantidad_Registro() {
         return 0;
     }
+
+    void registrar();
+    void eliminar();
+    void actualizar();
 }
