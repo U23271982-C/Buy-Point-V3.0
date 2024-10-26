@@ -259,6 +259,11 @@ public final class InventarioPanel extends javax.swing.JFrame {
         AgregarProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AgregarProducto.setText("Agregar Producto");
         AgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        AgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgregarProductoMouseClicked(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -416,6 +421,12 @@ public final class InventarioPanel extends javax.swing.JFrame {
     private void inventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_inventarioMouseClicked
+
+    private void AgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarProductoMouseClicked
+        ActualizarProducto ap = new ActualizarProducto();
+        ap.setVisible(true);
+        ap.toFront();
+    }//GEN-LAST:event_AgregarProductoMouseClicked
     //end
     
     public InventarioPanel(){
