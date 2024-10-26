@@ -75,7 +75,16 @@ public class CredencialesUsuario implements GestorSQLServer {
 
     @Override
     public void registrar() {
+        String consultaSQL = String.format("INSERT INTO CredencialesTienda\n" +
+                        "(Usuario, Constrasenna, Nombre, Direccion, CorreoElectronico)\n" +
+                        "VALUES('%s', '%s', '%s', '%s')",
+                getUsuario(), getContrasenna(), getNombre(), getDireccion(),
+                getDireccion());
 
+        GestorSQLServer.modificar_Registro
+                (consultaSQL
+                        , "Credenciales de usuario registrado",
+                        "No se registro las credenciales de usuario");
     }
 
     @Override
