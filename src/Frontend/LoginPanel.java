@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 
@@ -403,7 +404,7 @@ public final class LoginPanel extends javax.swing.JFrame {
             this.setVisible(false); //desaparece la ventana login
             mn.toFront();
           } else {
-              
+              JOptionPane.showConfirmDialog(null, "Usuario o contraseña incorrectos");
             }
         } 
     }
