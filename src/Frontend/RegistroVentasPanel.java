@@ -12,7 +12,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
-        MenuPrincipal = new javax.swing.JPanel();
+        registro_ventas = new javax.swing.JPanel();
         panelOpciones = new javax.swing.JPanel();
         Inventario = new javax.swing.JLabel();
         Venta = new javax.swing.JLabel();
@@ -35,10 +35,10 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
 
-        MenuPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        MenuPrincipal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        MenuPrincipal.setName("MenuPrincipal"); // NOI18N
-        MenuPrincipal.setPreferredSize(new java.awt.Dimension(1176, 486));
+        registro_ventas.setBackground(new java.awt.Color(255, 255, 255));
+        registro_ventas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        registro_ventas.setName("registro_ventas"); // NOI18N
+        registro_ventas.setPreferredSize(new java.awt.Dimension(1176, 486));
 
         panelOpciones.setBackground(new java.awt.Color(255, 255, 255));
         panelOpciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -157,6 +157,17 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         Maximizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Maximizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Maximizar.setPreferredSize(new java.awt.Dimension(12, 12));
+        Maximizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MaximizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MaximizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MaximizarMouseExited(evt);
+            }
+        });
         PanelMax.add(Maximizar, new java.awt.GridBagConstraints());
 
         PanelMini.setBackground(new java.awt.Color(255, 255, 255));
@@ -215,21 +226,21 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
                 .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
-        MenuPrincipal.setLayout(MenuPrincipalLayout);
-        MenuPrincipalLayout.setHorizontalGroup(
-            MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuPrincipalLayout.createSequentialGroup()
+        javax.swing.GroupLayout registro_ventasLayout = new javax.swing.GroupLayout(registro_ventas);
+        registro_ventas.setLayout(registro_ventasLayout);
+        registro_ventasLayout.setHorizontalGroup(
+            registro_ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registro_ventasLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(136, Short.MAX_VALUE))
             .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        MenuPrincipalLayout.setVerticalGroup(
-            MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuPrincipalLayout.createSequentialGroup()
+        registro_ventasLayout.setVerticalGroup(
+            registro_ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registro_ventasLayout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 538, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -238,12 +249,12 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
+            .addComponent(registro_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                .addComponent(registro_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -328,6 +339,18 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
     private void PanelMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMiniMouseClicked
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_PanelMiniMouseClicked
+
+    private void MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseClicked
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_MaximizarMouseClicked
+
+    private void MaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseEntered
+        PanelMax.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_MaximizarMouseEntered
+
+    private void MaximizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseExited
+        PanelMax.setBackground(Color.WHITE);
+    }//GEN-LAST:event_MaximizarMouseExited
     
     public RegistroVentasPanel(){
        initComponents();
@@ -358,7 +381,6 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
     private javax.swing.JLabel Inventario;
     private javax.swing.JLabel Maximizar;
     private javax.swing.JLabel Menu;
-    private javax.swing.JPanel MenuPrincipal;
     private javax.swing.JSeparator Minimizar;
     private javax.swing.JPanel PanelMax;
     private javax.swing.JPanel PanelMini;
@@ -369,6 +391,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
     private javax.swing.JLabel iconoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelOpciones;
+    private javax.swing.JPanel registro_ventas;
     // End of variables declaration//GEN-END:variables
 
 }

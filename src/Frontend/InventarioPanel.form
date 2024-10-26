@@ -36,20 +36,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MenuPrincipal" alignment="0" pref="1212" max="32767" attributes="0"/>
+          <Component id="inventario" alignment="0" pref="1212" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="MenuPrincipal" pref="700" max="32767" attributes="0"/>
+              <Component id="inventario" pref="700" max="32767" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="MenuPrincipal">
+    <Container class="javax.swing.JPanel" name="inventario">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -59,11 +59,14 @@
             <LineBorder/>
           </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="MenuPrincipal" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="inventario" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1176, 486]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inventarioMouseClicked"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -83,7 +86,7 @@
                           <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                           <Component id="Categoria" min="-2" pref="123" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="AgregarProducto" min="-2" pref="123" max="-2" attributes="0"/>
+                          <Component id="AgregarProducto" max="32767" attributes="0"/>
                       </Group>
                       <Component id="panelOpciones" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -100,7 +103,7 @@
                       <Component id="Producto" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="Filtrar" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="Categoria" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="AgregarProducto" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="AgregarProducto" alignment="3" pref="27" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="484" max="32767" attributes="0"/>
                   <Component id="panelOpciones" max="-2" attributes="0"/>
@@ -325,6 +328,11 @@
                       <Dimension value="[12, 12]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MaximizarMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MaximizarMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MaximizarMouseExited"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                       <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>

@@ -6,9 +6,9 @@ public interface ConsultadorSQL {
     static boolean registroEncontrado(String consulta) {
         boolean rsp = false;
 
-        Connection conexion = Conexion.conectar();
+        //Connection conexion = Conexion.conectar();
         //Statement sta;
-        try{
+        //try{
             /*
             //st = cn.createStatement();
             //ResultSet = st.executeQuery(rsp);

@@ -162,6 +162,17 @@ public final class VentaPanel extends javax.swing.JFrame {
         Maximizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Maximizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Maximizar.setPreferredSize(new java.awt.Dimension(12, 12));
+        Maximizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MaximizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MaximizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MaximizarMouseExited(evt);
+            }
+        });
         PanelMax.add(Maximizar, new java.awt.GridBagConstraints());
 
         PanelMini.setBackground(new java.awt.Color(255, 255, 255));
@@ -370,11 +381,6 @@ public final class VentaPanel extends javax.swing.JFrame {
         RV.toFront();
     }//GEN-LAST:event_RegistroVentasMouseClicked
 
-    private void BuscadorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorMousePressed
-        Buscador.setText("");
-
-    }//GEN-LAST:event_BuscadorMousePressed
-
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
         Buscador.setText("");
     }//GEN-LAST:event_BuscadorActionPerformed
@@ -386,6 +392,23 @@ public final class VentaPanel extends javax.swing.JFrame {
     private void PanelMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMiniMouseClicked
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_PanelMiniMouseClicked
+
+    private void BuscadorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorMousePressed
+        Buscador.setText("");
+    }//GEN-LAST:event_BuscadorMousePressed
+
+    private void MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseClicked
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_MaximizarMouseClicked
+
+    private void MaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseEntered
+        PanelMax.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_MaximizarMouseEntered
+
+    private void MaximizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseExited
+        PanelMax.setBackground(Color.WHITE);
+    }//GEN-LAST:event_MaximizarMouseExited
+                                  
     
     public VentaPanel(){
        initComponents();
