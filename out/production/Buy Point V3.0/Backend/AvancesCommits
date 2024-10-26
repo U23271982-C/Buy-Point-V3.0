@@ -12,4 +12,4 @@ SeptimoAvanceBK:
 OctavoAvanceBK:
     - implementación del método sobrecargado registrar() (parte 1 de 2)
 NovenoAvanceBK:
-    -
+    - Problema de conexión de base de datos resuelto.
