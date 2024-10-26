@@ -10,4 +10,6 @@ SeptimoAvanceBK:
     - Todos los métodos que tenía la interfaz anterior se han pegado
     interfaz GestorSQLServer
 OctavoAvanceBK:
+    - implementación del método sobrecargado registrar() (parte 1 de 2)
+NovenoAvanceBK:
     -

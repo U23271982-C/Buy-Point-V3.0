@@ -36,8 +36,10 @@ public interface GestorSQLServer {
             while (rs.next()){
                 encontrado = true;
             }
+            System.out.println("Se encotró");
         }catch (SQLException e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            //System.out.println("ERROR ENCONTRAR_REGISTRO " + e.getMessage());
             JOptionPane.showMessageDialog(null, mensajeError);
         }
         return encontrado;
