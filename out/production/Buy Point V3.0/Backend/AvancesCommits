@@ -10,10 +10,6 @@ SeptimoAvanceBK:
     - Todos los métodos que tenía la interfaz anterior se han pegado
     interfaz GestorSQLServer
 OctavoAvanceBK:
-<<<<<<< HEAD
     - implementación del método sobrecargado registrar() (parte 1 de 2)
 NovenoAvanceBK:
-    -
-=======
-    - implementación del método sobrecargado registrar() (parte 1 de 2)
->>>>>>> master
+    - Problema de conexión de base de datos resuelto.
