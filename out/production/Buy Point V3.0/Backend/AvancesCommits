@@ -13,3 +13,7 @@ OctavoAvanceBK:
     - implementación del método sobrecargado registrar() (parte 1 de 2)
 NovenoAvanceBK:
     - Problema de conexión de base de datos resuelto.
+DecimoAvanceBK:
+    - Carpeta Extenciones creada
+    - Agregando libreria a Extenciones que conecta a la BD
+    - Agregando los Scrips de la BD.
