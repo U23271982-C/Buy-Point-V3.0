@@ -6,6 +6,7 @@ package Backend;
 
 import Backend.ConexionBD.GestorSQLServer;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -16,13 +17,13 @@ public class Inventario implements GestorSQLServer {
 
     //public ArrayList<CategoriaProducto> catogoriasProductos;
     private String id;
-    private double precioCosto;
-    private double precioVenta;
-    private double utilidad;
-    private double ingreso;
-    private double salida;
-    private int stock;
-    private double valorStock;
+    private BigDecimal precioCosto;
+    private BigDecimal precioVenta;
+    private BigDecimal utilidad;
+    private int ingreso;
+    private int salida;
+    private int BigDecimal;
+    private BigDecimal valorStock;
 
     public Inventario() {
     }
@@ -37,64 +38,63 @@ public class Inventario implements GestorSQLServer {
         this.id = id;
     }
 
-    public double getPrecioCosto() {
+    public java.math.BigDecimal getPrecioCosto() {
         return precioCosto;
     }
 
-    public void setPrecioCosto(double precioCosto) {
+    public void setPrecioCosto(java.math.BigDecimal precioCosto) {
         this.precioCosto = precioCosto;
     }
 
-    public double getPrecioVenta() {
+    public java.math.BigDecimal getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(double precioVenta) {
+    public void setPrecioVenta(java.math.BigDecimal precioVenta) {
         this.precioVenta = precioVenta;
     }
 
-    public double getUtilidad() {
+    public java.math.BigDecimal getUtilidad() {
         return utilidad;
     }
 
-    public void setUtilidad(double utilidad) {
+    public void setUtilidad(java.math.BigDecimal utilidad) {
         this.utilidad = utilidad;
     }
 
-    public double getIngreso() {
+    public int getIngreso() {
         return ingreso;
     }
 
-    public void setIngreso(double ingreso) {
+    public void setIngreso(int ingreso) {
         this.ingreso = ingreso;
     }
 
-    public double getSalida() {
+    public int getSalida() {
         return salida;
     }
 
-    public void setSalida(double salida) {
+    public void setSalida(int salida) {
         this.salida = salida;
     }
 
-    public int getStock() {
-        return stock;
+    public int getBigDecimal() {
+        return BigDecimal;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setBigDecimal(int bigDecimal) {
+        BigDecimal = bigDecimal;
     }
 
-    public double getValorStock() {
+    public java.math.BigDecimal getValorStock() {
         return valorStock;
     }
 
-    public void setValorStock(double valorStock) {
+    public void setValorStock(java.math.BigDecimal valorStock) {
         this.valorStock = valorStock;
     }
 
     //#endregion
-
 
     @Override
     public void registrar() {

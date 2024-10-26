@@ -14,6 +14,7 @@ public class CategoriaProducto implements GestorSQLServer {
     private String idCategoriaProducto;
     private String nombre;
     private String productos;
+    Producto producto;
 
     public CategoriaProducto() {
     }
@@ -48,7 +49,12 @@ public class CategoriaProducto implements GestorSQLServer {
 
     @Override
     public void registrar() {
-
+        String consultaSQL = String.format("INSERT INTO CategoriaProducto(NombreCategoria)\n" +
+                "VALUES('%s')", getNombre());
+        GestorSQLServer.modificar_Registro
+                (consultaSQL
+                        , "Categoría registrada",
+                        "No se registro la categoría");
     }
 
     @Override

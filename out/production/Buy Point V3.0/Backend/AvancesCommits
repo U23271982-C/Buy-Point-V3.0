@@ -1,1 +1,13 @@
 TercerAvanceBk: Clase credenciales completada.
+CuartoAvanceBK: Funcion de iniciar sesión creado junto a la clase controlador
+QuintoAvanceBK:
+    - Todas las clases relacionadas con la aplicación creadas(Igual ER).
+    - Agregar el constructor vacío a la clase "Controlador"
+SextoAvanceBK:
+    - Todas las pricinpales clases con "Getters and Setters"
+SeptimoAvanceBK:
+    - Eliminado Interfaz Gestionador Registro
+    - Todos los métodos que tenía la interfaz anterior se han pegado
+    interfaz GestorSQLServer
+OctavoAvanceBK:
+    -

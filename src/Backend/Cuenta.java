@@ -1,10 +1,12 @@
 package Backend;
 
-public class Cuenta {
+import Backend.ConexionBD.GestorSQLServer;
+
+public class Cuenta implements GestorSQLServer {
     private int idCuenta;
     private String nombre;
     private String apellido;
-    private int idDepartamento;
+    private int telefono;
 
     public Cuenta() {
     }
@@ -35,14 +37,33 @@ public class Cuenta {
         this.apellido = apellido;
     }
 
-    public int getIdDepartamento() {
-        return idDepartamento;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setIdDepartamento(int idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
-
     //#endregion
 
+
+    @Override
+    public void registrar() {
+        String consultaSQL = String.format("INSERT INTO Cuenta(Nombre,Apellido,Telefono)\n" +
+                "VALUES('%s','%s', %d)", getNombre(),getApellido(), getTelefono());
+        GestorSQLServer.modificar_Registro
+                (consultaSQL
+                        , "Cuenta registrada",
+                        "No se registro la cuenta");
+    }
+
+    @Override
+    public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
 }

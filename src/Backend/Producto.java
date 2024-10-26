@@ -11,7 +11,7 @@ import Backend.ConexionBD.GestorSQLServer;
  * @author ISRAEL
  */
 public class Producto implements GestorSQLServer {
-    private int id;
+    private int idProducto;
     private String nombre;
     private String descripcion;
     private int codigoBarras;
@@ -20,7 +20,7 @@ public class Producto implements GestorSQLServer {
 
     public Producto() {
 
-        this.id = id;
+        this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.codigoBarras = codigoBarras;
@@ -29,12 +29,12 @@ public class Producto implements GestorSQLServer {
     }
 
     //#region Getters and Setters
-        public int getId() {
-        return id;
+        public int getIdProducto() {
+        return idProducto;
     }
 
-        public void setId(int id) {
-        this.id = id;
+        public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
         public String getNombre() {
@@ -81,7 +81,12 @@ public class Producto implements GestorSQLServer {
 
     @Override
     public void registrar() {
-
+        String consultaSQL = String.format("INSERT INTO CategoriaProducto(NombreCategoria)\n" +
+                "VALUES('%s')", getNombre());
+        GestorSQLServer.modificar_Registro
+                (consultaSQL
+                        , "Categoría registrada",
+                        "No se registro la categoría");
     }
 
     @Override
