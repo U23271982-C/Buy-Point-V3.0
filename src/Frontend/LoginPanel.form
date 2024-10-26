@@ -57,14 +57,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="USER" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                      <Component id="Password" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Encabezado" max="32767" attributes="0"/>
@@ -91,7 +83,15 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="439" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="287" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="UserTxt" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                      <Component id="PasswordTxt" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -102,11 +102,11 @@
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="user" min="-2" pref="151" max="-2" attributes="0"/>
                   <EmptySpace pref="43" max="32767" attributes="0"/>
-                  <Component id="USER" min="-2" max="-2" attributes="0"/>
+                  <Component id="UserTxt" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="UserBarra" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="Password" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="PasswordTxt" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="PasswordBarra" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -130,7 +130,7 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="USER">
+        <Component class="javax.swing.JTextField" name="UserTxt">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7b" green="7b" red="7e" type="rgb"/>
@@ -147,12 +147,12 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="USERMousePressed"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="USERActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="USERKeyPressed"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="UserTxtMousePressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserTxtActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UserTxtKeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="Password">
+        <Component class="javax.swing.JPasswordField" name="PasswordTxt">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7b" green="7b" red="7e" type="rgb"/>
@@ -169,8 +169,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PasswordMousePressed"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordActionPerformed"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PasswordTxtMousePressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordTxtActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PasswordTxtKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="UserBarra">

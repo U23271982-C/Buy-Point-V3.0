@@ -30,6 +30,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
         Filtrar = new javax.swing.JLabel();
         Categoria = new javax.swing.JLabel();
         AgregarProducto = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -259,6 +260,8 @@ public final class InventarioPanel extends javax.swing.JFrame {
         AgregarProducto.setText("Agregar Producto");
         AgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout inventarioLayout = new javax.swing.GroupLayout(inventario);
         inventario.setLayout(inventarioLayout);
         inventarioLayout.setHorizontalGroup(
@@ -269,6 +272,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
             .addGroup(inventarioLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(inventarioLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,10 +280,13 @@ public final class InventarioPanel extends javax.swing.JFrame {
                         .addComponent(Filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(109, 109, 109)
                         .addComponent(Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114)
-                        .addComponent(AgregarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(155, 155, 155)
+                        .addComponent(AgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(136, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(382, 382, 382))
         );
         inventarioLayout.setVerticalGroup(
             inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,8 +297,10 @@ public final class InventarioPanel extends javax.swing.JFrame {
                     .addComponent(Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgregarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 484, Short.MAX_VALUE)
+                    .addComponent(AgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -417,6 +426,8 @@ public final class InventarioPanel extends javax.swing.JFrame {
        this.tamañoimagen(Menu, "/img/menu.png");
        this.tamañoimagen(Venta, "/img/venta.png");
        this.tamañoimagen(RegistroVentas, "/img/registroventas.png");
+       //this.tamañoimagen(agregarJLabel, "/img/agregar_producto1.png");
+
     }
     
     public void tamañoimagen(JLabel label, String ruta){
@@ -451,6 +462,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
     private javax.swing.JPanel inventario;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelOpciones;
     // End of variables declaration//GEN-END:variables

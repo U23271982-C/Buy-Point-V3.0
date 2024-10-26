@@ -251,6 +251,11 @@ public final class VentaPanel extends javax.swing.JFrame {
                 BuscadorActionPerformed(evt);
             }
         });
+        Buscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BuscadorKeyPressed(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -408,6 +413,10 @@ public final class VentaPanel extends javax.swing.JFrame {
     private void MaximizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseExited
         PanelMax.setBackground(Color.WHITE);
     }//GEN-LAST:event_MaximizarMouseExited
+
+    private void BuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyPressed
+
+    }//GEN-LAST:event_BuscadorKeyPressed
                                   
     
     public VentaPanel(){
