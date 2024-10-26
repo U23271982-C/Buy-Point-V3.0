@@ -10,7 +10,6 @@ public class Controlador {
 
     public Controlador() {
     }
-
     //Inicar sesion de BuyPoint
     public boolean iniciarSesion(CredencialesUsuario credencialesUsuario){
         consultaSQL =
