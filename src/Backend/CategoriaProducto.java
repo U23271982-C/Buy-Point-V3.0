@@ -4,10 +4,60 @@
  */
 package Backend;
 
+import Backend.ConexionBD.GestorSQLServer;
+
 /**
  *
  * @author ISRAEL
  */
-public class CategoriaProducto {
-    
+public class CategoriaProducto implements GestorSQLServer {
+    private String idCategoriaProducto;
+    private String nombre;
+    private String productos;
+
+    public CategoriaProducto() {
+    }
+
+    //#region Getters and Setters
+
+    public String getIdCategoriaProducto() {
+        return idCategoriaProducto;
+    }
+
+    public void setIdCategoriaProducto(String idCategoriaProducto) {
+        this.idCategoriaProducto = idCategoriaProducto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getProductos() {
+        return productos;
+    }
+
+    public void setProductos(String productos) {
+        this.productos = productos;
+    }
+    //#endregion
+
+
+    @Override
+    public void registrar() {
+
+    }
+
+    @Override
+    public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
 }

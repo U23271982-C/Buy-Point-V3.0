@@ -1,6 +1,8 @@
 package Backend;
 
-public class CredencialesUsuario implements GestionadorRegistro{
+import Backend.ConexionBD.GestorSQLServer;
+
+public class CredencialesUsuario implements GestorSQLServer {
     private int     id;
     private String usuario;
     private String contrasenna;
@@ -70,24 +72,19 @@ public class CredencialesUsuario implements GestionadorRegistro{
 
     //#endregion
 
+
     @Override
     public void registrar() {
-        CredencialesUsuario credencialesUsuario = new CredencialesUsuario();
-        String consultaSQL =
-                String.format("INSERT INTO CredencialesTienda" +
-                                "(Usuario, Constrasenna, Nombre, Direccion, CorreoElectronico) " +
-                                "VALUES ('%s','%s', '%s', '%s', '%s')",
-                        credencialesUsuario.getUsuario(),credencialesUsuario.getContrasenna(),
-                        credencialesUsuario.getNombre(),credencialesUsuario.getDireccion(),
-                        credencialesUsuario.getCorreoElectronico());
+
     }
 
     @Override
-    public void eliminarRegistro() {
-        String consultaSQL = String.format("DELETE FROM CredencialesTienda " +
-                "WHERE Usuario = '%s' AND Constrasenna = '%s'",
-                getUsuario(),getContrasenna());
-        //falta a la bd para la consulta
+    public void eliminar() {
+
     }
 
+    @Override
+    public void actualizar() {
+
+    }
 }
