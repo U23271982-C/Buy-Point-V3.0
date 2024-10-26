@@ -309,6 +309,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         IV.setVisible(true);
         this.setVisible(false);
         IV.toFront();
+        //agregar el scaner de barra
     }//GEN-LAST:event_InventarioMouseClicked
 
     private void VentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaMouseClicked
