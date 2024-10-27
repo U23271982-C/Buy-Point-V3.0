@@ -20,3 +20,4 @@ DecimoAvanceBK:
 OnceavoAvanceBK:
     - Arreglado Credenciales el método de registrar.
     - Producto: método registrar hecho.
+    - Columna ID_Categoria de Inventario eliminada.

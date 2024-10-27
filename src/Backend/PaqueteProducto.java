@@ -3,16 +3,19 @@ package Backend;
 import Backend.ConexionBD.GestorSQLServer;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PaqueteProducto implements GestorSQLServer {
     private int idPaqueteProducto;
     private int cantidad;
     private LocalDate fechaCaducidad;
     private boolean caducado;
-    private int idProducto;
-    private int idInventario;
+
+    public Producto producto;
+    public Inventario inventario;
 
     public PaqueteProducto() {
+        this.caducado = false;
     }
 
     //#region Getters and Setters
@@ -49,28 +52,28 @@ public class PaqueteProducto implements GestorSQLServer {
         this.caducado = caducado;
     }
 
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
-    }
-
-    public int getIdInventario() {
-        return idInventario;
-    }
-
-    public void setIdInventario(int idInventario) {
-        this.idInventario = idInventario;
-    }
-
     //#endregion
 
 
     @Override
     public void registrar() {
+        //Formateo al estandar ISO 8601(AAAA-MM-DD)
+        DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
 
+        String consultaSQL = String.format("INSERT INTO PaqueteProducto" +
+                        "(Cantidad, FechaCaducidad, Caducado, ID_Producto, " +
+                        "ID_Inventario)\n" +
+                        "VALUES(%d, '%s', 0, %d, %d)"
+
+                ,getCantidad(), getFechaCaducidad().format(fmt),
+                producto.getIdProducto(), inventario.getIdInventario());
+
+        //Falta el método de Inventario para actulizar el stock
+
+        GestorSQLServer.modificar_Registro
+                (consultaSQL
+                        , "Paquete de producto agregado",
+                        "No se registro el código de barras");
     }
 
     @Override

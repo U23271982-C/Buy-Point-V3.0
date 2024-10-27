@@ -7,7 +7,6 @@ package Backend;
 import Backend.ConexionBD.GestorSQLServer;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,13 +15,13 @@ import java.util.ArrayList;
 public class Inventario implements GestorSQLServer {
 
     //public ArrayList<CategoriaProducto> catogoriasProductos;
-    private String id;
+    private int idInventario;
     private BigDecimal precioCosto;
     private BigDecimal precioVenta;
     private BigDecimal utilidad;
     private int ingreso;
     private int salida;
-    private int BigDecimal;
+    private int stock;
     private BigDecimal valorStock;
 
     public Inventario() {
@@ -30,35 +29,35 @@ public class Inventario implements GestorSQLServer {
 
     //#region Getters and Setters
 
-    public String getId() {
-        return id;
+    public int getIdInventario() {
+        return idInventario;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdInventario(int idInventario) {
+        this.idInventario = idInventario;
     }
 
-    public java.math.BigDecimal getPrecioCosto() {
+    public BigDecimal getPrecioCosto() {
         return precioCosto;
     }
 
-    public void setPrecioCosto(java.math.BigDecimal precioCosto) {
+    public void setPrecioCosto(BigDecimal precioCosto) {
         this.precioCosto = precioCosto;
     }
 
-    public java.math.BigDecimal getPrecioVenta() {
+    public BigDecimal getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(java.math.BigDecimal precioVenta) {
+    public void setPrecioVenta(BigDecimal precioVenta) {
         this.precioVenta = precioVenta;
     }
 
-    public java.math.BigDecimal getUtilidad() {
+    public BigDecimal getUtilidad() {
         return utilidad;
     }
 
-    public void setUtilidad(java.math.BigDecimal utilidad) {
+    public void setUtilidad(BigDecimal utilidad) {
         this.utilidad = utilidad;
     }
 
@@ -78,21 +77,22 @@ public class Inventario implements GestorSQLServer {
         this.salida = salida;
     }
 
-    public int getBigDecimal() {
-        return BigDecimal;
+    public int getStock() {
+        return stock;
     }
 
-    public void setBigDecimal(int bigDecimal) {
-        BigDecimal = bigDecimal;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
-    public java.math.BigDecimal getValorStock() {
+    public BigDecimal getValorStock() {
         return valorStock;
     }
 
-    public void setValorStock(java.math.BigDecimal valorStock) {
+    public void setValorStock(BigDecimal valorStock) {
         this.valorStock = valorStock;
     }
+
 
     //#endregion
 
