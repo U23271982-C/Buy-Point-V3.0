@@ -7,6 +7,7 @@ package Backend;
 import Backend.ConexionBD.GestorSQLServer;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -24,6 +25,8 @@ public class Inventario implements GestorSQLServer {
     private int salida;
     private int stock;
     private BigDecimal valorStock;
+
+    PaqueteProducto paqueteProducto;
 
     public Inventario() {
     }
@@ -99,21 +102,28 @@ public class Inventario implements GestorSQLServer {
 
     @Override
     public void registrar() {
+        //Redondeamos PV para que no halla error en sacar cálculos
+        try {
+            BigDecimal redondeadoPV =
+                    getPrecioVenta().setScale(1, RoundingMode.HALF_UP);
+            String consultaSQL =
+                    String.format("INSERT INTO Inventario\n" +
+                                    "(PrecioCosto, PrecioVenta, " +
+                                    "Utilidad, Salida, Stock, ValorStock)\n" +
+                                    "VALUES(%.2f, %.2f, %.2f, %d, %d, %.2f)\n"
 
-        String consultaSQL = String.format("INSERT INTO PaqueteProducto" +
-                        "(Cantidad, FechaCaducidad, Caducado, ID_Producto, " +
-                        "ID_Inventario)\n" +
-                        "VALUES(%d, '%s', 0, %d, %d)"
-
-                ,getCantidad(), getFechaCaducidad().format(fmt),
-                producto.getIdProducto(), inventario.getIdInventario());
-
+                            ,getPrecioCosto(), redondeadoPV,
+                            redondeadoPV.subtract(getPrecioCosto()),
+                            0, paqueteProducto.getCantidad(),
+                            getPrecioVenta().doubleValue() * paqueteProducto.getCantidad());
+            GestorSQLServer.modificar_Registro
+                    (consultaSQL
+                            , "Inventario Registrado",
+                            "No se registró el Inventario");
+        }catch (Exception e){
+            System.out.println("Error en el redondeo de PV:" + e.getMessage());
+        }
         //Falta el método de Inventario para actulizar el stock
-
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Paquete de producto agregado",
-                        "No se agrego el paquete de producto");
     }
 
     @Override
