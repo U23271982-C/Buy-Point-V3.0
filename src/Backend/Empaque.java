@@ -1,6 +1,8 @@
 package Backend;
 
-public class Empaque {
+import Backend.ConexionBD.GestorSQLServer;
+
+public class Empaque implements GestorSQLServer {
     private int idEmpaque;
     private String nombreEmpaque;
 
@@ -27,4 +29,24 @@ public class Empaque {
 
     //#endregion
 
+
+    @Override
+    public void registrar() {
+        String consultaSQL = String.format("INSERT INTO Empaque(TipoEmpaque)\n" +
+                        "VALUES('%s')",getNombreEmpaque());
+
+        GestorSQLServer.modificar_Registro(consultaSQL
+                , "Empaque registrado",
+                "No se registro el Empaque");
+    }
+
+    @Override
+    public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
 }

@@ -1,14 +1,17 @@
 package Backend;
 
+import Backend.ConexionBD.GestorSQLServer;
+
 import java.math.BigDecimal;
 
-public class Venta{
+public class Venta implements GestorSQLServer {
     private int idVenta;
-    private int idInventario;
     private int cantidadVenta;
     private BigDecimal montoTotal;
-    private int idCliente;
-    private int idComprobante;
+
+    Cliente cliente;
+    Inventario inventario;
+    Comprobante comprobante;
 
     public Venta() {
     }
@@ -21,14 +24,6 @@ public class Venta{
 
     public void setIdVenta(int idVenta) {
         this.idVenta = idVenta;
-    }
-
-    public int getIdInventario() {
-        return idInventario;
-    }
-
-    public void setIdInventario(int idInventario) {
-        this.idInventario = idInventario;
     }
 
     public int getCantidadVenta() {
@@ -46,23 +41,31 @@ public class Venta{
     public void setMontoTotal(BigDecimal montoTotal) {
         this.montoTotal = montoTotal;
     }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getIdComprobante() {
-        return idComprobante;
-    }
-
-    public void setIdComprobante(int idComprobante) {
-        this.idComprobante = idComprobante;
-    }
-
     //#endregion
 
+
+    @Override
+    public void registrar() {
+        String consultaSQL = String.format
+                ("INSERT INTO Venta" +
+                "(ID_Inventario, CantidadVenta, MontoTotal, ID_Cliente, ID_Comprobante)\n" +
+                "VALUES(%d, %d, %.2f, %d, %d)",
+                 inventario.getIdInventario(),
+                        getCantidadVenta(), getMontoTotal(),
+                        cliente.getIdCliente(), comprobante.getIdComprobante());
+
+        GestorSQLServer.modificar_Registro(consultaSQL
+                , "Venta registrada",
+                "No se registro la venta");
+    }
+
+    @Override
+    public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
 }

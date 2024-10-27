@@ -1,6 +1,8 @@
 package Backend;
 
-public class TipoPago {
+import Backend.ConexionBD.GestorSQLServer;
+
+public class TipoPago implements GestorSQLServer {
     private int idTipoPago;
     private String TipoPago;
 
@@ -27,4 +29,26 @@ public class TipoPago {
 
     //#endregion
 
+
+    @Override
+    public void registrar() {
+        String consultaSQL = String.format
+                ("INSERT INTO TipoPago" +
+                                "(TipoPago)\n" +
+                                "VALUES('%s')", getTipoPago());
+
+        GestorSQLServer.modificar_Registro(consultaSQL
+                , "Tipo de pago registrado",
+                "No se registro el tipo de pago");
+    }
+
+    @Override
+    public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
 }

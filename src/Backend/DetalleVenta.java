@@ -5,14 +5,15 @@ import Backend.ConexionBD.GestorSQLServer;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class DetalleVenta implements GestorSQLServer {
     private int idDetalleVenta;
-    private int idVenta;
     private LocalTime hora;
     private LocalDate fecha;
     private BigDecimal montoIGV;
     private BigDecimal montoPagar;
+    Venta venta;
 
     public DetalleVenta() {
     }
@@ -25,14 +26,6 @@ public class DetalleVenta implements GestorSQLServer {
 
     public void setIdDetalleVenta(int idDetalleVenta) {
         this.idDetalleVenta = idDetalleVenta;
-    }
-
-    public int getIdVenta() {
-        return idVenta;
-    }
-
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
     }
 
     public LocalTime getHora() {
@@ -71,12 +64,22 @@ public class DetalleVenta implements GestorSQLServer {
 
     @Override
     public void registrar() {
-        String consultaSQL = String.format("INSERT INTO DetalleVenta(ID_Venta, Hora, Fecha, MontoIGV, MontoPagar)\n" +
-                "VALUES(10,101)\n" /*getNombre()*/);//Falta completar, porque fuiamos a crear en producto
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Categoría registrada",
-                        "No se registro la categoría");
+
+        DateTimeFormatter fmtFecha =  DateTimeFormatter.ISO_LOCAL_DATE;
+        DateTimeFormatter fmtHora =  DateTimeFormatter.ISO_LOCAL_DATE;
+
+        setHora(LocalTime.now());//Hora actual
+        setFecha(LocalDate.now());//Fecha actual
+
+        String consultaSQL = String.format("INSERT INTO DetalleVenta" +
+                "(ID_Venta, Hora, Fecha, MontoIGV, MontoPagar)\n" +
+                "VALUES(%d,'%s', '%s', %.2f, %.2f)\n",
+                venta.getIdVenta(), getHora().format(fmtHora),
+                getFecha().format(fmtFecha), getMontoIGV(),getMontoPagar());
+
+        GestorSQLServer.modificar_Registro(consultaSQL
+                        , "Detalle de venta registrada",
+                        "No se registro el detalle de venta");
 
     }
 
