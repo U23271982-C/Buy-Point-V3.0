@@ -4,6 +4,8 @@
  */
 package Frontend;
 
+import java.awt.Color;
+
 /**
  *
  * @author glen
@@ -26,54 +28,134 @@ public class ActualizarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        actualizarProducto = new javax.swing.JPanel();
         CantidadJlabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        FechaCaducidad = new javax.swing.JLabel();
+        CantidadIngresada = new javax.swing.JLabel();
+        FechaIngresada = new javax.swing.JLabel();
+        ConfirmacionProducto = new javax.swing.JPanel();
+        TextConfirmar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        actualizarProducto.setBackground(new java.awt.Color(255, 255, 255));
 
         CantidadJlabel.setBackground(new java.awt.Color(255, 255, 255));
         CantidadJlabel.setForeground(new java.awt.Color(0, 0, 0));
         CantidadJlabel.setText("Cantidad");
 
-        jLabel2.setText("jLabel2");
+        FechaCaducidad.setBackground(new java.awt.Color(255, 255, 255));
+        FechaCaducidad.setForeground(new java.awt.Color(0, 0, 0));
+        FechaCaducidad.setText("FV");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CantidadJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(273, Short.MAX_VALUE))
+        CantidadIngresada.setBackground(new java.awt.Color(255, 255, 255));
+        CantidadIngresada.setForeground(new java.awt.Color(0, 0, 0));
+        CantidadIngresada.setText("50");
+
+        FechaIngresada.setBackground(new java.awt.Color(255, 255, 255));
+        FechaIngresada.setForeground(new java.awt.Color(0, 0, 0));
+        FechaIngresada.setText("99/99/9999");
+
+        ConfirmacionProducto.setBackground(new java.awt.Color(255, 255, 255));
+        ConfirmacionProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConfirmacionProductoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ConfirmacionProductoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ConfirmacionProductoMouseExited(evt);
+            }
+        });
+
+        TextConfirmar.setBackground(new java.awt.Color(255, 255, 255));
+        TextConfirmar.setForeground(new java.awt.Color(0, 0, 0));
+        TextConfirmar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TextConfirmar.setText("Confirmar");
+
+        javax.swing.GroupLayout ConfirmacionProductoLayout = new javax.swing.GroupLayout(ConfirmacionProducto);
+        ConfirmacionProducto.setLayout(ConfirmacionProductoLayout);
+        ConfirmacionProductoLayout.setHorizontalGroup(
+            ConfirmacionProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+            .addGroup(ConfirmacionProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ConfirmacionProductoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(TextConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        ConfirmacionProductoLayout.setVerticalGroup(
+            ConfirmacionProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+            .addGroup(ConfirmacionProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ConfirmacionProductoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(TextConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout actualizarProductoLayout = new javax.swing.GroupLayout(actualizarProducto);
+        actualizarProducto.setLayout(actualizarProductoLayout);
+        actualizarProductoLayout.setHorizontalGroup(
+            actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(actualizarProductoLayout.createSequentialGroup()
+                .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(actualizarProductoLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CantidadJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(CantidadIngresada, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FechaIngresada, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(actualizarProductoLayout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(ConfirmacionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
+        );
+        actualizarProductoLayout.setVerticalGroup(
+            actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(actualizarProductoLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(CantidadJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CantidadJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CantidadIngresada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaIngresada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(ConfirmacionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(actualizarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(actualizarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ConfirmacionProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmacionProductoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfirmacionProductoMouseClicked
+
+    private void ConfirmacionProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmacionProductoMouseEntered
+        ConfirmacionProducto.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_ConfirmacionProductoMouseEntered
+
+    private void ConfirmacionProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmacionProductoMouseExited
+        ConfirmacionProducto.setBackground(Color.WHITE);
+    }//GEN-LAST:event_ConfirmacionProductoMouseExited
 
     /**
      * @param args the command line arguments
@@ -111,8 +193,12 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CantidadIngresada;
     private javax.swing.JLabel CantidadJlabel;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel ConfirmacionProducto;
+    private javax.swing.JLabel FechaCaducidad;
+    private javax.swing.JLabel FechaIngresada;
+    private javax.swing.JLabel TextConfirmar;
+    private javax.swing.JPanel actualizarProducto;
     // End of variables declaration//GEN-END:variables
 }
