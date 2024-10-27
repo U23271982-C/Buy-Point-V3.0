@@ -84,6 +84,12 @@ public class ActualizarProducto extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TextConfirmarMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TextConfirmarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TextConfirmarMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout ConfirmacionProductoLayout = new javax.swing.GroupLayout(ConfirmacionProducto);
@@ -186,11 +192,11 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_ConfirmacionProductoMouseExited
 
     private void TextConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextConfirmarMouseClicked
-        // TODO add your handling code here:
+        TextConfirmar.setBackground(Color.LIGHT_GRAY);
     }//GEN-LAST:event_TextConfirmarMouseClicked
 
     private void CantiTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantiTxtActionPerformed
-        // TODO add your handling code here:
+        TextConfirmar.setBackground(Color.WHITE);
     }//GEN-LAST:event_CantiTxtActionPerformed
 
     private void CantiTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantiTxtMouseClicked
@@ -213,6 +219,14 @@ public class ActualizarProducto extends javax.swing.JFrame {
     private void FvTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FvTextKeyPressed
         
     }//GEN-LAST:event_FvTextKeyPressed
+
+    private void TextConfirmarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextConfirmarMouseEntered
+        TextConfirmar.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_TextConfirmarMouseEntered
+
+    private void TextConfirmarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextConfirmarMouseExited
+        TextConfirmar.setBackground(Color.WHITE);
+    }//GEN-LAST:event_TextConfirmarMouseExited
 
 
     public static void main(String args[]) {
