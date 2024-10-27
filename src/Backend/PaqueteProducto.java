@@ -73,7 +73,7 @@ public class PaqueteProducto implements GestorSQLServer {
         GestorSQLServer.modificar_Registro
                 (consultaSQL
                         , "Paquete de producto agregado",
-                        "No se registro el código de barras");
+                        "No se agrego el paquete de producto");
     }
 
     @Override

@@ -7,6 +7,7 @@ package Backend;
 import Backend.ConexionBD.GestorSQLServer;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -99,6 +100,20 @@ public class Inventario implements GestorSQLServer {
     @Override
     public void registrar() {
 
+        String consultaSQL = String.format("INSERT INTO PaqueteProducto" +
+                        "(Cantidad, FechaCaducidad, Caducado, ID_Producto, " +
+                        "ID_Inventario)\n" +
+                        "VALUES(%d, '%s', 0, %d, %d)"
+
+                ,getCantidad(), getFechaCaducidad().format(fmt),
+                producto.getIdProducto(), inventario.getIdInventario());
+
+        //Falta el método de Inventario para actulizar el stock
+
+        GestorSQLServer.modificar_Registro
+                (consultaSQL
+                        , "Paquete de producto agregado",
+                        "No se agrego el paquete de producto");
     }
 
     @Override
