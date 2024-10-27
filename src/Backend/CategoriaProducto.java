@@ -11,21 +11,20 @@ import Backend.ConexionBD.GestorSQLServer;
  * @author ISRAEL
  */
 public class CategoriaProducto implements GestorSQLServer {
-    private String idCategoriaProducto;
+    private int idCategoriaProducto;
     private String nombre;
     private String productos;
-    Producto producto;
 
     public CategoriaProducto() {
     }
 
     //#region Getters and Setters
 
-    public String getIdCategoriaProducto() {
+    public int getIdCategoriaProducto() {
         return idCategoriaProducto;
     }
 
-    public void setIdCategoriaProducto(String idCategoriaProducto) {
+    public void setIdCategoriaProducto(int idCategoriaProducto) {
         this.idCategoriaProducto = idCategoriaProducto;
     }
 

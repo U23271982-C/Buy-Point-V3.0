@@ -77,9 +77,9 @@ public class CredencialesUsuario implements GestorSQLServer {
     public void registrar() {
         String consultaSQL = String.format("INSERT INTO CredencialesTienda\n" +
                         "(Usuario, Constrasenna, Nombre, Direccion, CorreoElectronico)\n" +
-                        "VALUES('%s', '%s', '%s', '%s')",
+                        "VALUES('%s', '%s', '%s', '%s', '%s')",
                 getUsuario(), getContrasenna(), getNombre(), getDireccion(),
-                getDireccion());
+                getCorreoElectronico());
 
         GestorSQLServer.modificar_Registro
                 (consultaSQL

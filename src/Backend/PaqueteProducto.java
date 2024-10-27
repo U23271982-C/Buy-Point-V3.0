@@ -1,13 +1,16 @@
 package Backend;
 
+import Backend.ConexionBD.GestorSQLServer;
+
 import java.time.LocalDate;
 
-public class PaqueteProducto {
+public class PaqueteProducto implements GestorSQLServer {
     private int idPaqueteProducto;
     private int cantidad;
     private LocalDate fechaCaducidad;
     private boolean caducado;
-    private int idDepartamento;
+    private int idProducto;
+    private int idInventario;
 
     public PaqueteProducto() {
     }
@@ -46,14 +49,37 @@ public class PaqueteProducto {
         this.caducado = caducado;
     }
 
-    public int getIdDepartamento() {
-        return idDepartamento;
+    public int getIdProducto() {
+        return idProducto;
     }
 
-    public void setIdDepartamento(int idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public int getIdInventario() {
+        return idInventario;
+    }
+
+    public void setIdInventario(int idInventario) {
+        this.idInventario = idInventario;
     }
 
     //#endregion
 
+
+    @Override
+    public void registrar() {
+
+    }
+
+    @Override
+    public void eliminar() {
+
+    }
+
+    @Override
+    public void actualizar() {
+
+    }
 }

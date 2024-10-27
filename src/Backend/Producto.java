@@ -12,81 +12,82 @@ import Backend.ConexionBD.GestorSQLServer;
  */
 public class Producto implements GestorSQLServer {
     private int idProducto;
-    private String nombre;
+    private String nombreProducto;
     private String descripcion;
-    private int codigoBarras;
-    private int idEmpaque;
-    private int idCategoriaProducto;
-
-    public Producto() {
-
-        this.idProducto = idProducto;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.codigoBarras = codigoBarras;
-        this.idEmpaque = idEmpaque;
-        this.idCategoriaProducto = idCategoriaProducto;
-    }
+    private boolean tieneEmpaque;
+    Empaque empaque;
+    CategoriaProducto categoriaProducto;
+    //Registra junto con Producto
+    Codigo codigo;
+    PaqueteProducto paqueteProducto;
+    Inventario inventario;
 
     //#region Getters and Setters
-        public int getIdProducto() {
+
+    public int getIdProducto() {
         return idProducto;
     }
 
-        public void setIdProducto(int idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 
-        public String getNombre() {
-        return nombre;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-        public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
-        public String getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-        public void setDescripcion(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-        public int getCodigoBarras() {
-        return codigoBarras;
+    public boolean isTieneEmpaque() {
+        return tieneEmpaque;
     }
 
-        public void setCodigoBarras(int codigoBarras) {
-        this.codigoBarras = codigoBarras;
+    public void setTieneEmpaque(boolean tieneEmpaque) {
+        this.tieneEmpaque = tieneEmpaque;
     }
 
-        public int getIdEmpaque() {
-        return idEmpaque;
-    }
-
-        public void setIdEmpaque(int idEmpaque) {
-        this.idEmpaque = idEmpaque;
-    }
-
-        public int getIdCategoriaProducto() {
-        return idCategoriaProducto;
-    }
-
-        public void setIdCategoriaProducto(int idCategoriaProducto) {
-        this.idCategoriaProducto = idCategoriaProducto;
-    }
     //#endregion
+
+    public Producto() {
+    }
 
 
     @Override
     public void registrar() {
-        String consultaSQL = String.format("INSERT INTO CategoriaProducto(NombreCategoria)\n" +
-                "VALUES('%s')", getNombre());
+        String consultaSQL = String.format
+                ("INSERT INTO Producto(NombreProducto, Descripcion, " +
+                        "ID_Empaque, ID_CategoriaProducto)\n" +
+                        "VALUES('%s', '%s', %d, %d)",
+                        getNombreProducto(), getDescripcion(),
+                        empaque.getIdEmpaque(), categoriaProducto.getIdCategoriaProducto());
+
+        if (!isTieneEmpaque()){
+            consultaSQL = String.format
+                    ("INSERT INTO Producto(NombreProducto, Descripcion, ID_CategoriaProducto)\n" +
+                                    "VALUES('%s', '%s', %d)",
+                            getNombreProducto(), getDescripcion(),
+                            categoriaProducto.getIdCategoriaProducto());
+        };//Registra producto sin empaque
+
         GestorSQLServer.modificar_Registro
                 (consultaSQL
-                        , "Categoría registrada",
-                        "No se registro la categoría");
+                        , "Producto registrada",
+                        "No se registro el producto");
+
+        //Registra producto, registra junto con el el codigo, paquete e inventario
+        codigo.registrar();//Registra codigo nuevo producto
+        paqueteProducto.registrar();//Registra paquete del nuevo producto
+        inventario.registrar();//Registra invetario del nuevo producto
     }
 
     @Override
@@ -99,7 +100,7 @@ public class Producto implements GestorSQLServer {
 
     }
 
-    public boolean productoRegistrado(String codigoBarras){
+    /*public boolean productoRegistrado(String codigoBarras){
         return false;
-    }
+    }*/
 }

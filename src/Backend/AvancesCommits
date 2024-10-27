@@ -17,3 +17,6 @@ DecimoAvanceBK:
     - Carpeta Extenciones creada
     - Agregando libreria a Extenciones que conecta a la BD
     - Agregando los Scrips de la BD.
+OnceavoAvanceBK:
+    - Arreglado Credenciales el método de registrar.
+    - Producto: método registrar hecho.
