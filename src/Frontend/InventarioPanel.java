@@ -419,7 +419,8 @@ public final class InventarioPanel extends javax.swing.JFrame {
 
     //PARTE INUTIL  
     private void inventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioMouseClicked
-        // TODO add your handling code here:
+        VistaProducto VP = new VistaProducto();
+        VP.setVisible(true);
     }//GEN-LAST:event_inventarioMouseClicked
 
     private void AgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarProductoMouseClicked

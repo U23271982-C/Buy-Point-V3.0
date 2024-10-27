@@ -1,6 +1,10 @@
 package Frontend;
 
 import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ActualizarProducto extends javax.swing.JFrame {
 
@@ -15,10 +19,12 @@ public class ActualizarProducto extends javax.swing.JFrame {
         actualizarProducto = new javax.swing.JPanel();
         CantidadJlabel = new javax.swing.JLabel();
         FechaCaducidad = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        CantiTxt = new javax.swing.JTextField();
+        FvText = new javax.swing.JTextField();
         ConfirmacionProducto = new javax.swing.JPanel();
         TextConfirmar = new javax.swing.JLabel();
+        CantSeparador = new javax.swing.JSeparator();
+        FvSeparador = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,15 +38,30 @@ public class ActualizarProducto extends javax.swing.JFrame {
         FechaCaducidad.setForeground(new java.awt.Color(0, 0, 0));
         FechaCaducidad.setText("FV");
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        CantiTxt.setBackground(new java.awt.Color(255, 255, 255));
+        CantiTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CantiTxt.setForeground(new java.awt.Color(153, 153, 153));
+        CantiTxt.setText("Insertar");
+        CantiTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CantiTxtMouseClicked(evt);
+            }
+        });
+        CantiTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                CantiTxtActionPerformed(evt);
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("Agregar nueva fecha");
+        FvText.setBackground(new java.awt.Color(255, 255, 255));
+        FvText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        FvText.setForeground(new java.awt.Color(153, 153, 153));
+        FvText.setText("Insertar");
+        FvText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FvTextKeyPressed(evt);
+            }
+        });
 
         ConfirmacionProducto.setBackground(new java.awt.Color(255, 255, 255));
         ConfirmacionProducto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,6 +107,12 @@ public class ActualizarProducto extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        CantSeparador.setBackground(new java.awt.Color(255, 255, 255));
+        CantSeparador.setForeground(new java.awt.Color(0, 0, 0));
+
+        FvSeparador.setBackground(new java.awt.Color(255, 255, 255));
+        FvSeparador.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout actualizarProductoLayout = new javax.swing.GroupLayout(actualizarProducto);
         actualizarProducto.setLayout(actualizarProductoLayout);
         actualizarProductoLayout.setHorizontalGroup(
@@ -96,13 +123,17 @@ public class ActualizarProducto extends javax.swing.JFrame {
                         .addGap(112, 112, 112)
                         .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(actualizarProductoLayout.createSequentialGroup()
-                                .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(actualizarProductoLayout.createSequentialGroup()
                                 .addComponent(CantidadJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CantSeparador)
+                                    .addComponent(CantiTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, actualizarProductoLayout.createSequentialGroup()
+                                .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(FvSeparador)
+                                    .addComponent(FvText, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))))
                     .addGroup(actualizarProductoLayout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(ConfirmacionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -114,12 +145,16 @@ public class ActualizarProducto extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(CantidadJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(CantiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(CantSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(actualizarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                    .addComponent(FvText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(FvSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ConfirmacionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -154,9 +189,30 @@ public class ActualizarProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextConfirmarMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void CantiTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantiTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_CantiTxtActionPerformed
+
+    private void CantiTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantiTxtMouseClicked
+        VistaProducto VP = new VistaProducto();
+        CantiTxt.setText("");
+        CantiTxt.setForeground(Color.BLACK);
+        String Text;
+        Text = CantiTxt.getText();
+        VP.setDato(Text);
+        CantiTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (e.isTemporary()) return;
+                FvText.setText("");
+                FvText.setForeground(Color.BLACK);
+            }
+        });
+    }//GEN-LAST:event_CantiTxtMouseClicked
+
+    private void FvTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FvTextKeyPressed
+        
+    }//GEN-LAST:event_FvTextKeyPressed
 
 
     public static void main(String args[]) {
@@ -192,12 +248,14 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator CantSeparador;
+    private javax.swing.JTextField CantiTxt;
     private javax.swing.JLabel CantidadJlabel;
     private javax.swing.JPanel ConfirmacionProducto;
     private javax.swing.JLabel FechaCaducidad;
+    private javax.swing.JSeparator FvSeparador;
+    private javax.swing.JTextField FvText;
     private javax.swing.JLabel TextConfirmar;
     private javax.swing.JPanel actualizarProducto;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
