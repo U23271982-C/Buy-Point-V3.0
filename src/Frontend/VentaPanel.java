@@ -237,6 +237,7 @@ public final class VentaPanel extends javax.swing.JFrame {
 
         DetalleVenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        Buscador.setBackground(new java.awt.Color(255, 255, 255));
         Buscador.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         Buscador.setForeground(new java.awt.Color(102, 102, 102));
         Buscador.setText("   Buscar");
@@ -267,7 +268,7 @@ public final class VentaPanel extends javax.swing.JFrame {
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
                 .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuPrincipalLayout.createSequentialGroup()
@@ -295,7 +296,7 @@ public final class VentaPanel extends javax.swing.JFrame {
                             .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 465, Short.MAX_VALUE)))
+                        .addGap(0, 251, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
