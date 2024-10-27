@@ -48,11 +48,9 @@ CREATE TABLE PaqueteProducto(
 GO
 CREATE TABLE Inventario(
 	ID_Inventario INT IDENTITY(1,1),
-	ID_Categoria INT NOT NULL,
 	PrecioCosto SMALLMONEY NOT NULL,
 	PrecioVenta SMALLMONEY NOT NULL,
 	Utilidad SMALLMONEY NOT NULL,
-	Ingreso INT NOT NULL,
 	Salida INT NOT NULL,
 	Stock INT NOT NULL,
 	ValorStock SMALLMONEY NOT NULL,
