@@ -24,3 +24,5 @@ OnceavoAvanceBK:
     - Columna SQL Ingreso de la tabla Inventario eliminada.
     - Inventario: método registrar hecho.
     - Métodos registrar en todas las clases.
+DoceavoAvanceBK:
+    - Agregando Logger.
