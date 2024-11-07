@@ -156,6 +156,7 @@ public class VistaProducto extends javax.swing.JFrame {
     private void FotoAgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoAgregarProductoMouseClicked
         ActualizarProducto AP = new ActualizarProducto();
         AP.setVisible(true);
+        this.setVisible(false);
         AP.toFront();
     }//GEN-LAST:event_FotoAgregarProductoMouseClicked
     
