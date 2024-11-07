@@ -6,6 +6,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class ActualizarProducto extends javax.swing.JFrame {
 
@@ -66,6 +67,11 @@ public class ActualizarProducto extends javax.swing.JFrame {
         FvText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         FvText.setForeground(new java.awt.Color(153, 153, 153));
         FvText.setText("Insertar");
+        FvText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FvTextMouseClicked(evt);
+            }
+        });
         FvText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FvTextKeyPressed(evt);
@@ -73,10 +79,10 @@ public class ActualizarProducto extends javax.swing.JFrame {
         });
 
         CantSeparador.setBackground(new java.awt.Color(255, 255, 255));
-        CantSeparador.setForeground(new java.awt.Color(0, 0, 0));
+        CantSeparador.setForeground(new java.awt.Color(102, 102, 102));
 
         FvSeparador.setBackground(new java.awt.Color(255, 255, 255));
-        FvSeparador.setForeground(new java.awt.Color(0, 0, 0));
+        FvSeparador.setForeground(new java.awt.Color(102, 102, 102));
 
         PanelX.setBackground(new java.awt.Color(255, 255, 255));
         PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,6 +103,9 @@ public class ActualizarProducto extends javax.swing.JFrame {
         Cerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Cerrar.setText("X");
         Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CerrarMouseEntered(evt);
             }
@@ -119,10 +128,13 @@ public class ActualizarProducto extends javax.swing.JFrame {
             }
         });
 
-        JlabelConfirmar.setForeground(new java.awt.Color(0, 0, 0));
+        JlabelConfirmar.setForeground(new java.awt.Color(51, 51, 51));
         JlabelConfirmar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JlabelConfirmar.setText("Confirmar");
         JlabelConfirmar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JlabelConfirmarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 JlabelConfirmarMouseEntered(evt);
             }
@@ -219,6 +231,7 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantiTxtActionPerformed
 
     private void CantiTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantiTxtMouseClicked
+        CantiTxt.setForeground(Color.BLACK);
         /*VistaProducto VP = new VistaProducto();
         CantiTxt.setText("");
         CantiTxt.setForeground(Color.BLACK);
@@ -236,7 +249,9 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantiTxtMouseClicked
 
     private void FvTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FvTextKeyPressed
-        
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            this.ConfirmarActualizacion();
+        }
     }//GEN-LAST:event_FvTextKeyPressed
 
     private void PanelConfirmarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelConfirmarMouseEntered
@@ -276,12 +291,11 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarMouseExited
 
     private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.CancelarActualizacion();
     }//GEN-LAST:event_PanelXMouseClicked
 
     private void PanelConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelConfirmarMouseClicked
-        VistaProducto VP = new VistaProducto();
+        /*VistaProducto VP = new VistaProducto();
         //CantiTxt.setText("");
         //CantiTxt.setForeground(Color.BLACK);
         String Text;
@@ -289,7 +303,7 @@ public class ActualizarProducto extends javax.swing.JFrame {
         VP.setDato(Text);
         VP.setVisible(true);
         this.setVisible(false);
-        /*CantiTxt.addFocusListener(new FocusAdapter() {
+        CantiTxt.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
                 if (e.isTemporary()) return;
@@ -297,10 +311,39 @@ public class ActualizarProducto extends javax.swing.JFrame {
                 FvText.setForeground(Color.BLACK);
             }
         });*/
+        this.ConfirmarActualizacion();
     }//GEN-LAST:event_PanelConfirmarMouseClicked
+
+    private void CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseClicked
+        this.CancelarActualizacion();
+    }//GEN-LAST:event_CerrarMouseClicked
+
+    private void JlabelConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlabelConfirmarMouseClicked
+        this.ConfirmarActualizacion();
+    }//GEN-LAST:event_JlabelConfirmarMouseClicked
+
+    private void FvTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FvTextMouseClicked
+        FvText.setForeground(Color.BLACK);
+    }//GEN-LAST:event_FvTextMouseClicked
     
+    public void ConfirmarActualizacion(){
+        try {
+            VistaProducto VP = new VistaProducto();
+            String Text;
+            Text = CantiTxt.getText();
+            VP.setDato(Text);
+            VP.setVisible(true);
+            VP.toFront();
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos");
+        }
+
+    }
     
-    
+    public void CancelarActualizacion(){
+        this.setVisible(false);
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
