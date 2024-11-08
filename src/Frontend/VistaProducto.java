@@ -26,7 +26,7 @@ public class VistaProducto extends javax.swing.JFrame {
         PanelX = new javax.swing.JPanel();
         JLabelX = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setLocationByPlatform(true);
         setUndecorated(true);

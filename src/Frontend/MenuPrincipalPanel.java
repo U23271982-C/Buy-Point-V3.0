@@ -14,11 +14,6 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JPanel();
-        panelOpciones = new javax.swing.JPanel();
-        Inventario = new javax.swing.JLabel();
-        Venta = new javax.swing.JLabel();
-        Menu = new javax.swing.JLabel();
-        RegistroVentas = new javax.swing.JLabel();
         Notificaciones = new javax.swing.JLabel();
         Encabezado = new javax.swing.JPanel();
         PanelX = new javax.swing.JPanel();
@@ -28,6 +23,12 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         PanelMini = new javax.swing.JPanel();
         Minimizar = new javax.swing.JSeparator();
         iconoUsuario = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        panelOpciones = new javax.swing.JPanel();
+        Inventario = new javax.swing.JLabel();
+        Venta = new javax.swing.JLabel();
+        Menu = new javax.swing.JLabel();
+        RegistroVentas = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -41,6 +42,138 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
         MenuPrincipal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         MenuPrincipal.setName("MenuPrincipal"); // NOI18N
         MenuPrincipal.setPreferredSize(new java.awt.Dimension(1176, 486));
+
+        Notificaciones.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
+        Notificaciones.setForeground(new java.awt.Color(0, 0, 0));
+        Notificaciones.setText("Notificaciones");
+
+        Encabezado.setBackground(new java.awt.Color(255, 255, 255));
+        Encabezado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                EncabezadoMouseDragged(evt);
+            }
+        });
+        Encabezado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EncabezadoMousePressed(evt);
+            }
+        });
+
+        PanelX.setBackground(new java.awt.Color(255, 255, 255));
+        PanelX.setPreferredSize(new java.awt.Dimension(36, 36));
+        PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelXMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelXMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelXMouseExited(evt);
+            }
+        });
+        PanelX.setLayout(new java.awt.GridBagLayout());
+
+        X.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        X.setForeground(new java.awt.Color(0, 0, 0));
+        X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        X.setText("X");
+        PanelX.add(X, new java.awt.GridBagConstraints());
+
+        PanelMax.setBackground(new java.awt.Color(255, 255, 255));
+        PanelMax.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelMaxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelMaxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelMaxMouseExited(evt);
+            }
+        });
+        PanelMax.setLayout(new java.awt.GridBagLayout());
+
+        Maximizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Maximizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MaximizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MaximizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MaximizarMouseExited(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 12, 11, 13);
+        PanelMax.add(Maximizar, gridBagConstraints);
+
+        PanelMini.setBackground(new java.awt.Color(255, 255, 255));
+        PanelMini.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelMiniMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelMiniMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelMiniMouseExited(evt);
+            }
+        });
+        PanelMini.setLayout(new java.awt.GridBagLayout());
+
+        Minimizar.setForeground(new java.awt.Color(0, 0, 0));
+        Minimizar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 6, 0, 6);
+        PanelMini.add(Minimizar, gridBagConstraints);
+
+        iconoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usermenu.png"))); // NOI18N
+        iconoUsuario.setPreferredSize(new java.awt.Dimension(100, 158));
+
+        javax.swing.GroupLayout EncabezadoLayout = new javax.swing.GroupLayout(Encabezado);
+        Encabezado.setLayout(EncabezadoLayout);
+        EncabezadoLayout.setHorizontalGroup(
+            EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EncabezadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(EncabezadoLayout.createSequentialGroup()
+                        .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(EncabezadoLayout.createSequentialGroup()
+                        .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        EncabezadoLayout.setVerticalGroup(
+            EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EncabezadoLayout.createSequentialGroup()
+                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(PanelMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 26, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         panelOpciones.setBackground(new java.awt.Color(255, 255, 255));
         panelOpciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -105,115 +238,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Notificaciones.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
-        Notificaciones.setForeground(new java.awt.Color(0, 0, 0));
-        Notificaciones.setText("Notificaciones");
-
-        Encabezado.setBackground(new java.awt.Color(255, 255, 255));
-        Encabezado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                EncabezadoMouseDragged(evt);
-            }
-        });
-        Encabezado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                EncabezadoMousePressed(evt);
-            }
-        });
-
-        PanelX.setBackground(new java.awt.Color(255, 255, 255));
-        PanelX.setPreferredSize(new java.awt.Dimension(36, 36));
-        PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PanelXMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelXMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelXMouseExited(evt);
-            }
-        });
-        PanelX.setLayout(new java.awt.GridBagLayout());
-
-        X.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        X.setForeground(new java.awt.Color(0, 0, 0));
-        X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        X.setText("X");
-        PanelX.add(X, new java.awt.GridBagConstraints());
-
-        PanelMax.setBackground(new java.awt.Color(255, 255, 255));
-        PanelMax.setLayout(new java.awt.GridBagLayout());
-
-        Maximizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 12, 11, 13);
-        PanelMax.add(Maximizar, gridBagConstraints);
-
-        PanelMini.setBackground(new java.awt.Color(255, 255, 255));
-        PanelMini.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PanelMiniMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelMiniMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelMiniMouseExited(evt);
-            }
-        });
-        PanelMini.setLayout(new java.awt.GridBagLayout());
-
-        Minimizar.setForeground(new java.awt.Color(0, 0, 0));
-        Minimizar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 6, 0, 6);
-        PanelMini.add(Minimizar, gridBagConstraints);
-
-        iconoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usermenu.png"))); // NOI18N
-        iconoUsuario.setPreferredSize(new java.awt.Dimension(100, 158));
-
-        javax.swing.GroupLayout EncabezadoLayout = new javax.swing.GroupLayout(Encabezado);
-        Encabezado.setLayout(EncabezadoLayout);
-        EncabezadoLayout.setHorizontalGroup(
-            EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EncabezadoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(EncabezadoLayout.createSequentialGroup()
-                        .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(EncabezadoLayout.createSequentialGroup()
-                        .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        EncabezadoLayout.setVerticalGroup(
-            EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EncabezadoLayout.createSequentialGroup()
-                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelMini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(EncabezadoLayout.createSequentialGroup()
-                        .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
-        );
+        jPanel1.add(panelOpciones, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
         MenuPrincipal.setLayout(MenuPrincipalLayout);
@@ -221,13 +246,13 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                        .addComponent(Notificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(805, 805, 805)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGap(143, 143, 143)
+                .addComponent(Notificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         MenuPrincipalLayout.setVerticalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,9 +260,9 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
                 .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(52, 52, 52)
                 .addComponent(Notificaciones)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
-                .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -323,6 +348,30 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
     private void PanelMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMiniMouseClicked
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_PanelMiniMouseClicked
+
+    private void PanelMaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseClicked
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_PanelMaxMouseClicked
+
+    private void PanelMaxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseEntered
+        PanelMax.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_PanelMaxMouseEntered
+
+    private void PanelMaxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseExited
+        PanelMax.setBackground(Color.WHITE);
+    }//GEN-LAST:event_PanelMaxMouseExited
+
+    private void MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseClicked
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_MaximizarMouseClicked
+
+    private void MaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseEntered
+        PanelMax.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_MaximizarMouseEntered
+
+    private void MaximizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseExited
+        PanelMax.setBackground(Color.WHITE);
+    }//GEN-LAST:event_MaximizarMouseExited
     
     public MenuPrincipalPanel(){
        initComponents();
@@ -364,6 +413,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame {
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelOpciones;
     // End of variables declaration//GEN-END:variables
 

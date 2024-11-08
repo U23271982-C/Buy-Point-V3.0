@@ -338,11 +338,13 @@ public class ActualizarProducto extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos");
         }
-
     }
     
     public void CancelarActualizacion(){
+        VistaProducto VP = new VistaProducto();
         this.setVisible(false);
+        VP.setVisible(true);
+        VP.toFront();
     }
 
     public static void main(String args[]) {
