@@ -403,7 +403,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelMiniMouseClicked
 
     private void MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseClicked
-        setExtendedState(MAXIMIZED_BOTH);
+        this.setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_MaximizarMouseClicked
 
     private void MaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseEntered
