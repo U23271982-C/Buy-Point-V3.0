@@ -87,7 +87,7 @@ CREATE TABLE TipoPago(
 GO
 CREATE TABLE Cliente(
 	ID_Cliente INT IDENTITY(1,1) NOT NULL,
-	Cliente INT NOT NULL,
+	Cliente VARCHAR(50) NULL,
 	ID_Departamento INT NULL,
 	ID_Cuenta INT NULL
 )

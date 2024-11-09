@@ -27,3 +27,4 @@ OnceavoAvanceBK:
 DoceavoAvanceBK:
     - Agregando Logger.
     - Cambio Patron Singleton a BD.
+    - Controladores por cada Entidad creados.

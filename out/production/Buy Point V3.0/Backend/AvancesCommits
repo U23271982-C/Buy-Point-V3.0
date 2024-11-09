@@ -26,3 +26,4 @@ OnceavoAvanceBK:
     - Métodos registrar en todas las clases.
 DoceavoAvanceBK:
     - Agregando Logger.
+    - Cambio Patron Singleton a BD.
