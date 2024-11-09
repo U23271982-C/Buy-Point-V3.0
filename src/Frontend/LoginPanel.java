@@ -1,17 +1,13 @@
 
 package Frontend;
 
-import Backend.Controlador;
-import Backend.CredencialesUsuario;
+import Backend.Entidades.Controlador;
+import Backend.Entidades.CredencialesUsuario;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;

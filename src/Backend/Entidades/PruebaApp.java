@@ -1,4 +1,4 @@
-package Backend;
+package Backend.Entidades;
 
 public class PruebaApp {
     public static void main(String[] args) {
