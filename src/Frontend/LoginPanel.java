@@ -1,13 +1,19 @@
 
 package Frontend;
 
-import Backend.Entidades.Controlador;
-import Backend.Entidades.CredencialesUsuario;
+import Backend.Controlador;
+import Backend.CredencialesUsuario;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -52,7 +58,6 @@ public final class LoginPanel extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setName("Login"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(844, 500));
         setResizable(false);
 
         Login.setBackground(new java.awt.Color(126, 123, 123));
@@ -67,6 +72,9 @@ public final class LoginPanel extends javax.swing.JFrame {
         UserTxt.setText("USERNAME");
         UserTxt.setBorder(null);
         UserTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UserTxtMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 UserTxtMousePressed(evt);
             }
@@ -161,17 +169,17 @@ public final class LoginPanel extends javax.swing.JFrame {
         PanelX.setLayout(PanelXLayout);
         PanelXLayout.setHorizontalGroup(
             PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelXLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelXLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PanelXLayout.setVerticalGroup(
             PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelXLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelXLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         EntrarPanel.setBackground(new java.awt.Color(126, 123, 123));
@@ -387,6 +395,16 @@ public final class LoginPanel extends javax.swing.JFrame {
             this.inicionLogin();
         }
     }//GEN-LAST:event_PasswordTxtKeyPressed
+
+    private void UserTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserTxtMouseClicked
+        UserTxt.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (e.isTemporary()) return;
+                PasswordTxt.setText("");            
+            }
+        });
+    }//GEN-LAST:event_UserTxtMouseClicked
    
     public void inicionLogin(){
         if(!UserTxt.getText().isEmpty() && !PasswordTxt.getText().isEmpty()){
@@ -401,6 +419,8 @@ public final class LoginPanel extends javax.swing.JFrame {
             mn.toFront();
           } else {
               JOptionPane.showConfirmDialog(null, "Usuario o contraseña incorrectos");
+              UserTxt.setText("");
+              PasswordTxt.setText("");
             }
         } 
     }
