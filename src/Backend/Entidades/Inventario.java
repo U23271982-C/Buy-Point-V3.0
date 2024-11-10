@@ -17,15 +17,12 @@ public class Inventario implements GestorSQLServer {
 
     //public ArrayList<CategoriaProducto> catogoriasProductos;
     private int idInventario;
+    private BigDecimal precio;
     private BigDecimal precioCosto;
-    private BigDecimal precioVenta;
     private BigDecimal utilidad;
-    private int ingreso;
     private int salida;
     private int stock;
     private BigDecimal valorStock;
-
-    PaqueteProducto paqueteProducto;
 
     public Inventario() {
     }
@@ -40,6 +37,14 @@ public class Inventario implements GestorSQLServer {
         this.idInventario = idInventario;
     }
 
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
     public BigDecimal getPrecioCosto() {
         return precioCosto;
     }
@@ -48,28 +53,12 @@ public class Inventario implements GestorSQLServer {
         this.precioCosto = precioCosto;
     }
 
-    public BigDecimal getPrecioVenta() {
-        return precioVenta;
-    }
-
-    public void setPrecioVenta(BigDecimal precioVenta) {
-        this.precioVenta = precioVenta;
-    }
-
     public BigDecimal getUtilidad() {
         return utilidad;
     }
 
     public void setUtilidad(BigDecimal utilidad) {
         this.utilidad = utilidad;
-    }
-
-    public int getIngreso() {
-        return ingreso;
-    }
-
-    public void setIngreso(int ingreso) {
-        this.ingreso = ingreso;
     }
 
     public int getSalida() {
@@ -96,15 +85,15 @@ public class Inventario implements GestorSQLServer {
         this.valorStock = valorStock;
     }
 
-
     //#endregion
 
     @Override
     public void registrar() {
         //Redondeamos PV para que no halla error en sacar cálculos
+        /*
         try {
             BigDecimal redondeadoPV =
-                    getPrecioVenta().setScale(1, RoundingMode.HALF_UP);
+                    getPrecio().setScale(1, RoundingMode.HALF_UP);
             String consultaSQL =
                     String.format("INSERT INTO Inventario\n" +
                                     "(PrecioCosto, PrecioVenta, " +
@@ -114,7 +103,7 @@ public class Inventario implements GestorSQLServer {
                             ,getPrecioCosto(), redondeadoPV,
                             redondeadoPV.subtract(getPrecioCosto()),
                             0, paqueteProducto.getCantidad(),
-                            getPrecioVenta().doubleValue() * paqueteProducto.getCantidad());
+                            getPrecio().doubleValue() * paqueteProducto.getCantidad());
             GestorSQLServer.modificar_Registro
                     (consultaSQL
                             , "Inventario Registrado",
@@ -123,6 +112,8 @@ public class Inventario implements GestorSQLServer {
             System.out.println("Error en el redondeo de PV:" + e.getMessage());
         }
         //Falta el método de Inventario para actulizar el stock
+
+         */
     }
 
     @Override

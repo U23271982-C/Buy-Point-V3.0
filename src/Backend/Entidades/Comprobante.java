@@ -5,12 +5,14 @@ import Backend.ConexionBD.GestorSQLServer;
 public class Comprobante implements GestorSQLServer {
     private int idComprobante;
     private String comprobante;
-    private int idTipoPago;
+
+    TipoPago tipoPago;
 
     public Comprobante() {
     }
 
     //#region Getters and Setters
+
     public int getIdComprobante() {
         return idComprobante;
     }
@@ -27,13 +29,6 @@ public class Comprobante implements GestorSQLServer {
         this.comprobante = comprobante;
     }
 
-    public int getIdTipoPago() {
-        return idTipoPago;
-    }
-
-    public void setIdTipoPago(int idTipoPago) {
-        this.idTipoPago = idTipoPago;
-    }
     //#endregion
 
     @Override

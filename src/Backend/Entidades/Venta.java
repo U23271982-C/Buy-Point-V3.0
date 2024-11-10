@@ -3,14 +3,17 @@ package Backend.Entidades;
 import Backend.ConexionBD.GestorSQLServer;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Venta implements GestorSQLServer {
     private int idVenta;
-    private int cantidadVenta;
-    private BigDecimal montoTotal;
+    private LocalDate fecha;
+    private LocalTime hora;
+    private BigDecimal subTotal;
+    private BigDecimal total;
 
     Cliente cliente;
-    Inventario inventario;
     Comprobante comprobante;
 
     public Venta() {
@@ -26,26 +29,43 @@ public class Venta implements GestorSQLServer {
         this.idVenta = idVenta;
     }
 
-    public int getCantidadVenta() {
-        return cantidadVenta;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public void setCantidadVenta(int cantidadVenta) {
-        this.cantidadVenta = cantidadVenta;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
-    public BigDecimal getMontoTotal() {
-        return montoTotal;
+    public LocalTime getHora() {
+        return hora;
     }
 
-    public void setMontoTotal(BigDecimal montoTotal) {
-        this.montoTotal = montoTotal;
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
+
+    public BigDecimal getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(BigDecimal subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
     //#endregion
 
 
     @Override
-    public void registrar() {
+    public void registrar() {/*
         String consultaSQL = String.format
                 ("INSERT INTO Venta" +
                 "(ID_Inventario, CantidadVenta, MontoTotal, ID_Cliente, ID_Comprobante)\n" +
@@ -57,7 +77,7 @@ public class Venta implements GestorSQLServer {
         GestorSQLServer.modificar_Registro(consultaSQL
                 , "Venta registrada",
                 "No se registro la venta");
-    }
+    */}
 
     @Override
     public void eliminar() {
