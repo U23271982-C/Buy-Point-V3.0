@@ -11,7 +11,7 @@ public class PruebaApp {
         credencialesUsuario.setDireccion("dsf");
         credencialesUsuario.setCorreoElectronico("665");
 
-        credencialesUsuario.eliminar();
+        //credencialesUsuario.<CredencialesUsuario > eliminar();
 
         System.out.println("SELECT Usuario, Constrasenna\n" +
                 "FROM CredencialesTienda\n" +

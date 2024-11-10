@@ -41,9 +41,9 @@ public interface GestorSQLServer <T extends Entidad>{
         }
     }
 
-    void registrar();
-    void eliminar();
-    void actualizar();
+    <T> void registrar();
+    <T> void eliminar();
+    <T> void actualizar();
     ArrayList<T> listar(T entidad);
 
 }
