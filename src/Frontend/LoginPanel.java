@@ -1,8 +1,8 @@
 
 package Frontend;
 
-import Backend.Controlador;
-import Backend.CredencialesUsuario;
+//import Backend.Controlador;
+//import Backend.CredencialesUsuario;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

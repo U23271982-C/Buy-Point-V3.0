@@ -36,7 +36,13 @@ public class SQLServerBD {
         return instancia;
     }
 
-    public Connection conectar() {//Server de USERISRAEL
-        return conn;
+    public Connection conectar() {
+        //try {
+            //Server de USERISRAEL
+            return conn;
+        //}catch (Exception e){
+        //    e.printStackTrace();
+        //}
+        //return null;
     }
 }

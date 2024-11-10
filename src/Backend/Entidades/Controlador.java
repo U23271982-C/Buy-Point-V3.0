@@ -10,7 +10,7 @@ public class Controlador {
 
     public Controlador() {
     }
-    //Inicar sesion de BuyPoint
+    //Inicar sesion de  BuyPoint
     public boolean iniciarSesion(CredencialesUsuario credencialesUsuario){
         consultaSQL =
                 String.format("SELECT Usuario, Constrasenna\n" +

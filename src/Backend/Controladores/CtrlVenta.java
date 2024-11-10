@@ -6,26 +6,29 @@ import Backend.Entidades.Venta;
 
 import java.util.ArrayList;
 
-public class CtrlVenta implements GestorSQLServer {
-    Venta venta;
-
+public class CtrlVenta implements GestorSQLServer<Venta> {
     @Override
-    public void registrar() {
+    public void registrar(Venta nuevaEntidad) {
 
     }
 
     @Override
-    public void eliminar() {
+    public Venta leer(Venta leerEntidad) {
+        return null;
+    }
+
+    @Override
+    public void eliminar(Venta eliminadoEntidad) {
 
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(Venta actualizadoEntidad) {
 
     }
 
     @Override
-    public ArrayList listar(Entidad entidad) {
+    public ArrayList<Venta> listar() {
         return null;
     }
 }

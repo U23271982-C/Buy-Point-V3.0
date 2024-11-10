@@ -6,26 +6,29 @@ import Backend.Entidades.Inventario;
 
 import java.util.ArrayList;
 
-public class CtrlInventario  implements GestorSQLServer {
-    Inventario inventario;
-
+public class CtrlInventario  implements GestorSQLServer<Inventario> {
     @Override
-    public void registrar() {
+    public void registrar(Inventario nuevaEntidad) {
 
     }
 
     @Override
-    public void eliminar() {
+    public Inventario leer(Inventario leerEntidad) {
+        return null;
+    }
+
+    @Override
+    public void eliminar(Inventario eliminadoEntidad) {
 
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(Inventario actualizadoEntidad) {
 
     }
 
     @Override
-    public ArrayList listar(Entidad entidad) {
+    public ArrayList<Inventario> listar() {
         return null;
     }
 }

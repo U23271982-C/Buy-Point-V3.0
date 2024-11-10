@@ -27,3 +27,10 @@ OnceavoAvanceBK:
 DoceavoAvanceBK:
     - Agregando Logger.
     - Cambio Patron Singleton a BD.
+    - Controladores por cada Entidad creados.
+    - Refactorizando las clases a la carpeta de Entidades.
+    - Actualizando las clases Entidades.
+TreceavoAvanceBK:
+    - Clase de transición, implementación en todas las entidades.
+    - Interfaz génerica implementada
+    - GestorSQLServer sobreescrita en todos los controladores.

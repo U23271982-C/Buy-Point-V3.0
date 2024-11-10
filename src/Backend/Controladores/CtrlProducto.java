@@ -6,26 +6,29 @@ import Backend.Entidades.Producto;
 
 import java.util.ArrayList;
 
-public class CtrlProducto implements GestorSQLServer {
-    Producto producto;
-
+public class CtrlProducto implements GestorSQLServer<Producto> {
     @Override
-    public void registrar() {
+    public void registrar(Producto nuevaEntidad) {
 
     }
 
     @Override
-    public void eliminar() {
+    public Producto leer(Producto leerEntidad) {
+        return null;
+    }
+
+    @Override
+    public void eliminar(Producto eliminadoEntidad) {
 
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(Producto actualizadoEntidad) {
 
     }
 
     @Override
-    public ArrayList listar(Entidad entidad) {
+    public ArrayList<Producto> listar() {
         return null;
     }
 }

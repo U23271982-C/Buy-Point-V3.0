@@ -6,26 +6,29 @@ import Backend.Entidades.TipoPago;
 
 import java.util.ArrayList;
 
-public class CtrlTipoPago implements GestorSQLServer {
-    TipoPago tipoPago;
-
+public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
     @Override
-    public void registrar() {
+    public void registrar(TipoPago nuevaEntidad) {
 
     }
 
     @Override
-    public void eliminar() {
+    public TipoPago leer(TipoPago leerEntidad) {
+        return null;
+    }
+
+    @Override
+    public void eliminar(TipoPago eliminadoEntidad) {
 
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(TipoPago actualizadoEntidad) {
 
     }
 
     @Override
-    public ArrayList listar(Entidad entidad) {
+    public ArrayList<TipoPago> listar() {
         return null;
     }
 }
