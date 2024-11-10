@@ -32,3 +32,5 @@ DoceavoAvanceBK:
     - Actualizando las clases Entidades.
 TreceavoAvanceBK:
     - Clase de transición, implementación en todas las entidades.
+    - Interfaz génerica implementada
+    - GestorSQLServer sobreescrita en todos los controladores.
