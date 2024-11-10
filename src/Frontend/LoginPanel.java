@@ -3,6 +3,9 @@ package Frontend;
 
 //import Backend.Controlador;
 //import Backend.CredencialesUsuario;
+import Backend.Controladores.ControladorApp;
+import Backend.Entidades.CredencialesUsuario;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -408,11 +411,11 @@ public final class LoginPanel extends javax.swing.JFrame {
    
     public void inicionLogin(){
         if(!UserTxt.getText().isEmpty() && !PasswordTxt.getText().isEmpty()){
-            Controlador cs = new Controlador();
+            //ControladorApp cs = new ControladorApp();
             CredencialesUsuario CU =  new CredencialesUsuario();
             CU.setUsuario(UserTxt.getText().trim());
             CU.setContrasenna(PasswordTxt.getText().trim());
-          if(cs.iniciarSesion(CU)){
+          if(ControladorApp.iniciarSesion(CU)){
             MenuPrincipalPanel mn = new MenuPrincipalPanel();
             mn.setVisible(true); //entra al menu principal
             this.setVisible(false); //desaparece la ventana login

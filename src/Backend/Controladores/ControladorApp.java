@@ -1,17 +1,19 @@
-package Backend.Entidades;
+package Backend.Controladores;
 
 import Backend.ConexionBD.GestorSQLServer;
+import Backend.Entidades.CredencialesUsuario;
+
 /*
 * Contralador, se encarga de controlar todos los botones de la App
 * */
-public class Controlador {
+public class ControladorApp {
 
-    String consultaSQL;
+    static String consultaSQL;
 
-    public Controlador() {
+    public ControladorApp() {
     }
     //Inicar sesion de  BuyPoint
-    public boolean iniciarSesion(CredencialesUsuario credencialesUsuario){
+    public static boolean iniciarSesion(CredencialesUsuario credencialesUsuario){
         consultaSQL =
                 String.format("SELECT Usuario, Constrasenna\n" +
                         "FROM CredencialesTienda\n" +
