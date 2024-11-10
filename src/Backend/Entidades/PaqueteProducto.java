@@ -5,7 +5,7 @@ import Backend.ConexionBD.GestorSQLServer;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class PaqueteProducto implements GestorSQLServer {
+public class PaqueteProducto extends Entidad {
     private int idPaqueteProducto;
     private int cantidad;
     private LocalDate fechaCaducidad;
@@ -54,36 +54,4 @@ public class PaqueteProducto implements GestorSQLServer {
 
     //#endregion
 
-
-    @Override
-    public void registrar() {
-        /*
-        //Formateo al estandar ISO 8601(AAAA-MM-DD)
-        DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
-
-        String consultaSQL = String.format("INSERT INTO PaqueteProducto" +
-                        "(Cantidad, FechaCaducidad, Caducado, ID_Producto, " +
-                        "ID_Inventario)\n" +
-                        "VALUES(%d, '%s', 0, %d, %d)"
-
-                ,getCantidad(), getFechaCaducidad().format(fmt),
-                producto.getIdProducto(), inventario.getIdInventario());
-
-        //Falta el método de Inventario para actulizar el stock
-
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Paquete de producto agregado",
-                        "No se agrego el paquete de producto");
-    */}
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

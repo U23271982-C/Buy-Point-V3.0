@@ -2,7 +2,7 @@ package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
-public class Codigo implements GestorSQLServer {
+public class Codigo extends Entidad {
     private int idCodigo;
     private String codigo;
     Producto producto;
@@ -30,23 +30,4 @@ public class Codigo implements GestorSQLServer {
 
     //#endregion
 
-    @Override
-    public void registrar() {
-        String consultaSQL = String.format("INSERT INTO Codigo(Codigo, ID_Producto)\n" +
-                "VALUES('%s', %d)",getCodigo(), producto.getIdProducto());
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Codigo barras registrado en el producto",
-                        "No se registro el código de barras");
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

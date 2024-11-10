@@ -2,7 +2,7 @@ package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
-public class Comprobante implements GestorSQLServer {
+public class Comprobante extends Entidad {
     private int idComprobante;
     private String comprobante;
 
@@ -31,23 +31,4 @@ public class Comprobante implements GestorSQLServer {
 
     //#endregion
 
-    @Override
-    public void registrar() {
-        String consultaSQL = String.format("INSERT INTO Comprobante(Comprobante)\n" +
-                "VALUES('%s')", getComprobante());
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Comprobante registrado",
-                        "Comprobante no registrado");
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

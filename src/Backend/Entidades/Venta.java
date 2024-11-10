@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Venta implements GestorSQLServer {
+public class Venta extends Entidad {
     private int idVenta;
     private LocalDate fecha;
     private LocalTime hora;
@@ -63,29 +63,4 @@ public class Venta implements GestorSQLServer {
 
     //#endregion
 
-
-    @Override
-    public void registrar() {/*
-        String consultaSQL = String.format
-                ("INSERT INTO Venta" +
-                "(ID_Inventario, CantidadVenta, MontoTotal, ID_Cliente, ID_Comprobante)\n" +
-                "VALUES(%d, %d, %.2f, %d, %d)",
-                 inventario.getIdInventario(),
-                        getCantidadVenta(), getMontoTotal(),
-                        cliente.getIdCliente(), comprobante.getIdComprobante());
-
-        GestorSQLServer.modificar_Registro(consultaSQL
-                , "Venta registrada",
-                "No se registro la venta");
-    */}
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

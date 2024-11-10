@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class DetalleVenta implements GestorSQLServer {
+public class DetalleVenta extends Entidad {
     private int idDetalleVenta;
     private int cantidad;
     private BigDecimal precioUnitario;
@@ -64,35 +64,4 @@ public class DetalleVenta implements GestorSQLServer {
 
     //#endregion
 
-
-    @Override
-    public void registrar() {/*
-
-        DateTimeFormatter fmtFecha =  DateTimeFormatter.ISO_LOCAL_DATE;
-        DateTimeFormatter fmtHora =  DateTimeFormatter.ISO_LOCAL_DATE;
-
-        setHora(LocalTime.now());//Hora actual
-        setFecha(LocalDate.now());//Fecha actual
-
-        String consultaSQL = String.format("INSERT INTO DetalleVenta" +
-                "(ID_Venta, Hora, Fecha, MontoIGV, MontoPagar)\n" +
-                "VALUES(%d,'%s', '%s', %.2f, %.2f)\n",
-                venta.getIdVenta(), getHora().format(fmtHora),
-                getFecha().format(fmtFecha), getMontoIGV(),getMontoPagar());
-
-        GestorSQLServer.modificar_Registro(consultaSQL
-                        , "Detalle de venta registrada",
-                        "No se registro el detalle de venta");
-
-    */}
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

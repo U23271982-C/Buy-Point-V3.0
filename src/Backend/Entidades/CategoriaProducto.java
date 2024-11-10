@@ -10,7 +10,7 @@ import Backend.ConexionBD.GestorSQLServer;
  *
  * @author ISRAEL
  */
-public class CategoriaProducto implements GestorSQLServer {
+public class CategoriaProducto extends Entidad {
     private int idCategoriaProducto;
     private String nombre;
     private String productos;
@@ -44,25 +44,4 @@ public class CategoriaProducto implements GestorSQLServer {
         this.productos = productos;
     }
     //#endregion
-
-
-    @Override
-    public void registrar() {
-        String consultaSQL = String.format("INSERT INTO CategoriaProducto(NombreCategoria)\n" +
-                "VALUES('%s')", getNombre());
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Categoría registrada",
-                        "No se registro la categoría");
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

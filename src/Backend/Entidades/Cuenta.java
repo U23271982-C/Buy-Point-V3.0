@@ -2,7 +2,7 @@ package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
-public class Cuenta implements GestorSQLServer {
+public class Cuenta extends Entidad {
     private int idCuenta;
     private String nombre;
     private String apellido;
@@ -46,24 +46,4 @@ public class Cuenta implements GestorSQLServer {
     }
     //#endregion
 
-
-    @Override
-    public void registrar() {
-        String consultaSQL = String.format("INSERT INTO Cuenta(Nombre,Apellido,Telefono)\n" +
-                "VALUES('%s','%s', %d)", getNombre(),getApellido(), getTelefono());
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Cuenta registrada",
-                        "No se registro la cuenta");
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

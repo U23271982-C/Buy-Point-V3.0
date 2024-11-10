@@ -31,4 +31,4 @@ DoceavoAvanceBK:
     - Refactorizando las clases a la carpeta de Entidades.
     - Actualizando las clases Entidades.
 TreceavoAvanceBK:
-    -
+    - Clase de transición, implementación en todas las entidades.

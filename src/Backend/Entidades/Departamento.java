@@ -2,7 +2,7 @@ package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
-public class Departamento implements GestorSQLServer {
+public class Departamento extends Entidad {
     private int idDepartamento;
     private short Torre;
     private short Departamento;
@@ -38,24 +38,4 @@ public class Departamento implements GestorSQLServer {
 
     //#endregion
 
-
-    @Override
-    public void registrar() {
-        String consultaSQL = String.format("INSERT INTO Departamento(Torre, Departamento)\n" +
-                "VALUES(%d,%d)", getTorre(), getDepartamento());
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Departamento registrado",
-                        "No se registro el departamento");
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

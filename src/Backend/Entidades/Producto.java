@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  *
  * @author ISRAEL
  */
-public class Producto implements GestorSQLServer {
+public class Producto extends Entidad {
     private int idProducto;
     private String nombreProducto;
     private String descripcion;
@@ -22,6 +22,9 @@ public class Producto implements GestorSQLServer {
     Empaque empaque;
     CategoriaProducto categoriaProducto;
     Inventario inventario;
+
+    public Producto() {
+    }
 
     //#region Getters and Setters
 
@@ -66,48 +69,6 @@ public class Producto implements GestorSQLServer {
     }
 
     //#endregion
-
-    public Producto() {
-    }
-
-    @Override
-    public void registrar() {/*
-        String consultaSQL = String.format
-                ("INSERT INTO Producto(NombreProducto, Descripcion, " +
-                        "ID_Empaque, ID_CategoriaProducto)\n" +
-                        "VALUES('%s', '%s', %d, %d)",
-                        getNombreProducto(), getDescripcion(),
-                        empaque.getIdEmpaque(), categoriaProducto.getIdCategoriaProducto());
-
-        if (!isTieneEmpaque()){
-            consultaSQL = String.format
-                    ("INSERT INTO Producto(NombreProducto, Descripcion, ID_CategoriaProducto)\n" +
-                                    "VALUES('%s', '%s', %d)",
-                            getNombreProducto(), getDescripcion(),
-                            categoriaProducto.getIdCategoriaProducto());
-        };//Registra producto sin empaque
-
-        GestorSQLServer.modificar_Registro
-                (consultaSQL
-                        , "Producto registrada",
-                        "No se registro el producto");
-
-        //Registra producto, registra junto con el el codigo, paquete e inventario
-        codigo.registrar();//Registra codigo nuevo producto
-        paqueteProducto.registrar();//Registra paquete del nuevo producto
-        inventario.registrar();//Registra invetario del nuevo producto
-        */
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 
     /*public boolean productoRegistrado(String codigoBarras){
         return false;

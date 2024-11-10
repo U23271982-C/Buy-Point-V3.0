@@ -1,11 +1,14 @@
 package Backend.ConexionBD;
 
+import Backend.Entidades.Entidad;
+
 import javax.swing.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public interface GestorSQLServer {
+public interface GestorSQLServer <T extends Entidad>{
 
     static boolean encontrar_Registro(String consulta, String mensajeError) {
         boolean encontrado = false;
@@ -38,13 +41,9 @@ public interface GestorSQLServer {
         }
     }
 
-    //da el numero de registros que hay
-    static int cantidad_Registro() {
-        return 0;
-    }
-
     void registrar();
     void eliminar();
     void actualizar();
+    ArrayList<T> listar(T entidad);
 
 }

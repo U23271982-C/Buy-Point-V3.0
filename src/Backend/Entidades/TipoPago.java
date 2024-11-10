@@ -2,7 +2,7 @@ package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
-public class TipoPago implements GestorSQLServer {
+public class TipoPago extends Entidad {
     private int idTipoPago;
     private String TipoPago;
 
@@ -29,26 +29,4 @@ public class TipoPago implements GestorSQLServer {
 
     //#endregion
 
-
-    @Override
-    public void registrar() {
-        String consultaSQL = String.format
-                ("INSERT INTO TipoPago" +
-                                "(TipoPago)\n" +
-                                "VALUES('%s')", getTipoPago());
-
-        GestorSQLServer.modificar_Registro(consultaSQL
-                , "Tipo de pago registrado",
-                "No se registro el tipo de pago");
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 }

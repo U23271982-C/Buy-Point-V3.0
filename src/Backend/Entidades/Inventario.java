@@ -13,7 +13,7 @@ import java.math.RoundingMode;
  *
  * @author ISRAEL
  */
-public class Inventario implements GestorSQLServer {
+public class Inventario extends Entidad {
 
     //public ArrayList<CategoriaProducto> catogoriasProductos;
     private int idInventario;
@@ -86,45 +86,6 @@ public class Inventario implements GestorSQLServer {
     }
 
     //#endregion
-
-    @Override
-    public void registrar() {
-        //Redondeamos PV para que no halla error en sacar cálculos
-        /*
-        try {
-            BigDecimal redondeadoPV =
-                    getPrecio().setScale(1, RoundingMode.HALF_UP);
-            String consultaSQL =
-                    String.format("INSERT INTO Inventario\n" +
-                                    "(PrecioCosto, PrecioVenta, " +
-                                    "Utilidad, Salida, Stock, ValorStock)\n" +
-                                    "VALUES(%.2f, %.2f, %.2f, %d, %d, %.2f)\n"
-
-                            ,getPrecioCosto(), redondeadoPV,
-                            redondeadoPV.subtract(getPrecioCosto()),
-                            0, paqueteProducto.getCantidad(),
-                            getPrecio().doubleValue() * paqueteProducto.getCantidad());
-            GestorSQLServer.modificar_Registro
-                    (consultaSQL
-                            , "Inventario Registrado",
-                            "No se registró el Inventario");
-        }catch (Exception e){
-            System.out.println("Error en el redondeo de PV:" + e.getMessage());
-        }
-        //Falta el método de Inventario para actulizar el stock
-
-         */
-    }
-
-    @Override
-    public void eliminar() {
-
-    }
-
-    @Override
-    public void actualizar() {
-
-    }
 
     static void ingresoProducto(int cantidad){
     }
