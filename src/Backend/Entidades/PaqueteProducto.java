@@ -1,4 +1,4 @@
-package Backend;
+package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
@@ -11,8 +11,7 @@ public class PaqueteProducto implements GestorSQLServer {
     private LocalDate fechaCaducidad;
     private boolean caducado;
 
-    public Producto producto;
-    public Inventario inventario;
+    Producto producto;
 
     public PaqueteProducto() {
         this.caducado = false;
@@ -21,6 +20,7 @@ public class PaqueteProducto implements GestorSQLServer {
     //#region Getters and Setters
 
     public int getIdPaqueteProducto() {
+
         return idPaqueteProducto;
     }
 
@@ -57,6 +57,7 @@ public class PaqueteProducto implements GestorSQLServer {
 
     @Override
     public void registrar() {
+        /*
         //Formateo al estandar ISO 8601(AAAA-MM-DD)
         DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -74,7 +75,7 @@ public class PaqueteProducto implements GestorSQLServer {
                 (consultaSQL
                         , "Paquete de producto agregado",
                         "No se agrego el paquete de producto");
-    }
+    */}
 
     @Override
     public void eliminar() {

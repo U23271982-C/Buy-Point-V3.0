@@ -1,10 +1,10 @@
-package Backend;
+package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
 public class Empaque implements GestorSQLServer {
     private int idEmpaque;
-    private String nombreEmpaque;
+    private String TipoEmpaque;
 
     public Empaque() {
     }
@@ -19,12 +19,12 @@ public class Empaque implements GestorSQLServer {
         this.idEmpaque = idEmpaque;
     }
 
-    public String getNombreEmpaque() {
-        return nombreEmpaque;
+    public String getTipoEmpaque() {
+        return TipoEmpaque;
     }
 
-    public void setNombreEmpaque(String nombreEmpaque) {
-        this.nombreEmpaque = nombreEmpaque;
+    public void setTipoEmpaque(String tipoEmpaque) {
+        this.TipoEmpaque = tipoEmpaque;
     }
 
     //#endregion
@@ -33,7 +33,7 @@ public class Empaque implements GestorSQLServer {
     @Override
     public void registrar() {
         String consultaSQL = String.format("INSERT INTO Empaque(TipoEmpaque)\n" +
-                        "VALUES('%s')",getNombreEmpaque());
+                        "VALUES('%s')", getTipoEmpaque());
 
         GestorSQLServer.modificar_Registro(consultaSQL
                 , "Empaque registrado",

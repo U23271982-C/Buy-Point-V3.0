@@ -70,8 +70,8 @@ CREATE TABLE DetalleVenta(
 	ID_Venta INT NOT NULL,
 	MontoIGV SMALLMONEY NOT NULL,
 	MontoPagar SMALLMONEY NOT NULL,
-	Hora DATE NOT NULL,
-	Fecha TIME NOT NULL
+	Fecha DATE NOT NULL,
+	Hora TIME(0) NOT NULL
 )
 GO
 CREATE TABLE Comprobante(
@@ -87,7 +87,7 @@ CREATE TABLE TipoPago(
 GO
 CREATE TABLE Cliente(
 	ID_Cliente INT IDENTITY(1,1) NOT NULL,
-	Cliente INT NOT NULL,
+	Cliente VARCHAR(50) NULL,
 	ID_Departamento INT NULL,
 	ID_Cuenta INT NULL
 )

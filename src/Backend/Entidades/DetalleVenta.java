@@ -1,4 +1,4 @@
-package Backend;
+package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
@@ -9,11 +9,13 @@ import java.time.format.DateTimeFormatter;
 
 public class DetalleVenta implements GestorSQLServer {
     private int idDetalleVenta;
-    private LocalTime hora;
-    private LocalDate fecha;
-    private BigDecimal montoIGV;
-    private BigDecimal montoPagar;
+    private int cantidad;
+    private BigDecimal precioUnitario;
+    private BigDecimal subTotal;
+    private BigDecimal total;
+
     Venta venta;
+    Producto producto;
 
     public DetalleVenta() {
     }
@@ -28,42 +30,43 @@ public class DetalleVenta implements GestorSQLServer {
         this.idDetalleVenta = idDetalleVenta;
     }
 
-    public LocalTime getHora() {
-        return hora;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public BigDecimal getPrecioUnitario() {
+        return precioUnitario;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
-    public BigDecimal getMontoIGV() {
-        return montoIGV;
+    public BigDecimal getSubTotal() {
+        return subTotal;
     }
 
-    public void setMontoIGV(BigDecimal montoIGV) {
-        this.montoIGV = montoIGV;
+    public void setSubTotal(BigDecimal subTotal) {
+        this.subTotal = subTotal;
     }
 
-    public BigDecimal getMontoPagar() {
-        return montoPagar;
+    public BigDecimal getTotal() {
+        return total;
     }
 
-    public void setMontoPagar(BigDecimal montoPagar) {
-        this.montoPagar = montoPagar;
+    public void setTotal(BigDecimal total) {
+        this.total = total;
     }
+
     //#endregion
 
 
     @Override
-    public void registrar() {
+    public void registrar() {/*
 
         DateTimeFormatter fmtFecha =  DateTimeFormatter.ISO_LOCAL_DATE;
         DateTimeFormatter fmtHora =  DateTimeFormatter.ISO_LOCAL_DATE;
@@ -81,7 +84,7 @@ public class DetalleVenta implements GestorSQLServer {
                         , "Detalle de venta registrada",
                         "No se registro el detalle de venta");
 
-    }
+    */}
 
     @Override
     public void eliminar() {

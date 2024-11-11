@@ -1,5 +1,7 @@
 package Backend;
 
+import Backend.Entidades.CredencialesUsuario;
+
 public class PruebaApp {
     public static void main(String[] args) {
         CredencialesUsuario credencialesUsuario = new CredencialesUsuario();

@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Backend;
+package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
+
+import java.math.BigDecimal;
 
 /**
  *
@@ -14,12 +16,11 @@ public class Producto implements GestorSQLServer {
     private int idProducto;
     private String nombreProducto;
     private String descripcion;
+    private BigDecimal precio;
     private boolean tieneEmpaque;
+
     Empaque empaque;
     CategoriaProducto categoriaProducto;
-    //Registra junto con Producto
-    Codigo codigo;
-    PaqueteProducto paqueteProducto;
     Inventario inventario;
 
     //#region Getters and Setters
@@ -48,6 +49,14 @@ public class Producto implements GestorSQLServer {
         this.descripcion = descripcion;
     }
 
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
     public boolean isTieneEmpaque() {
         return tieneEmpaque;
     }
@@ -61,9 +70,8 @@ public class Producto implements GestorSQLServer {
     public Producto() {
     }
 
-
     @Override
-    public void registrar() {
+    public void registrar() {/*
         String consultaSQL = String.format
                 ("INSERT INTO Producto(NombreProducto, Descripcion, " +
                         "ID_Empaque, ID_CategoriaProducto)\n" +
@@ -88,6 +96,7 @@ public class Producto implements GestorSQLServer {
         codigo.registrar();//Registra codigo nuevo producto
         paqueteProducto.registrar();//Registra paquete del nuevo producto
         inventario.registrar();//Registra invetario del nuevo producto
+        */
     }
 
     @Override

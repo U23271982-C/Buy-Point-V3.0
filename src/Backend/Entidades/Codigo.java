@@ -1,4 +1,4 @@
-package Backend;
+package Backend.Entidades;
 
 import Backend.ConexionBD.GestorSQLServer;
 
