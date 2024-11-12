@@ -17,7 +17,25 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
 
     @Override
     public void registrar(CredencialesTienda nuevaEntidad) {
+        String consultaSQL = "{ CALL pa_registrarCredencialesTienda(?, ?, ?, ?, ?) }";
 
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+
+            comando.setString(1,nuevaEntidad.getUsuario());
+            comando.setString(1,nuevaEntidad.getContrasenna());
+            comando.setString(1,nuevaEntidad.getNombre());
+            comando.setString(1,nuevaEntidad.getDireccion());
+            comando.setString(1,nuevaEntidad.getCorreoElectronico());
+
+            comando.executeQuery();
+            System.out.println("Se realizó la lectura");
+            JOptionPane.showMessageDialog(null, "Se registró las nuevas Credenciales");
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
     }
 
     @Override
@@ -41,7 +59,7 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
                         filas.getString(6)
                 );
             }//else {
-                //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
+            //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
             //}
 
             //System.out.println("Se realizó la lectura");
@@ -53,15 +71,6 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
 
         return credencialesUsuario;
     }
-
-    /*public static void main(String[] args) {
-        CtrlCredencialesUsuario credencialesUsuario = new CtrlCredencialesUsuario();
-
-        //CredencialesUsuario credencialesUsuario1 = ;
-
-        System.out.println(credencialesUsuario.leer("usser"));
-
-    }*/
 
     @Override
     public void eliminar(CredencialesTienda eliminadoEntidad) {
@@ -98,4 +107,13 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
     public ArrayList<CredencialesTienda> listar() {
         return null;
     }
+
+    /*public static void main(String[] args) {
+        CtrlCredencialesUsuario credencialesUsuario = new CtrlCredencialesUsuario();
+
+        //CredencialesUsuario credencialesUsuario1 = ;
+
+        System.out.println(credencialesUsuario.leer("usser"));
+
+    }*/ // Main
 }
