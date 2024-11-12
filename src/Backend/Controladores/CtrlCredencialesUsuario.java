@@ -2,37 +2,100 @@ package Backend.Controladores;
 
 import Backend.ConexionBD.GestorSQLServer;
 import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.CredencialesUsuario;
-import Backend.Entidades.Entidad;
+import Backend.Entidades.CredencialesTienda;
 
+import javax.swing.*;
 import java.sql.CallableStatement;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesUsuario> {
+public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTienda> {
+    public CtrlCredencialesUsuario() {
+    }
+
     @Override
-    public void registrar(CredencialesUsuario nuevaEntidad) {
+    public void registrar(CredencialesTienda nuevaEntidad) {
 
     }
 
     @Override
-    public CredencialesUsuario leer(CredencialesUsuario leerEntidad) {
-        return null;
+    public CredencialesTienda leer(String condicionLeer) {
+        CredencialesTienda credencialesUsuario = null;
+        String consultaSQL = "{ CALL pa_leerCredencialesUsuario(?) }";
+
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+
+            comando.setString(1, condicionLeer);
+
+            ResultSet filas = comando.executeQuery();
+            if (filas.next()) {
+                credencialesUsuario = new CredencialesTienda(
+                        filas.getInt(1),
+                        filas.getString(2),
+                        filas.getString(3),
+                        filas.getString(4),
+                        filas.getString(5),
+                        filas.getString(6)
+                );
+            }//else {
+                //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
+            //}
+
+            //System.out.println("Se realizó la lectura");
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
+
+        return credencialesUsuario;
+    }
+
+    /*public static void main(String[] args) {
+        CtrlCredencialesUsuario credencialesUsuario = new CtrlCredencialesUsuario();
+
+        //CredencialesUsuario credencialesUsuario1 = ;
+
+        System.out.println(credencialesUsuario.leer("usser"));
+
+    }*/
+
+    @Override
+    public void eliminar(CredencialesTienda eliminadoEntidad) {
+        String consultaSQL = "{ CALL pa_eliminarCredencialesUsuario(?, ?) }";
+
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)) {
+
+            comando.setString(1, eliminadoEntidad.getUsuario());
+            comando.setString(2, eliminadoEntidad.getContrasenna());
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Credenciales eliminadas");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override
-    public void eliminar(CredencialesUsuario eliminadoEntidad) {
+    public void actualizar(CredencialesTienda actualizadoEntidad) {
+        String consultaInsert = "{ CALL usp_ActualizarEmpleado( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }";
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaInsert);) {
 
+            ///FALTA IMPLEMENTAR MÉTODO
+            comando.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void actualizar(CredencialesUsuario actualizadoEntidad) {
-
-    }
-
-    @Override
-    public ArrayList<CredencialesUsuario> listar() {
+    public ArrayList<CredencialesTienda> listar() {
         return null;
     }
 }

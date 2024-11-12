@@ -13,7 +13,7 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
     }
 
     @Override
-    public Empaque leer(Empaque leerEntidad) {
+    public Empaque leer(String condicionLeer) {
         return null;
     }
 

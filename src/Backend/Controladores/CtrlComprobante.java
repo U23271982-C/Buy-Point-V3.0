@@ -13,7 +13,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
     }
 
     @Override
-    public Comprobante leer(Comprobante leerEntidad) {
+    public Comprobante leer(String condicionLeer) {
         return null;
     }
 

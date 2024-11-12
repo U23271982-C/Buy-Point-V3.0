@@ -1,10 +1,10 @@
 package Backend;
 
-import Backend.Entidades.CredencialesUsuario;
+import Backend.Entidades.CredencialesTienda;
 
 public class PruebaApp {
     public static void main(String[] args) {
-        CredencialesUsuario credencialesUsuario = new CredencialesUsuario();
+        CredencialesTienda credencialesUsuario = new CredencialesTienda();
         credencialesUsuario.setUsuario("user_Israel");
         credencialesUsuario.setContrasenna("123456");
         credencialesUsuario.setNombre("Israel");

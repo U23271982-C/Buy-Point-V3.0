@@ -13,7 +13,7 @@ public class CtrlDetalleVenta implements GestorSQLServer<DetalleVenta> {
     }
 
     @Override
-    public DetalleVenta leer(DetalleVenta leerEntidad) {
+    public DetalleVenta leer(String condicionLeer) {
         return null;
     }
 

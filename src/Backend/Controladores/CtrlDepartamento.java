@@ -13,7 +13,7 @@ public class CtrlDepartamento implements GestorSQLServer<Departamento> {
     }
 
     @Override
-    public Departamento leer(Departamento leerEntidad) {
+    public Departamento leer(String condicionLeer) {
         return null;
     }
 

@@ -15,6 +15,7 @@ public interface GestorSQLServer <T extends Entidad>{
 
         try (Statement st = SQLServerBD.instanciaConexcion().conectar().createStatement()){
                 ResultSet rs = st.executeQuery(consulta);
+
                 while (rs.next())
                     encontrado = true;
 
@@ -42,7 +43,7 @@ public interface GestorSQLServer <T extends Entidad>{
     }
 
     void registrar(T nuevaEntidad);
-    T leer(T leerEntidad);
+    T leer(String condicionLeer);
     void eliminar(T eliminadoEntidad);
     void actualizar(T actualizadoEntidad);
     ArrayList<T> listar();

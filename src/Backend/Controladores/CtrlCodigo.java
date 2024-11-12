@@ -13,7 +13,7 @@ public class CtrlCodigo implements GestorSQLServer<Codigo> {
     }
 
     @Override
-    public Codigo leer(Codigo leerEntidad) {
+    public Codigo leer(String condicionLeer) {
         return null;
     }
 

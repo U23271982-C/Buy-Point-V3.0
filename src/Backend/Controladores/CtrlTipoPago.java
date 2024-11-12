@@ -13,7 +13,7 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
     }
 
     @Override
-    public TipoPago leer(TipoPago leerEntidad) {
+    public TipoPago leer(String condicionLeer) {
         return null;
     }
 

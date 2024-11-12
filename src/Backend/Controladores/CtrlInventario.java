@@ -13,7 +13,7 @@ public class CtrlInventario  implements GestorSQLServer<Inventario> {
     }
 
     @Override
-    public Inventario leer(Inventario leerEntidad) {
+    public Inventario leer(String condicionLeer) {
         return null;
     }
 

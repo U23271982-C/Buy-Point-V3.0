@@ -17,7 +17,7 @@ public class CtrlCategoriaProducto implements GestorSQLServer <CategoriaProducto
     }
 
     @Override
-    public CategoriaProducto leer(CategoriaProducto leerEntidad) {
+    public CategoriaProducto leer(String condicionLeer) {
         return null;
     }
 

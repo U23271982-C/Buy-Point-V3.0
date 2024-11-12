@@ -13,7 +13,7 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
     }
 
     @Override
-    public Cuenta leer(Cuenta leerEntidad) {
+    public Cuenta leer(String condicionLeer) {
         return null;
     }
 

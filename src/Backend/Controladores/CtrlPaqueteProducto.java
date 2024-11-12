@@ -13,7 +13,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto> {
     }
 
     @Override
-    public PaqueteProducto leer(PaqueteProducto leerEntidad) {
+    public PaqueteProducto leer(String condicionLeer) {
         return null;
     }
 

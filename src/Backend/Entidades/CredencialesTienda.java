@@ -1,9 +1,7 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
-public class CredencialesUsuario extends Entidad {
-    private int     id;
+public class CredencialesTienda extends Entidad {
+    private int id;
     private String usuario;
     private String contrasenna;
     private String nombre;
@@ -11,13 +9,24 @@ public class CredencialesUsuario extends Entidad {
     private String correoElectronico;
     //private boolean estado;
 
-    public CredencialesUsuario() {
+    public CredencialesTienda() {
         this.id = 0;
         this.usuario = "";
         this.contrasenna = "";
         this.nombre = "";
         this.direccion = "";
         this.correoElectronico = "";
+    }
+
+    public CredencialesTienda(int id, String usuario,
+                              String contrasenna, String nombre,
+                              String direccion, String correoElectronico) {
+        this.id = id;
+        this.usuario = usuario;
+        this.contrasenna = contrasenna;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.correoElectronico = correoElectronico;
     }
 
     //#region Getters and Setters
@@ -72,4 +81,16 @@ public class CredencialesUsuario extends Entidad {
 
     //#endregion
 
+
+    @Override
+    public String toString() {
+        return "CredencialesUsuario{" +
+                "id=" + id +
+                ", usuario='" + usuario + '\'' +
+                ", contrasenna='" + contrasenna + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", correoElectronico='" + correoElectronico + '\'' +
+                '}';
+    }
 }

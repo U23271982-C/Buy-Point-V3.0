@@ -4,7 +4,8 @@ package Frontend;
 //import Backend.Controlador;
 //import Backend.CredencialesUsuario;
 import Backend.Controladores.ControladorApp;
-import Backend.Entidades.CredencialesUsuario;
+import Backend.Controladores.CtrlCredencialesUsuario;
+import Backend.Entidades.CredencialesTienda;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -13,10 +14,6 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -412,10 +409,11 @@ public final class LoginPanel extends javax.swing.JFrame {
     public void inicionLogin(){
         if(!UserTxt.getText().isEmpty() && !PasswordTxt.getText().isEmpty()){
             //ControladorApp cs = new ControladorApp();
-            CredencialesUsuario CU =  new CredencialesUsuario();
+            CtrlCredencialesUsuario ctr = new CtrlCredencialesUsuario();
+            CredencialesTienda CU =  new CredencialesTienda();
             CU.setUsuario(UserTxt.getText().trim());
             CU.setContrasenna(PasswordTxt.getText().trim());
-          if(ControladorApp.iniciarSesion(CU)){
+          if(ControladorApp.iniciarSesion(ctr,CU)){
             MenuPrincipalPanel mn = new MenuPrincipalPanel();
             mn.setVisible(true); //entra al menu principal
             this.setVisible(false); //desaparece la ventana login

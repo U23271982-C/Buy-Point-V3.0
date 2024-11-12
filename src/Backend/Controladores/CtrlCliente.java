@@ -13,7 +13,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
     }
 
     @Override
-    public Cliente leer(Cliente leerEntidad) {
+    public Cliente leer(String condicionLeer) {
         return null;
     }
 
