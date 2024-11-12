@@ -1,9 +1,12 @@
 package Frontend;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 public final class VentaPanel extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
@@ -44,6 +47,11 @@ public final class VentaPanel extends javax.swing.JFrame {
         venta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         venta.setName("venta"); // NOI18N
         venta.setPreferredSize(new java.awt.Dimension(1176, 486));
+        venta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaMouseEntered(evt);
+            }
+        });
 
         Encabezado.setBackground(new java.awt.Color(255, 255, 255));
         Encabezado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -199,11 +207,16 @@ public final class VentaPanel extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         PanelOp.setBackground(new java.awt.Color(255, 255, 255));
+        PanelOp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelOpMouseEntered(evt);
+            }
+        });
         PanelOp.setLayout(new java.awt.GridBagLayout());
 
         panelOpciones.setBackground(new java.awt.Color(255, 255, 255));
         panelOpciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panelOpciones.setPreferredSize(new java.awt.Dimension(1000, 62));
+        panelOpciones.setPreferredSize(new java.awt.Dimension(1000, 1));
 
         Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/inventario.png"))); // NOI18N
         Inventario.setText("jLabel1");
@@ -425,6 +438,14 @@ public final class VentaPanel extends javax.swing.JFrame {
         yMouse = evt.getY();
 
     }//GEN-LAST:event_EncabezadoMousePressed
+
+    private void PanelOpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelOpMouseEntered
+        Agranda(panelOpciones, 1, 2, 62);
+    }//GEN-LAST:event_PanelOpMouseEntered
+
+    private void ventaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaMouseEntered
+        Disminuye(panelOpciones, 1, 2, 0);
+    }//GEN-LAST:event_ventaMouseEntered
                                   
     
     public VentaPanel(){
@@ -443,6 +464,44 @@ public final class VentaPanel extends javax.swing.JFrame {
         .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
     }
 
+    public static void Disminuye(JComponent componente, int milisegundos, int saltos, int parar) {
+        (new Thread() {
+            @Override
+            public void run() {
+                for (int i = componente.getHeight(); i >= parar; i -= saltos) {
+                    try {
+                        Thread.sleep(milisegundos);
+                        componente.setPreferredSize(new Dimension(componente.getWidth(), i));
+                        SwingUtilities.updateComponentTreeUI(componente);
+                        componente.getParent().revalidate();
+                        componente.getParent().repaint();
+                    } catch (InterruptedException e) {
+                        System.out.println("Error Thread Interrumpido: " + e);
+                    }
+                }
+            }
+        }).start();
+    }
+
+    public static void Agranda(JComponent componente, int milisegundos, int saltos, int parar) {
+        (new Thread() {
+            @Override
+            public void run() {
+                for (int i = componente.getHeight(); i <= parar; i += saltos) {
+                    try {
+                        Thread.sleep(milisegundos);
+                        componente.setPreferredSize(new Dimension(componente.getWidth(), i));
+                        SwingUtilities.updateComponentTreeUI(componente);
+                        componente.getParent().revalidate();
+                        componente.getParent().repaint();
+                    } catch (InterruptedException e) {
+                        System.out.println("Error Thread Interrumpido: " + e);
+                    }
+                }
+            }
+        }).start();
+    }
+    
     
     public static void main(String args[]) {
           java.awt.EventQueue.invokeLater(new Runnable() {
