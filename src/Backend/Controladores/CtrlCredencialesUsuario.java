@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTienda> {
+
     public CtrlCredencialesUsuario() {
     }
 
@@ -23,13 +24,13 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
                      SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
 
             comando.setString(1,nuevaEntidad.getUsuario());
-            comando.setString(1,nuevaEntidad.getContrasenna());
-            comando.setString(1,nuevaEntidad.getNombre());
-            comando.setString(1,nuevaEntidad.getDireccion());
-            comando.setString(1,nuevaEntidad.getCorreoElectronico());
+            comando.setString(2,nuevaEntidad.getContrasenna());
+            comando.setString(3,nuevaEntidad.getNombre());
+            comando.setString(4,nuevaEntidad.getDireccion());
+            comando.setString(5,nuevaEntidad.getCorreoElectronico());
 
             comando.executeQuery();
-            System.out.println("Se realizó la lectura");
+            System.out.println("Se registró las nuevas Credenciales");
             JOptionPane.showMessageDialog(null, "Se registró las nuevas Credenciales");
         } catch (SQLException e) {
             //throw new RuntimeException(e);
@@ -94,9 +95,18 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
     public void actualizar(CredencialesTienda actualizadoEntidad) {
         String consultaInsert = "{ CALL usp_ActualizarEmpleado( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }";
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaInsert);) {
+                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaInsert)) {
+            comando.setString(1,actualizadoEntidad.getUsuario());
+            comando.setString(2,actualizadoEntidad.getContrasenna());
+            comando.setString(3,actualizadoEntidad.getNombre());
+            comando.setString(4,actualizadoEntidad.getDireccion());
+            comando.setString(5,actualizadoEntidad.getCorreoElectronico());
 
-            ///FALTA IMPLEMENTAR MÉTODO
+            comando.executeQuery();
+            System.out.println("Se realizó la lectura");
+            JOptionPane.showMessageDialog
+                    (null, "Se actulizo las Credenciales");
+
             comando.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -105,7 +115,30 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
 
     @Override
     public ArrayList<CredencialesTienda> listar() {
-        return null;
+        ArrayList<CredencialesTienda> credencialesTienda = new ArrayList<>();
+        String consultaInsert = "{ CALL usp_listarEmpleado() }";
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaInsert)) {
+
+            ResultSet filas = comando.executeQuery();
+
+            while (filas.next()) {
+                credencialesTienda.add(new CredencialesTienda(
+                        filas.getInt(1),
+                        filas.getString(2),
+                        filas.getString(3),
+                        filas.getString(4),
+                        filas.getString(5),
+                        filas.getString(6)
+                ));
+            }
+
+            return credencialesTienda;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     /*public static void main(String[] args) {

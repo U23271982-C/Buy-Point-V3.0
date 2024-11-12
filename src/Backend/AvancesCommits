@@ -36,3 +36,5 @@ TreceavoAvanceBK:
     - GestorSQLServer sobreescrita en todos los controladores.
     - CRUD de la sobrescritura con el proyecto del profesor Martin.
 NUEVO INICIO: Clonamos el proyecto.
+CartoceavoAvanceBK:
+    - CRUD implementado CredencialesTienda

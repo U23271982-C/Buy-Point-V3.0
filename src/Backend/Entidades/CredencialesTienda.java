@@ -10,12 +10,6 @@ public class CredencialesTienda extends Entidad {
     //private boolean estado;
 
     public CredencialesTienda() {
-        this.id = 0;
-        this.usuario = "";
-        this.contrasenna = "";
-        this.nombre = "";
-        this.direccion = "";
-        this.correoElectronico = "";
     }
 
     public CredencialesTienda(int id, String usuario,
