@@ -1,3 +1,4 @@
+--COPIA
 USE master
 GO
 CREATE DATABASE BD_BuyPoint
@@ -9,15 +10,17 @@ CREATE TABLE CredencialesTienda(--
 	Usuario VARCHAR(10)NOT NULL,
 	Constrasenna VARCHAR(10) NOT NULL,
 	Nombre VARCHAR(10)NOT NULL,
-	Direccion VARCHAR(10) NOT NULL,
-	CorreoElectronico VARCHAR(20) NOT NULL
+	Direccion VARCHAR(50) NOT NULL,
+	CorreoElectronico VARCHAR(30) NOT NULL
 )
 GO
 CREATE TABLE Producto(
 	ID_Producto INT IDENTITY(1,1),
 	NombreProducto VARCHAR(30) NOT NULL,
 	Descripcion VARCHAR(150),
+	Precio SMALLMONEY NOT NULL,
 	ID_Empaque INT NULL,
+	ID_Inventario INT NOT NULL,
 	ID_CategoriaProducto INT NOT NULL
 )
 GO
@@ -42,14 +45,13 @@ CREATE TABLE PaqueteProducto(
 	Cantidad INT NOT NULL,
 	FechaCaducidad DATE NOT NULL,
 	Caducado BIT NOT NULL,
-	ID_Producto INT NOT NULL,
-	ID_Inventario INT NOT NULL
+	ID_Producto INT NOT NULL
 )
 GO
 CREATE TABLE Inventario(
 	ID_Inventario INT IDENTITY(1,1),
+	Precio SMALLMONEY NOT NULL,
 	PrecioCosto SMALLMONEY NOT NULL,
-	PrecioVenta SMALLMONEY NOT NULL,
 	Utilidad SMALLMONEY NOT NULL,
 	Salida INT NOT NULL,
 	Stock INT NOT NULL,
@@ -58,20 +60,23 @@ CREATE TABLE Inventario(
 GO
 CREATE TABLE Venta (
 	ID_Venta INT IDENTITY(1,1) NOT NULL,
-	ID_Inventario INT NOT NULL,
-	CantidadVenta INT NOT NULL,
-	MontoTotal SMALLMONEY NOT NULL,
+	Fecha DATE NOT NULL,
+	Hora TIME(0) NOT NULL,
+	SubTotal SMALLMONEY NOT NULL,
+	Total SMALLMONEY NOT NULL,
 	ID_Cliente INT NOT NULL,
 	ID_Comprobante INT NOT NULL
 )
 GO
 CREATE TABLE DetalleVenta(
 	ID_DetalleVenta INT IDENTITY(1,1) NOT NULL,
-	ID_Venta INT NOT NULL,
-	MontoIGV SMALLMONEY NOT NULL,
-	MontoPagar SMALLMONEY NOT NULL,
-	Fecha DATE NOT NULL,
-	Hora TIME(0) NOT NULL
+	Cantidad INT NOT NULL,
+	PrecioUnitario SMALLMONEY NOT NULL,
+	SubTotal SMALLMONEY NOT NULL,
+	Total SMALLMONEY NOT NULL,
+	ID_Producto INT NOT NULL,
+	ID_Venta INT NOT NULL
+	
 )
 GO
 CREATE TABLE Comprobante(
@@ -89,7 +94,8 @@ CREATE TABLE Cliente(
 	ID_Cliente INT IDENTITY(1,1) NOT NULL,
 	Cliente VARCHAR(50) NULL,
 	ID_Departamento INT NULL,
-	ID_Cuenta INT NULL
+	ID_Cuenta INT NULL,
+	Identificacion VARCHAR(30) NULL
 )
 GO
 CREATE TABLE Departamento(
