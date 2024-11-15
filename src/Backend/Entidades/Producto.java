@@ -22,6 +22,8 @@ public class Producto extends Entidad {
     Empaque empaque;
     CategoriaProducto categoriaProducto;
     Inventario inventario;
+    Codigo codigo;
+    PaqueteProducto paqueteProducto;
 
     public Producto() {
     }
@@ -66,6 +68,46 @@ public class Producto extends Entidad {
 
     public void setTieneEmpaque(boolean tieneEmpaque) {
         this.tieneEmpaque = tieneEmpaque;
+    }
+
+    public Empaque getEmpaque() {
+        return empaque;
+    }
+
+    public void setEmpaque(Empaque empaque) {
+        this.empaque = empaque;
+    }
+
+    public CategoriaProducto getCategoriaProducto() {
+        return categoriaProducto;
+    }
+
+    public void setCategoriaProducto(CategoriaProducto categoriaProducto) {
+        this.categoriaProducto = categoriaProducto;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
+    public Codigo getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Codigo codigo) {
+        this.codigo = codigo;
+    }
+
+    public PaqueteProducto getPaqueteProducto() {
+        return paqueteProducto;
+    }
+
+    public void setPaqueteProducto(PaqueteProducto paqueteProducto) {
+        this.paqueteProducto = paqueteProducto;
     }
 
     //#endregion

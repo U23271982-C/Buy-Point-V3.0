@@ -1,6 +1,7 @@
+--COPIA
 USE BD_BuyPoint
 GO
-/*PK*/
+/*PK*/--------------------------------------------------------
 ALTER TABLE CredencialesTienda
 	ADD CONSTRAINT PK_CredencialesTienda
 	PRIMARY KEY (ID_CredencialesTienda)
@@ -57,67 +58,88 @@ ALTER TABLE Cuenta
 	ADD CONSTRAINT PK_Cuenta
 	PRIMARY KEY (ID_Cuenta)
 GO
---------------------------------------------------
-/*UK*/
+--INDEX-------------------------------------------------
+CREATE UNIQUE INDEX idx_U_Cuenta
+ON Cliente (ID_Cuenta)
+WHERE ID_Cuenta IS NOT NULL;
+GO
+CREATE UNIQUE INDEX idx_U_Departamento
+ON Cliente (ID_Departamento)
+WHERE ID_Departamento IS NOT NULL;
+GO
+/*UK*/--------------------------------------------------
 ALTER TABLE Venta
 	ADD CONSTRAINT U_Comprobante
 	UNIQUE (ID_Comprobante)
 GO
+/*
 ALTER TABLE Cliente
 	ADD CONSTRAINT U_Cuenta
 	UNIQUE (ID_Cuenta)
 GO
+*/
 ALTER TABLE Comprobante
 	ADD CONSTRAINT U_TipoPago
 	UNIQUE (ID_TipoPago)
 GO
+/*
 ALTER TABLE Cliente
 	ADD CONSTRAINT U_Departamento
 	UNIQUE (ID_Departamento)
 GO
---------------------------------------------------
-/*FK*/
+*/
 ALTER TABLE Producto
-	ADD CONSTRAINT FK_Producto_Empaque
-		FOREIGN KEY (ID_Empaque)
-		REFERENCES Empaque(ID_Empaque)
-			ON UPDATE CASCADE--ON DELETE CASCADE ON UPDATE CASCADE
+	ADD CONSTRAINT U_Invetario
+	UNIQUE (ID_Inventario)
 GO
-ALTER TABLE Producto
-	ADD CONSTRAINT FK_Producto_CategoriaProducto
-		FOREIGN KEY (ID_CategoriaProducto)
-		REFERENCES CategoriaProducto(ID_CategoriaProducto)
-			ON UPDATE CASCADE--ON DELETE CASCADE ON UPDATE CASCADE
-GO
+/*FK*/--------------------------------------------------
 ALTER TABLE Codigo
 	ADD CONSTRAINT FK_Codigo_Producto
 		FOREIGN KEY (ID_Producto)
 		REFERENCES Producto(ID_Producto)
-			ON UPDATE CASCADE--ON DELETE CASCADE ON UPDATE CASCADE
+			ON UPDATE CASCADE ON DELETE CASCADE --ON UPDATE CASCADE
+GO
+ALTER TABLE Producto
+	ADD CONSTRAINT FK_Producto_Empaque
+		FOREIGN KEY (ID_Empaque)
+		REFERENCES Empaque(ID_Empaque)
+			ON UPDATE CASCADE ON DELETE CASCADE --ON UPDATE CASCADE
+GO
+ALTER TABLE Producto
+	ADD CONSTRAINT FK_Producto_Inventario
+		FOREIGN KEY (ID_Inventario)
+		REFERENCES Inventario(ID_Inventario)
+			ON DELETE CASCADE ON UPDATE CASCADE
 GO
 ALTER TABLE PaqueteProducto
 	ADD CONSTRAINT FK_PaqueteProducto_Producto
 		FOREIGN KEY (ID_Producto)
 		REFERENCES Producto(ID_Producto)
-			ON DELETE CASCADE ON UPDATE CASCADE
+			ON UPDATE CASCADE ON DELETE CASCADE --
 GO
-ALTER TABLE PaqueteProducto
-	ADD CONSTRAINT FK_PaqueteProducto_Inventario
-		FOREIGN KEY (ID_Inventario)
-		REFERENCES Inventario(ID_Inventario)
-			ON DELETE CASCADE ON UPDATE CASCADE
+ALTER TABLE Producto
+	ADD CONSTRAINT FK_Producto_CategoriaProducto
+		FOREIGN KEY (ID_CategoriaProducto)
+		REFERENCES CategoriaProducto(ID_CategoriaProducto)
+			ON DELETE CASCADE ON UPDATE CASCADE --ON UPDATE CASCADE 
 GO
-ALTER TABLE Venta
-	ADD CONSTRAINT FK_Venta_Inventario
-		FOREIGN KEY (ID_Inventario)
-		REFERENCES Inventario(ID_Inventario)
-			ON UPDATE CASCADE--ON DELETE CASCADE ON UPDATE CASCADE
+ALTER TABLE DetalleVenta
+	ADD CONSTRAINT FK_DetalleVenta_Producto
+		FOREIGN KEY (ID_Producto)
+		REFERENCES Producto(ID_Producto)
+			ON UPDATE CASCADE ON DELETE CASCADE--
+GO
+ALTER TABLE DetalleVenta
+	ADD CONSTRAINT FK_DetalleVenta_Venta
+		FOREIGN KEY (ID_Venta)
+		REFERENCES Venta(ID_Venta)
+			ON DELETE CASCADE ON UPDATE CASCADE--
 GO
 ALTER TABLE Venta
 	ADD CONSTRAINT FK_Venta_Cliente
 		FOREIGN KEY (ID_Cliente)
 		REFERENCES Cliente(ID_Cliente)
-			--ON DELETE CASCADE ON UPDATE CASCADE
+			ON DELETE CASCADE ON UPDATE CASCADE--
 GO
 ALTER TABLE Venta
 	ADD CONSTRAINT FK_Venta_Comprobante
@@ -125,27 +147,28 @@ ALTER TABLE Venta
 		REFERENCES Comprobante(ID_Comprobante)
 			ON DELETE CASCADE ON UPDATE CASCADE
 GO
-ALTER TABLE DetalleVenta
-	ADD CONSTRAINT FK_DetalleVenta_Venta
-		FOREIGN KEY (ID_Venta)
-		REFERENCES Venta(ID_Venta)
-			--ON DELETE CASCADE ON UPDATE CASCADE
-GO
 ALTER TABLE Comprobante
 	ADD CONSTRAINT FK_TipoPago_Comprobante
 		FOREIGN KEY (ID_TipoPago)
 		REFERENCES TipoPago(ID_TipoPago)
-			--ON DELETE CASCADE ON UPDATE CASCADE
+			ON DELETE CASCADE ON UPDATE CASCADE--
 GO
 ALTER TABLE Cliente
 	ADD CONSTRAINT FK_Departamento_Cliente
 		FOREIGN KEY (ID_Departamento)
 		REFERENCES Departamento(ID_Departamento)
-			--ON DELETE CASCADE ON UPDATE CASCADE
+			ON DELETE CASCADE ON UPDATE CASCADE--
 GO
 ALTER TABLE Cliente
 	ADD CONSTRAINT FK_Cuenta_Cliente
 		FOREIGN KEY (ID_Cuenta)
 		REFERENCES Cuenta(ID_Cuenta)
-			--ON DELETE CASCADE ON UPDATE CASCADE
+			ON DELETE CASCADE ON UPDATE CASCADE--
+GO
+/*DF*/----------------------------------------------------
+ALTER TABLE Inventario
+	ADD CONSTRAINT DF_Inventario_Salida DEFAULT 0 FOR Salida
+GO
+ALTER TABLE PaqueteProducto
+ADD CONSTRAINT DF_PaqueteProducto_Caducado DEFAULT 0 FOR Caducado
 GO
