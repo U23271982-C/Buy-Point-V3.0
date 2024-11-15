@@ -43,7 +43,7 @@ public interface GestorSQLServer <T extends Entidad>{
     }
 
     void registrar(T nuevaEntidad);
-    T leer(String condicionLeer);
+    T leer(T leerEntidad);
     void eliminar(T eliminadoEntidad);
     void actualizar(T actualizadoEntidad);
     ArrayList<T> listar();
