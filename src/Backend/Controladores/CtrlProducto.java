@@ -18,66 +18,93 @@ package Backend.Controladores;
     import java.util.Map;
 
     import static Backend.ConexionBD.SQLServerBD.instanciaConexcion;
-    public class CtrlProducto  {
-
-
-
-        /*public CallableStatement devolviendoComando () {
-            Producto nuevaEntidad = new Producto();
-            Codigo codigo = new Codigo();
-            PaqueteProducto paqueteProducto = new PaqueteProducto();
-            Empaque empaque = new Empaque();
-            CategoriaProducto categoriaProducto = new CategoriaProducto();
-            Inventario inventario = new Inventario();
-
-
-            codigo.setCodigo("zzzzzZ");
-            paqueteProducto.setCantidad(8);
-            paqueteProducto.setFechaCaducidad
-                    (LocalDate.of(2025,9,11));
-            nuevaEntidad.setNombreProducto("Rellenitas");
-
-            nuevaEntidad.setDescripcion("Galletas con relleno de chocolate");
-            empaque.setTipoEmpaque("Ternopol");
-            categoriaProducto.setNombre("Cosas");
-            inventario.setPrecio(new BigDecimal(8));
-            inventario.setPrecioCosto(new BigDecimal(5));
-
-            CallableStatement comando = null;
-
-            try {
-                if(comando == null) JOptionPane.showMessageDialog(null, "nose");
-                comando.setString(1, codigo.getCodigo());
-                comando.setInt(2, paqueteProducto.getCantidad());
-                //Date date = co
-                comando.setDate(3, java.sql.Date.valueOf(paqueteProducto.getFechaCaducidad()));
-                comando.setString(4, nuevaEntidad.getNombreProducto());
-                comando.setString(5, nuevaEntidad.getNombreProducto());
-                comando.setString(6, empaque.getTipoEmpaque());
-                comando.setString(7, categoriaProducto.getNombre());
-                comando.setBigDecimal(8, inventario.getPrecio());
-                comando.setBigDecimal(9, inventario.getPrecioCosto());
-                if(comando == null) JOptionPane.showMessageDialog(null, "nose");
-                return comando;
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-            return comando;
-        }*/
-
-        /*public void introdciendoSql(CallableStatement df){
-
+    public class CtrlProducto implements GestorSQLServer<Producto> {
+        @Override
+        public void registrar(Producto nuevaEntidad) {
             String consultaSQL = "{ CALL paT_registrarProductoCompuesto(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
-            try {
-                df = SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL);
-                df.executeQuery();
-                System.out.println("Se registró las nuevas Credenciales");
-                JOptionPane.showMessageDialog(null, "Se registró las nuevas Credenciales");
+
+            try (CallableStatement comando =
+                         SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+
+                comando.setString(1,nuevaEntidad.getCodigo().getCodigo());
+                comando.setInt(2,nuevaEntidad.getPaqueteProducto().getCantidad());
+                comando.setDate(3,java.sql.Date.valueOf
+                        (nuevaEntidad.getPaqueteProducto().getFechaCaducidad()));
+                comando.setString(4, nuevaEntidad.getNombreProducto());
+                comando.setString(5,nuevaEntidad.getDescripcion());
+                comando.setString(6,nuevaEntidad.getEmpaque().getTipoEmpaque());
+                comando.setString(7,nuevaEntidad.getCategoriaProducto().getNombre());
+                comando.setBigDecimal(8,nuevaEntidad.getInventario().getPrecio());
+                comando.setBigDecimal(9, nuevaEntidad.getInventario().getPrecioCosto());
+
+                comando.executeQuery();
+                System.out.printf("Se registró el producto: %s", nuevaEntidad.getNombreProducto());
+                JOptionPane.showMessageDialog(null, String.format
+                        ("Se registró el producto: %s", nuevaEntidad.getNombreProducto()));
+
             } catch (SQLException e) {
                 //throw new RuntimeException(e);
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+                JOptionPane.showMessageDialog(null, String.format
+                        ("ERROR al registrar el producto: %s", nuevaEntidad.getNombreProducto()));
             }
+        }
+
+
+        @Override
+        public Producto leer(Producto leerEntidad) {
+            Producto producto = null;
+            String consultaSQL = "{ CALL pa_leerProducto(?) }";
+
+            try (CallableStatement comando =
+                         SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+
+                comando.setString(1, leerEntidad.getCodigo().getCodigo());
+
+                ResultSet filas = comando.executeQuery();
+                if (filas.next()) {
+                    producto = new Producto();
+                            producto.setNombreProducto(filas.getString(1));
+                            producto.setDescripcion(filas.getString(2));
+                            producto.getCategoriaProducto().setNombre(filas.getString(3));
+                            producto.getEmpaque().setTipoEmpaque(filas.getString(4));
+                            producto.setPrecio(filas.getBigDecimal(5));
+                            producto.getInventario().setPrecioCosto(filas.getBigDecimal(6));
+                            producto.getInventario().setStock(filas.getInt(7));
+                }//else {
+                //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
+                //}
+
+                //System.out.println("Se realizó la lectura");
+            } catch (SQLException e) {
+                //throw new RuntimeException(e);
+                e.printStackTrace();
+                //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+            }
+
+            return producto;
+        }
+
+        /*public static void main(String[] args) {
+            Producto producto = new Producto();
+            producto.setEmpaque(new Empaque());
+            producto.getEmpaque().setTipoEmpaque("gg");
+
+            System.out.println(producto.getEmpaque().getTipoEmpaque());
         }*/
 
+        @Override
+        public void eliminar(Producto eliminadoEntidad) {
+
+        }
+
+        @Override
+        public void actualizar(Producto actualizadoEntidad) {
+
+        }
+
+        @Override
+        public ArrayList<Producto> listar() {
+            return null;
+        }
     }
