@@ -32,3 +32,18 @@ BEGIN
 	RETURN @id;
 END;
 GO
+CREATE OR ALTER FUNCTION fn_extraerID_CategoriaProducto_NombreCategoria(
+	@nombrecategoria VARCHAR(20)
+)
+RETURNS INT
+AS
+BEGIN
+	DECLARE @id INT;
+	
+	SELECT @id = ID_CategoriaProducto
+	FROM CategoriaProducto AS C
+	WHERE C.NombreCategoria = @nombrecategoria;
+	
+	RETURN @id;
+END;
+GO
