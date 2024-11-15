@@ -10,6 +10,10 @@ public class Codigo extends Entidad {
     public Codigo() {
     }
 
+    public Codigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     //#region Getters and Setters
 
     public int getIdCodigo() {

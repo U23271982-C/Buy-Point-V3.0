@@ -40,14 +40,15 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
     }
 
     @Override
-    public CredencialesTienda leer(String condicionLeer) {
+    public CredencialesTienda leer(CredencialesTienda leerEntidad) {
         CredencialesTienda credencialesUsuario = null;
-        String consultaSQL = "{ CALL pa_leerCredencialesUsuario(?) }";
+        String consultaSQL = "{ CALL pa_leerCredencialesUsuario(?, ?) }";
 
         try (CallableStatement comando =
                      SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
 
-            comando.setString(1, condicionLeer);
+            comando.setString(1, leerEntidad.getUsuario());
+            comando.setString(2, leerEntidad.getContrasenna());
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
@@ -67,7 +68,7 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
         } catch (SQLException e) {
             //throw new RuntimeException(e);
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+            //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
         }
 
         return credencialesUsuario;

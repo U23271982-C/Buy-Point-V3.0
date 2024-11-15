@@ -6,29 +6,6 @@ import Backend.Entidades.Entidad;
 
 import java.util.ArrayList;
 
-public class CtrlComprobante implements GestorSQLServer<Comprobante> {
-    @Override
-    public void registrar(Comprobante nuevaEntidad) {
+public class CtrlComprobante {
 
-    }
-
-    @Override
-    public Comprobante leer(String condicionLeer) {
-        return null;
-    }
-
-    @Override
-    public void eliminar(Comprobante eliminadoEntidad) {
-
-    }
-
-    @Override
-    public void actualizar(Comprobante actualizadoEntidad) {
-
-    }
-
-    @Override
-    public ArrayList<Comprobante> listar() {
-        return null;
-    }
 }

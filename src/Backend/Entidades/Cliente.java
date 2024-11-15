@@ -6,11 +6,20 @@ public class Cliente extends Entidad {
 
     private int idCliente;
     private String cliente;
+    private String identificacion;
 
     Departamento departamento;
     Cuenta cuenta;
 
     //#region Getters and Setters
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
 
     public int getIdCliente() {
         return idCliente;

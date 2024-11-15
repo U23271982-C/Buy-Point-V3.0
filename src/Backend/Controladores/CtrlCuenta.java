@@ -6,29 +6,6 @@ import Backend.Entidades.Entidad;
 
 import java.util.ArrayList;
 
-public class CtrlCuenta implements GestorSQLServer<Cuenta> {
-    @Override
-    public void registrar(Cuenta nuevaEntidad) {
+public class CtrlCuenta {
 
-    }
-
-    @Override
-    public Cuenta leer(String condicionLeer) {
-        return null;
-    }
-
-    @Override
-    public void eliminar(Cuenta eliminadoEntidad) {
-
-    }
-
-    @Override
-    public void actualizar(Cuenta actualizadoEntidad) {
-
-    }
-
-    @Override
-    public ArrayList<Cuenta> listar() {
-        return null;
-    }
 }

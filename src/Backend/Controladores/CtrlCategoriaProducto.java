@@ -10,7 +10,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CtrlCategoriaProducto implements GestorSQLServer <CategoriaProducto> {
+public class CtrlCategoriaProducto {
 
     /*public static void main(String[] args) {
         if ("s123".matches("^[a-zA-Z]+[0-9]*$")){
@@ -19,44 +19,20 @@ public class CtrlCategoriaProducto implements GestorSQLServer <CategoriaProducto
             System.out.println("no paso");
         }
     }*/ // Main
+    /*if (nuevaEntidad.getNombre().matches("^[a-zA-Z]+[0-9]*$")){
+        // FALTA, tienen que confirmar si va en el Frontend o Backend
+    }
 
-    @Override
-    public void registrar(CategoriaProducto nuevaEntidad) {
-        if (nuevaEntidad.getNombre().matches("^[a-zA-Z]+[0-9]*$")){
-            // FALTA, tienen que confirmar si va en el Frontend o Backend
-        }
-
-        String consultaSQL = "{ CALL pa_registrarCategoriaProducto(?) }";
+    String consultaSQL = "{ CALL pa_registrarCategoriaProducto(?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL);){
+            SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL);){
 
-            comando.setString(1, nuevaEntidad.getNombre());
+        comando.setString(1, nuevaEntidad.getNombre());
 
-            comando.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        comando.executeUpdate();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }*/
 
-    }
-
-    @Override
-    public CategoriaProducto leer(String condicionLeer) {
-        return null;
-    }
-
-    @Override
-    public void eliminar(CategoriaProducto eliminadoEntidad) {
-
-    }
-
-    @Override
-    public void actualizar(CategoriaProducto actualizadoEntidad) {
-
-    }
-
-    @Override
-    public ArrayList<CategoriaProducto> listar() {
-        return null;
-    }
 }
