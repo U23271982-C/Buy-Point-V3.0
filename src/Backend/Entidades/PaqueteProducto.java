@@ -52,6 +52,14 @@ public class PaqueteProducto extends Entidad {
         this.caducado = caducado;
     }
 
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
     //#endregion
 
 }
