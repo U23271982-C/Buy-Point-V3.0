@@ -1,7 +1,5 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -1,9 +1,6 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class PaqueteProducto extends Entidad {
     private int idPaqueteProducto;

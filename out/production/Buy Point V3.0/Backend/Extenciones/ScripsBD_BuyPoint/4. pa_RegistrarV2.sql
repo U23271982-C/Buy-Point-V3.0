@@ -93,7 +93,8 @@ GO
 
 CREATE OR ALTER PROCEDURE pa_registrarCodigo(
 @codigo VARCHAR(30),
-@id_producto INT
+@nombreproducto VARCHAR(30)
+--@id_producto INT
 )
 AS
 BEGIN
@@ -103,7 +104,11 @@ BEGIN
 							)
 			VALUES	(
 					@codigo,
-					@id_producto
+						(
+							SELECT ID_Producto
+							FROM Producto
+							WHERE NombreProducto = @nombreproducto
+						)
 					)
 	END TRY
 	BEGIN CATCH
@@ -254,14 +259,17 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE pa_registrarPaqueteProducto(
+CREATE OR ALTER PROCEDURE paT_registrarPaqueteProducto(
 @cantidad INT,
 @fechacaducidad DATE,
-@id_producto INT
+@codigo VARCHAR(30)--@id_producto INT
 )
 AS
 BEGIN
+	BEGIN TRANSACTION
 	BEGIN TRY
+		DECLARE @id_prod INT = dbo.fn_extraerID_Producto_CodigoBarras (@codigo);
+
 		INSERT INTO PaqueteProducto(
 							Cantidad,
 							FechaCaducidad,
@@ -270,10 +278,18 @@ BEGIN
 			VALUES	(
 					@cantidad,
 					@fechacaducidad,
-					@id_producto
+					@id_prod
 					)
+		UPDATE Inventario
+		SET	Stock = Stock+@cantidad
+		WHERE ID_Inventario = @id_prod
+
+		COMMIT TRANSACTION;
 	END TRY
 	BEGIN CATCH
+		IF XACT_STATE() <> 0 BEGIN
+			ROLLBACK TRANSACTION;
+		END
 		PRINT 'ERROR EN pa_registrarPaqueteProducto'
 		PRINT ERROR_MESSAGE()
 	END CATCH
@@ -476,36 +492,6 @@ BEGIN
 								@id_depa,
 								@id_cuen,
 								@identificacion;
-
-	COMMIT TRANSACTION;
-		END TRY
-		BEGIN CATCH
-			IF XACT_STATE() <> 0 BEGIN
-				ROLLBACK TRANSACTION;
-			END
-
-			PRINT 'Ocurrió un error. La transacción ha sido revertida.';
-			PRINT 'Mensaje de error' + ERROR_MESSAGE();
-			PRINT 'Gravedad del error' + CAST(ERROR_SEVERITY() AS NVARCHAR(10));
-			PRINT 'Estado del error' + CAST(ERROR_STATE() AS NVARCHAR(10));
-		END CATCH
-END
-GO
-CREATE OR ALTER PROCEDURE paT_registrarCodigoCompuesto(
-@codigo VARCHAR(30),
-@nombreproducto VARCHAR(30)
-)
-AS
-BEGIN
-	BEGIN TRANSACTION
-		BEGIN TRY
-			DECLARE @id_prod INT;
-
-			SELECT @id_prod = ID_Producto
-			FROM Producto
-			WHERE NombreProducto = @nombreproducto;
-
-			EXEC pa_registrarCodigo @codigo, @id_prod
 
 	COMMIT TRANSACTION;
 		END TRY

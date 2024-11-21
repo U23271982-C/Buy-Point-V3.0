@@ -1,9 +1,8 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.GestorSQLServer;
+import Backend.Gestores.GestorSQLServer;
 import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.Codigo;
-import Backend.Entidades.Entidad;
 
 import javax.swing.*;
 import java.sql.CallableStatement;

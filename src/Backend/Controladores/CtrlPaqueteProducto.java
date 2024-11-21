@@ -1,8 +1,7 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.GestorSQLServer;
+import Backend.Gestores.GestorSQLServer;
 import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.Entidad;
 import Backend.Entidades.PaqueteProducto;
 
 import javax.swing.*;

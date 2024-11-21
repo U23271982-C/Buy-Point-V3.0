@@ -43,3 +43,7 @@ QuinceavoAvanceBK:
     - CR de Producto
     - C de Codigo
     - C PaqueteProducto
+DieciseisavoAvanceBK:
+    - Creado carpeta Gestores
+    - Creado interfaz GestorCadenas
+    - C CategoriaProducto

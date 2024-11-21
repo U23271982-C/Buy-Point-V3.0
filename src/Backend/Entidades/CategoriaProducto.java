@@ -4,8 +4,6 @@
  */
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 /**
  *
  * @author ISRAEL

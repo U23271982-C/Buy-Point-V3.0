@@ -1,12 +1,11 @@
-package Backend.ConexionBD;
+package Backend.Gestores;
 
+import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.Entidad;
 
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public interface GestorSQLServer <T extends Entidad>{
 

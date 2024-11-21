@@ -40,4 +40,6 @@ CartoceavoAvanceBK:
     - CRUD implementado CredencialesTienda
     - Cargando Scrips de nueva BD(V2)
 QuinceavoAvanceBK:
-    -
+    - CR de Producto
+    - C de Codigo
+    - C PaqueteProducto
