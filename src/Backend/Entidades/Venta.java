@@ -3,6 +3,7 @@ package Backend.Entidades;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Venta extends Entidad {
     private int idVenta;
@@ -13,8 +14,10 @@ public class Venta extends Entidad {
 
     Cliente cliente;
     Comprobante comprobante;
+    ArrayList<DetalleVenta> detallesVenta;
 
     public Venta() {
+        this.detallesVenta = new ArrayList<>();
     }
 
     //#region Getters and Setters
@@ -58,6 +61,31 @@ public class Venta extends Entidad {
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Comprobante getComprobante() {
+        return comprobante;
+    }
+
+    public void setComprobante(Comprobante comprobante) {
+        this.comprobante = comprobante;
+    }
+
+    public ArrayList<DetalleVenta> getDetallesVenta() {
+        return detallesVenta;
+    }
+
+    public void setDetallesVenta(ArrayList<DetalleVenta> detallesVenta) {
+        this.detallesVenta = detallesVenta;
+    }
+
 
     //#endregion
 

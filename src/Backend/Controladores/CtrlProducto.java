@@ -45,16 +45,17 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
             }
         }
 
-
         @Override
         public Producto leer(Producto leerEntidad) {
             Producto producto = null;
             String consultaSQL = "{ CALL pa_leerProducto(?) }";
 
             try (CallableStatement comando =
-                         SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+                         SQLServerBD.instanciaConexcion()
+                                 .conectar().prepareCall(consultaSQL)){
 
-                comando.setString(1, leerEntidad.getCodigo().getCodigo());
+                comando.setString(1,
+                        leerEntidad.getCodigo().getCodigo());
 
                 ResultSet filas = comando.executeQuery();
                 if (filas.next()) {
