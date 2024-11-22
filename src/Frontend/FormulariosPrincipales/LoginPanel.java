@@ -1,5 +1,5 @@
 
-package Frontend;
+package Frontend.FormulariosPrincipales;
 
 //import Backend.Controlador;
 //import Backend.CredencialesUsuario;

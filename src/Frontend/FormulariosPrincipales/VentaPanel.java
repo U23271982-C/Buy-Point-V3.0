@@ -1,5 +1,7 @@
-package Frontend;
+package Frontend.FormulariosPrincipales;
 
+import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
+import Frontend.FormulariosPrincipales.InventarioPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -8,14 +10,14 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-public final class InventarioPanel extends javax.swing.JFrame {
+public final class VentaPanel extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
-        inventario = new javax.swing.JPanel();
+        venta = new javax.swing.JPanel();
         Encabezado = new javax.swing.JPanel();
         PanelX = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
@@ -24,10 +26,10 @@ public final class InventarioPanel extends javax.swing.JFrame {
         PanelMini = new javax.swing.JPanel();
         Minimizar = new javax.swing.JSeparator();
         iconoUsuario = new javax.swing.JLabel();
-        Producto = new javax.swing.JLabel();
-        Filtrar = new javax.swing.JLabel();
-        Categoria = new javax.swing.JLabel();
-        AgregarProducto = new javax.swing.JLabel();
+        Lupa = new javax.swing.JLabel();
+        DetalleVenta = new javax.swing.JLabel();
+        Buscador = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         PanelOp = new javax.swing.JPanel();
         panelOpciones = new javax.swing.JPanel();
         Inventario = new javax.swing.JLabel();
@@ -43,16 +45,13 @@ public final class InventarioPanel extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
 
-        inventario.setBackground(new java.awt.Color(255, 255, 255));
-        inventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        inventario.setName("inventario"); // NOI18N
-        inventario.setPreferredSize(new java.awt.Dimension(1176, 486));
-        inventario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inventarioMouseClicked(evt);
-            }
+        venta.setBackground(new java.awt.Color(255, 255, 255));
+        venta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        venta.setName("venta"); // NOI18N
+        venta.setPreferredSize(new java.awt.Dimension(1176, 486));
+        venta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                inventarioMouseEntered(evt);
+                ventaMouseEntered(evt);
             }
         });
 
@@ -69,6 +68,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
         });
 
         PanelX.setBackground(new java.awt.Color(255, 255, 255));
+        PanelX.setForeground(new java.awt.Color(0, 0, 0));
         PanelX.setPreferredSize(new java.awt.Dimension(36, 36));
         PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,7 +90,6 @@ public final class InventarioPanel extends javax.swing.JFrame {
         PanelX.add(X, new java.awt.GridBagConstraints());
 
         PanelMax.setBackground(new java.awt.Color(255, 255, 255));
-        PanelMax.setForeground(new java.awt.Color(0, 0, 0));
         PanelMax.setPreferredSize(new java.awt.Dimension(36, 36));
         PanelMax.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -158,55 +157,56 @@ public final class InventarioPanel extends javax.swing.JFrame {
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EncabezadoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EncabezadoLayout.createSequentialGroup()
-                        .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(EncabezadoLayout.createSequentialGroup()
+                        .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(EncabezadoLayout.createSequentialGroup()
                         .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EncabezadoLayout.createSequentialGroup()
-                        .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         EncabezadoLayout.setVerticalGroup(
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EncabezadoLayout.createSequentialGroup()
-                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelX, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(PanelMax, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(PanelMini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        Producto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Producto.setForeground(new java.awt.Color(0, 0, 0));
-        Producto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Producto.setText("Producto");
-        Producto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
+        Lupa.setText("jLabel3");
 
-        Filtrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Filtrar.setForeground(new java.awt.Color(0, 0, 0));
-        Filtrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Filtrar.setText("Filtrar");
-        Filtrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        DetalleVenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Categoria.setForeground(new java.awt.Color(0, 0, 0));
-        Categoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Categoria.setText("Categoria");
-        Categoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        AgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
-        AgregarProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AgregarProducto.setText("Agregar Producto");
-        AgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        AgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgregarProductoMouseClicked(evt);
+        Buscador.setBackground(new java.awt.Color(255, 255, 255));
+        Buscador.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        Buscador.setForeground(new java.awt.Color(102, 102, 102));
+        Buscador.setText("   Buscar");
+        Buscador.setBorder(null);
+        Buscador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BuscadorMousePressed(evt);
             }
         });
+        Buscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscadorActionPerformed(evt);
+            }
+        });
+        Buscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BuscadorKeyPressed(evt);
+            }
+        });
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         PanelOp.setBackground(new java.awt.Color(255, 255, 255));
         PanelOp.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -281,66 +281,64 @@ public final class InventarioPanel extends javax.swing.JFrame {
 
         PanelOp.add(panelOpciones, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout inventarioLayout = new javax.swing.GroupLayout(inventario);
-        inventario.setLayout(inventarioLayout);
-        inventarioLayout.setHorizontalGroup(
-            inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(inventarioLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114)
-                .addComponent(Filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
-                .addComponent(Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155)
-                .addComponent(AgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventarioLayout.createSequentialGroup()
+        javax.swing.GroupLayout ventaLayout = new javax.swing.GroupLayout(venta);
+        venta.setLayout(ventaLayout);
+        ventaLayout.setHorizontalGroup(
+            ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(ventaLayout.createSequentialGroup()
+                .addGroup(ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ventaLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(Lupa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ventaLayout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(DetalleVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(ventaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        inventarioLayout.setVerticalGroup(
-            inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inventarioLayout.createSequentialGroup()
+        ventaLayout.setVerticalGroup(
+            ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventaLayout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 474, Short.MAX_VALUE)
-                .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGroup(ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ventaLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(DetalleVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ventaLayout.createSequentialGroup()
+                        .addGroup(ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Lupa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)))
+                .addGap(68, 68, 68)
+                .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inventario, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
+            .addComponent(venta, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(inventario, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(venta, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+   
     //region Movimiento de Windo
     int xMouse, yMouse;
-    private void EncabezadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EncabezadoMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_EncabezadoMousePressed
-
     private void EncabezadoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EncabezadoMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
@@ -405,6 +403,10 @@ public final class InventarioPanel extends javax.swing.JFrame {
         RV.toFront();
     }//GEN-LAST:event_RegistroVentasMouseClicked
 
+    private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
+        Buscador.setText("");
+    }//GEN-LAST:event_BuscadorActionPerformed
+
     private void PanelMaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseClicked
         setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_PanelMaxMouseClicked
@@ -413,8 +415,12 @@ public final class InventarioPanel extends javax.swing.JFrame {
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_PanelMiniMouseClicked
 
+    private void BuscadorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorMousePressed
+        Buscador.setText("");
+    }//GEN-LAST:event_BuscadorMousePressed
+
     private void MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseClicked
-        this.setExtendedState(MAXIMIZED_BOTH);
+        setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_MaximizarMouseClicked
 
     private void MaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MaximizarMouseEntered
@@ -425,28 +431,26 @@ public final class InventarioPanel extends javax.swing.JFrame {
         PanelMax.setBackground(Color.WHITE);
     }//GEN-LAST:event_MaximizarMouseExited
 
-    //PARTE INUTIL  
-    private void inventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioMouseClicked
-        VistaProducto VP = new VistaProducto();
-        VP.setVisible(true);
-    }//GEN-LAST:event_inventarioMouseClicked
+    private void BuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyPressed
 
-    private void AgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarProductoMouseClicked
-        ActualizarProducto ap = new ActualizarProducto();
-        ap.setVisible(true);
-        ap.toFront();
-    }//GEN-LAST:event_AgregarProductoMouseClicked
+    }//GEN-LAST:event_BuscadorKeyPressed
+    
+    private void EncabezadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EncabezadoMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+
+    }//GEN-LAST:event_EncabezadoMousePressed
 
     private void PanelOpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelOpMouseEntered
         Agranda(panelOpciones, 1, 2, 62);
     }//GEN-LAST:event_PanelOpMouseEntered
 
-    private void inventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioMouseEntered
+    private void ventaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaMouseEntered
         Disminuye(panelOpciones, 1, 2, 0);
-    }//GEN-LAST:event_inventarioMouseEntered
-    //end
+    }//GEN-LAST:event_ventaMouseEntered
+                                  
     
-    public InventarioPanel(){
+    public VentaPanel(){
        initComponents();
        setLocationRelativeTo(null);
        this.tamañoimagen(iconoUsuario, "/img/usermenu.png");
@@ -454,8 +458,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
        this.tamañoimagen(Menu, "/img/menu.png");
        this.tamañoimagen(Venta, "/img/venta.png");
        this.tamañoimagen(RegistroVentas, "/img/registroventas.png");
-       //this.tamañoimagen(agregarJLabel, "/img/agregar_producto1.png");
-
+       this.tamañoimagen(Lupa, "/img/lupa.png");
     }
     
     public void tamañoimagen(JLabel label, String ruta){
@@ -505,17 +508,17 @@ public final class InventarioPanel extends javax.swing.JFrame {
     public static void main(String args[]) {
           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InventarioPanel().setVisible(true);
+                new VentaPanel().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AgregarProducto;
-    private javax.swing.JLabel Categoria;
+    private javax.swing.JTextField Buscador;
+    private javax.swing.JLabel DetalleVenta;
     private javax.swing.JPanel Encabezado;
-    private javax.swing.JLabel Filtrar;
     private javax.swing.JLabel Inventario;
+    private javax.swing.JLabel Lupa;
     private javax.swing.JLabel Maximizar;
     private javax.swing.JLabel Menu;
     private javax.swing.JSeparator Minimizar;
@@ -523,14 +526,14 @@ public final class InventarioPanel extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMini;
     private javax.swing.JPanel PanelOp;
     private javax.swing.JPanel PanelX;
-    private javax.swing.JLabel Producto;
     private javax.swing.JLabel RegistroVentas;
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
-    private javax.swing.JPanel inventario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelOpciones;
+    private javax.swing.JPanel venta;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -1,5 +1,6 @@
-package Frontend;
+package Frontend.FormulariosPrincipales;
 
+import Frontend.FormulariosPrincipales.InventarioPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;

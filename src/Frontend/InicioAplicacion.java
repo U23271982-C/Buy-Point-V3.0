@@ -1,6 +1,7 @@
 
 package Frontend;
 
+import Frontend.FormulariosPrincipales.LoginPanel;
 import static Frontend.LogoCarga.progressBar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
