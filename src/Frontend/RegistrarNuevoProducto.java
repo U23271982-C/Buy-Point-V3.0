@@ -47,8 +47,6 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         NombreJLabel.setForeground(new java.awt.Color(0, 0, 0));
         NombreJLabel.setText(" Nombre");
 
-        NombreTxt.setText("jTextField1");
-
         DescriptionJLabel.setForeground(new java.awt.Color(0, 0, 0));
         DescriptionJLabel.setText(" Descripción ");
 
@@ -113,7 +111,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ImagenJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
