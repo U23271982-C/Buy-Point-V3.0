@@ -1,7 +1,5 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 public class Cliente extends Entidad {
 
     private int idCliente;

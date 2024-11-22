@@ -1,24 +1,15 @@
 
 package Backend.Controladores;
 
-    import Backend.ConexionBD.GestorSQLServer;
+    import Backend.Gestores.GestorSQLServer;
     import Backend.ConexionBD.SQLServerBD;
     import Backend.Entidades.*;
 
     import javax.swing.*;
-    import java.io.InputStream;
-    import java.io.Reader;
-    import java.math.BigDecimal;
-    import java.net.URL;
     import java.sql.*;
-    import java.time.LocalDate;
     import java.util.ArrayList;
-    import java.util.Calendar;
-    import java.util.Date;
-    import java.util.Map;
 
-    import static Backend.ConexionBD.SQLServerBD.instanciaConexcion;
-    public class CtrlProducto implements GestorSQLServer<Producto> {
+public class CtrlProducto implements GestorSQLServer<Producto> {
         @Override
         public void registrar(Producto nuevaEntidad) {
             String consultaSQL = "{ CALL paT_registrarProductoCompuesto(?, ?, ?, ?, ?, ?, ?, ?, ?) }";

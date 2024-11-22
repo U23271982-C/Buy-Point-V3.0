@@ -1,12 +1,11 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.GestorSQLServer;
+import Backend.Gestores.GestorSQLServer;
 import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.CredencialesTienda;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,7 +44,8 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
         String consultaSQL = "{ CALL pa_leerCredencialesUsuario(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+                     SQLServerBD.instanciaConexcion().conectar()
+                             .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getUsuario());
             comando.setString(2, leerEntidad.getContrasenna());

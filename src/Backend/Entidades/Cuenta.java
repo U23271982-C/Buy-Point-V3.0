@@ -1,7 +1,5 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 public class Cuenta extends Entidad {
     private int idCuenta;
     private String nombre;

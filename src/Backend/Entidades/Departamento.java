@@ -1,7 +1,5 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 public class Departamento extends Entidad {
     private int idDepartamento;
     private short Torre;

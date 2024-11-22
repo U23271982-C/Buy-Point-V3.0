@@ -1,7 +1,5 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 public class Codigo extends Entidad {
     private int idCodigo;
     private String codigo;
@@ -30,6 +28,14 @@ public class Codigo extends Entidad {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     //#endregion

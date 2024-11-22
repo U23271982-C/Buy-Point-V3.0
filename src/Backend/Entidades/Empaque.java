@@ -1,7 +1,5 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 public class Empaque extends Entidad {
     private int idEmpaque;
     private String TipoEmpaque;

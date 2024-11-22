@@ -1,7 +1,5 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 public class Comprobante extends Entidad {
     private int idComprobante;
     private String comprobante;

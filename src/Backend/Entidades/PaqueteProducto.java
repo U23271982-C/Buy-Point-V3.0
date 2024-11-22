@@ -1,9 +1,6 @@
 package Backend.Entidades;
 
-import Backend.ConexionBD.GestorSQLServer;
-
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class PaqueteProducto extends Entidad {
     private int idPaqueteProducto;
@@ -50,6 +47,14 @@ public class PaqueteProducto extends Entidad {
 
     public void setCaducado(boolean caducado) {
         this.caducado = caducado;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     //#endregion
