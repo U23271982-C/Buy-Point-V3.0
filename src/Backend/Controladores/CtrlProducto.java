@@ -16,32 +16,59 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
 
     @Override
         public void registrar(Producto nuevaEntidad) {
-            String consultaSQL = "{ CALL paT_registrarProductoCompuesto(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
+            String consultaSQL =
+                    "{ CALL paT_registrarProductoCompuesto(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
 
-            try (CallableStatement comando =
-                         SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+            try (CallableStatement comando = SQLServerBD.instanciaConexcion()
+                    .conectar().prepareCall(consultaSQL)){
 
-                comando.setString(1,nuevaEntidad.getCodigo().getCodigo());
-                comando.setInt(2,nuevaEntidad.getPaqueteProducto().getCantidad());
-                comando.setDate(3,java.sql.Date.valueOf
-                        (nuevaEntidad.getPaqueteProducto().getFechaCaducidad()));
-                comando.setString(4, nuevaEntidad.getNombreProducto());
-                comando.setString(5,nuevaEntidad.getDescripcion());
-                comando.setString(6,nuevaEntidad.getEmpaque().getTipoEmpaque());
-                comando.setString(7,nuevaEntidad.getCategoriaProducto().getNombre());
-                comando.setBigDecimal(8,nuevaEntidad.getInventario().getPrecio());
-                comando.setBigDecimal(9, nuevaEntidad.getInventario().getPrecioCosto());
+                comando.setString
+                        (1,
+                                nuevaEntidad.getCodigo().getCodigo());
+                comando.setInt
+                        (2,
+                                nuevaEntidad.getPaqueteProducto()
+                                        .getCantidad());
+                comando.setDate
+                        (3,java.sql.Date.valueOf
+                                (nuevaEntidad.getPaqueteProducto()
+                                .getFechaCaducidad()));
+                comando.setString
+                        (4,nuevaEntidad
+                                .
+                                getNombreProducto());
+                comando.setString
+                        (5,nuevaEntidad.getDescripcion());
+                comando.setString
+                        (6,nuevaEntidad.getEmpaque()
+                                .getTipoEmpaque());
+                comando.setString
+                        (7,nuevaEntidad
+                                .getCategoriaProducto().getNombre());
+                comando.setBigDecimal
+                        (8,nuevaEntidad.getInventario()
+                                .getPrecio());
+                comando.setBigDecimal
+                        (9, nuevaEntidad.getInventario()
+                                .getPrecioCosto());
 
                 comando.executeQuery();
-                System.out.printf("Se registró el producto: %s", nuevaEntidad.getNombreProducto());
-                JOptionPane.showMessageDialog(null, String.format
-                        ("Se registró el producto: %s", nuevaEntidad.getNombreProducto()));
+                String aviso = String.format
+                        ("Se registró el Producto: %s",
+                                nuevaEntidad.getNombreProducto());
+                System.out.println(aviso);
+                JOptionPane.showMessageDialog(null,
+                        String.format
+                        ("Se registró el producto: %s",
+                                nuevaEntidad.getNombreProducto()));
 
             } catch (SQLException e) {
                 //throw new RuntimeException(e);
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, String.format
-                        ("ERROR al registrar el producto: %s", nuevaEntidad.getNombreProducto()));
+                JOptionPane.showMessageDialog
+                        (null, String.format
+                        ("ERROR al registrar el producto: %s",
+                                nuevaEntidad.getNombreProducto()));
             }
         }
 
@@ -60,13 +87,25 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                 ResultSet filas = comando.executeQuery();
                 if (filas.next()) {
                     producto = new Producto();
-                            producto.setNombreProducto(filas.getString(1));
-                            producto.setDescripcion(filas.getString(2));
-                            producto.getCategoriaProducto().setNombre(filas.getString(3));
-                            producto.getEmpaque().setTipoEmpaque(filas.getString(4));
-                            producto.setPrecio(filas.getBigDecimal(5));
-                            producto.getInventario().setPrecioCosto(filas.getBigDecimal(6));
-                            producto.getInventario().setStock(filas.getInt(7));
+                            producto.setNombreProducto
+                                    (filas.getString(1));
+                            producto.setDescripcion
+                                    (filas.getString(2));
+                            producto.getCategoriaProducto()
+                                    .setNombre(filas
+                                            .getString(3));
+                            producto.getEmpaque()
+                                    .setTipoEmpaque(filas
+                                            .getString(4));
+                            producto.setPrecio
+                                    (filas.getBigDecimal(5));
+                            producto.getInventario()
+                                    .setPrecioCosto(filas
+                                            .getBigDecimal
+                                                    (6));
+                            producto.getInventario()
+                                    .setStock(filas
+                                            .getInt(7));
                 }//else {
                 //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
                 //}

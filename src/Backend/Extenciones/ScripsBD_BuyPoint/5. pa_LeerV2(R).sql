@@ -1,6 +1,6 @@
 USE BD_BuyPoint
 GO
-CREATE OR ALTER PROCEDURE pa_leerCredencialesUsuario(
+CREATE OR ALTER PROCEDURE pa_leerCredencialesTienda(
 @usuario VARCHAR(10),
 @contrasenna VARCHAR(10)
 )
