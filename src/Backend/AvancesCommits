@@ -48,3 +48,9 @@ DieciseisavoAvanceBK:
     - Creado interfaz GestorCadenas
     - C CategoriaProducto
     - C Cliente
+DiecisieteavoAvanceBk:
+    - C Comprobante
+    - C Cuenta
+    - C Departamento
+    - C TipoPago
+    - C Empaque

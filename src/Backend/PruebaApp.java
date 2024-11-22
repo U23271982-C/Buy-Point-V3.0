@@ -1,10 +1,11 @@
 package Backend;
 
+import Backend.Controladores.CtrlCliente;
 import Backend.Entidades.CredencialesTienda;
 
 public class PruebaApp {
     public static void main(String[] args) {
-        CredencialesTienda credencialesUsuario = new CredencialesTienda();
+        /*CredencialesTienda credencialesUsuario = new CredencialesTienda();
         credencialesUsuario.setUsuario("user_Israel");
         credencialesUsuario.setContrasenna("123456");
         credencialesUsuario.setNombre("Israel");
@@ -16,5 +17,7 @@ public class PruebaApp {
         System.out.println("SELECT Usuario, Constrasenna\n" +
                 "FROM CredencialesTienda\n" +
                 "WHERE Usuario = 'USER1' AND Constrasenna = '123'");
+*/
+
     }
 }

@@ -27,6 +27,15 @@ public class Comprobante extends Entidad {
         this.comprobante = comprobante;
     }
 
+    public TipoPago getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(TipoPago tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+
+
     //#endregion
 
 }

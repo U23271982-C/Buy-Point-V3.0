@@ -15,27 +15,44 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
 
     @Override
     public void registrar(Cliente nuevaEntidad) {
-        String consultaSQL = "{ CALL paT_registrarClienteCompuesto(?, ?, ?, ?, ?, ?) }";
+        String consultaSQL =
+                "{ CALL paT_registrarClienteCompuesto" +
+                        "(?, ?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+                     SQLServerBD.instanciaConexcion()
+                             .conectar().prepareCall(consultaSQL)){
 
-            comando.setString(1,nuevaEntidad.getCliente());
-            comando.setString(2,nuevaEntidad.getCliente());
-            comando.setInt(3,nuevaEntidad.getDepartamento().getTorre());
-            comando.setInt(4,nuevaEntidad.getDepartamento().getDepartamento());
-            comando.setString(5,nuevaEntidad.getCuenta().getNombre());
-            comando.setString(6,nuevaEntidad.getCuenta().getApellido());
+            comando.setString
+                    (1,nuevaEntidad.getCliente());
+            comando.setString
+                    (2,nuevaEntidad.getCliente());
+            comando.setInt
+                    (3,nuevaEntidad.getDepartamento()
+                            .getTorre());
+            comando.setInt
+                    (4,nuevaEntidad.getDepartamento()
+                            .getDepartamento());
+            comando.setString
+                    (5,nuevaEntidad.getCuenta()
+                            .getNombre());
+            comando.setString
+                    (6,nuevaEntidad.getCuenta()
+                            .getApellido());
 
             comando.executeQuery();
-            System.out.printf("Se registró el producto: %s", nuevaEntidad.getCliente());
-            JOptionPane.showMessageDialog(null, String.format
-                    ("Se registró el CLiente"));
+            System.out.printf("Se registró el producto: %s",
+                    nuevaEntidad.getCliente());
+            JOptionPane.showMessageDialog(null,
+                    String.format
+                            ("Se registró el Cliente %s",
+                                    nuevaEntidad.getCliente()));
 
         } catch (SQLException e) {
             //throw new RuntimeException(e);
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, String.format
+            JOptionPane.showMessageDialog(null,
+                    String.format
                     ("ERROR al registrar el cliente"));
         }
     }

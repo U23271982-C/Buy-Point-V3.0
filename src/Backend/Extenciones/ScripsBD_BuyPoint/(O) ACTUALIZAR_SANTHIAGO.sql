@@ -132,3 +132,36 @@ BEGIN
 		END CATCH
 END
 GO
+
+CREATE OR ALTER PROCEDURE paT_registrarComprobanteCompuesto(
+@comprobante VARCHAR(20),
+@tipopago VARCHAR(20)
+)
+AS
+BEGIN
+	BEGIN TRANSACTION
+		BEGIN TRY
+			DECLARE @id_tipopago INT;
+
+			SELECT @id_tipopago = ID_TipoPago
+			FROM TipoPago
+			WHERE TipoPago = @tipopago
+
+			EXEC pa_registrarComprobante
+										@comprobante,
+										@id_tipopago;
+			
+	COMMIT TRANSACTION;
+		END TRY
+		BEGIN CATCH
+			IF XACT_STATE() <> 0 BEGIN
+				ROLLBACK TRANSACTION;
+			END
+
+			PRINT 'Ocurrió un error. La transacción ha sido revertida.';
+			PRINT 'Mensaje de error' + ERROR_MESSAGE();
+			PRINT 'Gravedad del error' + CAST(ERROR_SEVERITY() AS NVARCHAR(10));
+			PRINT 'Estado del error' + CAST(ERROR_STATE() AS NVARCHAR(10));
+		END CATCH
+END
+GO
