@@ -41,7 +41,7 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
     @Override
     public CredencialesTienda leer(CredencialesTienda leerEntidad) {
         CredencialesTienda credencialesUsuario = null;
-        String consultaSQL = "{ CALL pa_leerCredencialesUsuario(?, ?) }";
+        String consultaSQL = "{ CALL pa_leerCredencialesTienda(?, ?) }";
 
         try (CallableStatement comando =
                      SQLServerBD.instanciaConexcion().conectar()
@@ -76,10 +76,11 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
 
     @Override
     public void eliminar(CredencialesTienda eliminadoEntidad) {
-        String consultaSQL = "{ CALL pa_eliminarCredencialesUsuario(?, ?) }";
+        String consultaSQL = "{ CALL pa_eliminarCredencialesTienda(?, ?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)) {
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
 
             comando.setString(1, eliminadoEntidad.getUsuario());
             comando.setString(2, eliminadoEntidad.getContrasenna());
@@ -94,14 +95,22 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
 
     @Override
     public void actualizar(CredencialesTienda actualizadoEntidad) {
-        String consultaInsert = "{ CALL usp_ActualizarEmpleado( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }";
-        try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaInsert)) {
-            comando.setString(1,actualizadoEntidad.getUsuario());
-            comando.setString(2,actualizadoEntidad.getContrasenna());
-            comando.setString(3,actualizadoEntidad.getNombre());
-            comando.setString(4,actualizadoEntidad.getDireccion());
-            comando.setString(5,actualizadoEntidad.getCorreoElectronico());
+        String consultaInsert =
+                "{ CALL pa_actualizarCredencialesTienda( ?,?,?,?,?,?) }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consultaInsert)) {
+
+            comando.setString(1,
+                    actualizadoEntidad.getUsuario());
+            comando.setString(2,
+                    actualizadoEntidad.getContrasenna());
+            comando.setString(3,
+                    actualizadoEntidad.getNombre());
+            comando.setString(4,
+                    actualizadoEntidad.getDireccion());
+            comando.setString(5,
+                    actualizadoEntidad.getCorreoElectronico());
 
             comando.executeQuery();
             System.out.println("Se realizó la lectura");
@@ -117,9 +126,10 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
     @Override
     public ArrayList<CredencialesTienda> listar() {
         ArrayList<CredencialesTienda> credencialesTienda = new ArrayList<>();
-        String consultaInsert = "{ CALL usp_listarEmpleado() }";
-        try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaInsert)) {
+        String consulta = "{ CALL pa_listarCredencialesTienda() }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                            .conectar().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
 
