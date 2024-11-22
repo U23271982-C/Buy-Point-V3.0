@@ -11,14 +11,6 @@ public class Cliente extends Entidad {
 
     //#region Getters and Setters
 
-    public String getIdentificacion() {
-        return identificacion;
-    }
-
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-    }
-
     public int getIdCliente() {
         return idCliente;
     }
@@ -34,6 +26,31 @@ public class Cliente extends Entidad {
     public void setCliente(String cliente) {
         this.cliente = cliente;
     }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
 
     //#endregion
     

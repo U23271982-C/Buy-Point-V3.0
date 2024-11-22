@@ -487,12 +487,20 @@ BEGIN
 			FROM Cuenta
 			WHERE Nombre = @nombre AND Apellido = @apellido
 
+			IF (@cliente IS NULL AND
+				@id_depa IS NULL AND
+				@id_cuen IS NULL AND
+				@identificacion IS NULL) BEGIN
+
+					RAISERROR (' Al menos una columna debe tener un valor distinto de NULL.', 16, 1);
+					RETURN;
+			END
 			EXEC pa_registrarCliente 
 								@cliente,
 								@id_depa,
 								@id_cuen,
 								@identificacion;
-
+			
 	COMMIT TRANSACTION;
 		END TRY
 		BEGIN CATCH
