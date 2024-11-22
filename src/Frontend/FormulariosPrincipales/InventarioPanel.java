@@ -10,6 +10,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+import Backend.Controladores.CtrlProducto;
+import Backend.Entidades.Producto;
+import Backend.Entidades.Codigo;
+import Frontend.RegistrarProductoOCodigo;
+import javax.swing.JOptionPane;
 
 public final class InventarioPanel extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
@@ -440,9 +445,9 @@ public final class InventarioPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_inventarioMouseClicked
 
     private void AgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarProductoMouseClicked
-        ActualizarProducto ap = new ActualizarProducto();
+        /*ActualizarProducto ap = new ActualizarProducto();
         ap.setVisible(true);
-        ap.toFront();
+        ap.toFront();*/
     }//GEN-LAST:event_AgregarProductoMouseClicked
 
     private void PanelOpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelOpMouseEntered
@@ -454,11 +459,29 @@ public final class InventarioPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_inventarioMouseEntered
 
     private void inventarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        StringBuilder codigoLeido = new StringBuilder();
+        char lecturaCodigo = evt.getKeyChar();
+        
+        if (lecturaCodigo == KeyEvent.VK_ENTER) {
+            CtrlProducto CP = new CtrlProducto();
+            String codigo1 = codigoLeido.toString();
+            
+            Producto P = new Producto();
+            Codigo C = new Codigo();
+            C.setCodigo(codigo1);
+            P.setCodigo(C);
+
+            if (CP.leer(P) != null) {
                 VistaProducto VP = new VistaProducto();
                 VP.setVisible(true);
-                VP.toFront();
+            } else{
+                JOptionPane.showConfirmDialog(null, "Producto no encontrado");
+                RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
+                RPOC.setVisible(true);
+            }
                         
+        }else{
+            codigoLeido.append(lecturaCodigo); 
         }
     }//GEN-LAST:event_inventarioKeyPressed
     //end
