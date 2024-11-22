@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CtrlCodigo implements GestorSQLServer<Codigo> {
+    public CtrlCodigo() {
+    }
+
     @Override
     public void registrar(Codigo nuevaEntidad) {
         String consultaSQL = "{ CALL pa_registrarCodigo(?, ?) }";

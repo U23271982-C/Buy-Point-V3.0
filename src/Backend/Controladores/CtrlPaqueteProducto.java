@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
+
+    public CtrlPaqueteProducto() {
+    }
+
     @Override
     public void registrar(PaqueteProducto nuevaEntidad) {
         String consultaSQL = "{ CALL pa_registrarPaqueteProducto(?, ?, ?) }";

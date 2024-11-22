@@ -18,4 +18,7 @@ public class ControladorApp {
     public static void funPanelInventario(){
 
     }
+
+    public ControladorApp() {
+    }
 }

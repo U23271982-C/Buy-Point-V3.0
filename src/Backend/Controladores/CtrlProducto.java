@@ -10,7 +10,11 @@ package Backend.Controladores;
     import java.util.ArrayList;
 
 public class CtrlProducto implements GestorSQLServer<Producto> {
-        @Override
+
+    public CtrlProducto() {
+    }
+
+    @Override
         public void registrar(Producto nuevaEntidad) {
             String consultaSQL = "{ CALL paT_registrarProductoCompuesto(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
 

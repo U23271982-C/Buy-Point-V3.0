@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>{
+    public CtrlCategoriaProducto() {
+    }
 
     @Override
     public void registrar(CategoriaProducto nuevaEntidad) {
