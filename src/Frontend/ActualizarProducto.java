@@ -231,6 +231,7 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantiTxtActionPerformed
 
     private void CantiTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantiTxtMouseClicked
+        CantiTxt.setText("");
         CantiTxt.setForeground(Color.BLACK);
         /*VistaProducto VP = new VistaProducto();
         CantiTxt.setText("");
@@ -323,6 +324,7 @@ public class ActualizarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_JlabelConfirmarMouseClicked
 
     private void FvTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FvTextMouseClicked
+        FvText.setText("");
         FvText.setForeground(Color.BLACK);
     }//GEN-LAST:event_FvTextMouseClicked
     

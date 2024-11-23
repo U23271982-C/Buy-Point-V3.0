@@ -353,9 +353,6 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         
         
         
-        //Obtener el codigo
-        
-        
         System.out.println(InventarioPanel.codigoBarras);
         System.out.println(74);
         
