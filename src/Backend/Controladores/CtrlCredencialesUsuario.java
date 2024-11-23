@@ -41,7 +41,7 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
     @Override
     public CredencialesTienda leer(CredencialesTienda leerEntidad) {
         CredencialesTienda credencialesUsuario = null;
-        String consultaSQL = "{ CALL pa_leerCredencialesTienda(?, ?) }";
+        String consultaSQL = "{ CALL pa_leerCredencialesUsuario(?, ?) }";
 
         try (CallableStatement comando =
                      SQLServerBD.instanciaConexcion().conectar()

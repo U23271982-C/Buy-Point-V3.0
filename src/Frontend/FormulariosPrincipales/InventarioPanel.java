@@ -442,6 +442,8 @@ public final class InventarioPanel extends javax.swing.JFrame {
     private void inventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioMouseClicked
         /*VistaProducto VP = new VistaProducto();
         VP.setVisible(true);*/
+        this.codigoLeido.setLength(0);
+        this.codigoBarras = "";
     }//GEN-LAST:event_inventarioMouseClicked
 
     private void AgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarProductoMouseClicked
@@ -457,19 +459,22 @@ public final class InventarioPanel extends javax.swing.JFrame {
     private void inventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioMouseEntered
         Disminuye(panelOpciones, 1, 2, 0);
     }//GEN-LAST:event_inventarioMouseEntered
-
+    
+    public static String codigoBarras ;  
+    StringBuilder codigoLeido = new StringBuilder();
+    
     private void inventarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyPressed
-        StringBuilder codigoLeido = new StringBuilder();
         //codigoLeido.setLength(0);
         char lecturaCodigo = evt.getKeyChar();
         
         if (lecturaCodigo == KeyEvent.VK_ENTER) {
             CtrlProducto CP = new CtrlProducto();
-            String codigo1 = codigoLeido.toString();
+            
+            this.codigoBarras = codigoLeido.toString();
             
             Producto P = new Producto();
             Codigo C = new Codigo();
-            C.setCodigo(codigo1);
+            C.setCodigo(codigoBarras);
             P.setCodigo(C);
             
             if (CP.leer(P) != null) {
@@ -481,11 +486,13 @@ public final class InventarioPanel extends javax.swing.JFrame {
                 RPOC.setVisible(true);
             }
                         
-        }else{
+        }
+        else{
             codigoLeido.append(lecturaCodigo); 
         }
     }//GEN-LAST:event_inventarioKeyPressed
-    //end
+    
+    
     
     public InventarioPanel(){
        initComponents();
@@ -497,6 +504,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
        this.tamañoimagen(RegistroVentas, "/img/registroventas.png");
        //this.tamañoimagen(agregarJLabel, "/img/agregar_producto1.png");
        inventario.setFocusable(true);
+       
 
     }
     
@@ -545,6 +553,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
     
     
     public static void main(String args[]) {
+        
           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InventarioPanel().setVisible(true);
