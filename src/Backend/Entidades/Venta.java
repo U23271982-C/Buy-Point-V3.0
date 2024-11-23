@@ -47,7 +47,8 @@ public class Venta extends Entidad {
     }
 
     public BigDecimal getSubTotal() {
-        return subTotal;
+        return detallesVenta.stream().map(DetalleVenta::getSubTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public void setSubTotal(BigDecimal subTotal) {
@@ -55,7 +56,9 @@ public class Venta extends Entidad {
     }
 
     public BigDecimal getTotal() {
-        return total;
+        return detallesVenta.stream().map(DetalleVenta::getTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
     }
 
     public void setTotal(BigDecimal total) {
@@ -88,5 +91,12 @@ public class Venta extends Entidad {
 
 
     //#endregion
+
+    public void agregarDetalleVenta(DetalleVenta nuevoDetalleVenta){
+        detallesVenta.add(nuevoDetalleVenta);
+    }
+    public void eliminarDetalleVenta(int indece){
+        detallesVenta.remove(indece);
+    }
 
 }

@@ -1,6 +1,10 @@
 package Backend.Entidades;
 
+import javax.swing.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DetalleVenta extends Entidad {
     private int idDetalleVenta;
@@ -8,6 +12,7 @@ public class DetalleVenta extends Entidad {
     private BigDecimal precioUnitario;
     private BigDecimal subTotal;
     private BigDecimal total;
+    final private Double IGV = 0.18;
 
     Venta venta;
     Producto producto;
@@ -34,7 +39,7 @@ public class DetalleVenta extends Entidad {
     }
 
     public BigDecimal getPrecioUnitario() {
-        return precioUnitario;
+        return getProducto().getPrecio();
     }
 
     public void setPrecioUnitario(BigDecimal precioUnitario) {
@@ -42,7 +47,8 @@ public class DetalleVenta extends Entidad {
     }
 
     public BigDecimal getSubTotal() {
-        return subTotal;
+        return (getPrecioUnitario().multiply(new BigDecimal
+                (getCantidad()))).setScale(1, RoundingMode.HALF_UP);
     }
 
     public void setSubTotal(BigDecimal subTotal) {
@@ -50,11 +56,41 @@ public class DetalleVenta extends Entidad {
     }
 
     public BigDecimal getTotal() {
-        return total;
+        return (getSubTotal().add(getSubTotal().multiply
+                (BigDecimal.valueOf(IGV)))).setScale
+                (1, RoundingMode.HALF_UP);
     }
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    public Venta getVenta() {
+        return venta;
+    }
+
+    public void setVenta(Venta venta) {
+        this.venta = venta;
+    }
+
+    public Producto getProducto() {
+        try {
+            if (producto.getCodigo().getCodigo()
+                    .equals(getProducto().getCodigo().getCodigo())) {
+                this.cantidad++;
+                return null;
+            }
+            return producto;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,
+                    "Error en ingresar un nuevo producto");
+            return null;
+        }
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     //#endregion

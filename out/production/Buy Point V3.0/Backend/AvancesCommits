@@ -43,3 +43,17 @@ QuinceavoAvanceBK:
     - CR de Producto
     - C de Codigo
     - C PaqueteProducto
+DieciseisavoAvanceBK:
+    - Creado carpeta Gestores
+    - Creado interfaz GestorCadenas
+    - C CategoriaProducto
+    - C Cliente
+DiecisieteavoAvanceBk:
+    - C Comprobante
+    - C Cuenta
+    - C Departamento
+    - C TipoPago
+    - C Empaque
+    - CRUD CredencialesTienda
+DieciochoavoAvanceBk:
+    -
