@@ -8,17 +8,13 @@ import Backend.Entidades.Entidad;
 * */
 public class ControladorApp {
     static String consultaSQL;
-
+    public ControladorApp() {
+    }
     //Inicar sesion de  BuyPoint
+
     public static boolean iniciarSesion
         (CtrlCredencialesUsuario ctrlCredencialesUsuario, CredencialesTienda credencialesUsuario){
         return ctrlCredencialesUsuario.leer(credencialesUsuario) != null;
     }
 
-    public static void funPanelInventario(){
-
-    }
-
-    public ControladorApp() {
-    }
 }
