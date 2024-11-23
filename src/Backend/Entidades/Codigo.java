@@ -40,4 +40,8 @@ public class Codigo extends Entidad {
 
     //#endregion
 
+    @Override
+    public String toString() {
+        return codigo;
+    }
 }

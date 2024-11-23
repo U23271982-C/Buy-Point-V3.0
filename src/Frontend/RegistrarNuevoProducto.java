@@ -4,9 +4,12 @@ package Frontend;
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
 import Backend.Entidades.Producto;
+import Frontend.FormulariosPrincipales.InventarioPanel;
+import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -263,11 +266,11 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
                 .addGroup(vistaproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FvJLabel)
                     .addComponent(PrecioProovedorJLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(vistaproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FvTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PrecioProovedorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(vistaproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PrecioProovedorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FvTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(vistaproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmpaqueJLabel)
                     .addComponent(CategoriaJLabel))
@@ -312,6 +315,8 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
 
     private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
         this.setVisible(false);
+        //InventarioPanel.codigoBarras = "";
+
     }//GEN-LAST:event_PanelXMouseClicked
 
     private void PanelXMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseEntered
@@ -339,6 +344,20 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantidadTxtActionPerformed
 
     private void ConfirmarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtonMouseClicked
+        NombreTxt.getText();
+        DescriptionTxt.getText();
+        FvTxt.getText();
+        CantidadTxt.getText();
+        BigDecimal precioVenta = new BigDecimal(PrecioVentaTxt.getText().trim());
+        BigDecimal precioProovedor = new BigDecimal(PrecioProovedorTxt.getText().trim());
+        
+        
+        
+        //Obtener el codigo
+        
+        
+        System.out.println(InventarioPanel.codigoBarras);
+        System.out.println(74);
         
     }//GEN-LAST:event_ConfirmarButtonMouseClicked
 
@@ -385,10 +404,6 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_PrecioVentaTxtKeyTyped
 
     public void BloquearCaracteres(JTextField text, char c, KeyEvent event){
-        /*if (!Character.isDigit(c)) {// Bloquear caracteres no numéricos
-                event.consume();
-                Toolkit.getDefaultToolkit().beep();
-            }*/
         if (Character.isDigit(c)) {
              return;
         } if (c == '.' && !text.getText().contains(".")) {
