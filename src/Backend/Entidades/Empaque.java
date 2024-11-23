@@ -27,4 +27,12 @@ public class Empaque extends Entidad {
 
     //#endregion
 
+
+    @Override
+    public String toString() {
+        return "Empaque{" +
+                "idEmpaque=" + idEmpaque +
+                ", TipoEmpaque='" + TipoEmpaque + '\'' +
+                '}';
+    }
 }

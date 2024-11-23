@@ -56,4 +56,9 @@ DiecisieteavoAvanceBk:
     - C Empaque
     - CRUD CredencialesTienda
 DieciochoavoAvanceBk:
-    -
+    - C para todas las entidades
+    - Todo listo para la venta
+DiecinueveAvanceBk:
+    - Creada la clase Filtro.
+    - Listar Empaque
+    - Listar Categoria Producto

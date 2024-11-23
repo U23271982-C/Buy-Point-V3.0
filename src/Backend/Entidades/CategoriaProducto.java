@@ -11,7 +11,6 @@ package Backend.Entidades;
 public class CategoriaProducto extends Entidad {
     private int idCategoriaProducto;
     private String nombre;
-    private String productos;
 
     public CategoriaProducto() {
     }
@@ -33,13 +32,14 @@ public class CategoriaProducto extends Entidad {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public String getProductos() {
-        return productos;
-    }
-
-    public void setProductos(String productos) {
-        this.productos = productos;
-    }
     //#endregion
+
+
+    @Override
+    public String toString() {
+        return "CategoriaProducto{" +
+                "idCategoriaProducto=" + idCategoriaProducto +
+                ", nombre='" + nombre + '\'' +
+                '}';
+    }
 }

@@ -1,11 +1,13 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
+import Backend.Entidades.CredencialesTienda;
 import Backend.Entidades.Empaque;
 import Backend.Gestores.GestorSQLServer;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -58,6 +60,24 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
 
     @Override
     public ArrayList<Empaque> listar() {
-        return null;
+        ArrayList<Empaque> empaques = new ArrayList<>();
+        String consulta = "{ CALL pa_listarEmpaque() }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consulta)) {
+
+            ResultSet filas = comando.executeQuery();
+
+            while (filas.next()) {
+                Empaque empaque = new Empaque();
+                empaques.add(empaque);
+                empaque.setTipoEmpaque(filas.getString(1));
+            }
+
+            return empaques;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
