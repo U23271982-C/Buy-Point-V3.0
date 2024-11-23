@@ -460,6 +460,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
 
     private void inventarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyPressed
         StringBuilder codigoLeido = new StringBuilder();
+        //codigoLeido.setLength(0);
         char lecturaCodigo = evt.getKeyChar();
         
         if (lecturaCodigo == KeyEvent.VK_ENTER) {
@@ -470,7 +471,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
             Codigo C = new Codigo();
             C.setCodigo(codigo1);
             P.setCodigo(C);
-
+            
             if (CP.leer(P) != null) {
                 VistaProducto VP = new VistaProducto();
                 VP.setVisible(true);

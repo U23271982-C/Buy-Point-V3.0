@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
 
     public CtrlPaqueteProducto() {
+
     }
 
     @Override
