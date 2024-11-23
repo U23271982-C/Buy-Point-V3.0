@@ -1,8 +1,12 @@
 
 package Frontend;
 
+import Backend.Controladores.CtrlCategoriaProducto;
+import Backend.Controladores.CtrlEmpaque;
 import Backend.Controladores.CtrlProducto;
+import Backend.Entidades.CategoriaProducto;
 import Backend.Entidades.Codigo;
+import Backend.Entidades.Empaque;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
@@ -10,6 +14,9 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -24,9 +31,31 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         CategoriaCombobox.setOpaque(true);
         CategoriaCombobox.setBackground(Color.WHITE);
         CategoriaCombobox.setForeground(Color.BLACK);
+        //EmpaqueCombobox.addItem("");
+        //CategoriaCombobox.addItem("");
+        this.cargarDatosEnComboBoxEmpaque(EmpaqueCombobox);
+        this.cargarDatosEnComboBoxCategoria(CategoriaCombobox);
     }
     
+    private void cargarDatosEnComboBoxEmpaque(JComboBox jComboBox) {
+        CtrlEmpaque CE = new CtrlEmpaque();
 
+        ArrayList<Empaque> opciones = CE.listar();
+        for(Empaque lista: opciones){
+            jComboBox.addItem(lista.getTipoEmpaque());
+        }
+    }
+    
+    private void cargarDatosEnComboBoxCategoria(JComboBox jComboBox){
+        CtrlCategoriaProducto CCAP = new CtrlCategoriaProducto();
+        
+        ArrayList<CategoriaProducto> opciones = CCAP.listar();
+        for(CategoriaProducto lista : opciones){
+            jComboBox.addItem(lista.getNombre());
+        }
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -124,7 +153,6 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         EmpaqueJLabel.setForeground(new java.awt.Color(0, 0, 0));
         EmpaqueJLabel.setText("     Empaque");
 
-        EmpaqueCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Posicion retur", "Item 2", "Item 3", "Item 4" }));
         EmpaqueCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpaqueComboboxActionPerformed(evt);
@@ -133,8 +161,6 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
 
         CategoriaJLabel.setForeground(new java.awt.Color(0, 0, 0));
         CategoriaJLabel.setText("Categoria");
-
-        CategoriaCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         PanelX.setBackground(new java.awt.Color(255, 255, 255));
         PanelX.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -350,11 +376,19 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         CantidadTxt.getText();
         BigDecimal precioVenta = new BigDecimal(PrecioVentaTxt.getText().trim());
         BigDecimal precioProovedor = new BigDecimal(PrecioProovedorTxt.getText().trim());
+        //String empaqueSeleccionado = (String.valueOf(EmpaqueCombobox.getSelectedIndex()));
+        String empaqueSeleccionado = EmpaqueCombobox.getSelectedItem().toString();
+        String categoriaSeleccionada = CategoriaCombobox.getSelectedItem().toString();
         
+        System.out.println(NombreTxt.getText());
+        System.out.println(DescriptionTxt.getText());
+        System.out.println(FvTxt.getText());
+        System.out.println(CantidadTxt.getText());
+        System.out.println(precioVenta);
+        System.out.println(precioProovedor);
+        System.out.println(empaqueSeleccionado);
+        System.out.println(categoriaSeleccionada);
         
-        
-        System.out.println(InventarioPanel.codigoBarras);
-        System.out.println(74);
         
     }//GEN-LAST:event_ConfirmarButtonMouseClicked
 
