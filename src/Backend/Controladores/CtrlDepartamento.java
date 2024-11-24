@@ -27,7 +27,7 @@ public class CtrlDepartamento implements GestorSQLServer<Departamento> {
             comando.setInt(2,
                     nuevaEntidad.getDepartamento());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             String aviso = String.format
                     ("Se registró el Departamento: %s %s",
                             nuevaEntidad.getTorre(),

@@ -1,10 +1,17 @@
 package Backend;
 
 import Backend.Controladores.CtrlCliente;
-import Backend.Entidades.CredencialesTienda;
-import Backend.Entidades.DetalleVenta;
+import Backend.Controladores.CtrlEmpaque;
+import Backend.Controladores.CtrlProducto;
+import Backend.Entidades.*;
+import Backend.Gestores.GestorSQLServer;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PruebaApp {
     public static void main(String[] args) {
@@ -21,10 +28,63 @@ public class PruebaApp {
                 "FROM CredencialesTienda\n" +
                 "WHERE Usuario = 'USER1' AND Constrasenna = '123'");
 */
-        DetalleVenta detalleVenta = new DetalleVenta();
+        /*DetalleVenta detalleVenta = new DetalleVenta();
 
         detalleVenta.setPrecioUnitario(new BigDecimal("1.2"));
 
-        System.out.println(detalleVenta.getPrecioUnitario().add(new BigDecimal("1.2")));
+        System.out.println(detalleVenta.getPrecioUnitario().add(new BigDecimal("1.2")));*/
+        Logger logger = Logger.getLogger(GestorSQLServer.class.getName());
+        String codigoBarras;
+        Scanner sc = new Scanner(System.in);
+        codigoBarras = sc.nextLine();
+        try {
+            Producto nuevProducto = new Producto();
+            PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
+            Inventario nuevoInventario = new Inventario();
+            CategoriaProducto nuevCategoriaProductoca = new CategoriaProducto();
+            Empaque nuevoEmpaque = new Empaque();
+            Codigo codigo = new Codigo();
+
+            codigo.setCodigo(codigoBarras); // 1
+            nuevProducto.setNombreProducto("NombreTxt.getText()"); // 2
+            nuevProducto.setDescripcion("DescriptionTxt.getText()"); // 3
+            nuevoPaqueteProducto.setCantidad(Integer.parseInt("1"));
+
+            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechLocalDate = LocalDate.parse("11/02/2024", textFormt);
+
+
+            nuevoPaqueteProducto.setFechaCaducidad(fechLocalDate);
+            nuevoInventario.setPrecio(new BigDecimal("11"));
+            nuevoInventario.setPrecioCosto(new BigDecimal("12"));
+            nuevoEmpaque.setTipoEmpaque("EmpaqueCombobox.getSelectedItem().toString()");
+            nuevCategoriaProductoca.setNombre("CategoriaCombobox.getSelectedItem().toString()");
+
+            nuevProducto.setCodigo(codigo);
+            nuevProducto.setEmpaque(nuevoEmpaque);
+            nuevProducto.setCategoriaProducto(nuevCategoriaProductoca);
+            nuevProducto.setInventario(nuevoInventario);
+            nuevProducto.setPaqueteProducto(nuevoPaqueteProducto);
+
+
+            CtrlProducto CP = new CtrlProducto();
+
+            CP.registrar(nuevProducto);
+            System.out.println("se registro en la base de datos");
+
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "Error de CAPA 8","Advertencia", 2);
+            System.out.println(e.getMessage());
+            //System.out.println(e.getLocalizedMessage());
+            System.out.println(logger.getName().toUpperCase());
+            logger.log(Level.SEVERE, "Error de conexión de Baase de Datos", e);
+        }
+
+        /*CtrlEmpaque ctrlEmpaque = new CtrlEmpaque();
+        Empaque empaque = new Empaque();
+        empaque.setTipoEmpaque("prueba888empaque");
+        ctrlEmpaque.registrar(empaque);
+*/
+
     }
 }

@@ -25,7 +25,7 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
             comando.setString(1,
                     nuevaEntidad.getTipoPago());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             String aviso = String.format
                     ("Se registró el Tipo de Pago: %s",
                     nuevaEntidad.getTipoPago());

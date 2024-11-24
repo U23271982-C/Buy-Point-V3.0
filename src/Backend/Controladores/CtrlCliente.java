@@ -40,7 +40,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
                     (6,nuevaEntidad.getCuenta()
                             .getApellido());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             System.out.printf("Se registró el producto: %s",
                     nuevaEntidad.getCliente());
             JOptionPane.showMessageDialog(null,

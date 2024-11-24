@@ -27,7 +27,7 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
             comando.setString(1,
                     nuevaEntidad.getTipoEmpaque());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             String aviso = String.format
                     ("Se registró el Empaque: %s",
                             nuevaEntidad.getTipoEmpaque());
