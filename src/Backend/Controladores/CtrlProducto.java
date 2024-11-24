@@ -57,9 +57,9 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                         ("Se registró el Producto: %s",
                                 nuevaEntidad.getNombreProducto());
                 JOptionPane.showMessageDialog(null,
-                        "SS"/*String.format
+                        String.format
                         ("Se registró el producto: %s",
-                                nuevaEntidad.getNombreProducto())*/);
+                                nuevaEntidad.getNombreProducto()));
                 System.out.println(aviso);
 
             } catch (SQLException e) {

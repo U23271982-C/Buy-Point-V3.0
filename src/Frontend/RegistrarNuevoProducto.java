@@ -1,8 +1,14 @@
 
 package Frontend;
 
+import Backend.Controladores.CtrlCategoriaProducto;
+import Backend.Controladores.CtrlEmpaque;
 import Backend.Controladores.CtrlProducto;
+import Backend.Entidades.CategoriaProducto;
 import Backend.Entidades.Codigo;
+import Backend.Entidades.Empaque;
+import Backend.Entidades.Inventario;
+import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
@@ -10,6 +16,12 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -24,9 +36,30 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         CategoriaCombobox.setOpaque(true);
         CategoriaCombobox.setBackground(Color.WHITE);
         CategoriaCombobox.setForeground(Color.BLACK);
+        //EmpaqueCombobox.addItem("");
+        //CategoriaCombobox.addItem("");
+        this.cargarDatosEnComboBoxEmpaque(EmpaqueCombobox);
+        this.cargarDatosEnComboBoxCategoria(CategoriaCombobox);
     }
     
+    private void cargarDatosEnComboBoxEmpaque(JComboBox jComboBox) {
+        CtrlEmpaque CE = new CtrlEmpaque();
 
+        ArrayList<Empaque> opciones = CE.listar();
+        for(Empaque lista: opciones){
+            jComboBox.addItem(lista.getTipoEmpaque());
+        }
+    }
+    
+    private void cargarDatosEnComboBoxCategoria(JComboBox jComboBox){
+        CtrlCategoriaProducto CCAP = new CtrlCategoriaProducto();
+        
+        ArrayList<CategoriaProducto> opciones = CCAP.listar();
+        for(CategoriaProducto lista : opciones){
+            jComboBox.addItem(lista.getNombre());
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -124,7 +157,6 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         EmpaqueJLabel.setForeground(new java.awt.Color(0, 0, 0));
         EmpaqueJLabel.setText("     Empaque");
 
-        EmpaqueCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Posicion retur", "Item 2", "Item 3", "Item 4" }));
         EmpaqueCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpaqueComboboxActionPerformed(evt);
@@ -133,8 +165,6 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
 
         CategoriaJLabel.setForeground(new java.awt.Color(0, 0, 0));
         CategoriaJLabel.setText("Categoria");
-
-        CategoriaCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         PanelX.setBackground(new java.awt.Color(255, 255, 255));
         PanelX.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -344,17 +374,58 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantidadTxtActionPerformed
 
     private void ConfirmarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtonMouseClicked
-        NombreTxt.getText();
-        DescriptionTxt.getText();
-        FvTxt.getText();
-        CantidadTxt.getText();
-        BigDecimal precioVenta = new BigDecimal(PrecioVentaTxt.getText().trim());
-        BigDecimal precioProovedor = new BigDecimal(PrecioProovedorTxt.getText().trim());
+        
+        try {
+            Producto nuevProducto = new Producto();
+            PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
+            Inventario nuevoInventario = new Inventario();
+            CategoriaProducto nuevCategoriaProductoca = new CategoriaProducto();
+            Empaque nuevoEmpaque = new Empaque();
+        
+            Codigo codigo = new Codigo();
+            
+            codigo.setCodigo(codigoBarras); // 1
+            nuevProducto.setNombreProducto(NombreTxt.getText().trim()); // 2
+            nuevProducto.setDescripcion(DescriptionTxt.getText().trim()); // 3
+            nuevoPaqueteProducto.setCantidad(Integer.parseInt(CantidadTxt.getText())); 
+            
+            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechLocalDate = LocalDate.parse(FvTxt.getText().trim(),textFormt);
+            
+            
+            nuevoPaqueteProducto.setFechaCaducidad(fechLocalDate);
+            nuevoInventario.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
+            nuevoInventario.setPrecioCosto(new BigDecimal(PrecioProovedorTxt.getText().trim()));
+            nuevoEmpaque.setTipoEmpaque(EmpaqueCombobox.getSelectedItem().toString());
+            nuevCategoriaProductoca.setNombre(CategoriaCombobox.getSelectedItem().toString());
+            
+            nuevProducto.setCodigo(codigo);
+            nuevProducto.setEmpaque(nuevoEmpaque);
+            nuevProducto.setCategoriaProducto(nuevCategoriaProductoca);
+            nuevProducto.setInventario(nuevoInventario);
+            nuevProducto.setPaqueteProducto(nuevoPaqueteProducto);
         
         
+            CtrlProducto CP = new CtrlProducto();
         
-        System.out.println(InventarioPanel.codigoBarras);
-        System.out.println(74);
+            CP.registrar(nuevProducto);
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de CAPA 8","Advertencia", 2);
+            System.out.println(e.getMessage());
+        }
+        
+        
+        /*
+        System.out.println(NombreTxt.getText());
+        System.out.println(DescriptionTxt.getText());
+        System.out.println(FvTxt.getText());
+        System.out.println(CantidadTxt.getText());
+        System.out.println(precioVenta);
+        System.out.println(precioProovedor);
+        System.out.println(empaqueSeleccionado);
+        System.out.println(categoriaSeleccionada);*/
+        
         
     }//GEN-LAST:event_ConfirmarButtonMouseClicked
 
