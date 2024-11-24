@@ -7,6 +7,8 @@ import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.CategoriaProducto;
 import Backend.Entidades.Codigo;
 import Backend.Entidades.Empaque;
+import Backend.Entidades.Inventario;
+import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
@@ -14,8 +16,11 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -370,16 +375,49 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantidadTxtActionPerformed
 
     private void ConfirmarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtonMouseClicked
-        NombreTxt.getText();
-        DescriptionTxt.getText();
-        FvTxt.getText();
-        CantidadTxt.getText();
-        BigDecimal precioVenta = new BigDecimal(PrecioVentaTxt.getText().trim());
-        BigDecimal precioProovedor = new BigDecimal(PrecioProovedorTxt.getText().trim());
-        //String empaqueSeleccionado = (String.valueOf(EmpaqueCombobox.getSelectedIndex()));
-        String empaqueSeleccionado = EmpaqueCombobox.getSelectedItem().toString();
-        String categoriaSeleccionada = CategoriaCombobox.getSelectedItem().toString();
         
+        try {
+            Producto nuevProducto = new Producto();
+            PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
+            Inventario nuevoInventario = new Inventario();
+            CategoriaProducto nuevCategoriaProductoca = new CategoriaProducto();
+            Empaque nuevoEmpaque = new Empaque();
+        
+            Codigo codigo = new Codigo();
+            
+            codigo.setCodigo(codigoBarras); // 1
+            nuevProducto.setNombreProducto(NombreTxt.getText().trim()); // 2
+            nuevProducto.setDescripcion(DescriptionTxt.getText().trim()); // 3
+            nuevoPaqueteProducto.setCantidad(Integer.parseInt(CantidadTxt.getText())); 
+            
+            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechLocalDate = LocalDate.parse(FvTxt.getText().trim(),textFormt);
+            
+            
+            nuevoPaqueteProducto.setFechaCaducidad(fechLocalDate);
+            nuevoInventario.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
+            nuevoInventario.setPrecioCosto(new BigDecimal(PrecioProovedorTxt.getText().trim()));
+            nuevoEmpaque.setTipoEmpaque(EmpaqueCombobox.getSelectedItem().toString());
+            nuevCategoriaProductoca.setNombre(CategoriaCombobox.getSelectedItem().toString());
+            
+            nuevProducto.setCodigo(codigo);
+            nuevProducto.setEmpaque(nuevoEmpaque);
+            nuevProducto.setCategoriaProducto(nuevCategoriaProductoca);
+            nuevProducto.setInventario(nuevoInventario);
+            nuevProducto.setPaqueteProducto(nuevoPaqueteProducto);
+        
+        
+            CtrlProducto CP = new CtrlProducto();
+        
+            CP.registrar(nuevProducto);
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de CAPA 8","Advertencia", 2);
+            System.out.println(e.getMessage());
+        }
+        
+        
+        /*
         System.out.println(NombreTxt.getText());
         System.out.println(DescriptionTxt.getText());
         System.out.println(FvTxt.getText());
@@ -387,7 +425,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         System.out.println(precioVenta);
         System.out.println(precioProovedor);
         System.out.println(empaqueSeleccionado);
-        System.out.println(categoriaSeleccionada);
+        System.out.println(categoriaSeleccionada);*/
         
         
     }//GEN-LAST:event_ConfirmarButtonMouseClicked
