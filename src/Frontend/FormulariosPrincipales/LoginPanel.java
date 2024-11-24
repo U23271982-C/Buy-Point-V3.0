@@ -4,7 +4,7 @@ package Frontend.FormulariosPrincipales;
 //import Backend.Controlador;
 //import Backend.CredencialesUsuario;
 import Backend.Controladores.ControladorApp;
-import Backend.Controladores.CtrlCredencialesUsuario;
+import Backend.Controladores.CtrlCredencialesTienda;
 import Backend.Entidades.CredencialesTienda;
 
 import java.awt.Color;
@@ -409,7 +409,7 @@ public final class LoginPanel extends javax.swing.JFrame {
     public void inicionLogin(){
         if(!UserTxt.getText().isEmpty() && !PasswordTxt.getText().isEmpty()){
             //ControladorApp cs = new ControladorApp();
-            CtrlCredencialesUsuario ctr = new CtrlCredencialesUsuario();
+            CtrlCredencialesTienda ctr = new CtrlCredencialesTienda();
             CredencialesTienda CU =  new CredencialesTienda();
             CU.setUsuario(UserTxt.getText().trim());
             CU.setContrasenna(PasswordTxt.getText().trim());

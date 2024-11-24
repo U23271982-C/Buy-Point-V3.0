@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTienda> {
+public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTienda> {
 
-    public CtrlCredencialesUsuario() {
+    public CtrlCredencialesTienda() {
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
     @Override
     public CredencialesTienda leer(CredencialesTienda leerEntidad) {
         CredencialesTienda credencialesUsuario = null;
-        String consultaSQL = "{ CALL pa_leerCredencialesUsuario(?, ?) }";
+        String consultaSQL = "{ CALL pa_leerCredencialesTienda(?, ?) }";
 
         try (CallableStatement comando =
                      SQLServerBD.instanciaConexcion().conectar()
