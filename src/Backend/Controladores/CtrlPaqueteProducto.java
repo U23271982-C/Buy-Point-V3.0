@@ -31,7 +31,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
                     (3, nuevaEntidad.getProducto().getCodigo()
                             .getCodigo());
 
-            comando.executeQuery();
+            comando.executeUpdate();
 
             System.out.println("Se registró el nuevo Paquete del Producto");
             JOptionPane.showMessageDialog(null,

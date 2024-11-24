@@ -28,7 +28,7 @@ public class CtrlCredencialesUsuario implements GestorSQLServer<CredencialesTien
             comando.setString(4,nuevaEntidad.getDireccion());
             comando.setString(5,nuevaEntidad.getCorreoElectronico());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             System.out.println("Se registró las nuevas Credenciales");
             JOptionPane.showMessageDialog(null, "Se registró las nuevas Credenciales");
         } catch (SQLException e) {

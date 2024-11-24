@@ -59,7 +59,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
                     (12, nuevaEntidad.getComprobante()
                             .getIdComprobante());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             String aviso = "Se registró la Venta";
 
             System.out.printf(aviso);

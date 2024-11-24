@@ -52,15 +52,15 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                         (9, nuevaEntidad.getInventario()
                                 .getPrecioCosto());
 
-                comando.executeQuery();
+                comando.executeUpdate();
                 String aviso = String.format
                         ("Se registró el Producto: %s",
                                 nuevaEntidad.getNombreProducto());
-                System.out.println(aviso);
                 JOptionPane.showMessageDialog(null,
-                        String.format
+                        "SS"/*String.format
                         ("Se registró el producto: %s",
-                                nuevaEntidad.getNombreProducto()));
+                                nuevaEntidad.getNombreProducto())*/);
+                System.out.println(aviso);
 
             } catch (SQLException e) {
                 //throw new RuntimeException(e);

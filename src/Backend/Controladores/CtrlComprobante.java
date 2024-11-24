@@ -27,7 +27,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
             comando.setString(2,
                     nuevaEntidad.getTipoPago().getTipoPago());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             System.out.printf("Se registró el comprobante: %s",
                     nuevaEntidad.getComprobante());
             JOptionPane.showMessageDialog(null,

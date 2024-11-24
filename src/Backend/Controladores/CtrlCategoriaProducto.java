@@ -1,12 +1,9 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.Empaque;
-import Backend.Gestores.GestorCadenas;
 import Backend.Gestores.GestorSQLServer;
 import Backend.Entidades.CategoriaProducto;
 
-import javax.swing.*;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

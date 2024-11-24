@@ -29,7 +29,7 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
             comando.setInt(3,
                     nuevaEntidad.getTelefono());
 
-            comando.executeQuery();
+            comando.executeUpdate();
             String aviso = String.format
                     ("Se registró la Cuenta de %s %s",
                             nuevaEntidad.getNombre(),
