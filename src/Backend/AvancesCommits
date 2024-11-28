@@ -66,3 +66,4 @@ DiecinueveAvanceBk:
 VeinteavoAvanceBk:
     - Adjuntado las librerías 'GraficosEstadisticos'
     - Implementada la interfaz donde podemos los gráficos estadísticos.
+    - Formato e imprimir Ticket implementada.
