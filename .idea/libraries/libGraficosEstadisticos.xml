@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libGraficosEstadisticos">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/Backend/Extenciones/Librerias_BuyPoint/GraficosEstadisticos/jcommon-1.0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Backend/Extenciones/Librerias_BuyPoint/GraficosEstadisticos/jfreechart-1.0.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
