@@ -63,3 +63,6 @@ DiecinueveAvanceBk:
     - Listar Empaque
     - Listar Categoria Producto
     - Implementando Filtros
+VeinteavoAvanceBk:
+    - Adjuntado las librerías 'GraficosEstadisticos'
+    - Implementada la interfaz donde podemos los gráficos estadísticos.
