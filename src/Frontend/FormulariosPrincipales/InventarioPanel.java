@@ -460,11 +460,24 @@ public final class InventarioPanel extends javax.swing.JFrame {
         Disminuye(panelOpciones, 1, 2, 0);
     }//GEN-LAST:event_inventarioMouseEntered
     
-    public static String codigoBarras ;  
+    
+    public static String codigoBarras ;
+    /*
+    Codigo codigo = new Codigo();
+    
+    protected Codigo getCodigo() {
+        this.codigo.setCodigo(codigoBarras);
+        return codigo;
+    }
+    
+    public String getCodigoBarras(){
+        return codigoBarras;
+    }*/
+    
     StringBuilder codigoLeido = new StringBuilder();
     
     private void inventarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyPressed
-        //codigoLeido.setLength(0);
+    //codigoLeido.setLength(0);
         char lecturaCodigo = evt.getKeyChar();
         
         if (lecturaCodigo == KeyEvent.VK_ENTER) {
@@ -477,15 +490,17 @@ public final class InventarioPanel extends javax.swing.JFrame {
             C.setCodigo(codigoBarras);
             P.setCodigo(C);
             
+                      
             if (CP.leer(P) != null) {
                 VistaProducto VP = new VistaProducto();
                 VP.setVisible(true);
+                
             } else{
                 JOptionPane.showConfirmDialog(null, "Producto no encontrado");
                 RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
                 RPOC.setVisible(true);
             }
-                        
+            System.out.println("sdfsd");            
         }
         else{
             codigoLeido.append(lecturaCodigo); 
