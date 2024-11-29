@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTienda> {
-
+    String condicionActualizar = ""; // Ingresar la contraseña antigua
     public CtrlCredencialesTienda() {
     }
 

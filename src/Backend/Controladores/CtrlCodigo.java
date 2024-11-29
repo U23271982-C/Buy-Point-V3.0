@@ -1,11 +1,14 @@
 package Backend.Controladores;
 
+import Backend.Entidades.Cliente;
+import Backend.Entidades.Producto;
 import Backend.Gestores.GestorSQLServer;
 import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.Codigo;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -50,7 +53,28 @@ public class CtrlCodigo implements GestorSQLServer<Codigo> {
 
     @Override
     public ArrayList<Codigo> listar() {
-        return null;
+        ArrayList<Codigo> codigos = new ArrayList<>();
+        String consulta = "{ CALL pa_listarCliente() }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consulta)) {
+
+            ResultSet filas = comando.executeQuery();
+            Codigo c = null;
+            while (filas.next()) {
+                c = new Codigo();
+                c.setCodigo(filas.getString(1));
+                /*Producto p = new Producto();
+                c.setProducto(p);*/
+                c.getProducto().setNombreProducto(filas.getString(2));
+
+                codigos.add(c);
+            }
+            return codigos;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 
