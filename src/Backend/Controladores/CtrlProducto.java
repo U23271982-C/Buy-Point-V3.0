@@ -89,11 +89,8 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                     producto = new Producto();
                             producto.setNombreProducto
                                     (filas.getString(1));
-                            producto.setDescripcion
-                                    (filas.getString(2));
-                            producto.getCategoriaProducto()
-                                    .setNombre(filas
-                                            .getString(3));
+                            producto.setDescripcion(filas.getString(2));
+                            producto.getCategoriaProducto().setNombre(filas.getString(3));
                             producto.getEmpaque()
                                     .setTipoEmpaque(filas
                                             .getString(4));

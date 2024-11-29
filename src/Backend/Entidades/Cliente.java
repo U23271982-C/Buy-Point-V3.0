@@ -9,6 +9,11 @@ public class Cliente extends Entidad {
     Departamento departamento;
     Cuenta cuenta;
 
+    public Cliente() {
+        this.departamento = new Departamento();
+        this.cuenta = new Cuenta();
+    }
+    
     //#region Getters and Setters
 
     public int getIdCliente() {

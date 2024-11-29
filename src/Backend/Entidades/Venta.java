@@ -17,6 +17,8 @@ public class Venta extends Entidad {
     ArrayList<DetalleVenta> detallesVenta;
 
     public Venta() {
+        this.cliente = new Cliente();
+        this.comprobante = new Comprobante();
         this.detallesVenta = new ArrayList<>();
     }
 

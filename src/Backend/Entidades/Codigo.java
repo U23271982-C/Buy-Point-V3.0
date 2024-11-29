@@ -3,9 +3,11 @@ package Backend.Entidades;
 public class Codigo extends Entidad {
     private int idCodigo;
     private String codigo;
+    
     Producto producto;
 
     public Codigo() {
+        //this.producto = new Producto();
     }
 
     public Codigo(String codigo) {
