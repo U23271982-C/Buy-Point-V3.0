@@ -18,6 +18,7 @@ public class DetalleVenta extends Entidad {
     Producto producto;
 
     public DetalleVenta() {
+        this.venta = new Venta();
     }
 
     //#region Getters and Setters

@@ -7,6 +7,7 @@ public class Comprobante extends Entidad {
     TipoPago tipoPago;
 
     public Comprobante() {
+        this.tipoPago = new TipoPago();
     }
 
     //#region Getters and Setters

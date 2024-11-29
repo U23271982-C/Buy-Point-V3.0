@@ -24,7 +24,13 @@ public class Producto extends Entidad {
     PaqueteProducto paqueteProducto;
 
     public Producto() {
+        this.empaque = new Empaque();
+        this.categoriaProducto = new CategoriaProducto();
+        this.inventario = new Inventario();
+        this.codigo = new Codigo();
+        this.paqueteProducto = new PaqueteProducto();
     }
+    
 
     //#region Getters and Setters
 
@@ -113,4 +119,5 @@ public class Producto extends Entidad {
     /*public boolean productoRegistrado(String codigoBarras){
         return false;
     }*/
+    
 }
