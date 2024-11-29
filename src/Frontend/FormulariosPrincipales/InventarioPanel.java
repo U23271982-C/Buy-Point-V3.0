@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-public final class InventarioPanel extends javax.swing.JFrame {
+public final class InventarioPanel extends javax.swing.JFrame implements Animaciones{
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -474,11 +474,11 @@ public final class InventarioPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarProductoMouseClicked
 
     private void PanelOpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelOpMouseEntered
-        Agranda(panelOpciones, 1, 2, 62);
+        Animaciones.Agranda(panelOpciones, 1, 2, 62);
     }//GEN-LAST:event_PanelOpMouseEntered
 
     private void inventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioMouseEntered
-        Disminuye(panelOpciones, 1, 2, 0);
+        Animaciones.Disminuye(panelOpciones, 1, 2, 0);
     }//GEN-LAST:event_inventarioMouseEntered
     
     
@@ -548,44 +548,7 @@ public final class InventarioPanel extends javax.swing.JFrame {
         .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
     }
 
-    public static void Disminuye(JComponent componente, int milisegundos, int saltos, int parar) {
-        (new Thread() {
-            @Override
-            public void run() {
-                for (int i = componente.getHeight(); i >= parar; i -= saltos) {
-                    try {
-                        Thread.sleep(milisegundos);
-                        componente.setPreferredSize(new Dimension(componente.getWidth(), i));
-                        SwingUtilities.updateComponentTreeUI(componente);
-                        componente.getParent().revalidate();
-                        componente.getParent().repaint();
-                    } catch (InterruptedException e) {
-                        System.out.println("Error Thread Interrumpido: " + e);
-                    }
-                }
-            }
-        }).start();
-    }
 
-    public static void Agranda(JComponent componente, int milisegundos, int saltos, int parar) {
-        (new Thread() {
-            @Override
-            public void run() {
-                for (int i = componente.getHeight(); i <= parar; i += saltos) {
-                    try {
-                        Thread.sleep(milisegundos);
-                        componente.setPreferredSize(new Dimension(componente.getWidth(), i));
-                        SwingUtilities.updateComponentTreeUI(componente);
-                        componente.getParent().revalidate();
-                        componente.getParent().repaint();
-                    } catch (InterruptedException e) {
-                        System.out.println("Error Thread Interrumpido: " + e);
-                    }
-                }
-            }
-        }).start();
-    }
-    
     
     public static void main(String args[]) {
         

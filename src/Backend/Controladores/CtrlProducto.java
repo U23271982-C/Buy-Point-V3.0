@@ -137,6 +137,30 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
 
         @Override
         public ArrayList<Producto> listar() {
-            return null;
+
+            ArrayList<Producto> productos = new ArrayList<>();
+            String consulta = "{ CALL pa_listarProducto() }";
+
+            try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                    .conectar().prepareCall(consulta)) {
+
+                ResultSet filas = comando.executeQuery();
+                Producto p = null;
+                while (filas.next()) {
+                    p = new Producto();
+                    p.setNombreProducto(filas.getString(1));
+                    p.setDescripcion(filas.getString(2));
+                    p.setPrecio(filas.getBigDecimal(3));
+                    p.getInventario().setPrecioCosto(filas.getBigDecimal(4));
+                    p.getInventario().setStock(filas.getInt(5));
+                    p.getCategoriaProducto().setNombre(filas.getString(6));
+
+                    productos.add(p);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            return productos;
         }
     }
