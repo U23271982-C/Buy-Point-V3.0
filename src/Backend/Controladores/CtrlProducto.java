@@ -89,11 +89,8 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                     producto = new Producto();
                             producto.setNombreProducto
                                     (filas.getString(1));
-                            producto.setDescripcion
-                                    (filas.getString(2));
-                            producto.getCategoriaProducto()
-                                    .setNombre(filas
-                                            .getString(3));
+                            producto.setDescripcion(filas.getString(2));
+                            producto.getCategoriaProducto().setNombre(filas.getString(3));
                             producto.getEmpaque()
                                     .setTipoEmpaque(filas
                                             .getString(4));
@@ -119,14 +116,12 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
 
             return producto;
         }
-
-        /*public static void main(String[] args) {
-            Producto producto = new Producto();
-            producto.setEmpaque(new Empaque());
-            producto.getEmpaque().setTipoEmpaque("gg");
-
-            System.out.println(producto.getEmpaque().getTipoEmpaque());
-        }*/
+        /*
+        public static void main(String[] args) {
+            CtrlProducto c = new CtrlProducto();
+           c.listar().forEach(System.out::println);
+        }
+        */
 
         @Override
         public void eliminar(Producto eliminadoEntidad) {

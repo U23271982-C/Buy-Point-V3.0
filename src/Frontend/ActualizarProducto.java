@@ -1,10 +1,13 @@
 package Frontend;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -75,6 +78,9 @@ public class ActualizarProducto extends javax.swing.JFrame {
         FvText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FvTextKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FvTextKeyTyped(evt);
             }
         });
 
@@ -327,13 +333,26 @@ public class ActualizarProducto extends javax.swing.JFrame {
         FvText.setText("");
         FvText.setForeground(Color.BLACK);
     }//GEN-LAST:event_FvTextMouseClicked
+
+    private void FvTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FvTextKeyTyped
+        if(FvText.getText().length() >= 10){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_FvTextKeyTyped
     
     public void ConfirmarActualizacion(){
         try {
             VistaProducto VP = new VistaProducto();
-            String Text;
-            Text = CantiTxt.getText();
-            VP.setDato(Text);
+            String Text, FV;
+            Text = CantiTxt.getText().trim();
+            
+            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate FVDate = LocalDate.parse(FvText.getText().trim(),textFormt);
+            
+            FV = FVDate.format(textFormt);
+       
+            VP.setDato(Text,FV);
             VP.setVisible(true);
             VP.toFront();
             this.setVisible(false);

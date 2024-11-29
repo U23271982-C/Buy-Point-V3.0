@@ -249,7 +249,7 @@ public class VistaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_JLabelXMouseExited
     
     private String dato;
-    public void setDato(String dato){
+    public void setDato(String dato, String fechacaducidad){
         this.dato = dato;
         int text1, text2;
         String textofinal;
@@ -257,6 +257,7 @@ public class VistaProducto extends javax.swing.JFrame {
         text2 = Integer.parseInt(CantidadStock.getText());
         textofinal = String.valueOf(text1 + text2);
         CantidadStock.setText(textofinal);
+        FV.setText(fechacaducidad);
     }
     
     public VistaProducto() {

@@ -33,7 +33,8 @@ public class PruebaApp {
         detalleVenta.setPrecioUnitario(new BigDecimal("1.2"));
 
         System.out.println(detalleVenta.getPrecioUnitario().add(new BigDecimal("1.2")));*/
-        Logger logger = Logger.getLogger(GestorSQLServer.class.getName());
+        // Prueba registrar producto
+        /*Logger logger = Logger.getLogger(GestorSQLServer.class.getName());
         String codigoBarras;
         Scanner sc = new Scanner(System.in);
         codigoBarras = sc.nextLine();
@@ -84,7 +85,22 @@ public class PruebaApp {
         Empaque empaque = new Empaque();
         empaque.setTipoEmpaque("prueba888empaque");
         ctrlEmpaque.registrar(empaque);
-*/
-
+*/      
+        //try {
+            CtrlProducto producto = new CtrlProducto();
+        Producto p = new Producto();
+        Codigo co  = new Codigo();
+        String code = "renz04ii2";
+        co.setCodigo(code);
+        p.setCodigo(co);
+        
+        if (producto.leer(p) != null) {
+            System.out.println("Se encontro el producto");
+        }else{
+            System.out.println("No se econtro el producto");
+       }
+        //} catch (Exception e) {
+           // e.getMessage();
+        //}
     }
 }
