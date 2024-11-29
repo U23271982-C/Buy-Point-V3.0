@@ -1,9 +1,11 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
+import Backend.Entidades.Producto;
 import Backend.Gestores.GestorSQLServer;
 import Backend.Entidades.CategoriaProducto;
 
+import javax.swing.*;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,17 +31,59 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
 
     @Override
     public CategoriaProducto leer(CategoriaProducto leerEntidad) {
-        return null;
+        CategoriaProducto cp = null;
+        String consultaSQL = "{ CALL pa_leerCategoriaProducto(?) }";
+
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion()
+                             .conectar().prepareCall(consultaSQL)){
+
+            comando.setString(1,
+                    leerEntidad.getNombre());
+
+            ResultSet filas = comando.executeQuery();
+            if (filas.next()) {
+                cp = new CategoriaProducto();
+                cp.setIdCategoriaProducto
+                        (filas.getInt(1));
+                cp.setNombre
+                        (filas.getString(2));
+
+            }//else {
+            //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
+            //}
+
+            //System.out.println("Se realizó la lectura");
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
+
+        return cp;
     }
 
     @Override
     public void eliminar(CategoriaProducto eliminadoEntidad) {
+        String consultaSQL = "{ CALL pa_eliminarCategoriaProducto(?) }";
 
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
+
+            comando.setString(1, eliminadoEntidad.getNombre());
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Credenciales eliminadas");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override
     public void actualizar(CategoriaProducto actualizadoEntidad) {
-
+        // FALTA
     }
 
     @Override
