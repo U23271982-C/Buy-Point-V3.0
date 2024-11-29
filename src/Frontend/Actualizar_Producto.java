@@ -7,32 +7,34 @@ import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-public class VistaProducto extends javax.swing.JFrame {
+public class Actualizar_Producto extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         agregarProducto = new javax.swing.JPanel();
         FotoProducto = new javax.swing.JLabel();
         NombreProducto = new javax.swing.JLabel();
-        NombreJLabel = new javax.swing.JLabel();
         StockProducto = new javax.swing.JLabel();
-        CantidadStock = new javax.swing.JLabel();
         FechaCaducidad = new javax.swing.JLabel();
-        FV = new javax.swing.JLabel();
-        FotoAgregarProducto = new javax.swing.JLabel();
         SeparadorCantidad = new javax.swing.JSeparator();
         SeparadorStock = new javax.swing.JSeparator();
         SepardorFV = new javax.swing.JSeparator();
         PanelX = new javax.swing.JPanel();
         JLabelX = new javax.swing.JLabel();
-        Actualizar = new javax.swing.JLabel();
-        Eliminar = new javax.swing.JLabel();
+        NombreTxt = new javax.swing.JTextField();
+        StockTxt = new javax.swing.JTextField();
+        FVTxt = new javax.swing.JTextField();
+        ConfirmarJLabel = new javax.swing.JLabel();
+
+        jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -51,31 +53,13 @@ public class VistaProducto extends javax.swing.JFrame {
         NombreProducto.setForeground(new java.awt.Color(0, 0, 0));
         NombreProducto.setText("Nombre:");
 
-        NombreJLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        NombreJLabel.setForeground(new java.awt.Color(0, 0, 0));
-        NombreJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         StockProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         StockProducto.setForeground(new java.awt.Color(0, 0, 0));
         StockProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         StockProducto.setText("Stock:");
 
-        CantidadStock.setForeground(new java.awt.Color(0, 0, 0));
-        CantidadStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         FechaCaducidad.setForeground(new java.awt.Color(0, 0, 0));
         FechaCaducidad.setText("FV:");
-
-        FV.setForeground(new java.awt.Color(0, 0, 0));
-        FV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        FotoAgregarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AgregarProducto.png"))); // NOI18N
-        FotoAgregarProducto.setToolTipText("");
-        FotoAgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FotoAgregarProductoMouseClicked(evt);
-            }
-        });
 
         SeparadorCantidad.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -135,17 +119,42 @@ public class VistaProducto extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        Actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoActualizacion.jpg"))); // NOI18N
-        Actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ActualizarMouseClicked(evt);
+        NombreTxt.setToolTipText("");
+        NombreTxt.setBorder(null);
+        NombreTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreTxtKeyTyped(evt);
             }
         });
 
-        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imagenbasura.png"))); // NOI18N
-        Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+        StockTxt.setBorder(null);
+        StockTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StockTxtActionPerformed(evt);
+            }
+        });
+        StockTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                StockTxtKeyTyped(evt);
+            }
+        });
+
+        FVTxt.setBorder(null);
+        FVTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FVTxtActionPerformed(evt);
+            }
+        });
+        FVTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FVTxtKeyTyped(evt);
+            }
+        });
+
+        ConfirmarJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imagenConfirmar.png"))); // NOI18N
+        ConfirmarJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EliminarMouseClicked(evt);
+                ConfirmarJLabelMouseClicked(evt);
             }
         });
 
@@ -154,73 +163,59 @@ public class VistaProducto extends javax.swing.JFrame {
         agregarProductoLayout.setHorizontalGroup(
             agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agregarProductoLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StockProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SeparadorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombreJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CantidadStock, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(FV, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SeparadorStock, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                        .addComponent(SepardorFV)))
-                .addGap(0, 100, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarProductoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarProductoLayout.createSequentialGroup()
+                        .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(StockProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SepardorFV, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(StockTxt)
+                                .addComponent(FVTxt)
+                                .addComponent(SeparadorCantidad)
+                                .addComponent(SeparadorStock)
+                                .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(93, 93, 93))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarProductoLayout.createSequentialGroup()
                         .addComponent(FotoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(176, 176, 176))))
             .addGroup(agregarProductoLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(FotoAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
-                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(218, 218, 218)
+                .addComponent(ConfirmarJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         agregarProductoLayout.setVerticalGroup(
             agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agregarProductoLayout.createSequentialGroup()
                 .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(FotoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(agregarProductoLayout.createSequentialGroup()
-                        .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NombreJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SeparadorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(StockProducto)
-                            .addComponent(CantidadStock, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SeparadorStock, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FV, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SepardorFV, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                        .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarProductoLayout.createSequentialGroup()
-                                .addComponent(FotoAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(76, 76, 76))
-                            .addComponent(Actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(agregarProductoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(53, 53, 53))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SeparadorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StockTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StockProducto))
+                .addGap(3, 3, 3)
+                .addComponent(SeparadorStock, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FVTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SepardorFV, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(ConfirmarJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,21 +226,11 @@ public class VistaProducto extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(agregarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(agregarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void FotoAgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoAgregarProductoMouseClicked
-        AgregarCantidadyFV_Producto AP = new AgregarCantidadyFV_Producto();
-        AP.setVisible(true);
-        this.setVisible(false);
-        AP.toFront();
-       //String codigobarras = codigoBarras;
-    }//GEN-LAST:event_FotoAgregarProductoMouseClicked
 
     private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
         this.setVisible(false);
@@ -271,46 +256,48 @@ public class VistaProducto extends javax.swing.JFrame {
         PanelX.setBackground(Color.WHITE);
     }//GEN-LAST:event_JLabelXMouseExited
 
-    private void ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarMouseClicked
-        Actualizar_Producto AP = new Actualizar_Producto();
-        AP.setVisible(true);
-        this.setVisible(false);
-        AP.toFront();
-    }//GEN-LAST:event_ActualizarMouseClicked
+    private void StockTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StockTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StockTxtActionPerformed
 
-    private void EliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarMouseClicked
-        int respuesta = JOptionPane.showConfirmDialog(null
-                        ,"¿Estas seguro de en eliminar este producto?"
-                        ,"Esta acción sera irrevesible",JOptionPane.YES_NO_OPTION);
-        
-        if (respuesta == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Has elegido continuar.");
-        } else if (respuesta == JOptionPane.NO_OPTION) {
-            JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
+    private void FVTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FVTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FVTxtActionPerformed
+
+    private void NombreTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreTxtKeyTyped
+        if(NombreTxt.getText().length() >= 30){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();    
+       } 
+    }//GEN-LAST:event_NombreTxtKeyTyped
+
+    private void StockTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StockTxtKeyTyped
+        char c = evt.getKeyChar();
+        RegistrarNuevoProducto.BloquearCaracteres(StockTxt, c, evt);
+    }//GEN-LAST:event_StockTxtKeyTyped
+
+    private void FVTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FVTxtKeyTyped
+        if(FVTxt.getText().length() >= 10){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
         }
-    }//GEN-LAST:event_EliminarMouseClicked
-    
-    private String dato;
-    public void setDato(String dato, String fechacaducidad){
-        this.dato = dato;
-        int text1, text2;
-        String textofinal;
-        text1 = Integer.parseInt(dato);
-        text2 = Integer.parseInt(CantidadStock.getText());
-        textofinal = String.valueOf(text1 + text2);
-        CantidadStock.setText(textofinal);
-        FV.setText(fechacaducidad);
-    }
-    
-    public VistaProducto() {
+        char c = evt.getKeyChar();
+        RegistrarNuevoProducto.BloquearCaracteres(FVTxt, c, evt);
+    }//GEN-LAST:event_FVTxtKeyTyped
+
+    private void ConfirmarJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarJLabelMouseClicked
+        try{
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_ConfirmarJLabelMouseClicked
+
+    public Actualizar_Producto() {
         initComponents();
         setLocationRelativeTo(null);
-        this.tamañoimagen(FotoAgregarProducto, "/img/AgregarProducto.png");
-        //agregar metodo para buscar la foto en la BD
-        this.NombreProducto(NombreJLabel,CantidadStock,FV);
-        this.tamañoimagen(Actualizar, "/img/iconoActualizacion.jpg");
-        this.tamañoimagen(Eliminar, "/img/imagenbasura.png");
-                
+        this.tamañoimagen(ConfirmarJLabel, "/img/imagenConfirmar.png");
+        this.toFront();
     }
     
     
@@ -357,14 +344,18 @@ public class VistaProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Actualizar_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Actualizar_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Actualizar_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Actualizar_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -373,27 +364,27 @@ public class VistaProducto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaProducto().setVisible(true);
+                new Actualizar_Producto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Actualizar;
-    private javax.swing.JLabel CantidadStock;
-    private javax.swing.JLabel Eliminar;
-    private javax.swing.JLabel FV;
+    private javax.swing.JLabel ConfirmarJLabel;
+    private javax.swing.JTextField FVTxt;
     private javax.swing.JLabel FechaCaducidad;
-    private javax.swing.JLabel FotoAgregarProducto;
     private javax.swing.JLabel FotoProducto;
     private javax.swing.JLabel JLabelX;
-    private javax.swing.JLabel NombreJLabel;
     private javax.swing.JLabel NombreProducto;
+    private javax.swing.JTextField NombreTxt;
     private javax.swing.JPanel PanelX;
     private javax.swing.JSeparator SeparadorCantidad;
     private javax.swing.JSeparator SeparadorStock;
     private javax.swing.JSeparator SepardorFV;
     private javax.swing.JLabel StockProducto;
+    private javax.swing.JTextField StockTxt;
     private javax.swing.JPanel agregarProducto;
+    private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

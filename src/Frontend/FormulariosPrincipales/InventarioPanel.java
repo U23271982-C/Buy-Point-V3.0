@@ -1,7 +1,7 @@
 package Frontend.FormulariosPrincipales;
 
 import Backend.Controladores.CtrlCategoriaProducto;
-import Frontend.ActualizarProducto;
+import Frontend.AgregarCantidadyFV_Producto;
 import Frontend.VistaProducto;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -569,6 +569,8 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
        //this.tamañoimagen(agregarJLabel, "/img/agregar_producto1.png");
        inventario.setFocusable(true);
        //this.listaProductos();
+       //this.tamañoimagen(jLabel2, "/img/iconoActualizacion.jpg");
+       //this.tamañoimagen(jLabel2, "/img/imagenBasura.png");
       
     }
     
