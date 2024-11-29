@@ -1,5 +1,10 @@
 package Frontend;
 
+import Backend.Controladores.CtrlProducto;
+import Backend.Entidades.Codigo;
+import Backend.Entidades.Producto;
+import Frontend.FormulariosPrincipales.InventarioPanel;
+import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -14,7 +19,7 @@ public class VistaProducto extends javax.swing.JFrame {
         agregarProducto = new javax.swing.JPanel();
         FotoProducto = new javax.swing.JLabel();
         NombreProducto = new javax.swing.JLabel();
-        DescripcionProducto = new javax.swing.JLabel();
+        NombreJLabel = new javax.swing.JLabel();
         StockProducto = new javax.swing.JLabel();
         CantidadStock = new javax.swing.JLabel();
         FechaCaducidad = new javax.swing.JLabel();
@@ -43,10 +48,9 @@ public class VistaProducto extends javax.swing.JFrame {
         NombreProducto.setForeground(new java.awt.Color(0, 0, 0));
         NombreProducto.setText("Nombre:");
 
-        DescripcionProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        DescripcionProducto.setForeground(new java.awt.Color(0, 0, 0));
-        DescripcionProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        DescripcionProducto.setText("AAAA AAAAAA AA A AAAAAAA AAA A AAAA A");
+        NombreJLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        NombreJLabel.setForeground(new java.awt.Color(0, 0, 0));
+        NombreJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         StockProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         StockProducto.setForeground(new java.awt.Color(0, 0, 0));
@@ -55,14 +59,12 @@ public class VistaProducto extends javax.swing.JFrame {
 
         CantidadStock.setForeground(new java.awt.Color(0, 0, 0));
         CantidadStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CantidadStock.setText("54");
 
         FechaCaducidad.setForeground(new java.awt.Color(0, 0, 0));
         FechaCaducidad.setText("FV:");
 
         FV.setForeground(new java.awt.Color(0, 0, 0));
         FV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        FV.setText("99/99/9999");
 
         FotoAgregarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AgregarProducto.png"))); // NOI18N
         FotoAgregarProducto.setToolTipText("");
@@ -141,7 +143,7 @@ public class VistaProducto extends javax.swing.JFrame {
                         .addGap(94, 94, 94)
                         .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SeparadorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DescripcionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NombreJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(SeparadorStock, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(CantidadStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
@@ -177,7 +179,7 @@ public class VistaProducto extends javax.swing.JFrame {
                 .addComponent(FotoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DescripcionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SeparadorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,6 +221,7 @@ public class VistaProducto extends javax.swing.JFrame {
         AP.setVisible(true);
         this.setVisible(false);
         AP.toFront();
+        //String codigobarras = codigoBarras;
     }//GEN-LAST:event_FotoAgregarProductoMouseClicked
 
     private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
@@ -261,6 +264,33 @@ public class VistaProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.tamañoimagen(FotoAgregarProducto, "/img/AgregarProducto.png");
         //agregar metodo para buscar la foto en la BD
+        this.NombreProducto(NombreJLabel,CantidadStock,FV);
+                
+    }
+    
+    
+    public void NombreProducto(JLabel NombreProducto, JLabel CantidadStock, JLabel FechaCaducidad){
+        CtrlProducto CP = new CtrlProducto();
+        
+        InventarioPanel IP = new InventarioPanel();
+        
+        Producto producto = new Producto();
+        Codigo codigo = new Codigo();
+        codigo.setCodigo(codigoBarras);
+        producto.setCodigo(codigo);
+
+        producto = CP.leer(producto);
+        NombreProducto.setText(producto.getNombreProducto());
+        CantidadStock.setText(String.valueOf(producto.getInventario().getStock()));
+        FechaCaducidad.setText(String.valueOf(producto.getPaqueteProducto().getFechaCaducidad()));
+    }
+    
+    public void CantidadStock(JLabel jLabel){
+        
+    }
+    
+    public void FechaCaducidad(JLabel jLabel){
+        
     }
     
     public void tamañoimagen(JLabel label, String ruta){
@@ -305,12 +335,12 @@ public class VistaProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CantidadStock;
-    private javax.swing.JLabel DescripcionProducto;
     private javax.swing.JLabel FV;
     private javax.swing.JLabel FechaCaducidad;
     private javax.swing.JLabel FotoAgregarProducto;
     private javax.swing.JLabel FotoProducto;
     private javax.swing.JLabel JLabelX;
+    private javax.swing.JLabel NombreJLabel;
     private javax.swing.JLabel NombreProducto;
     private javax.swing.JPanel PanelX;
     private javax.swing.JSeparator SeparadorCantidad;
