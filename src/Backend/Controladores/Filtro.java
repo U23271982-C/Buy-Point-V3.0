@@ -13,6 +13,11 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class Filtro <T extends Producto> {
+
+    public Filtro() {
+    }
+    
+    
     List<Comparator<T>> comparators = new ArrayList<>(Arrays.asList(
             // 1 Precio ascendentemente
             Comparator.comparing(T::getPrecio).reversed(),
@@ -32,8 +37,7 @@ public class Filtro <T extends Producto> {
                             .reversed()*/
     ));
 
-    public List<T> ordenarProductos
-    (List<T> listaOrdenar, int posicionCondicion){
+    public List<T> ordenarProductos (List<T> listaOrdenar, int posicionCondicion){
         return listaOrdenar.stream().sorted(comparators.get(posicionCondicion)).toList();
     }
 }
