@@ -471,7 +471,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
         return codigoBarras;
     }*/
     
-    StringBuilder codigoLeido = new StringBuilder();
+        StringBuilder codigoLeido = new StringBuilder();
     
     private void inventarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyPressed
     //codigoLeido.setLength(0);
@@ -504,6 +504,8 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
         }
     }//GEN-LAST:event_inventarioKeyPressed
 
+    
+    
     //public static int indice;
     private void FiiltradoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiiltradoComboBoxActionPerformed
         int indice = FiiltradoComboBox.getSelectedIndex();
