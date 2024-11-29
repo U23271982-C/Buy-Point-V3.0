@@ -7,7 +7,7 @@ public class Codigo extends Entidad {
     Producto producto;
 
     public Codigo() {
-        this.producto = new Producto();
+        //this.producto = new Producto();
     }
 
     public Codigo(String codigo) {

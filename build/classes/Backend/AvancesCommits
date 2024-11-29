@@ -68,3 +68,6 @@ VeinteavoAvanceBk:
     - Implementada la interfaz donde podemos los gráficos estadísticos.
     - Formato e imprimir Ticket implementada.
     - Implementación de cabeacera por tipo de Cliente
+VeintiunavoAvanceBk:
+    - Arreglando leer entidad
+    - Arreglando los bucles infinitos.

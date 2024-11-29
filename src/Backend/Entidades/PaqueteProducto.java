@@ -11,7 +11,7 @@ public class PaqueteProducto extends Entidad {
     Producto producto;
 
     public PaqueteProducto() {
-        this.producto = new Producto();
+        //this.producto = new Producto();
         this.caducado = false;
     }
 
