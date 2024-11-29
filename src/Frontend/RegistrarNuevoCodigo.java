@@ -1,12 +1,18 @@
 
 package Frontend;
 
+import Backend.Controladores.CtrlCodigo;
+import Backend.Controladores.CtrlProducto;
+import Backend.Entidades.Codigo;
+import Backend.Entidades.Producto;
+import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 
 public class RegistrarNuevoCodigo extends javax.swing.JFrame {
     public RegistrarNuevoCodigo() {
         initComponents();
         setLocationRelativeTo(null);
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -15,12 +21,13 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
         NuevoCodePanel = new javax.swing.JPanel();
         NomProJLabel = new javax.swing.JLabel();
         CodeBarrJLabel = new javax.swing.JLabel();
-        NomProTxt = new javax.swing.JTextField();
         NuevoCodeBarr = new javax.swing.JTextField();
         PanelX = new javax.swing.JPanel();
         XTxt = new javax.swing.JLabel();
         PanelButton = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ConfirmarButton = new javax.swing.JButton();
+        NombreProductoJlabel = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -35,12 +42,6 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
 
         CodeBarrJLabel.setForeground(new java.awt.Color(0, 0, 0));
         CodeBarrJLabel.setText("Nuevo codigo de barras");
-
-        NomProTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomProTxtActionPerformed(evt);
-            }
-        });
 
         NuevoCodeBarr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,8 +72,15 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
         PanelButton.setBackground(new java.awt.Color(255, 255, 255));
         PanelButton.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("Confirmar");
-        PanelButton.add(jButton1, new java.awt.GridBagConstraints());
+        ConfirmarButton.setText("Confirmar");
+        ConfirmarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConfirmarButtonMouseClicked(evt);
+            }
+        });
+        PanelButton.add(ConfirmarButton, new java.awt.GridBagConstraints());
+
+        NombreProductoJlabel.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout NuevoCodePanelLayout = new javax.swing.GroupLayout(NuevoCodePanel);
         NuevoCodePanel.setLayout(NuevoCodePanelLayout);
@@ -81,27 +89,34 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
             .addGroup(NuevoCodePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(NuevoCodePanelLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CodeBarrJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomProJLabel))
-                .addGap(18, 18, 18)
-                .addGroup(NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NuevoCodeBarr, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomProTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 91, Short.MAX_VALUE))
             .addComponent(PanelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(NuevoCodePanelLayout.createSequentialGroup()
+                .addGroup(NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(NuevoCodePanelLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(NuevoCodePanelLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CodeBarrJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NomProJLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NombreProductoJlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(NuevoCodeBarr, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))))
+                .addGap(0, 58, Short.MAX_VALUE))
         );
         NuevoCodePanelLayout.setVerticalGroup(
             NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NuevoCodePanelLayout.createSequentialGroup()
                 .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(33, 33, 33)
                 .addGroup(NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NomProTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomProJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
+                    .addComponent(NomProJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NombreProductoJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(NuevoCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NuevoCodeBarr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CodeBarrJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -124,10 +139,6 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NomProTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomProTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NomProTxtActionPerformed
-
     private void NuevoCodeBarrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoCodeBarrActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NuevoCodeBarrActionPerformed
@@ -143,6 +154,22 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
     private void PanelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseExited
         PanelX.setBackground(Color.WHITE);
     }//GEN-LAST:event_PanelXMouseExited
+
+    private void ConfirmarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtonMouseClicked
+        try{
+            CtrlProducto CP = new CtrlProducto();
+            CtrlCodigo CC = new CtrlCodigo();
+            Producto P = new Producto();
+            Codigo C = new Codigo();
+            
+           
+            
+            
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_ConfirmarButtonMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -178,13 +205,14 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CodeBarrJLabel;
+    private javax.swing.JButton ConfirmarButton;
     private javax.swing.JLabel NomProJLabel;
-    private javax.swing.JTextField NomProTxt;
+    private javax.swing.JLabel NombreProductoJlabel;
     private javax.swing.JTextField NuevoCodeBarr;
     private javax.swing.JPanel NuevoCodePanel;
     private javax.swing.JPanel PanelButton;
     private javax.swing.JPanel PanelX;
     private javax.swing.JLabel XTxt;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
