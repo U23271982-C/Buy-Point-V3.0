@@ -62,3 +62,9 @@ DiecinueveAvanceBk:
     - Creada la clase Filtro.
     - Listar Empaque
     - Listar Categoria Producto
+    - Implementando Filtros
+VeinteavoAvanceBk:
+    - Adjuntado las librerías 'GraficosEstadisticos'
+    - Implementada la interfaz donde podemos los gráficos estadísticos.
+    - Formato e imprimir Ticket implementada.
+    - Implementación de cabeacera por tipo de Cliente
