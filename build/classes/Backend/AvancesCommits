@@ -67,11 +67,7 @@ VeinteavoAvanceBk:
     - Adjuntado las librerías 'GraficosEstadisticos'
     - Implementada la interfaz donde podemos los gráficos estadísticos.
     - Formato e imprimir Ticket implementada.
-<<<<<<< HEAD
     - Implementación de cabeacera por tipo de Cliente
 VeintiunavoAvanceBk:
     - Arreglando leer entidad
     - Arreglando los bucles infinitos.
-=======
-    - Implementación de cabeacera por tipo de Cliente
->>>>>>> 9a3ed4df3c490d569791ee5e5628103fc222c36d
