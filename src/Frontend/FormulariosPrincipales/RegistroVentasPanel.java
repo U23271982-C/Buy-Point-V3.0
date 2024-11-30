@@ -1,17 +1,23 @@
 package Frontend.FormulariosPrincipales;
 
+import Backend.Controladores.CtrlProducto;
+import Backend.Controladores.GraficadorEstadisticas;
 import Frontend.FormulariosPrincipales.VentaPanel;
 import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.List;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import org.jfree.chart.ChartPanel;
 
-public final class RegistroVentasPanel extends javax.swing.JFrame {
+public final class RegistroVentasPanel extends javax.swing.JFrame implements Animaciones{
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,6 +39,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         Venta = new javax.swing.JLabel();
         Menu = new javax.swing.JLabel();
         RegistroVentas = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
 
         jLabel1.setText("jLabel1");
 
@@ -41,11 +48,12 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1212, 752));
 
         registro_ventas.setBackground(new java.awt.Color(255, 255, 255));
         registro_ventas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         registro_ventas.setName("registro_ventas"); // NOI18N
-        registro_ventas.setPreferredSize(new java.awt.Dimension(1176, 486));
+        registro_ventas.setPreferredSize(new java.awt.Dimension(1212, 633));
         registro_ventas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 registro_ventasMouseEntered(evt);
@@ -152,14 +160,14 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         EncabezadoLayout.setHorizontalGroup(
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EncabezadoLayout.createSequentialGroup()
-                .addContainerGap(1098, Short.MAX_VALUE)
-                .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(EncabezadoLayout.createSequentialGroup()
                         .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(EncabezadoLayout.createSequentialGroup()
+                        .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -167,12 +175,13 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         EncabezadoLayout.setVerticalGroup(
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EncabezadoLayout.createSequentialGroup()
-                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelMini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(PanelMax, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(PanelMini, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         PanelOp.setBackground(new java.awt.Color(255, 255, 255));
@@ -248,36 +257,51 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
 
         PanelOp.add(panelOpciones, new java.awt.GridBagConstraints());
 
+        jInternalFrame1.setResizable(true);
+        jInternalFrame1.setPreferredSize(new java.awt.Dimension(621, 420));
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout registro_ventasLayout = new javax.swing.GroupLayout(registro_ventas);
         registro_ventas.setLayout(registro_ventasLayout);
         registro_ventasLayout.setHorizontalGroup(
             registro_ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(registro_ventasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(PanelOp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1210, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registro_ventasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(177, 177, 177))
         );
         registro_ventasLayout.setVerticalGroup(
             registro_ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registro_ventasLayout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 510, Short.MAX_VALUE)
-                .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(27, 27, 27)
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registro_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
+            .addComponent(registro_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(registro_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(registro_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -375,11 +399,11 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_MaximizarMouseExited
 
     private void PanelOpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelOpMouseEntered
-        Agranda(panelOpciones, 1, 2, 62);
+        Animaciones.Agranda(panelOpciones, 1, 2, 62);
     }//GEN-LAST:event_PanelOpMouseEntered
 
     private void registro_ventasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registro_ventasMouseEntered
-        Disminuye(panelOpciones, 1, 2, 0);
+        Animaciones.Disminuye(panelOpciones, 1, 2, 0);
     }//GEN-LAST:event_registro_ventasMouseEntered
     
     public RegistroVentasPanel(){
@@ -390,6 +414,19 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
        this.tamañoimagen(Menu, "/img/menu.png");
        this.tamañoimagen(Venta, "/img/venta.png");
        this.tamañoimagen(RegistroVentas, "/img/registroventas.png");
+       
+       JPanel panel = new JPanel();
+        panel.setSize(750,600);
+       
+       CtrlProducto ctrlProducto = new CtrlProducto();
+        
+        List<String> listaNombre = ctrlProducto.listar().stream().map(p -> p.getNombreProducto()).toList();
+        List<Integer> cantidadProducto = ctrlProducto.listar().stream().map(p -> p.getInventario().getStock()).toList();
+       panel.add(new ChartPanel(GraficadorEstadisticas.graficar
+            ("titulo", "ejeX", "ejeY", listaNombre, cantidadProducto)));
+       
+       jInternalFrame1.add(panel);
+       jInternalFrame1.setVisible(true);
     }
     
     public void tamañoimagen(JLabel label, String ruta){
@@ -397,49 +434,12 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
         .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
     }
 
-    public static void Disminuye(JComponent componente, int milisegundos, int saltos, int parar) {
-        (new Thread() {
-            @Override
-            public void run() {
-                for (int i = componente.getHeight(); i >= parar; i -= saltos) {
-                    try {
-                        Thread.sleep(milisegundos);
-                        componente.setPreferredSize(new Dimension(componente.getWidth(), i));
-                        SwingUtilities.updateComponentTreeUI(componente);
-                        componente.getParent().revalidate();
-                        componente.getParent().repaint();
-                    } catch (InterruptedException e) {
-                        System.out.println("Error Thread Interrumpido: " + e);
-                    }
-                }
-            }
-        }).start();
-    }
-
-    public static void Agranda(JComponent componente, int milisegundos, int saltos, int parar) {
-        (new Thread() {
-            @Override
-            public void run() {
-                for (int i = componente.getHeight(); i <= parar; i += saltos) {
-                    try {
-                        Thread.sleep(milisegundos);
-                        componente.setPreferredSize(new Dimension(componente.getWidth(), i));
-                        SwingUtilities.updateComponentTreeUI(componente);
-                        componente.getParent().revalidate();
-                        componente.getParent().repaint();
-                    } catch (InterruptedException e) {
-                        System.out.println("Error Thread Interrumpido: " + e);
-                    }
-                }
-            }
-        }).start();
-    }
-    
     
     public static void main(String args[]) {
           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RegistroVentasPanel().setVisible(true);
+                
             }
         });
     }
@@ -458,6 +458,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame {
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel registro_ventas;

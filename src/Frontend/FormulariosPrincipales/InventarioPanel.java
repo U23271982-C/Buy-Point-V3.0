@@ -1,7 +1,7 @@
 package Frontend.FormulariosPrincipales;
 
 import Backend.Controladores.CtrlCategoriaProducto;
-import Frontend.ActualizarProducto;
+import Frontend.AgregarCantidadyFV_Producto;
 import Frontend.VistaProducto;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -471,7 +471,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
         return codigoBarras;
     }*/
     
-    StringBuilder codigoLeido = new StringBuilder();
+        StringBuilder codigoLeido = new StringBuilder();
     
     private void inventarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyPressed
     //codigoLeido.setLength(0);
@@ -493,17 +493,28 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 VP.setVisible(true);
                 
             } else{
-                JOptionPane.showConfirmDialog(null, "Producto no encontrado");
-                RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
-                RPOC.setVisible(true);
+                int respuesta = JOptionPane.showConfirmDialog(null
+                        ,"Producto no encontrado"
+                        ,"Ubicación no encontrada",JOptionPane.YES_NO_OPTION);
+        
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                            RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
+                            RPOC.setVisible(true);
+                    } else if (respuesta == JOptionPane.NO_OPTION) {
+                            JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
+                    }
+                
             }
-            System.out.println("sdfsd");            
+
         }
         else{
             codigoLeido.append(lecturaCodigo); 
         }
+        System.out.println(codigoBarras);
     }//GEN-LAST:event_inventarioKeyPressed
 
+    
+    
     //public static int indice;
     private void FiiltradoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiiltradoComboBoxActionPerformed
         int indice = FiiltradoComboBox.getSelectedIndex();
@@ -567,6 +578,8 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
        //this.tamañoimagen(agregarJLabel, "/img/agregar_producto1.png");
        inventario.setFocusable(true);
        //this.listaProductos();
+       //this.tamañoimagen(jLabel2, "/img/iconoActualizacion.jpg");
+       //this.tamañoimagen(jLabel2, "/img/imagenBasura.png");
       
     }
     

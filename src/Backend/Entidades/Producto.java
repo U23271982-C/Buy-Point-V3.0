@@ -31,7 +31,6 @@ public class Producto extends Entidad {
         this.paqueteProducto = new PaqueteProducto();
     }
     
-
     //#region Getters and Setters
 
     public int getIdProducto() {

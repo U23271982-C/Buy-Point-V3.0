@@ -212,10 +212,11 @@
         </Component>
         <Component class="javax.swing.JTextField" name="FvTxt">
           <Properties>
-            <Property name="text" type="java.lang.String" value="24/12"/>
+            <Property name="text" type="java.lang.String" value="dd/mm/yy"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FvTxtActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FvTxtKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="CantidadJLabel">

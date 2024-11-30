@@ -130,10 +130,15 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         FvJLabel.setForeground(new java.awt.Color(0, 0, 0));
         FvJLabel.setText(" FV");
 
-        FvTxt.setText("24/12");
+        FvTxt.setText("dd/mm/yy");
         FvTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FvTxtActionPerformed(evt);
+            }
+        });
+        FvTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FvTxtKeyTyped(evt);
             }
         });
 
@@ -340,7 +345,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpaqueComboboxActionPerformed
 
     private void FvTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FvTxtActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_FvTxtActionPerformed
 
     private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
@@ -453,7 +458,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     private void CantidadTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadTxtKeyTyped
         char caracter = evt.getKeyChar();
         
-        this.BloquearCaracteres(CantidadTxt, caracter, evt);
+        BloquearCaracteres(CantidadTxt, caracter, evt);
         /*if (!Character.isDigit(c)) {// Bloquear caracteres no numéricos
                 evt.consume();
                 Toolkit.getDefaultToolkit().beep();
@@ -464,14 +469,14 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     private void PrecioVentaTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioVentaTxtKeyTyped
         char c = evt.getKeyChar();
         
-        this.BloquearCaracteres(PrecioVentaTxt, c, evt);
+        BloquearCaracteres(PrecioVentaTxt, c, evt);
         /*if (!Character.isDigit(c)) {// Bloquear caracteres no numéricos
                 evt.consume();
                 Toolkit.getDefaultToolkit().beep();
             }*/
     }//GEN-LAST:event_PrecioVentaTxtKeyTyped
 
-    public void BloquearCaracteres(JTextField text, char c, KeyEvent event){
+    public static void BloquearCaracteres(JTextField text, char c, KeyEvent event){
         if (Character.isDigit(c)) {
              return;
         } if (c == '.' && !text.getText().contains(".")) {
@@ -487,8 +492,15 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     private void PrecioProovedorTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioProovedorTxtKeyTyped
         char character = evt.getKeyChar();
         
-        this.BloquearCaracteres(PrecioProovedorTxt, character, evt);
+        BloquearCaracteres(PrecioProovedorTxt, character, evt);
     }//GEN-LAST:event_PrecioProovedorTxtKeyTyped
+
+    private void FvTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FvTxtKeyTyped
+        if(FvTxt.getText().length() >= 10){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_FvTxtKeyTyped
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

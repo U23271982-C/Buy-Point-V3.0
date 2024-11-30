@@ -1,5 +1,10 @@
 package Frontend;
 
+import Backend.Controladores.CtrlPaqueteProducto;
+import Backend.Entidades.Codigo;
+import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Producto;
+import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
@@ -11,9 +16,9 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class ActualizarProducto extends javax.swing.JFrame {
+public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
 
-    public ActualizarProducto() {
+    public AgregarCantidadyFV_Producto() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -343,29 +348,51 @@ public class ActualizarProducto extends javax.swing.JFrame {
     
     public void ConfirmarActualizacion(){
         try {
-            VistaProducto VP = new VistaProducto();
-            String Text, FV;
-            Text = CantiTxt.getText().trim();
+//            VistaProducto VP = new VistaProducto();
+//            String Text, FV;
+//            Text = CantiTxt.getText().trim();
+//            
+//            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//            LocalDate FVDate = LocalDate.parse(FvText.getText().trim(),textFormt);
+//            
+//            FV = FVDate.format(textFormt);
+//       
+//            VP.setDato(Text,FV);
+//            VP.setVisible(true);
+//            VP.toFront();
+//            this.setVisible(false);
+
+            CtrlPaqueteProducto CPP = new CtrlPaqueteProducto();
+            Producto P = new Producto();
+            Codigo C = new Codigo();
+            PaqueteProducto PP = new PaqueteProducto();
+            
+            C.setCodigo(codigoBarras);
+            P.setCodigo(C);
             
             DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate FVDate = LocalDate.parse(FvText.getText().trim(),textFormt);
             
-            FV = FVDate.format(textFormt);
-       
-            VP.setDato(Text,FV);
-            VP.setVisible(true);
-            VP.toFront();
-            this.setVisible(false);
+            int cantidad = Integer.parseInt(CantiTxt.getText().trim());
+            
+            P.getPaqueteProducto().setCantidad(cantidad);
+            P.getPaqueteProducto().setFechaCaducidad(FVDate);
+            
+            PP.setProducto(P);
+            CPP.registrar(PP);
+                  
+            
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos");
+            JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
     
     public void CancelarActualizacion(){
-        VistaProducto VP = new VistaProducto();
         this.setVisible(false);
-        VP.setVisible(true);
-        VP.toFront();
+//        VistaProducto VP = new VistaProducto();
+//        VP.setVisible(true);
+//        VP.toFront();
     }
 
     public static void main(String args[]) {
@@ -382,20 +409,21 @@ public class ActualizarProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ActualizarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarCantidadyFV_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ActualizarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarCantidadyFV_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ActualizarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarCantidadyFV_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ActualizarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarCantidadyFV_Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ActualizarProducto().setVisible(true);
+                new AgregarCantidadyFV_Producto().setVisible(true);
             }
         });
     }

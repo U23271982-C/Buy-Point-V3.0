@@ -19,16 +19,15 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
 
     @Override
     public void registrar(PaqueteProducto nuevaEntidad) {
-        String consultaSQL = "{ CALL pa_registrarPaqueteProducto(?, ?, ?) }";
+        String consultaSQL = "{ CALL paT_registrarPaqueteProducto(?, ?, ?) }";
 
         try (CallableStatement comando = SQLServerBD.instanciaConexcion()
                 .conectar().prepareCall(consultaSQL)){
 
             comando.setInt
-                    (1, nuevaEntidad.getCantidad());
+                    (1, nuevaEntidad.getProducto().getPaqueteProducto().getCantidad());
             comando.setDate
-                    (2, java.sql.Date.valueOf(nuevaEntidad
-                            .getFechaCaducidad()));
+                    (2, java.sql.Date.valueOf(nuevaEntidad.getProducto().getPaqueteProducto().getFechaCaducidad()   ));
             comando.setString
                     (3, nuevaEntidad.getProducto().getCodigo()
                             .getCodigo());
