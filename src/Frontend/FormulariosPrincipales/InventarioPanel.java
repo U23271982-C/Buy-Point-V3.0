@@ -497,11 +497,12 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
                 RPOC.setVisible(true);
             }
-            System.out.println("sdfsd");            
+
         }
         else{
             codigoLeido.append(lecturaCodigo); 
         }
+        System.out.println(codigoBarras);
     }//GEN-LAST:event_inventarioKeyPressed
 
     

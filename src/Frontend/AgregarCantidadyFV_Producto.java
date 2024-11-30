@@ -1,5 +1,10 @@
 package Frontend;
 
+import Backend.Controladores.CtrlPaqueteProducto;
+import Backend.Entidades.Codigo;
+import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Producto;
+import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
@@ -343,29 +348,51 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
     
     public void ConfirmarActualizacion(){
         try {
-            VistaProducto VP = new VistaProducto();
-            String Text, FV;
-            Text = CantiTxt.getText().trim();
+//            VistaProducto VP = new VistaProducto();
+//            String Text, FV;
+//            Text = CantiTxt.getText().trim();
+//            
+//            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//            LocalDate FVDate = LocalDate.parse(FvText.getText().trim(),textFormt);
+//            
+//            FV = FVDate.format(textFormt);
+//       
+//            VP.setDato(Text,FV);
+//            VP.setVisible(true);
+//            VP.toFront();
+//            this.setVisible(false);
+
+            CtrlPaqueteProducto CPP = new CtrlPaqueteProducto();
+            Producto P = new Producto();
+            Codigo C = new Codigo();
+            PaqueteProducto PP = new PaqueteProducto();
+            
+            C.setCodigo(codigoBarras);
+            P.setCodigo(C);
             
             DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate FVDate = LocalDate.parse(FvText.getText().trim(),textFormt);
             
-            FV = FVDate.format(textFormt);
-       
-            VP.setDato(Text,FV);
-            VP.setVisible(true);
-            VP.toFront();
-            this.setVisible(false);
+            int cantidad = Integer.parseInt(CantiTxt.getText().trim());
+            
+            PP.setCantidad(cantidad);
+            PP.setFechaCaducidad(FVDate);
+            
+            
+            CPP.registrar(PP);
+                  
+            
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos");
+            System.out.println(e.getMessage());
         }
     }
     
     public void CancelarActualizacion(){
-        VistaProducto VP = new VistaProducto();
         this.setVisible(false);
-        VP.setVisible(true);
-        VP.toFront();
+//        VistaProducto VP = new VistaProducto();
+//        VP.setVisible(true);
+//        VP.toFront();
     }
 
     public static void main(String args[]) {
