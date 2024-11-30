@@ -493,9 +493,17 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 VP.setVisible(true);
                 
             } else{
-                JOptionPane.showConfirmDialog(null, "Producto no encontrado");
-                RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
-                RPOC.setVisible(true);
+                int respuesta = JOptionPane.showConfirmDialog(null
+                        ,"Producto no encontrado"
+                        ,"Ubicación no encontrada",JOptionPane.YES_NO_OPTION);
+        
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                            RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
+                            RPOC.setVisible(true);
+                    } else if (respuesta == JOptionPane.NO_OPTION) {
+                            JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
+                    }
+                
             }
 
         }

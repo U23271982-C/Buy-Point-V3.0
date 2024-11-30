@@ -375,15 +375,15 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
             
             int cantidad = Integer.parseInt(CantiTxt.getText().trim());
             
-            PP.setCantidad(cantidad);
-            PP.setFechaCaducidad(FVDate);
+            P.getPaqueteProducto().setCantidad(cantidad);
+            P.getPaqueteProducto().setFechaCaducidad(FVDate);
             
-            
+            PP.setProducto(P);
             CPP.registrar(PP);
                   
             
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos");
+            JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos " + e.getMessage());
             System.out.println(e.getMessage());
         }
     }
