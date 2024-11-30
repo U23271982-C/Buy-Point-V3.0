@@ -39,12 +39,16 @@ public final class VentaPanel extends javax.swing.JFrame {
         ListadoProducto = new javax.swing.JPanel();
         MontoTotalPanel = new javax.swing.JPanel();
         MontoTotalJLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        IGVJLabel = new javax.swing.JLabel();
+        PrecioJLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         ConfirmarButtom = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -315,13 +319,13 @@ public final class VentaPanel extends javax.swing.JFrame {
         MontoTotalJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MontoTotalJLabel.setText("Monto Total");
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("IGV");
+        IGVJLabel.setForeground(new java.awt.Color(0, 0, 0));
+        IGVJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IGVJLabel.setText("IGV");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Precio");
+        PrecioJLabel.setForeground(new java.awt.Color(0, 0, 0));
+        PrecioJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PrecioJLabel.setText("Precio");
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -333,7 +337,7 @@ public final class VentaPanel extends javax.swing.JFrame {
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("sfsdfsdfs");
 
         ConfirmarButtom.setText("Confirmar");
         ConfirmarButtom.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -342,44 +346,67 @@ public final class VentaPanel extends javax.swing.JFrame {
             }
         });
 
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Yape", "Plin", "Tarjeta" }));
+
         javax.swing.GroupLayout MontoTotalPanelLayout = new javax.swing.GroupLayout(MontoTotalPanel);
         MontoTotalPanel.setLayout(MontoTotalPanelLayout);
         MontoTotalPanelLayout.setHorizontalGroup(
             MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MontoTotalPanelLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
-                        .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(MontoTotalJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(62, 62, 62))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
                         .addComponent(ConfirmarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129))))
+                        .addGap(129, 129, 129))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
+                        .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(MontoTotalPanelLayout.createSequentialGroup()
+                                    .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(MontoTotalJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(IGVJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(PrecioJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(51, 51, 51)
+                                    .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(63, 63, 63))))
         );
         MontoTotalPanelLayout.setVerticalGroup(
             MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MontoTotalPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(65, 65, 65)
                 .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PrecioJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IGVJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MontoTotalJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ConfirmarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
@@ -638,6 +665,7 @@ public final class VentaPanel extends javax.swing.JFrame {
     private javax.swing.JTextField Buscador;
     private javax.swing.JButton ConfirmarButtom;
     private javax.swing.JPanel Encabezado;
+    private javax.swing.JLabel IGVJLabel;
     private javax.swing.JLabel Inventario;
     private javax.swing.JPanel ListadoProducto;
     private javax.swing.JLabel Lupa;
@@ -650,17 +678,20 @@ public final class VentaPanel extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMini;
     private javax.swing.JPanel PanelOp;
     private javax.swing.JPanel PanelX;
+    private javax.swing.JLabel PrecioJLabel;
     private javax.swing.JLabel RegistroVentas;
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel venta;
     // End of variables declaration//GEN-END:variables

@@ -1,11 +1,13 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
+import Backend.Entidades.Comprobante;
 import Backend.Entidades.TipoPago;
 import Backend.Gestores.GestorSQLServer;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -43,12 +45,51 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
 
     @Override
     public TipoPago leer(TipoPago leerEntidad) {
-        return null;
+        TipoPago tipoPago = null;
+        String consultaSQL = "{ CALL pa_leerTipoPagoe(?) }";
+
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion().conectar()
+                             .prepareCall(consultaSQL)){
+
+            comando.setString(1, leerEntidad.getTipoPago());
+
+
+            ResultSet filas = comando.executeQuery();
+            if (filas.next()) {
+                tipoPago = new TipoPago();
+
+                tipoPago.setTipoPago(filas.getString(1));
+            }//else {
+            //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
+            //}
+
+            //System.out.println("Se realizó la lectura");
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
+
+        return tipoPago;
     }
 
     @Override
     public void eliminar(TipoPago eliminadoEntidad) {
+        String consultaSQL = "{ CALL pa_eliminarTipoProducto(?) }";
 
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
+
+            comando.setString(1, eliminadoEntidad.getTipoPago());
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Comprobante eliminado");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override
@@ -58,6 +99,24 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
 
     @Override
     public ArrayList<TipoPago> listar() {
-        return null;
+        ArrayList<TipoPago> tipoPagos = new ArrayList<>();
+        String consulta = "{ CALL pa_listarTipoPago() }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consulta)) {
+
+            ResultSet filas = comando.executeQuery();
+            TipoPago co = null;
+            while (filas.next()) {
+                co = new TipoPago();
+                co.setTipoPago(filas.getString(1));
+
+                tipoPagos.add(co);
+            }
+
+            return tipoPagos;
+
+        } catch (SQLException e) {
+        throw new RuntimeException(e);
     }
-}
+}}

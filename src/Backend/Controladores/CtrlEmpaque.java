@@ -1,6 +1,7 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
+import Backend.Entidades.Comprobante;
 import Backend.Entidades.CredencialesTienda;
 import Backend.Entidades.Empaque;
 import Backend.Gestores.GestorSQLServer;
@@ -45,17 +46,58 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
 
     @Override
     public Empaque leer(Empaque leerEntidad) {
-        return null;
+        Empaque empaque = null;
+        String consultaSQL = "{ CALL pa_leerEmpaque(?) }";
+
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion().conectar()
+                             .prepareCall(consultaSQL)){
+
+            comando.setString(1, leerEntidad.getTipoEmpaque());
+
+            ResultSet filas = comando.executeQuery();
+            if (filas.next()) {
+                empaque = new Empaque();
+
+                empaque.setTipoEmpaque(filas.getString(1));
+
+            }//else {
+            //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
+            //}
+
+            //System.out.println("Se realizó la lectura");
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
+
+        return empaque;
     }
 
     @Override
     public void eliminar(Empaque eliminadoEntidad) {
+        String consultaSQL = "{ CALL pa_eliminarEmpaque(?) }";
 
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
+
+            comando.setString(1,
+                    eliminadoEntidad.getTipoEmpaque());
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Comprobante eliminado");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override
     public void actualizar(Empaque actualizadoEntidad) {
-
+        //FALTA LÓGICA
     }
 
     @Override
