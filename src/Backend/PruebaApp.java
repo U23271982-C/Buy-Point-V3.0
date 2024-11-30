@@ -3,15 +3,20 @@ package Backend;
 import Backend.Controladores.CtrlCliente;
 import Backend.Controladores.CtrlEmpaque;
 import Backend.Controladores.CtrlProducto;
+import Backend.Controladores.GraficadorEstadisticas;
 import Backend.Entidades.*;
 import Backend.Gestores.GestorSQLServer;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartPanel;
 
 public class PruebaApp {
     public static void main(String[] args) {
@@ -87,20 +92,34 @@ public class PruebaApp {
         ctrlEmpaque.registrar(empaque);
 */      
         //try {
-            CtrlProducto producto = new CtrlProducto();
-        Producto p = new Producto();
-        Codigo co  = new Codigo();
-        String code = "renz04ii2";
-        co.setCodigo(code);
-        p.setCodigo(co);
+//            CtrlProducto producto = new CtrlProducto();
+//        Producto p = new Producto();
+//        Codigo co  = new Codigo();
+//        String code = "renz04ii2";
+//        co.setCodigo(code);
+//        p.setCodigo(co);
+//        
+//        if (producto.leer(p) != null) {
+//            System.out.println("Se encontro el producto");
+//        }else{
+//            System.out.println("No se econtro el producto");
+//       }
+//        //} catch (Exception e) {
+//           // e.getMessage();
+//        //}
+        CtrlProducto ctrlProducto = new CtrlProducto();
+         List<String> listaNombre = ctrlProducto.listar().stream().map(p -> p.getNombreProducto()).toList();
+        List<Integer> cantidadProducto = ctrlProducto.listar().stream().map(p -> p.getInventario().getStock()).toList();
         
-        if (producto.leer(p) != null) {
-            System.out.println("Se encontro el producto");
-        }else{
-            System.out.println("No se econtro el producto");
-       }
-        //} catch (Exception e) {
-           // e.getMessage();
-        //}
+        JFrame ventana = new JFrame("Gráfico de Barras");
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setSize(800, 600);
+
+        JPanel panel = new JPanel();
+        panel.setSize(100,500);
+        panel.add(new ChartPanel(GraficadorEstadisticas.graficar("tt", "c", "d", listaNombre, cantidadProducto)));
+        ventana.add(panel);
+        //ventana.add(new ChartPanel(grafico));
+        ventana.setVisible(true);
     }
 }
