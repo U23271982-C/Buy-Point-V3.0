@@ -1,5 +1,7 @@
 package Frontend.FormulariosPrincipales;
 
+import Frontend.visualFramework.Animaciones;
+import Frontend.visualFramework.Formato_Imagen;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -399,18 +401,14 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
     public MenuPrincipalPanel(){
        initComponents();
        setLocationRelativeTo(null);
-       this.tamañoimagen(iconoUsuario, "/img/usermenu.png");
-       this.tamañoimagen(Inventario, "/img/inventario.png");
-       this.tamañoimagen(Menu, "/img/menu.png");
-       this.tamañoimagen(Venta, "/img/venta.png");
-       this.tamañoimagen(RegistroVentas, "/img/registroventas.png");
+       Formato_Imagen FI = new Formato_Imagen();
+       FI.tamañoimagen(iconoUsuario, "/img/usermenu.png");
+       FI.tamañoimagen(Inventario, "/img/inventario.png");
+       FI.tamañoimagen(Menu, "/img/menu.png");
+       FI.tamañoimagen(Venta, "/img/venta.png");
+       FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
     }
     
-    public void tamañoimagen(JLabel label, String ruta){
-        label.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ruta)). getImage()
-        .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
-    }
-
     public static void main(String args[]) {
           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

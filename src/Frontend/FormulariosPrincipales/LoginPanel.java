@@ -6,6 +6,7 @@ package Frontend.FormulariosPrincipales;
 import Backend.Controladores.ControladorApp;
 import Backend.Controladores.CtrlCredencialesTienda;
 import Backend.Entidades.CredencialesTienda;
+import Frontend.visualFramework.Formato_Imagen;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -21,20 +22,14 @@ import javax.swing.KeyStroke;
 
 
 public final class LoginPanel extends javax.swing.JFrame {
-    //Formato_Imagen escalas = new Formato_Imagen();
     
     public LoginPanel() {
        initComponents();
        setLocationRelativeTo(null);
-       //escalas.escalarLaber(user, "/img/login.png");
-       this.tamañoimagen(user, "/img/login.png");
+       Formato_Imagen FI = new Formato_Imagen();
+       FI.tamañoimagen(user, "/img/login.png");
     }
     
-    public void tamañoimagen(JLabel label, String ruta){
-        label.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ruta)). getImage()
-        .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
