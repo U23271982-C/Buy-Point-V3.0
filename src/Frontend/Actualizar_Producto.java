@@ -5,6 +5,7 @@ import Backend.Entidades.Codigo;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
+import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -296,7 +297,8 @@ public class Actualizar_Producto extends javax.swing.JFrame {
     public Actualizar_Producto() {
         initComponents();
         setLocationRelativeTo(null);
-        this.tamañoimagen(ConfirmarJLabel, "/img/imagenConfirmar.png");
+        Formato_Imagen FI = new Formato_Imagen();
+        FI.tamañoimagen(ConfirmarJLabel, "/img/imagenConfirmar.png");
         this.toFront();
     }
     

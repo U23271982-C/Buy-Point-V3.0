@@ -1,4 +1,4 @@
-package Frontend.FormulariosPrincipales;
+package Frontend.visualFramework;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,4 +41,7 @@ public interface Animaciones {
             }
         }).start();
     }
+
+    
+    
 }

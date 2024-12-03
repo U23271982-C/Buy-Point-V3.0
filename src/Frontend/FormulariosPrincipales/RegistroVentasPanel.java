@@ -1,7 +1,9 @@
 package Frontend.FormulariosPrincipales;
 
+import Frontend.visualFramework.Animaciones;
 import Backend.Controladores.CtrlProducto;
 import Backend.Controladores.GraficadorEstadisticas;
+import Frontend.visualFramework.Formato_Imagen;
 import Frontend.FormulariosPrincipales.VentaPanel;
 import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
@@ -409,11 +411,12 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
     public RegistroVentasPanel(){
        initComponents();
        setLocationRelativeTo(null);
-       this.tamañoimagen(iconoUsuario, "/img/usermenu.png");
-       this.tamañoimagen(Inventario, "/img/inventario.png");
-       this.tamañoimagen(Menu, "/img/menu.png");
-       this.tamañoimagen(Venta, "/img/venta.png");
-       this.tamañoimagen(RegistroVentas, "/img/registroventas.png");
+       Formato_Imagen FI = new Formato_Imagen();
+       FI.tamañoimagen(iconoUsuario, "/img/usermenu.png");
+       FI.tamañoimagen(Inventario, "/img/inventario.png");
+       FI.tamañoimagen(Menu, "/img/menu.png");
+       FI.tamañoimagen(Venta, "/img/venta.png");
+       FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
        
        JPanel panel = new JPanel();
         panel.setSize(750,600);
@@ -428,12 +431,6 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
        jInternalFrame1.add(panel);
        jInternalFrame1.setVisible(true);
     }
-    
-    public void tamañoimagen(JLabel label, String ruta){
-        label.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ruta)). getImage()
-        .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
-    }
-
     
     public static void main(String args[]) {
           java.awt.EventQueue.invokeLater(new Runnable() {

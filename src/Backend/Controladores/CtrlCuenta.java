@@ -83,16 +83,51 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
 
     @Override
     public void eliminar(Cuenta eliminadoEntidad) {
+        String consultaSQL = "{ CALL pa_eliminarCuenta(?, ?) }";
 
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
+
+            comando.setString(1, eliminadoEntidad.getNombre());
+            comando.setString(2, eliminadoEntidad.getApellido());
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Comprobante eliminado");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override
     public void actualizar(Cuenta actualizadoEntidad) {
-
+        // FALTA LÓGICA
     }
 
     @Override
     public ArrayList<Cuenta> listar() {
-        return null;
+        ArrayList<Cuenta> cuentas = new ArrayList<>();
+        String consulta = "{ CALL pa_listarCuenta() }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consulta)) {
+
+            ResultSet filas = comando.executeQuery();
+            Cuenta co = null;
+            while (filas.next()) {
+                co = new Cuenta();
+                co.setNombre(filas.getString(1));
+                co.setApellido(filas.getString(2));
+                co.setTelefono(filas.getInt(3));
+
+                cuentas.add(co);
+            }
+
+            return cuentas;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

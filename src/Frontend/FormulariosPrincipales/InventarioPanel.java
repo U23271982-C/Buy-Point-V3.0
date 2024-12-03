@@ -1,5 +1,6 @@
 package Frontend.FormulariosPrincipales;
 
+import Frontend.visualFramework.Animaciones;
 import Backend.Controladores.CtrlCategoriaProducto;
 import Frontend.AgregarCantidadyFV_Producto;
 import Frontend.VistaProducto;
@@ -16,6 +17,7 @@ import Backend.Controladores.Filtro;
 import Backend.Entidades.CategoriaProducto;
 import Backend.Entidades.Producto;
 import Backend.Entidades.Codigo;
+import Frontend.visualFramework.Formato_Imagen;
 import Frontend.RegistrarProductoOCodigo;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -570,25 +572,14 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
     public InventarioPanel(){
        initComponents();
        setLocationRelativeTo(null);
-       this.tamañoimagen(iconoUsuario, "/img/usermenu.png");
-       this.tamañoimagen(Inventario, "/img/inventario.png");
-       this.tamañoimagen(Menu, "/img/menu.png");
-       this.tamañoimagen(Venta, "/img/venta.png");
-       this.tamañoimagen(RegistroVentas, "/img/registroventas.png");
-       //this.tamañoimagen(agregarJLabel, "/img/agregar_producto1.png");
-       inventario.setFocusable(true);
-       //this.listaProductos();
-       //this.tamañoimagen(jLabel2, "/img/iconoActualizacion.jpg");
-       //this.tamañoimagen(jLabel2, "/img/imagenBasura.png");
-      
+       Formato_Imagen FI = new Formato_Imagen();
+       FI.tamañoimagen(iconoUsuario, "/img/usermenu.png");
+       FI.tamañoimagen(Inventario, "/img/inventario.png");
+       FI.tamañoimagen(Menu, "/img/menu.png");
+       FI.tamañoimagen(Venta, "/img/venta.png");
+       FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
+       inventario.setFocusable(true);     
     }
-    
-    public void tamañoimagen(JLabel label, String ruta){
-        label.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ruta)). getImage()
-        .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
-    }
-
-
     
     public static void main(String args[]) {
         

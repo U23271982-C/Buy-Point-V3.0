@@ -5,6 +5,7 @@ import Backend.Entidades.Codigo;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
+import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -305,12 +306,11 @@ public class VistaProducto extends javax.swing.JFrame {
     public VistaProducto() {
         initComponents();
         setLocationRelativeTo(null);
-        this.tamañoimagen(FotoAgregarProducto, "/img/AgregarProducto.png");
-        //agregar metodo para buscar la foto en la BD
+        Formato_Imagen FI = new Formato_Imagen();
+        FI.tamañoimagen(FotoAgregarProducto, "/img/AgregarProducto.png");
+        FI.tamañoimagen(Actualizar, "/img/iconoActualizacion.jpg");
+        FI.tamañoimagen(Eliminar, "/img/imagenbasura.png");
         this.NombreProducto(NombreJLabel,CantidadStock,FV);
-        this.tamañoimagen(Actualizar, "/img/iconoActualizacion.jpg");
-        this.tamañoimagen(Eliminar, "/img/imagenbasura.png");
-                
     }
     
     
@@ -337,11 +337,7 @@ public class VistaProducto extends javax.swing.JFrame {
     public void FechaCaducidad(JLabel jLabel){
         
     }
-    
-    public void tamañoimagen(JLabel label, String ruta){
-        label.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ruta)). getImage()
-        .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
-    }
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
