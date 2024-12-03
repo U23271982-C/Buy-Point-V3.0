@@ -2,6 +2,7 @@ package Frontend.FormulariosPrincipales;
 
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
+import Backend.Entidades.DetalleVenta;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
@@ -17,7 +18,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         @SuppressWarnings("unchecked")
@@ -46,7 +49,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         RegistroVentas = new javax.swing.JLabel();
         ListadoProducto = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableVender = new javax.swing.JTable();
         MontoTotalPanel = new javax.swing.JPanel();
         MontoTotalJLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -306,20 +309,20 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableVender.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre Producto", "Precio Unitario", "Cantidad", "Precio Unidad", "SubTotal", "Total"
+                "Nombre Producto", "Precio Unidad", "Cantidad", "SubTotal", "Total"
             }
         ));
-        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTableVender.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTable1KeyPressed(evt);
+                jTableVenderKeyPressed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableVender);
 
         javax.swing.GroupLayout ListadoProductoLayout = new javax.swing.GroupLayout(ListadoProducto);
         ListadoProducto.setLayout(ListadoProductoLayout);
@@ -583,8 +586,17 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
             C.setCodigo(codigoBarras);
             P.setCodigo(C);
             
-                      
-            if (CP.leer(P) != null) {
+             DetalleVenta detalleVenta = new DetalleVenta();
+             Producto pro = CP.leer(P);
+            if (pro  != null) {
+                DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+                //JTable tableO = new JTable(tm);
+                tm.addRow(new Object[]{
+                    detalleVenta.getProducto().getCategoriaProducto(),
+                    detalleVenta.getPrecioUnitario(),
+                    detalleVenta.getCantidad(),
+                    
+                });
                 System.out.println(codigoBarras);
                 
             } else{
@@ -621,9 +633,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         TCP.setVisible(true);
     }//GEN-LAST:event_ConfirmarButtomMouseClicked
 
-    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+    private void jTableVenderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableVenderKeyPressed
        
-    }//GEN-LAST:event_jTable1KeyPressed
+    }//GEN-LAST:event_jTableVenderKeyPressed
                                   
     
     public VentaPanel(){
@@ -679,7 +691,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableVender;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel venta;
     // End of variables declaration//GEN-END:variables
