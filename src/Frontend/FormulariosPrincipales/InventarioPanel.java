@@ -546,7 +546,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 "Categoria"
             };
             DefaultTableModel tm = (DefaultTableModel) jTable10.getModel();
-            JTable tableO = new JTable(tm);
+            //JTable tableO = new JTable(tm);
             
             CtrlProducto CP = new CtrlProducto();
         
