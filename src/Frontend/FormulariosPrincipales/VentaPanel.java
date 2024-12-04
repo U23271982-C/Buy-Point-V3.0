@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
 public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
@@ -47,8 +48,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         Menu = new javax.swing.JLabel();
         RegistroVentas = new javax.swing.JLabel();
         ListadoProducto = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        VentajScrollPane = new javax.swing.JScrollPane();
+        TablaVenta = new javax.swing.JTable();
         MontoTotalPanel = new javax.swing.JPanel();
         MontoTotalJLabel = new javax.swing.JLabel();
         IGVJLabel = new javax.swing.JLabel();
@@ -227,6 +228,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BuscadorKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BuscadorKeyTyped(evt);
+            }
         });
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
@@ -312,30 +316,30 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre Producto", "Precio Unitario", "Cantidad", "Precio Unidad", "SubTotal", "Total"
+                "Nombre Producto", "Precio Unitario", "Cantidad", "SubTotal", "Total"
             }
         ));
-        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+        TablaVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTable1KeyPressed(evt);
+                TablaVentaKeyPressed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        VentajScrollPane.setViewportView(TablaVenta);
 
         javax.swing.GroupLayout ListadoProductoLayout = new javax.swing.GroupLayout(ListadoProducto);
         ListadoProducto.setLayout(ListadoProductoLayout);
         ListadoProductoLayout.setHorizontalGroup(
             ListadoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+            .addComponent(VentajScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
         );
         ListadoProductoLayout.setVerticalGroup(
             ListadoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+            .addComponent(VentajScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
         );
 
         MontoTotalPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -344,7 +348,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         MontoTotalJLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MontoTotalJLabel.setForeground(new java.awt.Color(0, 0, 0));
         MontoTotalJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        MontoTotalJLabel.setText("Monto Total");
+        MontoTotalJLabel.setText("Monto Final");
 
         IGVJLabel.setForeground(new java.awt.Color(0, 0, 0));
         IGVJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -570,7 +574,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
     }//GEN-LAST:event_RegistroVentasMouseClicked
 
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
-        Buscador.setText("");
+        //Buscador.setText("");
     }//GEN-LAST:event_BuscadorActionPerformed
 
     private void PanelMaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMaxMouseClicked
@@ -597,34 +601,41 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         PanelMax.setBackground(Color.WHITE);
     }//GEN-LAST:event_MaximizarMouseExited
     
-    public static String codigoBarras ;
-    StringBuilder codigoLeido = new StringBuilder();
     private void BuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyPressed
-             char lecturaCodigo = evt.getKeyChar();
+       
+        StringBuilder codigoescaneado = new StringBuilder();
+
+        char lecturaCodigo = evt.getKeyChar();
         
-        if (lecturaCodigo == KeyEvent.VK_ENTER) {
+        try{
+        
+            if (lecturaCodigo == KeyEvent.VK_ENTER) {
             CtrlProducto CP = new CtrlProducto();
             
-            this.codigoBarras = codigoLeido.toString();
+            String codigoBarra = codigoescaneado.toString();
             
             Producto P = new Producto();
             Codigo C = new Codigo();
-            C.setCodigo(codigoBarras);
+            C.setCodigo(codigoBarra);
             P.setCodigo(C);
             
                       
             if (CP.leer(P) != null) {
-                System.out.println(codigoBarras);
-                
+                AgregarProductoTabla(TablaVenta,P,C);
             } else{
-                JOptionPane.showConfirmDialog(null, "Producto no encontrado");
 
             }
-            
         }
         else{
-            codigoLeido.append(lecturaCodigo); 
+            codigoescaneado.append(lecturaCodigo); 
         }
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        
+        System.out.println(codigoescaneado);
     }//GEN-LAST:event_BuscadorKeyPressed
     
     private void EncabezadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EncabezadoMousePressed
@@ -650,10 +661,20 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         TCP.setVisible(true);
     }//GEN-LAST:event_ConfirmarButtomMouseClicked
 
-    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+    private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed
        
-    }//GEN-LAST:event_jTable1KeyPressed
-                                  
+    }//GEN-LAST:event_TablaVentaKeyPressed
+
+    private void BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyTyped
+ 
+    }//GEN-LAST:event_BuscadorKeyTyped
+     
+    int posicion; //contador para agregar producto a la tabla
+    public void AgregarProductoTabla(JTable jTable, Producto P, Codigo C){
+        
+        
+        
+    }
     
     public VentaPanel(){
        initComponents();
@@ -694,7 +715,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
     private javax.swing.JPanel PanelX;
     private javax.swing.JLabel PrecioJLabel;
     private javax.swing.JLabel RegistroVentas;
+    private javax.swing.JTable TablaVenta;
     private javax.swing.JLabel Venta;
+    private javax.swing.JScrollPane VentajScrollPane;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -702,12 +725,10 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel venta;
     // End of variables declaration//GEN-END:variables
