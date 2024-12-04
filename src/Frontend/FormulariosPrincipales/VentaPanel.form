@@ -539,9 +539,6 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTableVenderKeyPressed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -582,9 +579,9 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel4" min="-2" pref="108" max="-2" attributes="0"/>
-                                              <Component id="jLabel5" min="-2" pref="108" max="-2" attributes="0"/>
-                                              <Component id="jLabel6" min="-2" pref="108" max="-2" attributes="0"/>
+                                              <Component id="jLabelTotal" min="-2" pref="108" max="-2" attributes="0"/>
+                                              <Component id="jLabel_IGV" min="-2" pref="108" max="-2" attributes="0"/>
+                                              <Component id="jLabelSubTotal" min="-2" pref="108" max="-2" attributes="0"/>
                                               <Component id="jSeparator2" alignment="1" min="-2" pref="108" max="-2" attributes="0"/>
                                               <Component id="jSeparator3" alignment="1" min="-2" pref="108" max="-2" attributes="0"/>
                                           </Group>
@@ -603,21 +600,21 @@
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="PrecioJLabel" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jLabelSubTotal" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="IGVJLabel" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="jLabel_IGV" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="MontoTotalJLabel" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jLabelTotal" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
@@ -640,7 +637,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Monto Total"/>
+                <Property name="text" type="java.lang.String" value="Total"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="IGVJLabel">
@@ -649,7 +646,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="IGV"/>
+                <Property name="text" type="java.lang.String" value="IGV (18%)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="PrecioJLabel">
@@ -658,10 +655,10 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Precio"/>
+                <Property name="text" type="java.lang.String" value="SubTotal"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="jLabelTotal">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -670,7 +667,7 @@
                 <Property name="text" type="java.lang.String" value="jLabel4"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="jLabel_IGV">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -679,7 +676,7 @@
                 <Property name="text" type="java.lang.String" value="jLabel5"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="jLabelSubTotal">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
