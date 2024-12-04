@@ -601,18 +601,19 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
         PanelMax.setBackground(Color.WHITE);
     }//GEN-LAST:event_MaximizarMouseExited
     
+    StringBuilder codigoescaneado = new StringBuilder();
+    String codigoBarra;
     private void BuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyPressed
        
-        StringBuilder codigoescaneado = new StringBuilder();
-
         char lecturaCodigo = evt.getKeyChar();
+        
         
         try{
         
             if (lecturaCodigo == KeyEvent.VK_ENTER) {
             CtrlProducto CP = new CtrlProducto();
             
-            String codigoBarra = codigoescaneado.toString();
+            codigoBarra = codigoescaneado.toString();
             
             Producto P = new Producto();
             Codigo C = new Codigo();
@@ -620,22 +621,18 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
             P.setCodigo(C);
             
                       
-            if (CP.leer(P) != null) {
-                AgregarProductoTabla(TablaVenta,P,C);
+                if (CP.leer(P) != null) {
+                    AgregarProductoTabla(TablaVenta,P,C);
+                } 
+                
             } else{
-
+                codigoescaneado.append(lecturaCodigo); 
             }
-        }
-        else{
-            codigoescaneado.append(lecturaCodigo); 
-        }
             
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        
-        
-        System.out.println(codigoescaneado);
+
     }//GEN-LAST:event_BuscadorKeyPressed
     
     private void EncabezadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EncabezadoMousePressed
@@ -664,15 +661,18 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
     private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed
        
     }//GEN-LAST:event_TablaVentaKeyPressed
-
+    
+    //String codigoBarra;
     private void BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyTyped
- 
+
+       
     }//GEN-LAST:event_BuscadorKeyTyped
      
     int posicion; //contador para agregar producto a la tabla
     public void AgregarProductoTabla(JTable jTable, Producto P, Codigo C){
         
-        
+        System.out.println(P.getCodigo().getCodigo());
+        System.out.println("qwertyuiop");
         
     }
     
