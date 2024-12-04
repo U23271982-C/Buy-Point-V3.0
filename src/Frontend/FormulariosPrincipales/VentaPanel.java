@@ -611,7 +611,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         try {
 
             if (lecturaCodigo == KeyEvent.VK_ENTER) {
-                Buscador.setText("");
+                Buscador.setText("renz04ii2");
                 CtrlProducto CP = new CtrlProducto();
 
                 codigoBarra = codigoescaneado.toString();
