@@ -40,7 +40,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
 
     @Override
     public CredencialesTienda leer(CredencialesTienda leerEntidad) {
-        CredencialesTienda credencialesUsuario = null;
+        CredencialesTienda credencialesTienda = null;
         String consultaSQL = "{ CALL pa_leerCredencialesTienda(?, ?) }";
 
         try (CallableStatement comando =
@@ -52,7 +52,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
-                credencialesUsuario = new CredencialesTienda(
+                credencialesTienda = new CredencialesTienda(
                         filas.getInt(1),
                         filas.getString(2),
                         filas.getString(3),
@@ -71,7 +71,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
             //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
         }
 
-        return credencialesUsuario;
+        return credencialesTienda;
     }
 
     @Override
