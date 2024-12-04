@@ -607,7 +607,6 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones{
        
         char lecturaCodigo = evt.getKeyChar();
         
-        
         try{
         
             if (lecturaCodigo == KeyEvent.VK_ENTER) {
