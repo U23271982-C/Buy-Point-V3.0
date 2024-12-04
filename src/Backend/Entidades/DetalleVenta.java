@@ -12,7 +12,7 @@ public class DetalleVenta extends Entidad {
     private BigDecimal precioUnitario;
     private BigDecimal subTotal;
     private BigDecimal total;
-    final private Double IGV = 0.18;
+    final private double IGV = 0.18;
 
     Venta venta;
     Producto producto;

@@ -96,7 +96,7 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
     }
 
     @Override
-    public void actualizar(Empaque actualizadoEntidad) {
+    public void actualizar(Empaque actualizarEntidad) {
         //FALTA LÓGICA
     }
 

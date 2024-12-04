@@ -99,7 +99,7 @@ public class CtrlDepartamento implements GestorSQLServer<Departamento> {
     }
 
     @Override
-    public void actualizar(Departamento actualizadoEntidad) {
+    public void actualizar(Departamento actualizarEntidad) {
         // FALTA LÓGICA
     }
 

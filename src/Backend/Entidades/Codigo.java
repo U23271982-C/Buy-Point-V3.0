@@ -10,9 +10,9 @@ public class Codigo extends Entidad {
         //this.producto = new Producto();
     }
 
-    public Codigo(String codigo) {
+    /*public Codigo(String codigo) {
         this.codigo = codigo;
-    }
+    }*/
 
     //#region Getters and Setters
 

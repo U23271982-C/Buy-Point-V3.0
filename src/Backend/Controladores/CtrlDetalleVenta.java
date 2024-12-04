@@ -60,7 +60,7 @@ public class CtrlDetalleVenta implements GestorSQLServer<DetalleVenta> {
     }
 
     @Override
-    public void actualizar(DetalleVenta actualizadoEntidad) {
+    public void actualizar(DetalleVenta actualizarEntidad) {
 
     }
 

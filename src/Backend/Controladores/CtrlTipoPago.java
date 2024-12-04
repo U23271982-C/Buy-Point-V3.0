@@ -93,7 +93,7 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
     }
 
     @Override
-    public void actualizar(TipoPago actualizadoEntidad) {
+    public void actualizar(TipoPago actualizarEntidad) {
 
     }
 

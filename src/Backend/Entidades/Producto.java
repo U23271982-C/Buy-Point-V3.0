@@ -15,7 +15,7 @@ public class Producto extends Entidad {
     private String nombreProducto;
     private String descripcion;
     private BigDecimal precio;
-    private boolean tieneEmpaque;
+    //private boolean tieneEmpaque;
 
     Empaque empaque;
     CategoriaProducto categoriaProducto;
@@ -65,13 +65,13 @@ public class Producto extends Entidad {
         this.precio = precio;
     }
 
-    public boolean isTieneEmpaque() {
+    /*public boolean isTieneEmpaque() {
         return tieneEmpaque;
     }
 
     public void setTieneEmpaque(boolean tieneEmpaque) {
         this.tieneEmpaque = tieneEmpaque;
-    }
+    }*/
 
     public Empaque getEmpaque() {
         return empaque;

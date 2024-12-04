@@ -94,7 +94,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
     }
 
     @Override
-    public void actualizar(CredencialesTienda actualizadoEntidad) {
+    public void actualizar(CredencialesTienda actualizarEntidad) {
         String consultaInsert =
                 "{ CALL pa_actualizarCredencialesTienda( ?,?,?,?,?,?) }";
 
@@ -102,15 +102,15 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
                 .conectar().prepareCall(consultaInsert)) {
 
             comando.setString(1,
-                    actualizadoEntidad.getUsuario());
+                    actualizarEntidad.getUsuario());
             comando.setString(2,
-                    actualizadoEntidad.getContrasenna());
+                    actualizarEntidad.getContrasenna());
             comando.setString(3,
-                    actualizadoEntidad.getNombre());
+                    actualizarEntidad.getNombre());
             comando.setString(4,
-                    actualizadoEntidad.getDireccion());
+                    actualizarEntidad.getDireccion());
             comando.setString(5,
-                    actualizadoEntidad.getCorreoElectronico());
+                    actualizarEntidad.getCorreoElectronico());
 
             comando.executeQuery();
             System.out.println("Se realizó la lectura");

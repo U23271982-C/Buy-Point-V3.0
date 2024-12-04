@@ -12,7 +12,7 @@ public class CredencialesTienda extends Entidad {
     public CredencialesTienda() {
     }
 
-    public CredencialesTienda(int id, String usuario,
+    /*public CredencialesTienda(int id, String usuario,
                               String contrasenna, String nombre,
                               String direccion, String correoElectronico) {
         this.id = id;
@@ -22,7 +22,7 @@ public class CredencialesTienda extends Entidad {
         this.direccion = direccion;
         this.correoElectronico = correoElectronico;
     }
-
+*/
     //#region Getters and Setters
 
     public int getId() {
