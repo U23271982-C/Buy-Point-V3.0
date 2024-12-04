@@ -101,7 +101,7 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
     }
 
     @Override
-    public void actualizar(Cuenta actualizadoEntidad) {
+    public void actualizar(Cuenta actualizarEntidad) {
         // FALTA LÓGICA
     }
 

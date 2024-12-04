@@ -2,6 +2,7 @@ package Backend.Entidades;
 
 import javax.swing.*;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +13,13 @@ public class DetalleVenta extends Entidad {
     private BigDecimal precioUnitario;
     private BigDecimal subTotal;
     private BigDecimal total;
-    final private Double IGV = 0.18;
+    final private double IGV = 0.18;
 
-    Venta venta;
+    //Venta venta;
     Producto producto;
 
     public DetalleVenta() {
-        this.venta = new Venta();
+        this.cantidad = 1;
     }
 
     //#region Getters and Setters
@@ -40,7 +41,7 @@ public class DetalleVenta extends Entidad {
     }
 
     public BigDecimal getPrecioUnitario() {
-        return getProducto().getPrecio();
+        return getProducto().getPrecio().setScale(1, RoundingMode.HALF_UP);
     }
 
     public void setPrecioUnitario(BigDecimal precioUnitario) {
@@ -66,34 +67,24 @@ public class DetalleVenta extends Entidad {
         this.total = total;
     }
 
-    public Venta getVenta() {
-        return venta;
-    }
-
-    public void setVenta(Venta venta) {
-        this.venta = venta;
-    }
-
     public Producto getProducto() {
-        try {
-            if (producto.getCodigo().getCodigo()
-                    .equals(getProducto().getCodigo().getCodigo())) {
-                this.cantidad++;
-                return null;
-            }
-            return producto;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null,
-                    "Error en ingresar un nuevo producto");
-            return null;
-        }
+        return producto;
     }
+    
+    
 
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
     //#endregion
+    public static void main(String[] args) {
+        Producto p = new Producto();
+        p.setPrecio(new BigDecimal(12));
+        DetalleVenta d = new DetalleVenta();
+        d.setProducto(p);
+        
+        System.out.println(d.getCantidad());
+    }
 
 }

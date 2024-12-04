@@ -40,7 +40,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
 
     @Override
     public CredencialesTienda leer(CredencialesTienda leerEntidad) {
-        CredencialesTienda credencialesUsuario = null;
+        CredencialesTienda credencialesTienda = null;
         String consultaSQL = "{ CALL pa_leerCredencialesTienda(?, ?) }";
 
         try (CallableStatement comando =
@@ -52,7 +52,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
-                credencialesUsuario = new CredencialesTienda(
+                credencialesTienda = new CredencialesTienda(
                         filas.getInt(1),
                         filas.getString(2),
                         filas.getString(3),
@@ -71,7 +71,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
             //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
         }
 
-        return credencialesUsuario;
+        return credencialesTienda;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
     }
 
     @Override
-    public void actualizar(CredencialesTienda actualizadoEntidad) {
+    public void actualizar(CredencialesTienda actualizarEntidad) {
         String consultaInsert =
                 "{ CALL pa_actualizarCredencialesTienda( ?,?,?,?,?,?) }";
 
@@ -102,15 +102,15 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
                 .conectar().prepareCall(consultaInsert)) {
 
             comando.setString(1,
-                    actualizadoEntidad.getUsuario());
+                    actualizarEntidad.getUsuario());
             comando.setString(2,
-                    actualizadoEntidad.getContrasenna());
+                    actualizarEntidad.getContrasenna());
             comando.setString(3,
-                    actualizadoEntidad.getNombre());
+                    actualizarEntidad.getNombre());
             comando.setString(4,
-                    actualizadoEntidad.getDireccion());
+                    actualizarEntidad.getDireccion());
             comando.setString(5,
-                    actualizadoEntidad.getCorreoElectronico());
+                    actualizarEntidad.getCorreoElectronico());
 
             comando.executeQuery();
             System.out.println("Se realizó la lectura");

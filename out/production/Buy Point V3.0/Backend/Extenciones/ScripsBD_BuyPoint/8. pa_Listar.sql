@@ -15,7 +15,7 @@ BEGIN
 		C.Cliente,
 		C.Identificacion,
 		D.Torre,
-		D.Torre,
+		D.Departamento,
 		CU.Nombre,
 		CU.Apellido,
 		CU.Telefono
@@ -132,7 +132,8 @@ BEGIN
 		P.Descripcion,
 		P.Precio,
 		I.PrecioCosto,
-		I.Stock
+		I.Stock,
+		CA.NombreCategoria
 	FROM Producto AS P
 	INNER JOIN Empaque AS E ON P.ID_Empaque = E.ID_Empaque
 	INNER JOIN Inventario AS I ON P.ID_Inventario = I.ID_Inventario

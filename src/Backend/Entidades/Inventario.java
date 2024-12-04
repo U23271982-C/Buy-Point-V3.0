@@ -83,14 +83,4 @@ public class Inventario extends Entidad {
     }
 
     //#endregion
-
-    static void ingresoProducto(int cantidad){
-    }
-    static void salidaProducto(int cantidad){
-        //quita la cantidad de productos del stock y aumenta en I.salida
-    }
-    public int cantidadStock(){
-        //retorna la cantidad de stock total
-        return 0;
-    }
 }

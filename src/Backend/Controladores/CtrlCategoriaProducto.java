@@ -82,7 +82,7 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
     }
 
     @Override
-    public void actualizar(CategoriaProducto actualizadoEntidad) {
+    public void actualizar(CategoriaProducto actualizarEntidad) {
         // FALTA
     }
 

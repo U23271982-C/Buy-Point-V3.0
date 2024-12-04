@@ -108,7 +108,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
     }
 
     @Override
-    public void actualizar(PaqueteProducto actualizadoEntidad) {
+    public void actualizar(PaqueteProducto actualizarEntidad) {
         // FALTA LÓGICA
     }
 

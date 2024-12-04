@@ -99,7 +99,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
     }
 
     @Override
-    public void actualizar(Comprobante actualizadoEntidad) {
+    public void actualizar(Comprobante actualizarEntidad) {
         // FALTA CONFIRMAR LA LLÓGICA
     }
 

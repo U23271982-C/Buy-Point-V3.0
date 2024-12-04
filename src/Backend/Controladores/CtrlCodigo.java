@@ -47,7 +47,7 @@ public class CtrlCodigo implements GestorSQLServer<Codigo> {
     }
 
     @Override
-    public void actualizar(Codigo actualizadoEntidad) {
+    public void actualizar(Codigo actualizarEntidad) {
 
     }
 

@@ -105,7 +105,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
     }
 
     @Override
-    public void actualizar(Cliente actualizadoEntidad) {
+    public void actualizar(Cliente actualizarEntidad) {
 
     }
 

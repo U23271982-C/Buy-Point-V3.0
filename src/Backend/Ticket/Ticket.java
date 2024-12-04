@@ -150,7 +150,8 @@ public class Ticket implements Printable {
     }
 
     @Override
-    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
+            throws PrinterException {
         if (pageIndex > 0) {
             return NO_SUCH_PAGE; // Solo imprimimos una página
         }
