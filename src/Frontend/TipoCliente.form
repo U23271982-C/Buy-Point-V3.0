@@ -45,6 +45,11 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
       </Properties>
 
       <Layout>
@@ -58,7 +63,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="TorrejLabel" min="-2" pref="89" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="TorreTxt" pref="111" max="32767" attributes="0"/>
+                  <Component id="TorreTxt" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="DepartamentojLabel" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -71,7 +76,7 @@
                   <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="326" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="BuscarjLabel" min="-2" pref="86" max="-2" attributes="0"/>
@@ -114,7 +119,7 @@
                       </Group>
                       <Component id="TorreTxt" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Component id="ConfirmarjLabel" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -123,6 +128,16 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JScrollPane" name="TipoClientejScrollPane">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -134,61 +149,77 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="6">
+                  <Table columnCount="7" rowCount="6">
                     <Column editable="true" title="Cliente" type="java.lang.Object">
                       <Data value="1"/>
                       <Data value="2"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
+                      <Data value="3"/>
+                      <Data value="4"/>
+                      <Data value="5"/>
+                      <Data value="6"/>
+                    </Column>
+                    <Column editable="true" title="Nombre" type="java.lang.Object">
+                      <Data value="Daniel"/>
+                      <Data value="Gustavo"/>
+                      <Data value="Nicolas"/>
+                      <Data value="Dylan"/>
+                      <Data value="Ash"/>
+                      <Data value="Ford"/>
                     </Column>
                     <Column editable="true" title="Torre" type="java.lang.Object">
                       <Data value="10"/>
                       <Data value="20"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
+                      <Data value="14"/>
+                      <Data value="2"/>
+                      <Data value="4"/>
+                      <Data value="17"/>
                     </Column>
                     <Column editable="true" title="Departamento" type="java.lang.Object">
                       <Data value="203"/>
                       <Data value="103"/>
+                      <Data value="502"/>
+                      <Data value="404"/>
                       <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
+                      <Data value="801"/>
                     </Column>
                     <Column editable="true" title="Cuenta" type="java.lang.Object">
                       <Data value="No"/>
-                      <Data value="SI"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
+                      <Data value="Si"/>
+                      <Data value="No"/>
+                      <Data value="Si"/>
+                      <Data value="Si"/>
+                      <Data value="No"/>
                     </Column>
                     <Column editable="true" title="Identificaci&#xf3;n" type="java.lang.Object">
                       <Data value="No"/>
                       <Data value="No"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
+                      <Data value="No"/>
+                      <Data value="No"/>
+                      <Data value="No"/>
+                      <Data value="No"/>
                     </Column>
                     <Column editable="true" title="Telefono" type="java.lang.Object">
                       <Data value="987456123"/>
                       <Data value="123456789"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
+                      <Data value="985612473"/>
+                      <Data value="912748536"/>
+                      <Data value="945376128"/>
+                      <Data value="936478512"/>
                     </Column>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -290,6 +321,9 @@
               <Image iconType="3" name="/img/imagenConfirmar.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ConfirmarjLabelMouseClicked"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="PanelX">
           <Properties>

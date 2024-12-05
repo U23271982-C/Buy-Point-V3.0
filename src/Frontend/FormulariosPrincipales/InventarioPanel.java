@@ -495,7 +495,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 VP.setVisible(true);
                 
             } else{
-                int respuesta = JOptionPane.showConfirmDialog(null
+                /*int respuesta = JOptionPane.showConfirmDialog(null
                         ,"Producto no encontrado"
                         ,"Ubicación no encontrada",JOptionPane.YES_NO_OPTION);
         
@@ -504,8 +504,9 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                             RPOC.setVisible(true);
                     } else if (respuesta == JOptionPane.NO_OPTION) {
                             JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
-                    }
-                
+                    }*/
+                RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
+                RPOC.setVisible(true);
             }
 
         }

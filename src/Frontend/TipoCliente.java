@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 public class TipoCliente extends javax.swing.JFrame {
@@ -44,19 +45,24 @@ public class TipoCliente extends javax.swing.JFrame {
         setUndecorated(true);
 
         cliente_y_pago.setBackground(new java.awt.Color(255, 255, 255));
+        cliente_y_pago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        TipoClientejScrollPane.setForeground(new java.awt.Color(204, 204, 204));
+        TipoClientejScrollPane.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         TipoClientejTable.setBackground(new java.awt.Color(255, 255, 255));
+        TipoClientejTable.setForeground(new java.awt.Color(0, 0, 0));
         TipoClientejTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "10", "203", "No", "No", "987456123"},
-                {"2", "20", "103", "SI", "No", "123456789"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"1", "Daniel", "10", "203", "No", "No", "987456123"},
+                {"2", "Gustavo", "20", "103", "Si", "No", "123456789"},
+                {"3", "Nicolas", "14", "502", "No", "No", "985612473"},
+                {"4", "Dylan", "2", "404", "Si", "No", "912748536"},
+                {"5", "Ash", "4", null, "Si", "No", "945376128"},
+                {"6", "Ford", "17", "801", "No", "No", "936478512"}
             },
             new String [] {
-                "Cliente", "Torre", "Departamento", "Cuenta", "Identificación", "Telefono"
+                "Cliente", "Nombre", "Torre", "Departamento", "Cuenta", "Identificación", "Telefono"
             }
         ));
         TipoClientejTable.setToolTipText("");
@@ -89,6 +95,11 @@ public class TipoCliente extends javax.swing.JFrame {
         TorreTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         ConfirmarjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imagenConfirmar.png"))); // NOI18N
+        ConfirmarjLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConfirmarjLabelMouseClicked(evt);
+            }
+        });
 
         PanelX.setBackground(new java.awt.Color(255, 255, 255));
         PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,7 +132,7 @@ public class TipoCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(TorrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(TorreTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(TorreTxt)
                 .addGap(18, 18, 18)
                 .addComponent(DepartamentojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -132,7 +143,7 @@ public class TipoCliente extends javax.swing.JFrame {
                 .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(142, 142, 142))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(326, Short.MAX_VALUE)
                 .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
                         .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +176,7 @@ public class TipoCliente extends javax.swing.JFrame {
                         .addComponent(DepartamentojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(DepartamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(TorreTxt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(ConfirmarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -210,7 +221,16 @@ public class TipoCliente extends javax.swing.JFrame {
     private void PanelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseExited
         PanelX.setBackground(Color.WHITE);
     }//GEN-LAST:event_PanelXMouseExited
-
+    public static String Nombre,Torre,Departamento;
+    private void ConfirmarjLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarjLabelMouseClicked
+        Nombre = NombreTxT.getText().trim();
+        Torre = TorreTxt.getText().trim();
+        Departamento = DepartamentojTextField.getText().trim();
+        this.setVisible(false);
+                
+    }//GEN-LAST:event_ConfirmarjLabelMouseClicked
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
