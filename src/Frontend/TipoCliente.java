@@ -1,13 +1,17 @@
 
 package Frontend;
 
+import Backend.Controladores.CtrlCliente;
+import Backend.Entidades.Cliente;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class TipoCliente extends javax.swing.JFrame {
 
@@ -16,7 +20,27 @@ public class TipoCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Formato_Imagen FI = new Formato_Imagen();
         FI.tamañoimagen(ConfirmarjLabel, "/img/imagenConfirmar.png");
-        
+        DefaultTableModel dtm = (DefaultTableModel) TipoClientejTable.getModel();
+        /*dtm.addColumn("Cliente");
+        dtm.addColumn("Identificacion");
+        dtm.addColumn("Torre");
+        dtm.addColumn("Departamento");
+        dtm.addColumn("Nombre (Cuenta)");
+        dtm.addColumn("Apellido (Cuenta)");
+        dtm.addColumn("Teléfono (Cuenta)");*/
+        CtrlCliente ctrlCliente = new CtrlCliente();
+        List<Cliente> clientes = ctrlCliente.listar();
+        for (int i = 0; i < clientes.size(); i++) {
+            dtm.addRow( new Object[]{
+                    clientes.get(i).getCliente(),
+                    clientes.get(i).getIdentificacion(),
+                    clientes.get(i).getDepartamento().getTorre(),
+                    clientes.get(i).getDepartamento().getDepartamento(),
+                    clientes.get(i).getCuenta().getNombre(),
+                    clientes.get(i).getCuenta().getApellido(),
+                    clientes.get(i).getCuenta().getTelefono()
+            });
+        }
     }
     
     @SuppressWarnings("unchecked")
