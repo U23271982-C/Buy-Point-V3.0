@@ -414,7 +414,8 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
             CtrlProducto CP = new CtrlProducto();
         
             CP.registrar(nuevProducto);
-        
+            this.setVisible(false);
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error de CAPA 8","Advertencia", 2);
             System.out.println(e.getMessage());

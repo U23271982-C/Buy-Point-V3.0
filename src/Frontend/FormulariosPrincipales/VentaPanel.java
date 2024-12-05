@@ -11,11 +11,13 @@ import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import Frontend.RegistrarProductoOCodigo;
-import Frontend.TipoCliente_y_Pago;
-import Frontend.VistaProducto;
+import Frontend.TipoCliente;
+import static Frontend.TipoCliente.Torre;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -64,10 +66,13 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         jLabel_IGV = new javax.swing.JLabel();
         jLabelSubTotal = new javax.swing.JLabel();
         ConfirmarButtom = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        SeparatorSubTotal = new javax.swing.JSeparator();
+        SeparatorIGV = new javax.swing.JSeparator();
+        SeparatorTotal = new javax.swing.JSeparator();
+        TipodePagoComboBox = new javax.swing.JComboBox<>();
+        CheckBoxCliente = new javax.swing.JCheckBox();
+        ClienteJLabel = new javax.swing.JLabel();
+        OtrodJButton = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -348,25 +353,27 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         MontoTotalJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MontoTotalJLabel.setText("Total");
 
+        IGVJLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         IGVJLabel.setForeground(new java.awt.Color(0, 0, 0));
         IGVJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IGVJLabel.setText("IGV (18%)");
 
+        PrecioJLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         PrecioJLabel.setForeground(new java.awt.Color(0, 0, 0));
         PrecioJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PrecioJLabel.setText("SubTotal");
 
         jLabelTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTotal.setText("jLabel4");
+        jLabelTotal.setText("-");
 
         jLabel_IGV.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_IGV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_IGV.setText("jLabel5");
+        jLabel_IGV.setText("-");
 
         jLabelSubTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSubTotal.setText("sfsdfsdfs");
+        jLabelSubTotal.setText("-");
 
         ConfirmarButtom.setText("Confirmar");
         ConfirmarButtom.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -375,29 +382,78 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             }
         });
 
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        SeparatorSubTotal.setForeground(new java.awt.Color(0, 0, 0));
 
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        SeparatorIGV.setForeground(new java.awt.Color(0, 0, 0));
 
-        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        SeparatorTotal.setForeground(new java.awt.Color(0, 0, 0));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Yape", "Plin", "Tarjeta" }));
+        TipodePagoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Yape", "Plin", "Tarjeta" }));
+
+        CheckBoxCliente.setBackground(new java.awt.Color(255, 255, 255));
+        CheckBoxCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CheckBoxCliente.setForeground(new java.awt.Color(0, 0, 0));
+        CheckBoxCliente.setSelected(true);
+        CheckBoxCliente.setText("Directo");
+        CheckBoxCliente.setBorder(null);
+        CheckBoxCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckBoxClienteMouseClicked(evt);
+            }
+        });
+        CheckBoxCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxClienteActionPerformed(evt);
+            }
+        });
+
+        ClienteJLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ClienteJLabel.setForeground(new java.awt.Color(0, 0, 0));
+        ClienteJLabel.setText("Cliente:");
+
+        OtrodJButton.setBackground(new java.awt.Color(255, 255, 255));
+        OtrodJButton.setForeground(new java.awt.Color(0, 0, 0));
+        OtrodJButton.setText("Otros");
+        OtrodJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        OtrodJButton.setEnabled(false);
+        OtrodJButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OtrodJButtonMouseClicked(evt);
+            }
+        });
+        OtrodJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OtrodJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MontoTotalPanelLayout = new javax.swing.GroupLayout(MontoTotalPanel);
         MontoTotalPanel.setLayout(MontoTotalPanelLayout);
         MontoTotalPanelLayout.setHorizontalGroup(
             MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MontoTotalPanelLayout.createSequentialGroup()
+                .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MontoTotalPanelLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TipodePagoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClienteJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(MontoTotalPanelLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(CheckBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(205, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
                 .addContainerGap(88, Short.MAX_VALUE)
                 .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
-                        .addComponent(ConfirmarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
-                        .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(MontoTotalPanelLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(OtrodJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
+                            .addComponent(ConfirmarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(129, 129, 129))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontoTotalPanelLayout.createSequentialGroup()
+                            .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(MontoTotalPanelLayout.createSequentialGroup()
                                     .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(MontoTotalJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -408,9 +464,10 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                                         .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel_IGV, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabelSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(63, 63, 63))))
+                                        .addComponent(SeparatorSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SeparatorIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(SeparatorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(63, 63, 63)))))
         );
         MontoTotalPanelLayout.setVerticalGroup(
             MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,22 +477,28 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     .addComponent(PrecioJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SeparatorSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IGVJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_IGV, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SeparatorIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MontoTotalJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SeparatorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TipodePagoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ClienteJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(MontoTotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CheckBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(OtrodJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
                 .addComponent(ConfirmarButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
@@ -611,7 +674,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         try {
 
             if (lecturaCodigo == KeyEvent.VK_ENTER) {
-                Buscador.setText("renz04ii2");
+                Buscador.setText("");
                 CtrlProducto CP = new CtrlProducto();
 
                 codigoBarra = codigoescaneado.toString();
@@ -676,8 +739,10 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_ListadoProductoKeyPressed
 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
-        TipoCliente_y_Pago TCP = new TipoCliente_y_Pago();
-        TCP.setVisible(true);
+        JOptionPane.showMessageDialog(null, String.format("%s %s %s", TipoCliente.Nombre,
+                    TipoCliente.Torre, TipoCliente.Departamento));
+        
+        
     }//GEN-LAST:event_ConfirmarButtomMouseClicked
 
     private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed
@@ -690,14 +755,36 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
     }//GEN-LAST:event_BuscadorKeyTyped
 
-    int posicion; //contador para agregar producto a la tabla
+    private void CheckBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxClienteActionPerformed
+        
+    }//GEN-LAST:event_CheckBoxClienteActionPerformed
+
+    private void CheckBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBoxClienteMouseClicked
+        if(!CheckBoxCliente.isSelected()){
+           OtrodJButton.setEnabled(true);
+        }else{
+           OtrodJButton.setEnabled(false); 
+        }
+    }//GEN-LAST:event_CheckBoxClienteMouseClicked
+
+    private void OtrodJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OtrodJButtonMouseClicked
+        /*TipoCliente TP = new TipoCliente();
+        TP.setVisible(true);*/
+    }//GEN-LAST:event_OtrodJButtonMouseClicked
+
+    private void OtrodJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OtrodJButtonActionPerformed
+        TipoCliente TP = new TipoCliente();
+        TP.setVisible(true);
+    }//GEN-LAST:event_OtrodJButtonActionPerformed
+
+    /*int posicion; //contador para agregar producto a la tabla
 
     public void AgregarProductoTabla(JTable jTable, Producto P, Codigo C) {
 
         System.out.println(P.getCodigo().getCodigo());
         System.out.println("qwertyuiop");
 
-    }
+    }*/
 
     public VentaPanel() {
         initComponents();
@@ -709,7 +796,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         FI.tamañoimagen(Venta, "/img/venta.png");
         FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
         FI.tamañoimagen(Lupa, "/img/lupa.png");
+        this.Buscador.requestFocus();
 
+        
         Venta venta = new Venta();
         DetalleVenta detalleVenta = new DetalleVenta();
     }
@@ -724,6 +813,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscador;
+    private javax.swing.JCheckBox CheckBoxCliente;
+    private javax.swing.JLabel ClienteJLabel;
     private javax.swing.JButton ConfirmarButtom;
     private javax.swing.JPanel Encabezado;
     private javax.swing.JLabel IGVJLabel;
@@ -735,26 +826,27 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     private javax.swing.JSeparator Minimizar;
     private javax.swing.JLabel MontoTotalJLabel;
     private javax.swing.JPanel MontoTotalPanel;
+    private javax.swing.JButton OtrodJButton;
     private javax.swing.JPanel PanelMax;
     private javax.swing.JPanel PanelMini;
     private javax.swing.JPanel PanelOp;
     private javax.swing.JPanel PanelX;
     private javax.swing.JLabel PrecioJLabel;
     private javax.swing.JLabel RegistroVentas;
+    private javax.swing.JSeparator SeparatorIGV;
+    private javax.swing.JSeparator SeparatorSubTotal;
+    private javax.swing.JSeparator SeparatorTotal;
+    private javax.swing.JComboBox<String> TipodePagoComboBox;
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelSubTotal;
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JLabel jLabel_IGV;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    public static javax.swing.JTable jTableVender;
+    private javax.swing.JTable jTableVender;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel venta;
     // End of variables declaration//GEN-END:variables
