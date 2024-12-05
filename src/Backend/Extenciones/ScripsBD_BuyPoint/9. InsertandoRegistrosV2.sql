@@ -140,26 +140,25 @@ GO
 EXEC pa_registrarCuenta 'Luigui', 'Vazques', 75321458
 GO
 --Cliente---------------------------------------------------------------------
-EXEC paT_registrarClienteCompuesto 'Juan Prieto', '123456', NULL, NULL,NULL,NULL
+EXEC paT_registrarClienteCompuesto 'Directo', NULL, NULL, NULL,NULL,NULL, NULL
 GO
-EXEC paT_registrarClienteCompuesto 'Alejandra Cisneros', '456891', NULL, NULL,NULL,NULL
+EXEC paT_registrarClienteCompuesto 'Juan Prieto', '123456', NULL, NULL,NULL,NULL, NULL
 GO
-EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 102,NULL,NULL
+EXEC paT_registrarClienteCompuesto 'Alejandra Cisneros', '456891', NULL, NULL,NULL,NULL,NULL
 GO
-EXEC paT_registrarClienteCompuesto NULL , NULL, NULL, NULL,Martin, Valdez
+EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 102,NULL,NULL,NULL
 GO
-EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 101, Crsthian,Reyes
+EXEC paT_registrarClienteCompuesto NULL , NULL, NULL, NULL,Martin, Valdez, 852741963
+GO
+EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 101, Crsthian,Reyes,753159456
 GO
 --Codigo---------------------------------------------------------------------
-EXEC paT_registrarCodigoCompuesto 'DDDDD582', 'InkaChips'
+EXEC pa_registrarCodigo 'DDDDD582', 'McColins Té Canela y Clavo 30gr'
 GO
-EXEC paT_registrarCodigoCompuesto 'GHKJ582', 'Chocman'
+EXEC pa_registrarCodigo 'GHKJ582', 'Salsa de Soya'
 GO
-EXEC paT_registrarCodigoCompuesto 'GH5852D2', 'Gloria 355ml'
+EXEC pa_registrarCodigo 'GH5852D2', 'Kirma Clasico 190gr'
 GO
-EXEC paT_registrarCodigoCompuesto 'QWEEE789', 'Coca Cola 600ml'
-GO
-EXEC paT_registrarCodigoCompuesto 'DAAD789', 'Bimboletes 3u'
 /*
 use BD_BuyPoint
 
