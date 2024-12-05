@@ -1,4 +1,4 @@
-package Backend.Controladores;
+package Backend.Gestores;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -7,7 +7,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import java.util.List;
 import org.jfree.chart.plot.PlotOrientation;
 
-public interface GraficadorEstadisticas {
+public interface GestorGraficadorEstadisticas {
     static JFreeChart graficar(String titulo, String ejeX, String ejeY,
                                List<String> etiquetas, List<Integer> valores) {
 

@@ -2,21 +2,13 @@ package Frontend.FormulariosPrincipales;
 
 import Frontend.visualFramework.Animaciones;
 import Backend.Controladores.CtrlProducto;
-import Backend.Controladores.GraficadorEstadisticas;
+import Backend.Gestores.GestorGraficadorEstadisticas;
 import Frontend.visualFramework.Formato_Imagen;
-import Frontend.FormulariosPrincipales.VentaPanel;
-import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
-import Frontend.FormulariosPrincipales.InventarioPanel;
+
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
 import java.util.List;
-import java.util.Locale;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+
 import org.jfree.chart.ChartPanel;
 
 public final class RegistroVentasPanel extends javax.swing.JFrame implements Animaciones{
@@ -425,7 +417,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
         
         List<String> listaNombre = ctrlProducto.listar().stream().map(p -> p.getNombreProducto()).toList();
         List<Integer> cantidadProducto = ctrlProducto.listar().stream().map(p -> p.getInventario().getStock()).toList();
-       panel.add(new ChartPanel(GraficadorEstadisticas.graficar
+       panel.add(new ChartPanel(GestorGraficadorEstadisticas.graficar
             ("titulo", "ejeX", "ejeY", listaNombre, cantidadProducto)));
        
        jInternalFrame1.add(panel);

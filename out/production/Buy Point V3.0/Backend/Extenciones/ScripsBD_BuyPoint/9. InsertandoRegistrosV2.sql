@@ -1,6 +1,6 @@
-USE BD_BuyPoint
+ÔªøUSE BD_BuyPoint
 GO
---Credenciales Tienda
+--Credenciales Tienda---------------------------------------------------------------------
 EXEC pa_registrarCredencialesTienda 
 	'user1', '123', 'usuraio', 'mi casa', 'usuario@mail.com';
 GO
@@ -14,14 +14,14 @@ EXEC pa_registrarCredencialesTienda
 	'U23214873', '23214873', 'Pita', 'Av. Bolognesi #152', 'U23214873@gmail.com';
 GO
 EXEC pa_registrarCredencialesTienda 
-	'U4873', '4873', 'SaldaÒa', 'Av. Bolognesi #1555', 'U4873@gmail.com';
+	'U4873', '4873', 'Salda√±a', 'Av. Bolognesi #1555', 'U4873@gmail.com';
 GO
---Empaque
+--Empaque---------------------------------------------------------------------
 EXEC pa_registrarEmpaque 
 	'Lata'
 GO
 EXEC pa_registrarEmpaque 
-	'Pl·stico'
+	'Plastico'
 GO
 EXEC pa_registrarEmpaque 
 	'Vidrio'
@@ -32,9 +32,9 @@ GO
 EXEC pa_registrarEmpaque 
 	'Sin empaque'
 GO
---CategoriaProducto
+--CategoriaProducto---------------------------------------------------------------------
 EXEC pa_registrarCategoriaProducto
-	'L·cteos'
+	'Lacteos'
 GO
 EXEC pa_registrarCategoriaProducto
 	'Enlatados'
@@ -49,63 +49,76 @@ EXEC pa_registrarCategoriaProducto
 	'Bebidas gasificadas'
 GO
 EXEC pa_registrarCategoriaProducto
+	'Beibidas en polvo'
+GO
+EXEC pa_registrarCategoriaProducto
 	'Bizcochos'
 GO
---Producto
+EXEC pa_registrarCategoriaProducto
+	'Pastillas'
+GO
+EXEC pa_registrarCategoriaProducto
+	'Condimentos'
+GO
+EXEC pa_registrarCategoriaProducto
+	'Infusiones'
+GO
+
+--Producto---------------------------------------------------------------------
 EXEC paT_registrarProductoCompuesto
-	'AD2122DS',
-	5, '2024-10-20',
-	'Gloria 355ml',
-	'Tarro de leche evaporada',
+	'016500579793‚Äã',
+	3, '2025-10-19',
+	'One A Day 1',
+	'Multivitaminas para Mujeres',
+	'Plastico',
+	'Pastillas',
+	199.90,
+	180.00
+GO
+EXEC paT_registrarProductoCompuesto
+	'6921180820056',
+	5, '2025-08-28',
+	'Salsa de Soya',
+	'Condimento de origen chino, producido al fermentar semillas de soya con los hongos',
+	'Vidrio',
+	'Condimentos',
+	6.00,
+	4.50
+GO
+EXEC paT_registrarProductoCompuesto
+	'7702024224525',
+	3,
+	'2025-11-01',
+	'Milo 380gr',
+	'Bebida en polvo con sabor a chocolate fabricada por la popular empresa suiza Nestl√©',
 	'Lata',
-	'L·cteos',
-	4.50,
-	3.50
+	'Beibidas en polvo',
+	4,
+	3.20
 GO
 EXEC paT_registrarProductoCompuesto
-	'AD2122DS',
-	5, '2024-10-20',
-	'Coca Cola 600ml',
-	'Gaseosa',
-	'Pl·stico',
-	'Bebidas Gasificadas',
+	'7891000110416',
 	3,
-	2
+	'2026-02-01',
+	'Kirma Clasico 190gr',
+	'Caf√© tostado de alta calidad',
+	'Lata',
+	'Beibidas en polvo',
+	7.00,
+	5.50
 GO
 EXEC paT_registrarProductoCompuesto
-	'AAA123',
-	3,
-	'2025-01-22',
-	'Chocman',
-	'Bizcocho relleno de un delicioso manjar blanco y cubierto con una capa de chocolate',
-	'Pl·stico',
-	'Bizcochos',
-	1,
-	0.80
-GO
-EXEC paT_registrarProductoCompuesto
-	'BBB456',
-	10,
-	'2025-02-18',
-	'InkaChips',
-	'Papas fritas',
-	'Pl·stico',
-	'Snacks',
-	2.50,
-	1.50
-GO
-EXEC paT_registrarProductoCompuesto
-	'CCC456',
+	'8720608001569',
 	8,
-	'2025-03-04',
-	'Bimboletes 3u',
-	'Bizcocho de sabor a vainilla',
-	'Pl·stico',
-	'Bizcochos',
-	2.50,
-	1.50
+	'2026-01-04',
+	'McColins T√© Canela y Clavo 30gr',
+	'Infusi√≥n que combina los sabores de la canela y el clavo, ofreciendo una bebida arom√°tica y reconfortante',
+	'Carton',
+	'Infusiones',
+	1.50,
+	1.00
 GO
---Departamento
+--Departamento---------------------------------------------------------------------
 EXEC pa_registrarDepartamento 1, 101
 EXEC pa_registrarDepartamento 1, 103
 GO
@@ -115,7 +128,7 @@ EXEC pa_registrarDepartamento 11, 204
 GO
 EXEC pa_registrarDepartamento 5, 703
 GO
---Cuenta
+--Cuenta---------------------------------------------------------------------
 EXEC pa_registrarCuenta 'Martin', 'Valdez', 987456123
 GO
 EXEC pa_registrarCuenta 'Jose', 'Pereira', 8546210
@@ -126,7 +139,7 @@ EXEC pa_registrarCuenta 'Marisol', 'Cajusol', 753159852
 GO
 EXEC pa_registrarCuenta 'Luigui', 'Vazques', 75321458
 GO
---Cliente
+--Cliente---------------------------------------------------------------------
 EXEC paT_registrarClienteCompuesto 'Juan Prieto', '123456', NULL, NULL,NULL,NULL
 GO
 EXEC paT_registrarClienteCompuesto 'Alejandra Cisneros', '456891', NULL, NULL,NULL,NULL
@@ -137,7 +150,7 @@ EXEC paT_registrarClienteCompuesto NULL , NULL, NULL, NULL,Martin, Valdez
 GO
 EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 101, Crsthian,Reyes
 GO
---Codigo
+--Codigo---------------------------------------------------------------------
 EXEC paT_registrarCodigoCompuesto 'DDDDD582', 'InkaChips'
 GO
 EXEC paT_registrarCodigoCompuesto 'GHKJ582', 'Chocman'

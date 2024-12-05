@@ -1,19 +1,9 @@
 package Backend;
 
-import Backend.Controladores.CtrlCliente;
-import Backend.Controladores.CtrlEmpaque;
 import Backend.Controladores.CtrlProducto;
-import Backend.Controladores.GraficadorEstadisticas;
-import Backend.Entidades.*;
-import Backend.Gestores.GestorSQLServer;
+import Backend.Gestores.GestorGraficadorEstadisticas;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartPanel;
@@ -117,7 +107,7 @@ public class PruebaApp {
 
         JPanel panel = new JPanel();
         panel.setSize(100,500);
-        panel.add(new ChartPanel(GraficadorEstadisticas.graficar("tt", "c", "d", listaNombre, cantidadProducto)));
+        panel.add(new ChartPanel(GestorGraficadorEstadisticas.graficar("tt", "c", "d", listaNombre, cantidadProducto)));
         ventana.add(panel);
         //ventana.add(new ChartPanel(grafico));
         ventana.setVisible(true);

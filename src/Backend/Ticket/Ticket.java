@@ -156,4 +156,8 @@ public class Ticket{
         }
     }
 
+    public static void main(String[] args) {
+        Ticket ticket = new Ticket();
+        System.out.println(ticket.formateadorCuerpoTicket(1));
+    }
 }
