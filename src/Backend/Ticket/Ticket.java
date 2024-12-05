@@ -1,15 +1,19 @@
 package Backend.Ticket;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Ticket implements Printable {
+public class Ticket{
     private String encabezadoTicketDirecto = """
             COND. LOS PARQUES DE SAN GABRIEL
             Chiclayo - Chiclayo - Lambayeque
@@ -70,12 +74,6 @@ public class Ticket implements Printable {
             --------------------------------
             Descrp.     Cant.   SubT.  Total
             """;
-    private List<String> tipoEncabezadosTickets = new ArrayList<>(Arrays.asList(
-            encabezadoTicketDirecto,
-            encabezadoTicketDelivery,
-            encabezadoTicketCliente,
-            encabezadoTicketClienteDepartamento
-    ));
     private String lineaTicket = """
             %s
                           %d  s./%.2f s/.%.2f
@@ -85,6 +83,12 @@ public class Ticket implements Printable {
             I.G.V. (18%)             s/. %.2f
             Total:                   s/. %.2f
             """;
+    private List<String> tipoEncabezadosTickets = new ArrayList<>(Arrays.asList(
+            encabezadoTicketDirecto,
+            encabezadoTicketDelivery,
+            encabezadoTicketCliente,
+            encabezadoTicketClienteDepartamento
+    ));
     private String cuerpoTicket;
     private Font fuente;
     private Color colorFuente;
@@ -128,45 +132,28 @@ public class Ticket implements Printable {
 
     //#endregion
 
-    public String formateadorCuerpoTicket(int idxEncabezado){
+    private String formateadorCuerpoTicket(int idxEncabezado){
         return this.cuerpoTicket = String.format("%s\n%s\n%s",
                 tipoEncabezadosTickets.get(idxEncabezado),
                 lineaTicket,
                 finalTicket);
     }
+    public void exportarTiteck(String direcArchivo, int idxEncabezado){
 
-    public void imprimir() {
-        PrinterJob job = PrinterJob.getPrinterJob(); // Configurar el trabajo de impresión
-        job.setPrintable(this); // Asignar la clase actual como la imprimible
+        // Generar el archivo txt
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(direcArchivo))) {
 
-        // Mostrar el diálogo de impresión
-        if (job.printDialog()) {
-            try {
-                job.print(); // Enviar el trabajo a la impresora
-            } catch (PrinterException e) {
-                System.err.println("Error al imprimir: " + e.getMessage());
-            }
+            writer.write(formateadorCuerpoTicket(idxEncabezado));
+
+            JOptionPane.showMessageDialog
+                    (null,
+                            "Ticket generado exitosamente en: " + direcArchivo);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    e.getMessage(), "Error", 1);
         }
     }
 
-    @Override
-    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
-            throws PrinterException {
-        if (pageIndex > 0) {
-            return NO_SUCH_PAGE; // Solo imprimimos una página
-        }
-
-        // Configurar el inicio de impresión
-        Graphics2D g2d = (Graphics2D) graphics;
-        g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-
-        // Dibujar el contenido del ticket
-        int y = 10; // Coordenada Y inicial
-        for (String linea : cuerpoTicket.split("\n")) {
-            graphics.drawString(linea, 10, y);
-            y += 15; // Incrementar la posición vertical para la siguiente línea
-        }
-
-        return PAGE_EXISTS; // Página lista para imprimir
-    }
 }
