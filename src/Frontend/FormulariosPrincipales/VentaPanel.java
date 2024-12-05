@@ -754,7 +754,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTableVender;
+    public static javax.swing.JTable jTableVender;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel venta;
     // End of variables declaration//GEN-END:variables

@@ -408,7 +408,8 @@ public final class LoginPanel extends javax.swing.JFrame {
             CredencialesTienda CU =  new CredencialesTienda();
             CU.setUsuario(UserTxt.getText().trim());
             CU.setContrasenna(PasswordTxt.getText().trim());
-          if(ControladorApp.iniciarSesion(ctr,CU)){
+            // ControladorApp.iniciarSesion(ctr,CU) 
+          if(ctr.leer(CU ) != null){
             MenuPrincipalPanel mn = new MenuPrincipalPanel();
             mn.setVisible(true); //entra al menu principal
             this.setVisible(false); //desaparece la ventana login
