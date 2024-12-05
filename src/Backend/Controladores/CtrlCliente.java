@@ -20,7 +20,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
     public void registrar(Cliente nuevaEntidad) {
         String consultaSQL =
                 "{ CALL paT_registrarClienteCompuesto" +
-                        "(?, ?, ?, ?, ?, ?) }";
+                        "(?, ?, ?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
                      SQLServerBD.instanciaConexcion()
@@ -42,7 +42,9 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
             comando.setString
                     (6,nuevaEntidad.getCuenta()
                             .getApellido());
-
+            comando.setInt
+                    (7,nuevaEntidad.getCuenta()
+                            .getTelefono());
             comando.executeUpdate();
             System.out.printf("Se registró el producto: %s",
                     nuevaEntidad.getCliente());

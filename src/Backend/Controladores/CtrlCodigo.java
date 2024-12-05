@@ -23,8 +23,10 @@ public class CtrlCodigo implements GestorSQLServer<Codigo> {
         try (CallableStatement comando =
                      SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
 
-            comando.setString(1, nuevaEntidad.getCodigo());
-            comando.setString(2, nuevaEntidad.getProducto().getNombreProducto());
+            comando.setString
+                    (1, nuevaEntidad.getCodigo());
+            comando.setString
+                    (2, nuevaEntidad.getProducto().getNombreProducto());
 
             comando.executeUpdate();
             System.out.println("Se registró las nuevas Credenciales");
