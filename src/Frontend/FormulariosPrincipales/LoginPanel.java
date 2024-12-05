@@ -3,15 +3,11 @@ package Frontend.FormulariosPrincipales;
 
 //import Backend.Controlador;
 //import Backend.CredencialesUsuario;
-import Backend.Controladores.ControladorApp;
 import Backend.Controladores.CtrlCredencialesTienda;
 import Backend.Entidades.CredencialesTienda;
 import Frontend.visualFramework.Formato_Imagen;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
