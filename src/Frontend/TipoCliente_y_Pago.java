@@ -214,10 +214,6 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void YapeRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YapeRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_YapeRadioButton2ActionPerformed
-
     private void TipoClientejTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TipoClientejTableMousePressed
         TipoClientejTable.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent Mouse_evt){
@@ -232,6 +228,10 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_TipoClientejTableMousePressed
+
+    private void YapeRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YapeRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_YapeRadioButton2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
