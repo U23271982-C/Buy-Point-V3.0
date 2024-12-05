@@ -1,11 +1,11 @@
 package Frontend.FormulariosPrincipales;
 
+import Backend.Controladores.CtrlDetalleVenta;
+import Backend.Controladores.CtrlVenta;
+import Backend.Entidades.*;
+import Backend.Ticket.Ticket;
 import Frontend.visualFramework.Animaciones;
 import Backend.Controladores.CtrlProducto;
-import Backend.Entidades.Codigo;
-import Backend.Entidades.DetalleVenta;
-import Backend.Entidades.Producto;
-import Backend.Entidades.Venta;
 import Frontend.visualFramework.Formato_Imagen;
 import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
@@ -21,6 +21,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -696,11 +700,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                             String.valueOf(venta1.getSubTotal().add(venta1.getSubTotal().multiply(BigDecimal.valueOf(0.18))).setScale(1, RoundingMode.HALF_UP)));
                     jLabelTotal.setText(String.valueOf(venta1.getTotal()));
 
-                    for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                    /*for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
                         if (codigoBarra.equals(venta1.getDetallesVenta().get(i).getProducto().getCodigo().getCodigo())) {
                             venta1.getDetallesVenta().get(i).setCantidad(venta1.getDetallesVenta().get(i).getCantidad() + 1);
                         }
-                    }
+                    }*/
                     DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
                                 tm.addRow(new Object[]{
                                     detalleVenta.getProducto().getNombreProducto(),
@@ -739,10 +743,69 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_ListadoProductoKeyPressed
 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
-        JOptionPane.showMessageDialog(null, String.format("%s %s %s", TipoCliente.Nombre,
+
+        try {
+            JOptionPane.showMessageDialog(null, String.format("%s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento));
-        
-        
+
+            CtrlVenta ctrlVenta = new CtrlVenta();
+            CtrlDetalleVenta ctrlDetalleVenta = new CtrlDetalleVenta();
+            Cliente cliente = new Cliente();
+            Comprobante comprobante = new Comprobante();
+            TipoPago tipoPago = new TipoPago();
+            Departamento depa = null;
+            Cuenta cuenta = null;
+
+            Ticket ticket = new Ticket();
+
+
+            venta1.setFecha(LocalDate.now());
+            venta1.setHora(LocalTime.now());
+            // SubTotal calculado
+            // Total calculado
+
+            // Venta Directa
+            if (CheckBoxCliente.isSelected()){
+                try {
+                    ticket.setEncabezadoTicketDirecto(String.format
+                            (ticket.getEncabezadoTicketDirecto(), LocalDate.now().format
+                                    (ticket.getFttFecha()), LocalTime.now().format
+                                    (ticket.getFttHora()), Objects.requireNonNull
+                                    (TipodePagoComboBox.getSelectedItem())));
+                    cliente.setCliente("Directo");
+                    cliente.setIdentificacion(null);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }else {
+                // Cliente delivery
+                if (!TipoCliente.Torre.isEmpty() && !TipoCliente.Departamento.isEmpty()){
+                    try {
+                        depa = new Departamento();
+                        depa.setTorre(Short.parseShort(TipoCliente.Torre));
+                        depa.setDepartamento(Short.parseShort(TipoCliente.Departamento));
+
+                        cliente.setDepartamento(depa);
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+            // FALTA REGISTRAR LA VENTA
+            //venta1
+
+            venta1.setCliente(cliente);
+            venta1.setComprobante(comprobante);
+            // Registramos la venta
+            ctrlVenta.registrar(venta1);
+            // Registramos los Detalles de Venta
+            for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
+            }
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+
     }//GEN-LAST:event_ConfirmarButtomMouseClicked
 
     private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed

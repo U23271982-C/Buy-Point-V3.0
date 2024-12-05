@@ -6,7 +6,7 @@ import Backend.Gestores.GestorGraficadorEstadisticas;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import org.jfree.chart.ChartPanel;
+//import org.jfree.chart.ChartPanel;
 
 public class PruebaApp {
     public static void main(String[] args) {
@@ -97,19 +97,19 @@ public class PruebaApp {
 //        //} catch (Exception e) {
 //           // e.getMessage();
 //        //}
-        CtrlProducto ctrlProducto = new CtrlProducto();
-         List<String> listaNombre = ctrlProducto.listar().stream().map(p -> p.getNombreProducto()).toList();
-        List<Integer> cantidadProducto = ctrlProducto.listar().stream().map(p -> p.getInventario().getStock()).toList();
-        
-        JFrame ventana = new JFrame("Gráfico de Barras");
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setSize(800, 600);
-
-        JPanel panel = new JPanel();
-        panel.setSize(100,500);
-        panel.add(new ChartPanel(GestorGraficadorEstadisticas.graficar("tt", "c", "d", listaNombre, cantidadProducto)));
-        ventana.add(panel);
-        //ventana.add(new ChartPanel(grafico));
-        ventana.setVisible(true);
+//        CtrlProducto ctrlProducto = new CtrlProducto();
+//         List<String> listaNombre = ctrlProducto.listar().stream().map(p -> p.getNombreProducto()).toList();
+//        List<Integer> cantidadProducto = ctrlProducto.listar().stream().map(p -> p.getInventario().getStock()).toList();
+//        
+//        JFrame ventana = new JFrame("Gráfico de Barras");
+//        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        ventana.setSize(800, 600);
+//
+//        JPanel panel = new JPanel();
+//        panel.setSize(100,500);
+//        panel.add(new ChartPanel(GestorGraficadorEstadisticas.graficar("tt", "c", "d", listaNombre, cantidadProducto)));
+//        ventana.add(panel);
+//        //ventana.add(new ChartPanel(grafico));
+//        ventana.setVisible(true);
     }
 }
