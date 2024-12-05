@@ -11,7 +11,7 @@ import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import Frontend.RegistrarProductoOCodigo;
-import Frontend.TipoCliente_y_Pago;
+import Frontend.TipoCliente;
 import Frontend.VistaProducto;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -363,15 +363,15 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
         jLabelTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTotal.setText("jLabel4");
+        jLabelTotal.setText("-");
 
         jLabel_IGV.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_IGV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_IGV.setText("jLabel5");
+        jLabel_IGV.setText("-");
 
         jLabelSubTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSubTotal.setText("sfsdfsdfs");
+        jLabelSubTotal.setText("-");
 
         ConfirmarButtom.setText("Confirmar");
         ConfirmarButtom.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -388,9 +388,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
         TipodePagoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Yape", "Plin", "Tarjeta" }));
 
+        CheckBoxCliente.setBackground(new java.awt.Color(255, 255, 255));
         CheckBoxCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CheckBoxCliente.setForeground(new java.awt.Color(0, 0, 0));
         CheckBoxCliente.setText("Directo");
+        CheckBoxCliente.setBorder(null);
         CheckBoxCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckBoxClienteActionPerformed(evt);
@@ -406,7 +408,12 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         OtrosJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         OtrosJLabel.setText("Otros");
         OtrosJLabel.setToolTipText("");
-        OtrosJLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        OtrosJLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        OtrosJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OtrosJLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout MontoTotalPanelLayout = new javax.swing.GroupLayout(MontoTotalPanel);
         MontoTotalPanel.setLayout(MontoTotalPanelLayout);
@@ -718,8 +725,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_ListadoProductoKeyPressed
 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
-        TipoCliente_y_Pago TCP = new TipoCliente_y_Pago();
-        TCP.setVisible(true);
+        
     }//GEN-LAST:event_ConfirmarButtomMouseClicked
 
     private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed
@@ -735,6 +741,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     private void CheckBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBoxClienteActionPerformed
+
+    private void OtrosJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OtrosJLabelMouseClicked
+        TipoCliente TCP = new TipoCliente();
+        TCP.setVisible(true);
+    }//GEN-LAST:event_OtrosJLabelMouseClicked
 
     /*int posicion; //contador para agregar producto a la tabla
 
@@ -756,6 +767,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
         FI.tamañoimagen(Lupa, "/img/lupa.png");
         CheckBoxCliente.setSelected(true);
+        TipodePagoComboBox.setBackground(Color.WHITE);
 
         Venta venta = new Venta();
         DetalleVenta detalleVenta = new DetalleVenta();

@@ -1,16 +1,20 @@
 
 package Frontend;
 
+import Frontend.visualFramework.Formato_Imagen;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTable;
 
-public class TipoCliente_y_Pago extends javax.swing.JFrame {
+public class TipoCliente extends javax.swing.JFrame {
 
-    public TipoCliente_y_Pago() {
+    public TipoCliente() {
         initComponents();
         setLocationRelativeTo(null);
+        Formato_Imagen FI = new Formato_Imagen();
+        FI.tamañoimagen(ConfirmarjLabel, "/img/imagenConfirmar.png");
         
     }
     
@@ -24,24 +28,24 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
         TipoClientejTable = new javax.swing.JTable();
         BuscarjLabel = new javax.swing.JLabel();
         BuscarjTextField = new javax.swing.JTextField();
-        TipoPagoPanel = new javax.swing.JPanel();
-        TipoPagojLabel = new javax.swing.JLabel();
-        TarjetaRadioButton4 = new javax.swing.JRadioButton();
-        PlinRadioButton3 = new javax.swing.JRadioButton();
-        EfectivoRadioButton = new javax.swing.JRadioButton();
-        YapeRadioButton2 = new javax.swing.JRadioButton();
         NombrejLabel = new javax.swing.JLabel();
         NombreTxT = new javax.swing.JTextField();
         DepartamentojLabel = new javax.swing.JLabel();
         DepartamentojTextField = new javax.swing.JTextField();
         TorrejLabel = new javax.swing.JLabel();
         TorreTxt = new javax.swing.JTextField();
+        ConfirmarjLabel = new javax.swing.JLabel();
+        PanelX = new javax.swing.JPanel();
+        XJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setLocationByPlatform(true);
+        setUndecorated(true);
 
         cliente_y_pago.setBackground(new java.awt.Color(255, 255, 255));
 
-        TipoClientejTable.setBackground(new java.awt.Color(102, 102, 102));
+        TipoClientejTable.setBackground(new java.awt.Color(255, 255, 255));
         TipoClientejTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "10", "203", "No", "No", "987456123"},
@@ -67,65 +71,6 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
         BuscarjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BuscarjLabel.setText("Buscar");
 
-        TipoPagoPanel.setBackground(new java.awt.Color(255, 255, 255));
-        TipoPagoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        TipoPagojLabel.setForeground(new java.awt.Color(0, 0, 0));
-        TipoPagojLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TipoPagojLabel.setText("Tipo de Pago");
-
-        buttonGroup1.add(TarjetaRadioButton4);
-        TarjetaRadioButton4.setForeground(new java.awt.Color(0, 0, 0));
-        TarjetaRadioButton4.setText("Tarjeta");
-
-        buttonGroup1.add(PlinRadioButton3);
-        PlinRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
-        PlinRadioButton3.setText("Plin");
-
-        buttonGroup1.add(EfectivoRadioButton);
-        EfectivoRadioButton.setForeground(new java.awt.Color(0, 0, 0));
-        EfectivoRadioButton.setText("Efectivo");
-
-        buttonGroup1.add(YapeRadioButton2);
-        YapeRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        YapeRadioButton2.setText("Yape");
-        YapeRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                YapeRadioButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout TipoPagoPanelLayout = new javax.swing.GroupLayout(TipoPagoPanel);
-        TipoPagoPanel.setLayout(TipoPagoPanelLayout);
-        TipoPagoPanelLayout.setHorizontalGroup(
-            TipoPagoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TipoPagoPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(TipoPagoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TipoPagojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(TipoPagoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(TarjetaRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PlinRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EfectivoRadioButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(YapeRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        TipoPagoPanelLayout.setVerticalGroup(
-            TipoPagoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TipoPagoPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(TipoPagojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(TarjetaRadioButton4)
-                .addGap(18, 18, 18)
-                .addComponent(PlinRadioButton3)
-                .addGap(18, 18, 18)
-                .addComponent(EfectivoRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(YapeRadioButton2)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
         NombrejLabel.setForeground(new java.awt.Color(0, 0, 0));
         NombrejLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NombrejLabel.setText("Nombre");
@@ -143,51 +88,74 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
         TorreTxt.setForeground(new java.awt.Color(0, 0, 0));
         TorreTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        ConfirmarjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imagenConfirmar.png"))); // NOI18N
+
+        PanelX.setBackground(new java.awt.Color(255, 255, 255));
+        PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelXMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelXMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelXMouseExited(evt);
+            }
+        });
+        PanelX.setLayout(new java.awt.GridBagLayout());
+
+        XJLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        XJLabel.setForeground(new java.awt.Color(0, 0, 0));
+        XJLabel.setText("X");
+        PanelX.add(XJLabel, new java.awt.GridBagConstraints());
+
         javax.swing.GroupLayout cliente_y_pagoLayout = new javax.swing.GroupLayout(cliente_y_pago);
         cliente_y_pago.setLayout(cliente_y_pagoLayout);
         cliente_y_pagoLayout.setHorizontalGroup(
             cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(NombrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NombreTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TorrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(TorreTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(DepartamentojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(DepartamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                        .addGap(237, 237, 237)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
                         .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BuscarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(NombrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NombreTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TorrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(TorreTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DepartamentojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DepartamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TipoPagoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                        .addComponent(BuscarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(262, 262, 262)
+                        .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
+                        .addComponent(ConfirmarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(370, 370, 370))))
         );
         cliente_y_pagoLayout.setVerticalGroup(
             cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BuscarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(TipoPagoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26)
+                        .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BuscarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TorrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,7 +165,9 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
                         .addComponent(DepartamentojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(DepartamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(TorreTxt))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(ConfirmarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,9 +199,17 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_TipoClientejTableMousePressed
 
-    private void YapeRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YapeRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_YapeRadioButton2ActionPerformed
+    private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_PanelXMouseClicked
+
+    private void PanelXMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseEntered
+        PanelX.setBackground(Color.RED);
+    }//GEN-LAST:event_PanelXMouseEntered
+
+    private void PanelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseExited
+        PanelX.setBackground(Color.WHITE);
+    }//GEN-LAST:event_PanelXMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -247,21 +225,35 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TipoCliente_y_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TipoCliente_y_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TipoCliente_y_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TipoCliente_y_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TipoCliente_y_Pago().setVisible(true);
+                new TipoCliente().setVisible(true);
             }
         });
     }
@@ -269,20 +261,17 @@ public class TipoCliente_y_Pago extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BuscarjLabel;
     private javax.swing.JTextField BuscarjTextField;
+    private javax.swing.JLabel ConfirmarjLabel;
     private javax.swing.JLabel DepartamentojLabel;
     private javax.swing.JTextField DepartamentojTextField;
-    private javax.swing.JRadioButton EfectivoRadioButton;
     private javax.swing.JTextField NombreTxT;
     private javax.swing.JLabel NombrejLabel;
-    private javax.swing.JRadioButton PlinRadioButton3;
-    private javax.swing.JRadioButton TarjetaRadioButton4;
+    private javax.swing.JPanel PanelX;
     private javax.swing.JScrollPane TipoClientejScrollPane;
     private javax.swing.JTable TipoClientejTable;
-    private javax.swing.JPanel TipoPagoPanel;
-    private javax.swing.JLabel TipoPagojLabel;
     private javax.swing.JTextField TorreTxt;
     private javax.swing.JLabel TorrejLabel;
-    private javax.swing.JRadioButton YapeRadioButton2;
+    private javax.swing.JLabel XJLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel cliente_y_pago;
     // End of variables declaration//GEN-END:variables
