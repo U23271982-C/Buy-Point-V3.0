@@ -781,7 +781,6 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_ListadoProductoKeyPressed
 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
-
         try {
             /*JOptionPane.showMessageDialog(null, String.format("%s %s %s %s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento, TipoCliente.Cuenta, TipoCliente.Identificacion, 
@@ -946,7 +945,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             // Registramos la venta
             ctrlVenta.registrar(venta1);
             // Registramos los Detalles de Venta
-            for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+            for (int i = 0; i < venta1.getDetallesVenta(
+            ).size(); i++) {
                 ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
             }
         } catch (RuntimeException e) {
