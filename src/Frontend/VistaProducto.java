@@ -1,5 +1,6 @@
 package Frontend;
 
+import Backend.Controladores.CtrlCodigo;
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
 import Backend.Entidades.Producto;
@@ -283,9 +284,19 @@ public class VistaProducto extends javax.swing.JFrame {
         int respuesta = JOptionPane.showConfirmDialog(null
                         ,"¿Estas seguro de en eliminar este producto?"
                         ,"Esta acción sera irrevesible",JOptionPane.YES_NO_OPTION);
+        CtrlProducto CP = new CtrlProducto();
+        
+        Producto P = new Producto();
+        Codigo C = new Codigo();
+        C.setCodigo(codigoBarras);
+        P.setCodigo(C);
         
         if (respuesta == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Has elegido continuar.");
+            //JOptionPane.showMessageDialog(null, "Has elegido continuar.");
+        
+            CP.eliminar(P);
+            this.setVisible(false);
+        
         } else if (respuesta == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
         }
@@ -311,6 +322,7 @@ public class VistaProducto extends javax.swing.JFrame {
         FI.tamañoimagen(Actualizar, "/img/iconoActualizacion.jpg");
         FI.tamañoimagen(Eliminar, "/img/imagenbasura.png");
         this.NombreProducto(NombreJLabel,CantidadStock,FV);
+        //JOptionPane.showMessageDialog(null, codigoBarras);
     }
     
     
