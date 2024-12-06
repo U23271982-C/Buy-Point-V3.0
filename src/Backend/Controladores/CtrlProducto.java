@@ -90,7 +90,8 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                             producto.setNombreProducto
                                     (filas.getString(1));
                             producto.setDescripcion(filas.getString(2));
-                            producto.getCategoriaProducto().setNombre(filas.getString(3));
+                            producto.getCategoriaProducto().
+                                    setNombre(filas.getString(3));
                             producto.getEmpaque()
                                     .setTipoEmpaque(filas
                                             .getString(4));
@@ -103,6 +104,8 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                             producto.getInventario()
                                     .setStock(filas
                                             .getInt(7));
+                            producto.getCodigo().
+                                    setCodigo(filas.getString(8));
                 }//else {
                 //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
                 //}

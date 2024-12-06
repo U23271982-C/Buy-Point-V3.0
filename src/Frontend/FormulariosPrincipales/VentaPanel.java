@@ -677,7 +677,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
         try {
             if (lecturaCodigo == KeyEvent.VK_ENTER) {
-                codigoBarra = codigoescaneado.toString();
+                codigoBarra = codigoescaneado.toString(); // Codigo de Barras extraído
                 Buscador.setText("");
                 CtrlProducto CP = new CtrlProducto();
 
@@ -690,16 +690,21 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 if (p1 != null) {
                     DetalleVenta detalleVenta = new DetalleVenta();
                     detalleVenta.setProducto(p1);
-                    //venta1.getDetallesVenta().add(detalleVenta);
+                    venta1.getDetallesVenta().add(detalleVenta);
 
-                    boolean productoExistente = false;
-
-                    if (!productoExistente) {
-                        detalleVenta.setCantidad(1); // Inicializar cantidad
-                        venta1.getDetallesVenta().add(detalleVenta);
+                    //actualizarTabla();
+                    DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+                    tm.setRowCount(0); // Limpiar la tabla antes de volver a llenarla
+                    // Agrega todos los detalles a la tabla
+                    for (DetalleVenta dv : venta1.getDetallesVenta()) {
+                        tm.addRow(new Object[]{
+                                dv.getProducto().getNombreProducto(),
+                                dv.getPrecioUnitario(),
+                                dv.getCantidad(),
+                                dv.getSubTotal(),
+                                dv.getTotal()
+                        });
                     }
-
-                    actualizarTabla();
 
                     actualizarTotales();
 
