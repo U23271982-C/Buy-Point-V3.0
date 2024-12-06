@@ -139,6 +139,7 @@ EXEC pa_registrarCuenta 'Marisol', 'Cajusol', 753159852
 GO
 EXEC pa_registrarCuenta 'Luigui', 'Vazques', 75321458
 GO
+SELECT * FROM Cliente
 --Cliente---------------------------------------------------------------------
 EXEC paT_registrarClienteCompuesto 'Directo', NULL, NULL, NULL,NULL,NULL, NULL
 GO
@@ -159,6 +160,39 @@ EXEC pa_registrarCodigo 'GHKJ582', 'Salsa de Soya'
 GO
 EXEC pa_registrarCodigo 'GH5852D2', 'Kirma Clasico 190gr'
 GO
+--TipoPago---------------------------------------------------------------------
+EXEC pa_registrarTipoPago 'Efectivo'
+GO
+EXEC pa_registrarTipoPago 'Yape'
+GO
+EXEC pa_registrarTipoPago 'Plin'
+GO
+EXEC pa_registrarTipoPago 'Tarjeta'
+GO
+--Comprobante---------------------------------------------------------------------
+SELECT * FROM Comprobante
+EXEC pa_registrarComprobante 'Boleta', 1
+GO
+EXEC pa_registrarComprobante 'Boleta', 2
+GO
+EXEC pa_registrarComprobante 'Factura', 2
+GO
+EXEC pa_registrarComprobante 'Factura', 1
+GO
+--Venta---------------------------------------------------------------------
+EXEC paT_registrarVentaCompuesto 
+								'2024-12-03',
+								'02:12:13',
+								124.4,
+								150.00,
+								'Directo',
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								1
 /*
 use BD_BuyPoint
 

@@ -669,7 +669,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     StringBuilder codigoescaneado = new StringBuilder();
     String codigoBarra;
     public Venta venta1 = new Venta();
-    public DetalleVenta detalleVenta = new DetalleVenta();
+    //public DetalleVenta detalleVenta = new DetalleVenta();
 
     private void BuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyPressed
 
@@ -678,10 +678,10 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         try {
 
             if (lecturaCodigo == KeyEvent.VK_ENTER) {
-                Buscador.setText("");
                 CtrlProducto CP = new CtrlProducto();
 
                 codigoBarra = codigoescaneado.toString();
+                //codigoBarra = Buscador.getText();
 
                 Producto P = new Producto();
                 Codigo C = new Codigo();
@@ -692,27 +692,47 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 if (p1 != null) {
                     //AgregarProductoTabla(jTableVender,P,C);
 
+                    DetalleVenta detalleVenta = new DetalleVenta();
+
                     detalleVenta.setProducto(p1);
-                    venta1.getDetallesVenta().add(detalleVenta);
+                    //venta1.getDetallesVenta().add(detalleVenta);
+//
+                    /*boolean productoExistente = false;
+                    for (DetalleVenta dv : venta1.getDetallesVenta()) {
+                        if (codigoBarra.equals(dv.getProducto().getCodigo().getCodigo())) {
+                            dv.setCantidad(dv.getCantidad() + 1);
+                            productoExistente = true;
+                            break; // Salir del bucle si se encontró el producto
+                        }
+                    }
+
+                    if (!productoExistente) {
+                        detalleVenta.setCantidad(1); // Inicializar cantidad
+                        venta1.getDetallesVenta().add(detalleVenta);
+                    }
+//
+
+                     */
+                    actualizarTabla();
 
                     jLabelSubTotal.setText(String.valueOf(venta1.getSubTotal()));
                     jLabel_IGV.setText(
                             String.valueOf(venta1.getSubTotal().add(venta1.getSubTotal().multiply(BigDecimal.valueOf(0.18))).setScale(1, RoundingMode.HALF_UP)));
                     jLabelTotal.setText(String.valueOf(venta1.getTotal()));
 
-                    /*for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
-                        if (codigoBarra.equals(venta1.getDetallesVenta().get(i).getProducto().getCodigo().getCodigo())) {
-                            venta1.getDetallesVenta().get(i).setCantidad(venta1.getDetallesVenta().get(i).getCantidad() + 1);
-                        }
-                    }*/
-                    DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+
+                    /*DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+
                                 tm.addRow(new Object[]{
                                     detalleVenta.getProducto().getNombreProducto(),
                                     detalleVenta.getPrecioUnitario(),
                                     detalleVenta.getCantidad(),
                                     detalleVenta.getSubTotal(),
                                     detalleVenta.getTotal()
-                                });
+                                });*/
+
+
+
                 }
             } else {
                 codigoescaneado.append(lecturaCodigo);
@@ -722,6 +742,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             System.out.println(e.getMessage());
         }
 
+        Buscador.setText("");
     }//GEN-LAST:event_BuscadorKeyPressed
 
     private void EncabezadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EncabezadoMousePressed
@@ -729,6 +750,20 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         yMouse = evt.getY();
 
     }//GEN-LAST:event_EncabezadoMousePressed
+
+    private void actualizarTabla() {
+        DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+        tm.setRowCount(0); // Limpiar la tabla antes de volver a llenarla
+        for (DetalleVenta dv : venta1.getDetallesVenta()) {
+            tm.addRow(new Object[]{
+                    dv.getProducto().getNombreProducto(),
+                    dv.getPrecioUnitario(),
+                    dv.getCantidad(),
+                    dv.getSubTotal(),
+                    dv.getTotal()
+            });
+    }
+}
 
     private void PanelOpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelOpMouseEntered
         Animaciones.Agranda(panelOpciones, 1, 2, 62);

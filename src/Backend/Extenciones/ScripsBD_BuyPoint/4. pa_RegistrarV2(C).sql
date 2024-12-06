@@ -617,8 +617,28 @@ BEGIN
 			DECLARE @id_cliente INT
 			DECLARE @id_cuenta INT
 			DECLARE @id_departamento INT
+			
+			SELECT *--@id_cliente = ID_Cliente
+			FROM Cliente C
+			LEFT JOIN Departamento D ON C.ID_Departamento = D.ID_Departamento
+			LEFT JOIN Cuenta CU ON CU.ID_Cuenta = C.ID_Cuenta
+			WHERE
+				Cliente = 'Directo' AND 
+				Identificacion IS NULL AND
+				D.Torre IS NULL AND
+				D.Departamento IS NULL AND
+				CU.Nombre = NULL AND 
+				CU.Apellido = NULL
+			SELECT * FROM Cliente WHERE Cliente = 'Directo'
+				/*Cliente = @cliente AND 
+				Identificacion = @identificacion AND
+				D.Torre = @torre AND
+				D.Departamento = @departamento AND
+				CU.Nombre = @nombre AND 
+				CU.Apellido = @apellido
+				*/
 
-
+/*
 			--id departamento
 			IF(@torre IS NOT NULL 
 				AND @departamento IS NOT NULL) BEGIN
@@ -652,7 +672,7 @@ BEGIN
 				AND ID_Departamento = @id_departamento
 				AND ID_Cuenta = @id_cuenta
 				AND Identificacion = @identificacion
-
+*/
 			EXEC pa_registrarVenta 
 								@fecha,
 								@hora,
