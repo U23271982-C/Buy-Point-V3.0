@@ -229,7 +229,7 @@ public class TipoCliente extends javax.swing.JFrame {
                     NombreTxT.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(), 1).toString());
                     TorreTxt.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(), 2).toString());
                     DepartamentojTextField.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(), 3).toString());
-                                    }
+                }
             }
         });
     }//GEN-LAST:event_TipoClientejTableMousePressed
