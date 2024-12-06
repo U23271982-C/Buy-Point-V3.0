@@ -118,5 +118,19 @@ public class Producto extends Entidad {
     /*public boolean productoRegistrado(String codigoBarras){
         return false;
     }*/
-    
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "idProducto=" + idProducto +
+                ", nombreProducto='" + nombreProducto + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", empaque=" + empaque +
+                ", categoriaProducto=" + categoriaProducto +
+                ", inventario=" + inventario +
+                ", codigo=" + codigo +
+                ", paqueteProducto=" + paqueteProducto +
+                '}';
+    }
 }

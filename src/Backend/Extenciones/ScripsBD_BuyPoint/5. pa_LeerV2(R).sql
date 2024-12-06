@@ -232,11 +232,13 @@ BEGIN
 			E.TipoEmpaque,
 			P.Precio,
 			I.PrecioCosto,
-			I.Stock
+			I.Stock,
+			@codigo AS CodigoBarras
 	FROM Producto AS P
 	INNER JOIN Empaque AS E ON E.ID_Empaque = P.ID_Empaque
 	INNER JOIN Inventario AS I ON  I.ID_Inventario = P.ID_Inventario
 	INNER JOIN CategoriaProducto AS CP ON CP.ID_CategoriaProducto = P.ID_CategoriaProducto
+	--INNER JOIN Codigo AS CO ON P.ID_Producto = CO.ID_Producto
 	WHERE ID_Producto = dbo.fn_extraerID_Producto_CodigoBarras (@codigo)
 END
 GO

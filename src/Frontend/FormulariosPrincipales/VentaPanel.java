@@ -693,19 +693,40 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 if (p1 != null) {
                     DetalleVenta detalleVenta = new DetalleVenta();
                     detalleVenta.setProducto(p1);
-                    //venta1.getDetallesVenta().add(detalleVenta);
 
-                    boolean productoExistente = false;
+                    /*boolean productoExistente = false;
 
                     if (!productoExistente) {
                         detalleVenta.setCantidad(1); // Inicializar cantidad
                         venta1.getDetallesVenta().add(detalleVenta);
-                    }
+                    }*/
+                    if (!venta1.getDetallesVenta().isEmpty()) {
+                        for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                            if (codigoescaneado.toString().equals(venta1.getDetallesVenta().get(i)
+                                    .getProducto().getCodigo().getCodigo())) {
 
+                                venta1.getDetallesVenta().get(i).setCantidad
+                                        (venta1.getDetallesVenta().get(i).getCantidad() + 1);
+                                break;
+                            }else if(i + 1 == venta1.getDetallesVenta().size()) {
+                                venta1.getDetallesVenta().add(detalleVenta);
+                                break;
+                            }
+                        }
+                    }else {
+                        venta1.getDetallesVenta().add(detalleVenta);
+                        /*for (DetalleVenta dv : venta1.getDetallesVenta()) {
+                            if (codigoescaneado.toString().equals(dv.getProducto().getCodigo().getCodigo())) {
+                                dv.setCantidad(dv.getCantidad() + 1);
+                            }else if() {
+                                venta1.getDetallesVenta().add(detalleVenta);
+                            }
+                        }*/
+                    }
                     actualizarTabla();
 
                     actualizarTotales();
-
+                    venta1.getDetallesVenta().forEach(System.out::println);
                 }
                 codigoescaneado.setLength(0);
             } else {
