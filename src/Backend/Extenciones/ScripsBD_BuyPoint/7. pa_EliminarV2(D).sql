@@ -245,8 +245,7 @@ BEGIN
 		DELETE Codigo
 		WHERE ID_Producto = @idProductoEliminar
 		--Eliminando Invenrario
-		--Eliminando Invenrario
-		DELETE Inventario
+        DELETE Inventario
 		WHERE ID_Inventario = @idProductoEliminar
 		--Eliminando Paquete de los Productos
 		DELETE PaqueteProducto
@@ -259,7 +258,7 @@ BEGIN
 				ROLLBACK TRANSACTION;
 			END
 
-			PRINT 'Ocurrió un error. La transacción ha sido revertida.';
+			PRINT 'Ocurriï¿½ un error. La transacciï¿½n ha sido revertida.';
 			PRINT 'Mensaje de error' + ERROR_MESSAGE();
 			PRINT 'Gravedad del error' + CAST(ERROR_SEVERITY() AS NVARCHAR(10));
 			PRINT 'Estado del error' + CAST(ERROR_STATE() AS NVARCHAR(10));
@@ -314,7 +313,7 @@ BEGIN
 				ROLLBACK TRANSACTION;
 			END
 
-			PRINT 'Ocurrió un error. La transacción ha sido revertida.';
+			PRINT 'Ocurriï¿½ un error. La transacciï¿½n ha sido revertida.';
 			PRINT 'Mensaje de error' + ERROR_MESSAGE();
 			PRINT 'Gravedad del error' + CAST(ERROR_SEVERITY() AS NVARCHAR(10));
 			PRINT 'Estado del error' + CAST(ERROR_STATE() AS NVARCHAR(10));

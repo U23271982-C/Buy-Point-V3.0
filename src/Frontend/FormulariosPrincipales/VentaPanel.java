@@ -783,18 +783,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
 
         try {
-            JOptionPane.showMessageDialog(null, String.format("%s %s %s %s %s %s", TipoCliente.Nombre,
+            /*JOptionPane.showMessageDialog(null, String.format("%s %s %s %s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento, TipoCliente.Cuenta, TipoCliente.Identificacion, 
-                    TipoCliente.Telefono));
+                    TipoCliente.Telefono));*/
+         
             
-            if(CheckBoxCliente.isSelected()){
-                GuardarClienteVenta();
-            } else{
-                GuardarClienteDelivery();
-            }
-            
-            
-            /*
             CtrlVenta ctrlVenta = new CtrlVenta();
             CtrlDetalleVenta ctrlDetalleVenta = new CtrlDetalleVenta();
             Cliente cliente = new Cliente();
@@ -809,8 +802,12 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             venta1.setFecha(LocalDate.now());
             venta1.setHora(LocalTime.now());
             // SubTotal calculado
+            jLabelSubTotal.getText();
+            System.out.println(jLabelSubTotal.getText());
             // Total calculado
-
+            jLabelTotal.getText();
+            System.out.println(jLabelTotal.getText());
+            
             // Venta Directa
             if (CheckBoxCliente.isSelected()){
                 try {
@@ -848,21 +845,13 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             // Registramos los Detalles de Venta
             for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
                 ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
-            }*/
+            }
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
 
     }//GEN-LAST:event_ConfirmarButtomMouseClicked
 
-    private void GuardarClienteVenta(){
-        
-    }
-    
-    private void GuardarClienteDelivery(){
-        
-    }
-    
     private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed
 
     }//GEN-LAST:event_TablaVentaKeyPressed

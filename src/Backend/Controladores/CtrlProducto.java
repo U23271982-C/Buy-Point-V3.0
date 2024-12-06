@@ -134,7 +134,22 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
 
         @Override
         public void eliminar(Producto eliminadoEntidad) {
+            String consultaSQL = "{ CALL pa_eliminarProducto(?) }";
+            
+             try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
 
+            comando.setString(1, eliminadoEntidad.getCodigo().getCodigo());
+
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Producto eliminado");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }        
+        
         }
 
         @Override

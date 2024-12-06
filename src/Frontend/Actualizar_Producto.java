@@ -2,6 +2,7 @@ package Frontend;
 
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
+import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
@@ -9,6 +10,8 @@ import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -120,6 +123,7 @@ public class Actualizar_Producto extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        NombreTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NombreTxt.setToolTipText("");
         NombreTxt.setBorder(null);
         NombreTxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -128,6 +132,7 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             }
         });
 
+        StockTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         StockTxt.setBorder(null);
         StockTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +145,8 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             }
         });
 
+        FVTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        FVTxt.setText("dd/mm/yy");
         FVTxt.setBorder(null);
         FVTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,12 +289,23 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
-        char c = evt.getKeyChar();
-        RegistrarNuevoProducto.BloquearCaracteres(FVTxt, c, evt);
+        //char c = evt.getKeyChar();
+        //RegistrarNuevoProducto.BloquearCaracteres(FVTxt, c, evt);
     }//GEN-LAST:event_FVTxtKeyTyped
 
     private void ConfirmarJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarJLabelMouseClicked
         try{
+            
+            Producto nuevProducto = new Producto();
+            PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
+            
+            
+            
+            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechLocalDate = LocalDate.parse(FVTxt.getText().trim(),textFormt);
+            
+            
+            
             
         }catch(Exception e){
             System.out.println(e.getMessage());
