@@ -2,6 +2,7 @@ package Frontend;
 
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
+import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
@@ -288,12 +289,17 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
-        char c = evt.getKeyChar();
+        //char c = evt.getKeyChar();
         //RegistrarNuevoProducto.BloquearCaracteres(FVTxt, c, evt);
     }//GEN-LAST:event_FVTxtKeyTyped
 
     private void ConfirmarJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarJLabelMouseClicked
         try{
+            
+            Producto nuevProducto = new Producto();
+            PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
+            
+            
             
             DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate fechLocalDate = LocalDate.parse(FVTxt.getText().trim(),textFormt);

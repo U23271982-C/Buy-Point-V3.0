@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+
 public class VistaProducto extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
