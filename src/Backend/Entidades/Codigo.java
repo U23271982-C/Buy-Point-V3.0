@@ -44,6 +44,9 @@ public class Codigo extends Entidad {
 
     @Override
     public String toString() {
-        return codigo;
+        return "Codigo{" +
+                "idCodigo=" + idCodigo +
+                ", codigo='" + codigo + '\''+
+                '}';
     }
 }

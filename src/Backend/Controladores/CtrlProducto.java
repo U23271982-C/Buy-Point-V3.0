@@ -119,12 +119,18 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
 
             return producto;
         }
-        /*
+
         public static void main(String[] args) {
             CtrlProducto c = new CtrlProducto();
-           c.listar().forEach(System.out::println);
+            Producto producto = new Producto();
+            Codigo codigo = new Codigo();
+            codigo.setCodigo("6921180820056");
+            producto.setCodigo(codigo);
+
+            System.out.println(c.leer(producto));
+            //c.listar().forEach(System.out::println);
         }
-        */
+
 
         @Override
         public void eliminar(Producto eliminadoEntidad) {
