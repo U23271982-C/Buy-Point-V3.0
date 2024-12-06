@@ -245,6 +245,9 @@ BEGIN
 		DELETE Codigo
 		WHERE ID_Producto = @idProductoEliminar
 		--Eliminando Invenrario
+		--Eliminando Invenrario
+		DELETE Inventario
+		WHERE ID_Inventario = @idProductoEliminar
 		--Eliminando Paquete de los Productos
 		DELETE PaqueteProducto
 		WHERE ID_Producto = @idProductoEliminar

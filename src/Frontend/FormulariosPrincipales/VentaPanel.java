@@ -894,14 +894,14 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_OtrodJButtonActionPerformed
 
     private void ConfirmarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarButtomActionPerformed
-        /*
-        boolean EstanLlenos = jLabelSubTotal.getText() != null
+
+        boolean estanLlenos = jLabelSubTotal.getText() != null
                     && jLabel_IGV.getText() != null
                 && jLabelTotal.getText() != null;    
         
-        ConfirmarButtom.setEnabled(EstanLlenos);
+        ConfirmarButtom.setEnabled(estanLlenos);
         
-        if(EstanLlenos == false){
+        if(!estanLlenos){
             try {
             JOptionPane.showMessageDialog(null, String.format("%s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento));
@@ -964,7 +964,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             throw new RuntimeException(e);
         }
 
-        }*/
+        }
     }//GEN-LAST:event_ConfirmarButtomActionPerformed
 
 
