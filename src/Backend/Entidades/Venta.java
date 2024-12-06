@@ -49,21 +49,21 @@ public class Venta extends Entidad {
     }
 
     public BigDecimal getSubTotal() {
-        return subTotal;
+        return subTotal = detallesVenta.stream().map(DetalleVenta::getSubTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public void setSubTotal(BigDecimal subTotal) {
-        this.subTotal = detallesVenta.stream().map(DetalleVenta::getSubTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        this.subTotal = subTotal;
     }
 
     public BigDecimal getTotal() {
-        return total;
+        return total = detallesVenta.stream().map(DetalleVenta::getTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
     }
     public void setTotal(BigDecimal total) {
-        this.total = detallesVenta.stream().map(DetalleVenta::getTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        this.total = total;
     }
 
     public Cliente getCliente() {

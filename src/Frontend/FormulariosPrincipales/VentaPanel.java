@@ -790,6 +790,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     DetalleVenta detalleVenta = new DetalleVenta();
                     detalleVenta.setProducto(productoLeido);
 
+                    jLabelSubTotal.setText(String.valueOf(venta1.getSubTotal()));
+                    jLabel_IGV.setText(
+                            String.valueOf(venta1.getSubTotal().add(venta1.getSubTotal().multiply(BigDecimal.valueOf(0.18))).setScale(1, RoundingMode.HALF_UP)));
+                    jLabelTotal.setText(String.valueOf(venta1.getTotal()));
+
                     DefaultTableModel dfm = (DefaultTableModel) jTableVender.getModel();
                     //dfm.setRowCount(0);
                     //for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
