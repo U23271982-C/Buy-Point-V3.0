@@ -56,21 +56,6 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                  <Component id="NombrejLabel" min="-2" pref="97" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="NombreTxT" min="-2" pref="179" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="TorrejLabel" min="-2" pref="89" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="TorreTxt" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="DepartamentojLabel" min="-2" pref="119" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="DepartamentojTextField" min="-2" pref="105" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="TipoClientejScrollPane" min="-2" pref="639" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
@@ -91,6 +76,39 @@
                       </Group>
                   </Group>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="NombrejLabel" pref="97" max="32767" attributes="0"/>
+                      <Component id="TelefonojLabel" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="NombreTxT" max="32767" attributes="0"/>
+                      <Component id="TelefonoTxt" pref="139" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="TorrejLabel" pref="89" max="32767" attributes="0"/>
+                      <Component id="CuentajLabel" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="CuentaTxt" pref="90" max="32767" attributes="0"/>
+                      <Component id="TorreTxt" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="DepartamentojLabel" pref="119" max="32767" attributes="0"/>
+                      <Component id="IdentificacionjLabel" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="DepartamentojTextField" max="32767" attributes="0"/>
+                      <Component id="IdentificacionTxt" pref="91" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -108,18 +126,25 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="TipoClientejScrollPane" min="-2" pref="313" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="TorrejLabel" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="NombrejLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="NombreTxT" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="DepartamentojLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="DepartamentojTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="TorreTxt" alignment="0" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="NombrejLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="NombreTxT" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="DepartamentojLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="DepartamentojTextField" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="TorrejLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="TorreTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="CuentaTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="CuentajLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="TelefonojLabel" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="TelefonoTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="IdentificacionTxt" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="IdentificacionjLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="ConfirmarjLabel" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -357,6 +382,45 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="CuentajLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Cuenta"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="CuentaTxt">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="IdentificacionjLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Identificaci&#xf3;n"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TelefonojLabel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="T&#xe9;lefono"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="TelefonoTxt">
+        </Component>
+        <Component class="javax.swing.JTextField" name="IdentificacionTxt">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

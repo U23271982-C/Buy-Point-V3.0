@@ -369,20 +369,23 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
         jLabelTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTotal.setText("-");
 
         jLabel_IGV.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_IGV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_IGV.setText("-");
 
         jLabelSubTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSubTotal.setText("-");
 
         ConfirmarButtom.setText("Confirmar");
+        ConfirmarButtom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ConfirmarButtom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ConfirmarButtomMouseClicked(evt);
+            }
+        });
+        ConfirmarButtom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmarButtomActionPerformed(evt);
             }
         });
 
@@ -759,6 +762,126 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
 
         try {
+            JOptionPane.showMessageDialog(null, String.format("%s %s %s %s %s %s", TipoCliente.Nombre,
+                    TipoCliente.Torre, TipoCliente.Departamento, TipoCliente.Cuenta, TipoCliente.Identificacion, 
+                    TipoCliente.Telefono));
+            
+            if(CheckBoxCliente.isSelected()){
+                GuardarClienteVenta();
+            } else{
+                GuardarClienteDelivery();
+            }
+            
+            
+            /*
+            CtrlVenta ctrlVenta = new CtrlVenta();
+            CtrlDetalleVenta ctrlDetalleVenta = new CtrlDetalleVenta();
+            Cliente cliente = new Cliente();
+            Comprobante comprobante = new Comprobante();
+            TipoPago tipoPago = new TipoPago();
+            Departamento depa = null;
+            Cuenta cuenta = null;
+
+            Ticket ticket = new Ticket();
+
+
+            venta1.setFecha(LocalDate.now());
+            venta1.setHora(LocalTime.now());
+            // SubTotal calculado
+            // Total calculado
+
+            // Venta Directa
+            if (CheckBoxCliente.isSelected()){
+                try {
+                    ticket.setEncabezadoTicketDirecto(String.format
+                            (ticket.getEncabezadoTicketDirecto(), LocalDate.now().format
+                                    (ticket.getFttFecha()), LocalTime.now().format
+                                    (ticket.getFttHora()), Objects.requireNonNull
+                                    (TipodePagoComboBox.getSelectedItem())));
+                    cliente.setCliente("Directo");
+                    cliente.setIdentificacion(null);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }else {
+                // Cliente delivery
+                if (!TipoCliente.Torre.isEmpty() && !TipoCliente.Departamento.isEmpty()){
+                    try {
+                        depa = new Departamento();
+                        depa.setTorre(Short.parseShort(TipoCliente.Torre));
+                        depa.setDepartamento(Short.parseShort(TipoCliente.Departamento));
+
+                        cliente.setDepartamento(depa);
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+            // FALTA REGISTRAR LA VENTA
+            //venta1
+
+            venta1.setCliente(cliente);
+            venta1.setComprobante(comprobante);
+            // Registramos la venta
+            ctrlVenta.registrar(venta1);
+            // Registramos los Detalles de Venta
+            for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
+            }*/
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+
+    }//GEN-LAST:event_ConfirmarButtomMouseClicked
+
+    private void GuardarClienteVenta(){
+        
+    }
+    
+    private void GuardarClienteDelivery(){
+        
+    }
+    
+    private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed
+
+    }//GEN-LAST:event_TablaVentaKeyPressed
+
+    //String codigoBarra;
+    private void BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyTyped
+
+
+    }//GEN-LAST:event_BuscadorKeyTyped
+
+    private void CheckBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxClienteActionPerformed
+        
+    }//GEN-LAST:event_CheckBoxClienteActionPerformed
+
+    private void CheckBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBoxClienteMouseClicked
+        /*boolean marcado = CheckBoxCliente.isSelected();
+        OtrodJButton.setEnabled(marcado);*/
+        
+    }//GEN-LAST:event_CheckBoxClienteMouseClicked
+
+    private void OtrodJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OtrodJButtonMouseClicked
+        /*TipoCliente TP = new TipoCliente();
+        TP.setVisible(true);*/
+    }//GEN-LAST:event_OtrodJButtonMouseClicked
+
+    private void OtrodJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OtrodJButtonActionPerformed
+        TipoCliente TP = new TipoCliente();
+        TP.setVisible(true);
+    }//GEN-LAST:event_OtrodJButtonActionPerformed
+
+    private void ConfirmarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarButtomActionPerformed
+        /*
+        boolean EstanLlenos = jLabelSubTotal.getText() != null
+                    && jLabel_IGV.getText() != null
+                && jLabelTotal.getText() != null;    
+        
+        ConfirmarButtom.setEnabled(EstanLlenos);
+        
+        if(EstanLlenos == false){
+            try {
             JOptionPane.showMessageDialog(null, String.format("%s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento));
 
@@ -820,48 +943,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             throw new RuntimeException(e);
         }
 
-    }//GEN-LAST:event_ConfirmarButtomMouseClicked
+        }*/
+    }//GEN-LAST:event_ConfirmarButtomActionPerformed
 
-    private void TablaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentaKeyPressed
-
-    }//GEN-LAST:event_TablaVentaKeyPressed
-
-    //String codigoBarra;
-    private void BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscadorKeyTyped
-
-
-    }//GEN-LAST:event_BuscadorKeyTyped
-
-    private void CheckBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxClienteActionPerformed
-        
-    }//GEN-LAST:event_CheckBoxClienteActionPerformed
-
-    private void CheckBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBoxClienteMouseClicked
-        if(!CheckBoxCliente.isSelected()){
-           OtrodJButton.setEnabled(true);
-        }else{
-           OtrodJButton.setEnabled(false); 
-        }
-    }//GEN-LAST:event_CheckBoxClienteMouseClicked
-
-    private void OtrodJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OtrodJButtonMouseClicked
-        /*TipoCliente TP = new TipoCliente();
-        TP.setVisible(true);*/
-    }//GEN-LAST:event_OtrodJButtonMouseClicked
-
-    private void OtrodJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OtrodJButtonActionPerformed
-        TipoCliente TP = new TipoCliente();
-        TP.setVisible(true);
-    }//GEN-LAST:event_OtrodJButtonActionPerformed
-
-    /*int posicion; //contador para agregar producto a la tabla
-
-    public void AgregarProductoTabla(JTable jTable, Producto P, Codigo C) {
-
-        System.out.println(P.getCodigo().getCodigo());
-        System.out.println("qwertyuiop");
-
-    }*/
 
     public VentaPanel() {
         initComponents();
@@ -923,7 +1007,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     private javax.swing.JLabel jLabel_IGV;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTableVender;
+    public static javax.swing.JTable jTableVender;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel venta;
     // End of variables declaration//GEN-END:variables

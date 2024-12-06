@@ -699,7 +699,6 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel_IGV">
@@ -708,7 +707,6 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelSubTotal">
@@ -717,15 +715,20 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="ConfirmarButtom">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ConfirmarButtomMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfirmarButtomActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="SeparatorSubTotal">
