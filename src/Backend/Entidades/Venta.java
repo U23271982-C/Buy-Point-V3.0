@@ -1,6 +1,7 @@
 package Backend.Entidades;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class Venta extends Entidad {
 
     public BigDecimal getSubTotal() {
         return subTotal = detallesVenta.stream().map(DetalleVenta::getSubTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(1, RoundingMode.HALF_UP);
     }
 
     public void setSubTotal(BigDecimal subTotal) {
@@ -59,7 +60,7 @@ public class Venta extends Entidad {
 
     public BigDecimal getTotal() {
         return total = detallesVenta.stream().map(DetalleVenta::getTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(1, RoundingMode.HALF_UP);
 
     }
     public void setTotal(BigDecimal total) {
