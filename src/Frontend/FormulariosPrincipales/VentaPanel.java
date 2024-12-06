@@ -1,36 +1,22 @@
 package Frontend.FormulariosPrincipales;
 
 import Backend.Controladores.CtrlDetalleVenta;
+import Backend.Controladores.CtrlProducto;
 import Backend.Controladores.CtrlVenta;
 import Backend.Entidades.*;
 import Backend.Ticket.Ticket;
 import Frontend.visualFramework.Animaciones;
-import Backend.Controladores.CtrlProducto;
 import Frontend.visualFramework.Formato_Imagen;
-import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
-import Frontend.FormulariosPrincipales.InventarioPanel;
-import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
-import Frontend.RegistrarProductoOCodigo;
 import Frontend.TipoCliente;
-import static Frontend.TipoCliente.Torre;
+
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public final class VentaPanel extends javax.swing.JFrame implements Animaciones {
@@ -666,7 +652,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         PanelMax.setBackground(Color.WHITE);
     }//GEN-LAST:event_MaximizarMouseExited
 
-    StringBuilder codigoescaneado = new StringBuilder();
+    StringBuilder codigoEscaneado = new StringBuilder();
     String codigoBarra;
     public Venta venta1 = new Venta();
     //public DetalleVenta detalleVenta = new DetalleVenta();
@@ -791,50 +777,46 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
         try {
             if (lecturaCodigo == KeyEvent.VK_ENTER) {
-                codigoBarra = codigoescaneado.toString();
-                Buscador.setText("");
-                CtrlProducto CP = new CtrlProducto();
 
-                Producto P = new Producto();
-                Codigo C = new Codigo();
-                C.setCodigo(codigoBarra);
-                P.setCodigo(C);
+                Producto producto = new Producto();
+                CtrlProducto ctrlProducto = new CtrlProducto();
+                Codigo codigo = new Codigo();
 
-                Producto p1 = CP.leer(P);
-                if (p1 != null) {
+                codigo.setCodigo(codigoEscaneado.toString());
+                producto.setCodigo(codigo);
+
+                Producto productoLeido = ctrlProducto.leer(producto);
+                if(productoLeido != null){
                     DetalleVenta detalleVenta = new DetalleVenta();
-                    detalleVenta.setProducto(p1);
-                    //venta1.getDetallesVenta().add(detalleVenta);
+                    detalleVenta.setProducto(productoLeido);
 
-                    boolean productoExistente = false;
-                    for (DetalleVenta dv : venta1.getDetallesVenta()) {
-                        if (codigoBarra.equals(dv.getProducto().getCodigo().getCodigo())) {
-                            dv.setCantidad(dv.getCantidad() + 1);
-                            productoExistente = true;
-                            actualizarTabla();
-                            break; // Salir del bucle si se encontró el producto
-                        }
-                    }
-
-                    // Si el producto no existe, agregarlo a la lista de detalles de venta
-                    if (!productoExistente) {
-                        detalleVenta.setCantidad(1); // Inicializar cantidad
-                        venta1.getDetallesVenta().add(detalleVenta);
-                    }
-
-                    actualizarTabla();
-
-                    actualizarTotales();
-
+                    DefaultTableModel dfm = (DefaultTableModel) jTableVender.getModel();
+                    //dfm.setRowCount(0);
+                    //for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                    dfm.addRow( new Object[]{
+                                detalleVenta.getProducto().getNombreProducto(),
+                                detalleVenta.getPrecioUnitario(),
+                                detalleVenta.getCantidad(),
+                                detalleVenta.getSubTotal(),
+                                detalleVenta.getTotal()
+                                /*venta1.getDetallesVenta().get(i).getProducto().getNombreProducto(),
+                                venta1.getDetallesVenta().get(i).getPrecioUnitario(),
+                                venta1.getDetallesVenta().get(i).getCantidad(),
+                                venta1.getDetallesVenta().get(i).getSubTotal(),
+                                venta1.getDetallesVenta().get(i).getTotal()*/
+                        });
+                    //}
+                    venta1.getDetallesVenta().add(detalleVenta);
+                    codigoEscaneado.setLength(0);
                 }
-                codigoescaneado.setLength(0);
             } else {
-                codigoescaneado.append(lecturaCodigo);
+                codigoEscaneado.append(lecturaCodigo);
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        Buscador.setText("");
 
         /*
         char lecturaCodigo = evt.getKeyChar();
