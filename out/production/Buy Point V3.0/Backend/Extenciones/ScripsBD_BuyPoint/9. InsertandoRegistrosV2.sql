@@ -139,27 +139,60 @@ EXEC pa_registrarCuenta 'Marisol', 'Cajusol', 753159852
 GO
 EXEC pa_registrarCuenta 'Luigui', 'Vazques', 75321458
 GO
+SELECT * FROM Cliente
 --Cliente---------------------------------------------------------------------
-EXEC paT_registrarClienteCompuesto 'Juan Prieto', '123456', NULL, NULL,NULL,NULL
+EXEC paT_registrarClienteCompuesto 'Directo', NULL, NULL, NULL,NULL,NULL, NULL
 GO
-EXEC paT_registrarClienteCompuesto 'Alejandra Cisneros', '456891', NULL, NULL,NULL,NULL
+EXEC paT_registrarClienteCompuesto 'Juan Prieto', '123456', NULL, NULL,NULL,NULL, NULL
 GO
-EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 102,NULL,NULL
+EXEC paT_registrarClienteCompuesto 'Alejandra Cisneros', '456891', NULL, NULL,NULL,NULL,NULL
 GO
-EXEC paT_registrarClienteCompuesto NULL , NULL, NULL, NULL,Martin, Valdez
+EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 102,NULL,NULL,NULL
 GO
-EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 101, Crsthian,Reyes
+EXEC paT_registrarClienteCompuesto NULL , NULL, NULL, NULL,Martin, Valdez, 852741963
+GO
+EXEC paT_registrarClienteCompuesto NULL , NULL, 10, 101, Crsthian,Reyes,753159456
 GO
 --Codigo---------------------------------------------------------------------
-EXEC paT_registrarCodigoCompuesto 'DDDDD582', 'InkaChips'
+EXEC pa_registrarCodigo 'DDDDD582', 'McColins Té Canela y Clavo 30gr'
 GO
-EXEC paT_registrarCodigoCompuesto 'GHKJ582', 'Chocman'
+EXEC pa_registrarCodigo 'GHKJ582', 'Salsa de Soya'
 GO
-EXEC paT_registrarCodigoCompuesto 'GH5852D2', 'Gloria 355ml'
+EXEC pa_registrarCodigo 'GH5852D2', 'Kirma Clasico 190gr'
 GO
-EXEC paT_registrarCodigoCompuesto 'QWEEE789', 'Coca Cola 600ml'
+--TipoPago---------------------------------------------------------------------
+EXEC pa_registrarTipoPago 'Efectivo'
 GO
-EXEC paT_registrarCodigoCompuesto 'DAAD789', 'Bimboletes 3u'
+EXEC pa_registrarTipoPago 'Yape'
+GO
+EXEC pa_registrarTipoPago 'Plin'
+GO
+EXEC pa_registrarTipoPago 'Tarjeta'
+GO
+--Comprobante---------------------------------------------------------------------
+SELECT * FROM Comprobante
+EXEC pa_registrarComprobante 'Boleta', 1
+GO
+EXEC pa_registrarComprobante 'Boleta', 2
+GO
+EXEC pa_registrarComprobante 'Factura', 2
+GO
+EXEC pa_registrarComprobante 'Factura', 1
+GO
+--Venta---------------------------------------------------------------------
+EXEC paT_registrarVentaCompuesto 
+								'2024-12-03',
+								'02:12:13',
+								124.4,
+								150.00,
+								'Directo',
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								1
 /*
 use BD_BuyPoint
 

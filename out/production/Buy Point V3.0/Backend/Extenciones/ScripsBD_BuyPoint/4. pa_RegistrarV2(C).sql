@@ -470,7 +470,9 @@ CREATE OR ALTER PROCEDURE paT_registrarClienteCompuesto(
 @torre SMALLINT,
 @departamento SMALLINT,
 @nombre VARCHAR(20),
-@apellido VARCHAR(20)
+@apellido VARCHAR(20),
+
+@telefono INT
 )
 AS
 BEGIN
@@ -479,22 +481,60 @@ BEGIN
 			DECLARE @id_depa INT;
 			DECLARE @id_cuen INT;
 
+			--Departamento
 			SELECT @id_depa = ID_Departamento
 			FROM Departamento
-			WHERE Torre = @torre AND Departamento = @departamento
+			WHERE 
+				Torre = @torre AND 
+				Departamento = @departamento
+			--Registrar el Departamento si no se encuentra
+				IF(	@id_depa IS NULL AND 
+					@torre IS NOT NULL AND 
+					@departamento IS NOT NULL)BEGIN
 
+					EXEC pa_registrarDepartamento @torre, @departamento
+				
+					SELECT @id_depa = ID_Departamento
+					FROM Departamento
+					WHERE 
+						Torre = @torre AND 
+						Departamento = @departamento
+				END
+
+			--Cuenta
 			SELECT @id_cuen = ID_Cuenta
 			FROM Cuenta
-			WHERE Nombre = @nombre AND Apellido = @apellido
+			WHERE 
+				Nombre = @nombre AND 
+				Apellido = @apellido
 
-			IF (@cliente IS NULL AND
+			--Registrar el Cuenta si no se encuentra
+				IF(	@id_cuen IS NULL AND 
+					@nombre IS NOT NULL AND 
+					@apellido IS NOT NULL AND 
+					@telefono IS NOT NULL)BEGIN
+				
+					EXEC pa_registrarCuenta 
+										@nombre,
+										@apellido,
+										@telefono
+
+					SELECT @id_cuen = ID_Cuenta
+					FROM Cuenta
+					WHERE 
+						Nombre = @nombre AND
+						Apellido = @apellido
+				END
+
+
+			/*IF (@cliente IS NULL AND
 				@id_depa IS NULL AND
 				@id_cuen IS NULL AND
 				@identificacion IS NULL) BEGIN
 
 					RAISERROR (' Al menos una columna debe tener un valor distinto de NULL.', 16, 1);
 					RETURN;
-			END
+			END*/
 			EXEC pa_registrarCliente 
 								@cliente,
 								@id_depa,
@@ -577,8 +617,28 @@ BEGIN
 			DECLARE @id_cliente INT
 			DECLARE @id_cuenta INT
 			DECLARE @id_departamento INT
+			
+			SELECT *--@id_cliente = ID_Cliente
+			FROM Cliente C
+			LEFT JOIN Departamento D ON C.ID_Departamento = D.ID_Departamento
+			LEFT JOIN Cuenta CU ON CU.ID_Cuenta = C.ID_Cuenta
+			WHERE
+				Cliente = 'Directo' AND 
+				Identificacion IS NULL AND
+				D.Torre IS NULL AND
+				D.Departamento IS NULL AND
+				CU.Nombre = NULL AND 
+				CU.Apellido = NULL
+			SELECT * FROM Cliente WHERE Cliente = 'Directo'
+				/*Cliente = @cliente AND 
+				Identificacion = @identificacion AND
+				D.Torre = @torre AND
+				D.Departamento = @departamento AND
+				CU.Nombre = @nombre AND 
+				CU.Apellido = @apellido
+				*/
 
-
+/*
 			--id departamento
 			IF(@torre IS NOT NULL 
 				AND @departamento IS NOT NULL) BEGIN
@@ -612,7 +672,7 @@ BEGIN
 				AND ID_Departamento = @id_departamento
 				AND ID_Cuenta = @id_cuenta
 				AND Identificacion = @identificacion
-
+*/
 			EXEC pa_registrarVenta 
 								@fecha,
 								@hora,
