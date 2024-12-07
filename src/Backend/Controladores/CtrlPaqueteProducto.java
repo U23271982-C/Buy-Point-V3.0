@@ -4,12 +4,14 @@ import Backend.Entidades.Comprobante;
 import Backend.Gestores.GestorSQLServer;
 import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Producto;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
 
@@ -120,16 +122,22 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
         try(CallableStatement comando = SQLServerBD.instanciaConexcion()
                 .conectar().prepareCall(consulta)) {
 
+            //leer()
+            //comando.setString(1, );
             ResultSet filas = comando.executeQuery();
             PaqueteProducto co = null;
+            Producto p = null;
             while (filas.next()) {
                 co = new PaqueteProducto();
-
+                p = new Producto();
+                
+                co.setProducto(p);
                 co.getProducto().setNombreProducto
                         (filas.getString(1));
                 co.setCantidad(filas.getInt(2));
                 co.setFechaCaducidad(filas.getDate(3).toLocalDate());
                 co.setCaducado(filas.getBoolean(4));
+                co.setIdPaqueteProducto(filas.getInt(5));
 
                 paqueteProductos.add(co);
             }
@@ -140,4 +148,41 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
             throw new RuntimeException(e);
         }
     }
+    // Listar paquete de producto a partir de un codigo de barras del producto
+    public ArrayList<PaqueteProducto> codigoProducto(PaqueteProducto paqueteProducto){
+        ArrayList<PaqueteProducto> paqueteProductos = new ArrayList<>();
+        String consulta = "{ CALL pa_listarPaqueteProductoCodigo(?) }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                    .conectar().prepareCall(consulta)) {
+
+            //leer()
+            comando.setString(1, paqueteProducto.getProducto().getCodigo().getCodigo());
+            ResultSet filas = comando.executeQuery();
+            PaqueteProducto co = null;
+            Producto p = null;
+            while (filas.next()) {
+                co = new PaqueteProducto();
+                p = new Producto();
+
+                co.setProducto(p);
+                co.getProducto().setNombreProducto
+                        (filas.getString(1));
+                co.setCantidad(filas.getInt(2));
+                co.setFechaCaducidad(filas.getDate(3).toLocalDate());
+                co.setCaducado(filas.getBoolean(4));
+                co.setIdPaqueteProducto(filas.getInt(5));
+
+                paqueteProductos.add(co);
+            }
+
+            return paqueteProductos;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //String codigo = "";
+    }
+
 }

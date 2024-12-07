@@ -136,13 +136,15 @@
                       <Component id="TorreTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CuentaTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="CuentajLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="TelefonojLabel" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="TelefonoTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="IdentificacionTxt" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="IdentificacionjLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="CuentaTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="CuentajLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="TelefonoTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="IdentificacionjLabel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="ConfirmarjLabel" min="-2" pref="41" max="-2" attributes="0"/>

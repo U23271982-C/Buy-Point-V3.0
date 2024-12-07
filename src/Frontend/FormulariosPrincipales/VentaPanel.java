@@ -369,6 +369,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
         jLabelTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTotal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelTotalMouseClicked(evt);
+            }
+        });
 
         jLabel_IGV.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_IGV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -954,6 +959,10 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
         }
     }//GEN-LAST:event_ConfirmarButtomActionPerformed
+
+    private void jLabelTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTotalMouseClicked
+        System.out.println(jLabelTotal.getText());
+    }//GEN-LAST:event_jLabelTotalMouseClicked
 
 
     public VentaPanel() {

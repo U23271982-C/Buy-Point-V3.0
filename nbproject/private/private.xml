@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Frontend/FormulariosPrincipales/MenuPrincipalPanel.java</file>
-            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Frontend/RegistrarNuevoCodigo.java</file>
-            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Frontend/AgregarCantidadyFV_Producto.java</file>
+            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Backend/Controladores/CtrlPaqueteProducto.java</file>
+            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Frontend/TipoCliente.java</file>
+            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Backend/Entidades/Producto.java</file>
             <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Frontend/VistaProducto.java</file>
-            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Backend/Controladores/CtrlCodigo.java</file>
-            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Frontend/FormulariosPrincipales/InventarioPanel.java</file>
-            <file>file:/E:/CICLO/CICLO%20IV/POO/Buy-Point-V3.0/src/Frontend/FormulariosPrincipales/RegistroVentasPanel.java</file>
         </group>
     </open-files>
 </project-private>
