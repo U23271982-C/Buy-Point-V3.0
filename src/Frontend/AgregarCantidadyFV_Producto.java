@@ -7,14 +7,18 @@ import Backend.Entidades.Producto;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
 
@@ -68,6 +72,11 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
         CantiTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CantiTxtActionPerformed(evt);
+            }
+        });
+        CantiTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CantiTxtKeyPressed(evt);
             }
         });
 
@@ -261,6 +270,7 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantiTxtMouseClicked
 
     private void FvTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FvTextKeyPressed
+        this.setForeground(Color.BLACK);
         if(evt.getKeyCode() == evt.VK_ENTER){
             this.ConfirmarActualizacion();
         }
@@ -345,6 +355,18 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_FvTextKeyTyped
+
+    private void CantiTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantiTxtKeyPressed
+        CantiTxt.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("TAB"), "tabPressed");
+        CantiTxt.getActionMap().put("tabPressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Limpiar el campo de contraseña cuando se presiona Tab
+                FvText.setText("");
+                
+            }
+        });
+    }//GEN-LAST:event_CantiTxtKeyPressed
     
     public void ConfirmarActualizacion(){
         try {
@@ -386,6 +408,7 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos " + e.getMessage());
             System.out.println(e.getMessage());
         }
+        this.setVisible(false);
     }
     
     public void CancelarActualizacion(){

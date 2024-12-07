@@ -68,20 +68,20 @@ ON Cliente (ID_Departamento)
 WHERE ID_Departamento IS NOT NULL;
 GO
 /*UK*/--------------------------------------------------
-ALTER TABLE Venta
+/*ALTER TABLE Venta
 	ADD CONSTRAINT U_Comprobante
 	UNIQUE (ID_Comprobante)
-GO
+GO*/
 /*
 ALTER TABLE Cliente
 	ADD CONSTRAINT U_Cuenta
 	UNIQUE (ID_Cuenta)
 GO
 */
-ALTER TABLE Comprobante
+/*ALTER TABLE Comprobante
 	ADD CONSTRAINT U_TipoPago
 	UNIQUE (ID_TipoPago)
-GO
+GO*/
 /*
 ALTER TABLE Cliente
 	ADD CONSTRAINT U_Departamento
