@@ -97,8 +97,9 @@ public class Venta extends Entidad {
     public void agregarDetalleVenta(DetalleVenta nuevoDetalleVenta){
         detallesVenta.add(nuevoDetalleVenta);
     }
-    public void eliminarDetalleVenta(int indece){
+    public int eliminarDetalleVenta(int indece){
         detallesVenta.remove(indece);
+        return indece;
     }
 
 }
