@@ -126,7 +126,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
                 c.setCliente(filas.getString(1));
                 c.setIdentificacion(filas.getString(2));
                 c.getDepartamento().setTorre(filas.getShort(3));
-                c.getDepartamento().setTorre(filas.getShort(4));
+                c.getDepartamento().setDepartamento(filas.getShort(4));
                 c.getCuenta().setNombre(filas.getString(5));
                 c.getCuenta().setApellido(filas.getString(6));
                 c.getCuenta().setTelefono(filas.getInt(7));
