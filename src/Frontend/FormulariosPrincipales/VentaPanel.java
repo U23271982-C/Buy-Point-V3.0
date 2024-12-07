@@ -846,7 +846,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_CheckBoxClienteActionPerformed
 
     private void CheckBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBoxClienteMouseClicked
-        /*boolean marcado = CheckBoxCliente.isSelected();
+       /* boolean marcado = !CheckBoxCliente.isSelected();
         OtrodJButton.setEnabled(marcado);*/
         
     }//GEN-LAST:event_CheckBoxClienteMouseClicked

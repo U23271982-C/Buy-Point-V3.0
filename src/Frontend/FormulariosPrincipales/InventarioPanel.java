@@ -79,6 +79,9 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 inventarioKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inventarioKeyTyped(evt);
+            }
         });
 
         Encabezado.setBackground(new java.awt.Color(255, 255, 255));
@@ -495,7 +498,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 VP.setVisible(true);
                 
             } else{
-                /*int respuesta = JOptionPane.showConfirmDialog(null
+                int respuesta = JOptionPane.showConfirmDialog(null
                         ,"Producto no encontrado"
                         ,"Ubicación no encontrada",JOptionPane.YES_NO_OPTION);
         
@@ -504,7 +507,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                             RPOC.setVisible(true);
                     } else if (respuesta == JOptionPane.NO_OPTION) {
                             JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
-                    }*/
+                    }
                 RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
                 RPOC.setVisible(true);
             }
@@ -513,6 +516,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
         else{
             codigoLeido.append(lecturaCodigo); 
         }
+        
     }//GEN-LAST:event_inventarioKeyPressed
 
     
@@ -534,6 +538,45 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
     private void FiiltradoComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FiiltradoComboBoxItemStateChanged
         
     }//GEN-LAST:event_FiiltradoComboBoxItemStateChanged
+
+    private void inventarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyTyped
+                char lecturaCodigo = evt.getKeyChar();
+        
+        if (lecturaCodigo == KeyEvent.VK_ENTER) {
+            CtrlProducto CP = new CtrlProducto();
+            
+            this.codigoBarras = codigoLeido.toString();
+            
+            Producto P = new Producto();
+            Codigo C = new Codigo();
+            C.setCodigo(codigoBarras);
+            P.setCodigo(C);
+            
+                      
+            if (CP.leer(P) != null) {
+                VistaProducto VP = new VistaProducto();
+                VP.setVisible(true);
+                
+            } else{
+                /*int respuesta = JOptionPane.showConfirmDialog(null
+                        ,"Producto no encontrado"
+                        ,"Ubicación no encontrada",JOptionPane.YES_NO_OPTION);
+        
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                            RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
+                            RPOC.setVisible(true);
+                    } else if (respuesta == JOptionPane.NO_OPTION) {
+                            JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
+                    }*/
+                RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
+                RPOC.setVisible(true);
+            }
+
+        }
+        else{
+            codigoLeido.append(lecturaCodigo); 
+        }
+    }//GEN-LAST:event_inventarioKeyTyped
     
     //DefaultTableModel mode = new DefaultTableModel();
     private void listaProductos(int inx){
