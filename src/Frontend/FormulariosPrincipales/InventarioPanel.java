@@ -58,6 +58,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
         FiiltradoComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable10 = new javax.swing.JTable();
+        AgregarPaqueteButton = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -308,36 +309,52 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
         ));
         jScrollPane1.setViewportView(jTable10);
 
+        AgregarPaqueteButton.setBackground(new java.awt.Color(255, 255, 255));
+        AgregarPaqueteButton.setForeground(new java.awt.Color(0, 0, 0));
+        AgregarPaqueteButton.setText("Agregar paquete");
+        AgregarPaqueteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        AgregarPaqueteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AgregarPaqueteButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AgregarPaqueteButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout inventarioLayout = new javax.swing.GroupLayout(inventario);
         inventario.setLayout(inventarioLayout);
         inventarioLayout.setHorizontalGroup(
             inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventarioLayout.createSequentialGroup()
+            .addGroup(inventarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Encabezado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(inventarioLayout.createSequentialGroup()
+                        .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
             .addGroup(inventarioLayout.createSequentialGroup()
                 .addGroup(inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventarioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(inventarioLayout.createSequentialGroup()
-                        .addGap(370, 370, 370)
+                        .addGap(107, 107, 107)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(inventarioLayout.createSequentialGroup()
+                        .addGap(152, 152, 152)
                         .addComponent(FiiltradoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(inventarioLayout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 131, Short.MAX_VALUE))
+                        .addGap(130, 130, 130)
+                        .addComponent(AgregarPaqueteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 142, Short.MAX_VALUE))
         );
         inventarioLayout.setVerticalGroup(
             inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inventarioLayout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(FiiltradoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(inventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FiiltradoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AgregarPaqueteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -530,12 +547,22 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
     }//GEN-LAST:event_FiiltradoComboBoxActionPerformed
 
     private void FiiltradoComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FiiltradoComboBoxItemStateChanged
-        
+
     }//GEN-LAST:event_FiiltradoComboBoxItemStateChanged
 
     private void inventarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyTyped
-
+        
     }//GEN-LAST:event_inventarioKeyTyped
+
+    private void AgregarPaqueteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarPaqueteButtonMouseEntered
+        AgregarPaqueteButton.setBackground(Color.GRAY);
+        AgregarPaqueteButton.setForeground(Color.BLACK);
+    }//GEN-LAST:event_AgregarPaqueteButtonMouseEntered
+
+    private void AgregarPaqueteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarPaqueteButtonMouseExited
+        AgregarPaqueteButton.setBackground(Color.WHITE);
+        AgregarPaqueteButton.setForeground(Color.BLACK);
+    }//GEN-LAST:event_AgregarPaqueteButtonMouseExited
     
     //DefaultTableModel mode = new DefaultTableModel();
     private void listaProductos(int inx){
@@ -602,6 +629,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarPaqueteButton;
     private javax.swing.JPanel Encabezado;
     private javax.swing.JComboBox<String> FiiltradoComboBox;
     private javax.swing.JLabel Inventario;
