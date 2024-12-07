@@ -1,13 +1,17 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.DetalleVenta;
-import Backend.Entidades.Venta;
+import Backend.Entidades.*;
 import Backend.Gestores.GestorSQLServer;
 
+import javax.sound.sampled.Port;
 import javax.swing.*;
+import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class CtrlVenta implements GestorSQLServer<Venta> {
@@ -60,7 +64,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
                             .getIdComprobante());
 
             comando.executeUpdate();
-            String aviso = "Se registró la Venta";
+            String aviso = "Se registró la 1Venta";
 
             System.out.printf(aviso);
             JOptionPane.showMessageDialog(null,aviso);
@@ -70,6 +74,36 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
             JOptionPane.showMessageDialog(null,
                             ("ERROR al registrar la Venta"));
         }
+    }
+
+    public static void main(String[] args) {
+        DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter fttFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        CtrlVenta ctrlVenta = new CtrlVenta();
+        Venta v = new Venta();
+        Cliente cliente = new Cliente();
+        Comprobante comprobante = new Comprobante();
+        DetalleVenta detalleVenta = new DetalleVenta();
+        Producto producto = new Producto();
+        comprobante.setIdComprobante(1);
+        cliente.setCliente("Directo");
+
+        producto.getInventario().setPrecioCosto(BigDecimal.valueOf(20.20));
+        detalleVenta.setPrecioUnitario(BigDecimal.valueOf(30.30));
+        detalleVenta.setTotal(BigDecimal.valueOf(12.20));
+
+        v.setFecha(LocalDate.now());
+        v.setHora(LocalTime.now());
+        v.getDetallesVenta().add(detalleVenta);
+        //v.setSubTotal(BigDecimal.valueOf(20.20));
+        //v.setTotal(BigDecimal.valueOf(12.20));
+        v.setCliente(cliente);
+        v.setComprobante(comprobante);
+
+        System.out.println(v.getTotal());
+
+        //ctrlVenta.registrar(v);
     }
 
     @Override

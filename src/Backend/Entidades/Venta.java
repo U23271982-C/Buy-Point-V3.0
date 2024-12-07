@@ -59,9 +59,9 @@ public class Venta extends Entidad {
     }
 
     public BigDecimal getTotal() {
+
         return total = detallesVenta.stream().map(DetalleVenta::getTotal)
                 .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(1, RoundingMode.HALF_UP);
-
     }
     public void setTotal(BigDecimal total) {
         this.total = total;

@@ -9,6 +9,7 @@ import java.awt.print.PrinterJob;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Ticket{
+    public int numComprobante = 0;
     DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
     DateTimeFormatter fttFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String encabezadoTicketDirecto = """
@@ -85,18 +87,19 @@ public class Ticket{
             """;
     private String lineaTicket = """
             %s
-                          %d  s./%.2f s/.%.2f
+                          %d  s./%.2f s/.%.2f\n
             """;
     private String finalTicket = """
+            --------------------------------
             SubTotal:                s/. %.2f
-            I.G.V. (18%)             s/. %.2f
+            I.G.V. (18%%)             s/. %.2f
             Total:                   s/. %.2f
             """;
     private List<String> tipoEncabezadosTickets = new ArrayList<>(Arrays.asList(
-            encabezadoTicketDirecto,
-            encabezadoTicketDelivery,
-            encabezadoTicketCliente,
-            encabezadoTicketClienteDepartamento
+            this.encabezadoTicketDirecto/*getEncabezadoTicketDirecto()*/,
+            getEncabezadoTicketDelivery(),
+            getEncabezadoTicketCliente(),
+            getEncabezadoTicketClienteDepartamento()
     ));
     private String cuerpoTicket;
     private Font fuente;
@@ -191,18 +194,18 @@ public class Ticket{
     //#endregion
 
     private String formateadorCuerpoTicket(int idxEncabezado){
-        return this.cuerpoTicket = String.format("%s\n%s\n%s",
+        return String.format("%s\n%s\n%s",
                 tipoEncabezadosTickets.get(idxEncabezado),
-                lineaTicket,
+                cuerpoTicket,
                 finalTicket);
     }
     public void exportarTiteck(String direcArchivo, int idxEncabezado){
-
+        this.numComprobante += 1;
+        String nombreArchivo = "\\Compfdsfrobante_" + numComprobante + ".txt";
         // Generar el archivo txt
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(direcArchivo))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(direcArchivo + nombreArchivo))) {
 
             writer.write(formateadorCuerpoTicket(idxEncabezado));
-
             JOptionPane.showMessageDialog
                     (null,
                             "Ticket generado exitosamente en: " + direcArchivo);
@@ -216,10 +219,8 @@ public class Ticket{
 
     public static void main(String[] args) {
         Ticket ticket = new Ticket();
-        String.format(ticket.encabezadoTicketDirecto, "hola");
-        /*System.out.println(ticket.formateadorCuerpoTicket(0));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String hora = LocalTime.now().toString();
-        System.out.println(hora);*/
+        BigDecimal num1 = new BigDecimal("12.20");
+        String hola = String.format(ticket.finalTicket, num1, num1, num1);
+        System.out.println(hola);
     }
 }

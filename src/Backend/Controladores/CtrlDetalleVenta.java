@@ -37,7 +37,7 @@ public class CtrlDetalleVenta implements GestorSQLServer<DetalleVenta> {
                     (5, nuevaEntidad.getProducto().getNombreProducto());
 
             comando.executeUpdate();
-            String aviso = "Se registró la Venta";
+            String aviso = "Se registró la 0Venta";
 
             System.out.printf(aviso);
             JOptionPane.showMessageDialog(null,aviso);
