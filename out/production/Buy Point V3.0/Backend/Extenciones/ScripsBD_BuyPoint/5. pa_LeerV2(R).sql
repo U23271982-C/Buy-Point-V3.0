@@ -216,9 +216,10 @@ BEGIN
 		PA.FechaCaducidad,
 		PA.Caducado
 	FROM PaqueteProducto AS PA
-	INNER JOIN Producto AS P ON PA.ID_Producto = P.ID_Producto
-	INNER JOIN Codigo AS C ON PA.ID_Producto = P.ID_Producto
-	WHERE C.Codigo = @codigo
+	RIGHT JOIN Producto AS P ON PA.ID_Producto = P.ID_Producto
+	--INNER JOIN Codigo AS C ON PA.ID_Producto = P.ID_Producto
+	WHERE P.ID_Producto = dbo.fn_extraerID_Producto_CodigoBarras (@codigo)
+
 END
 GO
 CREATE OR ALTER PROCEDURE pa_leerProducto(

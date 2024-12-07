@@ -131,6 +131,11 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         FvJLabel.setText(" FV");
 
         FvTxt.setText("dd/mm/yy");
+        FvTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FvTxtMouseClicked(evt);
+            }
+        });
         FvTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FvTxtActionPerformed(evt);
@@ -345,7 +350,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpaqueComboboxActionPerformed
 
     private void FvTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FvTxtActionPerformed
-        
+
     }//GEN-LAST:event_FvTxtActionPerformed
 
     private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
@@ -420,18 +425,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error de CAPA 8","Advertencia", 2);
             System.out.println(e.getMessage());
         }
-        
-        
-        /*
-        System.out.println(NombreTxt.getText());
-        System.out.println(DescriptionTxt.getText());
-        System.out.println(FvTxt.getText());
-        System.out.println(CantidadTxt.getText());
-        System.out.println(precioVenta);
-        System.out.println(precioProovedor);
-        System.out.println(empaqueSeleccionado);
-        System.out.println(categoriaSeleccionada);*/
-        
+        setVisible(false);
         
     }//GEN-LAST:event_ConfirmarButtonMouseClicked
 
@@ -502,6 +496,10 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_FvTxtKeyTyped
+
+    private void FvTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FvTxtMouseClicked
+        FvTxt.setText("");
+    }//GEN-LAST:event_FvTxtMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

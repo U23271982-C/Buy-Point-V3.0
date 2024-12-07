@@ -607,7 +607,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
        FI.tamañoimagen(Menu, "/img/menu.png");
        FI.tamañoimagen(Venta, "/img/venta.png");
        FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
-       //inventario.setFocusable(true);
+       inventario.setFocusable(true);
 
         // Listener para hacer clic en el JPanel
         inventario.addMouseListener(new MouseAdapter() {

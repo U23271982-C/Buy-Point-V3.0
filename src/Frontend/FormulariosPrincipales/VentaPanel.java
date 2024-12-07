@@ -811,45 +811,163 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             // Total calculado
             jLabelTotal.getText();
             System.out.println(jLabelTotal.getText());
-            
+            // Indece de la lista para que devuelva un tipo der Titeck
+            int indice = 0;
+            // Tipo Pago
+            String tipoPagoE =
+                    Objects.requireNonNull
+                            (TipodePagoComboBox.getSelectedItem()).toString();
             // Venta Directa
             if (CheckBoxCliente.isSelected()){
                 try {
-                    ticket.setEncabezadoTicketDirecto(String.format
-                            (ticket.getEncabezadoTicketDirecto(), LocalDate.now().format
-                                    (ticket.getFttFecha()), LocalTime.now().format
-                                    (ticket.getFttHora()), Objects.requireNonNull
-                                    (TipodePagoComboBox.getSelectedItem())));
+                    ticket.getTipoEncabezadosTickets()
+                            .set(indice,
+                                    String.format(ticket.getEncabezadoTicketDirecto(),
+                                            LocalDate.now().format(ticket.getFttFecha()),
+                                            LocalTime.now().format(ticket.getFttHora()),
+                                            tipoPagoE));//Falta poner el nombre del tipo de pago
                     cliente.setCliente("Directo");
                     cliente.setIdentificacion(null);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }else {
-                // Cliente delivery
-                if (!TipoCliente.Torre.isEmpty() && !TipoCliente.Departamento.isEmpty()){
+                // Cliente Delivery
+                if (!TipoCliente.Torre.equals("0")
+                        & !TipoCliente.Departamento.equals("0")){
                     try {
                         depa = new Departamento();
                         depa.setTorre(Short.parseShort(TipoCliente.Torre));
                         depa.setDepartamento(Short.parseShort(TipoCliente.Departamento));
 
+                        if (TipoCliente.Nombre.equals("0")
+                                & TipoCliente.Apellido.equals("0")) {
+                            System.out.println("ENTRE A DEPARTAMENTO");
+                            //System.out.println("entre");
+                            indice = 1;
+                            // Modificamos la cabecera de la venta
+                            ticket.getTipoEncabezadosTickets().set(indice, String.format(
+                                    ticket.getEncabezadoTicketDelivery(),
+
+                                    LocalDate.now().format(ticket.getFttFecha()),
+                                    LocalTime.now().format(ticket.getFttHora()),
+                                    (int) depa.getTorre(),
+                                    (int) depa.getDepartamento(),
+                                    tipoPagoE
+                            ));
+                        }else {
+                            System.out.println("ENTRE A DEPARTAMENTO Y CUENTA");
+                            // Cliente con Cuenta y Departamento
+                            indice = 4;
+                            cuenta = new Cuenta();
+                            cuenta.setNombre(TipoCliente.Nombre);
+                            cuenta.setApellido(TipoCliente.Apellido);
+                            cuenta.setTelefono(Integer.parseInt(TipoCliente.Telefono));
+                            // Modificamos la cabecera de la venta
+                            ticket.getTipoEncabezadosTickets().set(indice, String.format(
+                                    ticket.getEncabezadoTicketDelivery(),
+
+                                    LocalDate.now().format(ticket.getFttFecha()),
+                                    LocalTime.now().format(ticket.getFttHora()),
+                                    tipoPagoE,
+
+                                    cuenta.getNombre(),
+                                    cuenta.getApellido(),
+                                    cuenta.getTelefono(),
+                                    (int) depa.getTorre(),
+                                    (int) depa.getDepartamento()
+                            ));
+                            cliente.setCuenta(cuenta);
+                        }
                         cliente.setDepartamento(depa);
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (!TipoCliente.Cliente.equals("0")) {
+                    System.out.println("ENTRE A CLIENTE SOLO");
+                    try {
+                        // Cliente solo
+                        indice = 2;
+                        // Modificamos la cabecera de la venta
+                        cliente.setCliente(TipoCliente.Cliente);
+                        cliente.setIdentificacion(TipoCliente.Identificacion);
+
+                        ticket.getTipoEncabezadosTickets().set(indice, String.format(
+                                ticket.getEncabezadoTicketDelivery(),
+
+                                LocalDate.now().format(ticket.getFttFecha()),
+                                LocalTime.now().format(ticket.getFttHora()),
+                                tipoPagoE,
+
+                                cliente.getCliente(),
+                                cliente.getIdentificacion()
+                        ));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (!TipoCliente.Nombre.equals("0")
+                        & !TipoCliente.Apellido.equals("0")) {
+                    try {
+                        System.out.println("ENTRE A CUENTA");
+                        // Cliente con cuenta
+                        indice = 3;
+                        // Modificamos la cabecera de la venta
+                        cuenta = new Cuenta();
+                        cuenta.setNombre(TipoCliente.Nombre);
+                        cuenta.setApellido(TipoCliente.Apellido);
+                        cuenta.setTelefono(Integer.parseInt(TipoCliente.Telefono));
+                        // Modificamos la cabecera de la venta
+                        ticket.getTipoEncabezadosTickets().set(indice, String.format(
+                                ticket.getEncabezadoTicketDelivery(),
+
+                                LocalDate.now().format(ticket.getFttFecha()),
+                                LocalTime.now().format(ticket.getFttHora()),
+                                tipoPagoE,
+
+                                cuenta.getNombre(),
+                                cuenta.getApellido(),
+                                cuenta.getTelefono()
+                        ));
+                        cliente.setCuenta(cuenta);
                     } catch (NumberFormatException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
-            // FALTA REGISTRAR LA VENTA
             //venta1
-
+            comprobante.setIdComprobante(1);// Necesitamos cambiarlo
             venta1.setCliente(cliente);
             venta1.setComprobante(comprobante);
             // Registramos la venta
             ctrlVenta.registrar(venta1);
+            // Concatenamos el cuerpo del titeck
+            StringBuilder sb = new StringBuilder();
             // Registramos los Detalles de Venta
             for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                sb.append(String.format(ticket.getLineaTicket(),
+                        venta1.getDetallesVenta().get(i).getProducto().getNombreProducto(),
+                        venta1.getDetallesVenta().get(i).getCantidad(),
+                        venta1.getDetallesVenta().get(i).getSubTotal(),
+                        venta1.getDetallesVenta().get(i).getTotal()
+                ));
                 ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
             }
+
+            // Cuerpo titeck
+            ticket.setCuerpoTicket(sb.toString());
+            // Final titeck
+            ticket.setFinalTicket(
+                    String.format(ticket.getFinalTicket(),
+                            venta1.getSubTotal(),
+                            venta1.getSubTotal().multiply(new BigDecimal("0.18")),
+                            venta1.getTotal()
+                    )
+            );
+
+            // Exportamos .txt
+            ticket.exportarTiteck("D:\\TestComprobantes", indice);
+            //System.out.println(ticket.getTipoEncabezadosTickets().get(0));
+            //System.out.println(ticket.getTipoEncabezadosTickets().get(0)+"\n"+ticket.getCuerpoTicket()+"\n"+ticket.getFinalTicket());
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
@@ -896,7 +1014,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         
         if(!estanLlenos){
             try {
-            JOptionPane.showMessageDialog(null, String.format("%s %s %s", TipoCliente.Nombre,
+            JOptionPane.showMessageDialog(null,
+                    String.format("%s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento));
 
             CtrlVenta ctrlVenta = new CtrlVenta();
@@ -914,10 +1033,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             venta1.setHora(LocalTime.now());
             // SubTotal calculado
             // Total calculado
-
+                int idx = 0;
             // Venta Directa
             if (CheckBoxCliente.isSelected()){
                 try {
+                    // Encabezado del Ticket
                     ticket.setEncabezadoTicketDirecto(String.format
                             (ticket.getEncabezadoTicketDirecto(), LocalDate.now().format
                                     (ticket.getFttFecha()), LocalTime.now().format
@@ -925,6 +1045,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                                     (TipodePagoComboBox.getSelectedItem())));
                     cliente.setCliente("Directo");
                     cliente.setIdentificacion(null);
+                    //idx = 0;
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -950,9 +1071,32 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             // Registramos la venta
             ctrlVenta.registrar(venta1);
             // Registramos los Detalles de Venta
+                StringBuilder sb = new StringBuilder();
             for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                sb.append(String.format(ticket.getLineaTicket(),
+                        venta1.getDetallesVenta().get(i).getProducto().getNombreProducto(),
+                        venta1.getDetallesVenta().get(i).getCantidad(),
+                        venta1.getDetallesVenta().get(i).getSubTotal(),
+                        venta1.getDetallesVenta().get(i).getTotal()
+                ));
                 ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
             }
+                try {
+                    // Cuerpo titeck
+                    ticket.setCuerpoTicket(sb.toString());
+                    // Fianl titeck
+                    ticket.setFinalTicket(
+                            String.format(ticket.getFinalTicket(),
+                                    venta1.getSubTotal(),
+                                    venta1.getSubTotal().multiply(new BigDecimal("0.18")),
+                                    venta1.getTotal()
+                            )
+                    );
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                // Exportamos el ticket
+                ticket.exportarTiteck("D:\\TestComprobantes", idx);
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
