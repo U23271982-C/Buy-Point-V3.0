@@ -49,8 +49,10 @@ public class DetalleVenta extends Entidad {
     }
 
     public BigDecimal getSubTotal() {
-        return (getPrecioUnitario().multiply(new BigDecimal
-                (getCantidad()))).setScale(1, RoundingMode.HALF_UP);
+        BigDecimal t = getPrecioUnitario().multiply(new BigDecimal(getCantidad()));
+        return t.subtract(t.multiply(new BigDecimal(IGV))).setScale(1, RoundingMode.HALF_UP);
+                /*(getPrecioUnitario().multiply(new BigDecimal
+                (getCantidad()))).setScale(1, RoundingMode.HALF_UP);*/
     }
 
     public void setSubTotal(BigDecimal subTotal) {
@@ -58,9 +60,11 @@ public class DetalleVenta extends Entidad {
     }
 
     public BigDecimal getTotal() {
-        return (getSubTotal().add(getSubTotal().multiply
+        return
+                getPrecioUnitario().multiply(new BigDecimal(getCantidad()));
+                /*(getSubTotal().add(getSubTotal().multiply
                 (BigDecimal.valueOf(IGV)))).setScale
-                (1, RoundingMode.HALF_UP);
+                (1, RoundingMode.HALF_UP);*/
     }
 
     public void setTotal(BigDecimal total) {
@@ -78,13 +82,25 @@ public class DetalleVenta extends Entidad {
     }
 
     //#endregion
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         Producto p = new Producto();
         p.setPrecio(new BigDecimal(12));
         DetalleVenta d = new DetalleVenta();
         d.setProducto(p);
         
         System.out.println(d.getCantidad());
-    }
+    }*/
 
+    @Override
+    public String toString() {
+        return "DetalleVenta{" +
+                "idDetalleVenta=" + idDetalleVenta +
+                ", cantidad=" + cantidad +
+                ", precioUnitario=" + precioUnitario +
+                ", subTotal=" + subTotal +
+                ", total=" + total +
+                ", IGV=" + IGV +
+                ", producto=" + producto +
+                '}';
+    }
 }

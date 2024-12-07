@@ -83,4 +83,18 @@ public class Inventario extends Entidad {
     }
 
     //#endregion
+
+
+    @Override
+    public String toString() {
+        return "Inventario{" +
+                "idInventario=" + idInventario +
+                ", precio=" + precio +
+                ", precioCosto=" + precioCosto +
+                ", utilidad=" + utilidad +
+                ", salida=" + salida +
+                ", stock=" + stock +
+                ", valorStock=" + valorStock +
+                '}';
+    }
 }

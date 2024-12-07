@@ -693,19 +693,40 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 if (p1 != null) {
                     DetalleVenta detalleVenta = new DetalleVenta();
                     detalleVenta.setProducto(p1);
-                    //venta1.getDetallesVenta().add(detalleVenta);
 
-                    boolean productoExistente = false;
+                    /*boolean productoExistente = false;
 
                     if (!productoExistente) {
                         detalleVenta.setCantidad(1); // Inicializar cantidad
                         venta1.getDetallesVenta().add(detalleVenta);
-                    }
+                    }*/
+                    if (!venta1.getDetallesVenta().isEmpty()) {
+                        for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                            if (codigoescaneado.toString().equals(venta1.getDetallesVenta().get(i)
+                                    .getProducto().getCodigo().getCodigo())) {
 
+                                venta1.getDetallesVenta().get(i).setCantidad
+                                        (venta1.getDetallesVenta().get(i).getCantidad() + 1);
+                                break;
+                            }else if(i + 1 == venta1.getDetallesVenta().size()) {
+                                venta1.getDetallesVenta().add(detalleVenta);
+                                break;
+                            }
+                        }
+                    }else {
+                        venta1.getDetallesVenta().add(detalleVenta);
+                        /*for (DetalleVenta dv : venta1.getDetallesVenta()) {
+                            if (codigoescaneado.toString().equals(dv.getProducto().getCodigo().getCodigo())) {
+                                dv.setCantidad(dv.getCantidad() + 1);
+                            }else if() {
+                                venta1.getDetallesVenta().add(detalleVenta);
+                            }
+                        }*/
+                    }
                     actualizarTabla();
 
                     actualizarTotales();
-
+                    venta1.getDetallesVenta().forEach(System.out::println);
                 }
                 codigoescaneado.setLength(0);
             } else {
@@ -760,7 +781,6 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_ListadoProductoKeyPressed
 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
-
         try {
             /*JOptionPane.showMessageDialog(null, String.format("%s %s %s %s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento, TipoCliente.Cuenta, TipoCliente.Identificacion, 
@@ -846,8 +866,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_CheckBoxClienteActionPerformed
 
     private void CheckBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBoxClienteMouseClicked
-       /* boolean marcado = !CheckBoxCliente.isSelected();
-        OtrodJButton.setEnabled(marcado);*/
+        boolean marcado = !CheckBoxCliente.isSelected();
+        OtrodJButton.setEnabled(marcado);
         
     }//GEN-LAST:event_CheckBoxClienteMouseClicked
 
@@ -862,14 +882,14 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_OtrodJButtonActionPerformed
 
     private void ConfirmarButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarButtomActionPerformed
-        /*
-        boolean EstanLlenos = jLabelSubTotal.getText() != null
+
+        boolean estanLlenos = jLabelSubTotal.getText() != null
                     && jLabel_IGV.getText() != null
                 && jLabelTotal.getText() != null;    
         
-        ConfirmarButtom.setEnabled(EstanLlenos);
+        ConfirmarButtom.setEnabled(estanLlenos);
         
-        if(EstanLlenos == false){
+        if(!estanLlenos){
             try {
             JOptionPane.showMessageDialog(null, String.format("%s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento));
@@ -932,7 +952,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             throw new RuntimeException(e);
         }
 
-        }*/
+        }
     }//GEN-LAST:event_ConfirmarButtomActionPerformed
 
 
