@@ -165,15 +165,16 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
 
     private void ConfirmarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtonMouseClicked
         try{
-            CtrlProducto CP = new CtrlProducto();
+            //CtrlProducto CP = new CtrlProducto();
             CtrlCodigo CC = new CtrlCodigo();
             Producto P = new Producto();
             Codigo C = new Codigo();
             
            C.setCodigo(NuevoCodeBarr.getText().trim());
-           P.setCodigo(C);
            P.setNombreProducto(Productosregistrados.getSelectedItem().toString());
            
+           //C.setProducto(P);//P.setCodigo(C);
+
            C.setProducto(P);
            
            CC.registrar(C);
