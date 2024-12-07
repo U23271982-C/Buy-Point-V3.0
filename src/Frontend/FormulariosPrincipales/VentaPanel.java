@@ -762,9 +762,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     private void ConfirmarButtomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarButtomMouseClicked
 
         try {
-            JOptionPane.showMessageDialog(null, String.format("%s %s %s %s %s %s", TipoCliente.Nombre,
+            /*JOptionPane.showMessageDialog(null, String.format("%s %s %s %s %s %s", TipoCliente.Nombre,
                     TipoCliente.Torre, TipoCliente.Departamento, TipoCliente.Cuenta, TipoCliente.Identificacion, 
-                    TipoCliente.Telefono));
+                    TipoCliente.Telefono));*/
          
             
             CtrlVenta ctrlVenta = new CtrlVenta();
