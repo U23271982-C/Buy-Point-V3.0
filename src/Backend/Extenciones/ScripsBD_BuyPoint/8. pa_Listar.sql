@@ -112,18 +112,46 @@ BEGIN
 	FROM Inventario AS I
 END
 GO
-CREATE OR ALTER PROCEDURE pa_listarPaqueteProducto
+CREATE OR ALTER PROCEDURE pa_listarPaqueteProducto--(
+--@nombreproducto VARCHAR(30)
+--)
 AS
 BEGIN
 	SELECT
 		P.NombreProducto,
 		PA.Cantidad,
 		PA.FechaCaducidad,
-		PA.Caducado
+		PA.Caducado,
+		PA.ID_PaqueteProducto
 	FROM PaqueteProducto AS PA
 	INNER JOIN Producto AS P ON PA.ID_Producto = P.ID_Producto
+	--WHERE P.NombreProducto = @nombreproducto
 END
 GO
+
+
+
+CREATE OR ALTER PROCEDURE pa_listarPaqueteProductoCodigo(
+@codigobarras VARCHAR(30)
+)
+AS
+BEGIN
+	SELECT
+		P.NombreProducto,
+		PA.Cantidad,
+		PA.FechaCaducidad,
+		PA.Caducado,
+		PA.ID_PaqueteProducto
+	FROM PaqueteProducto AS PA
+	RIGHT JOIN Producto AS P ON PA.ID_Producto = P.ID_Producto
+	--INNER JOIN Codigo AS C ON PA.ID_Producto = P.ID_Producto
+	WHERE P.ID_Producto = dbo.fn_extraerID_Producto_CodigoBarras (@codigobarras)
+		AND PA.Caducado = 0
+END
+GO
+
+
+
 CREATE OR ALTER PROCEDURE pa_listarProducto
 AS
 BEGIN
