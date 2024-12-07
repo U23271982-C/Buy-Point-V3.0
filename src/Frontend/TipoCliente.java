@@ -324,8 +324,12 @@ public class TipoCliente extends javax.swing.JFrame {
                 Point point = Mouse_evt.getPoint();
                 int row = table.rowAtPoint(point);
                 if(Mouse_evt.getClickCount() == 1){
-                    ClienteTxT.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(),1 ).toString());
-                    IdentificacionTxt.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(), 2).toString());
+                    ClienteTxT.setText
+                            (TipoClientejTable.getValueAt
+                                    (TipoClientejTable.getSelectedRow(),1 ).toString());
+                    IdentificacionTxt.setText
+                            (TipoClientejTable.getValueAt
+                                    (TipoClientejTable.getSelectedRow(), 2).toString());
                     TorreTxt.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(), 3).toString());
                     DepartamentoTxt.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(), 4).toString());
                     NombreTxt.setText(TipoClientejTable.getValueAt(TipoClientejTable.getSelectedRow(), 5).toString());
@@ -350,14 +354,17 @@ public class TipoCliente extends javax.swing.JFrame {
     private void PanelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseExited
         PanelX.setBackground(Color.WHITE);
     }//GEN-LAST:event_PanelXMouseExited
-    public static String Nombre,Torre,Departamento,Telefono, Cuenta, Identificacion;
+    public static String Cliente, Identificacion, Torre, Departamento, Nombre, Apellido,Telefono;
     private void ConfirmarjLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarjLabelMouseClicked
-        Nombre = ClienteTxT.getText().trim();
-        Torre = IdentificacionTxt.getText().trim();
-        Departamento = TorreTxt.getText().trim();
-        Telefono = DepartamentoTxt.getText().trim();
-        Cuenta = NombreTxt.getText().trim();
-        Identificacion = ApellidoTxt.getText().trim();
+        Cliente = ClienteTxT.getText().trim();
+        Identificacion = IdentificacionTxt.getText().trim();
+        Torre = TorreTxt.getText().trim();
+        Departamento = DepartamentoTxt.getText().trim();
+        Nombre = NombreTxt.getText().trim();
+        Apellido= ApellidoTxt.getText().trim();
+        Telefono = ApellidoTxt.getText().trim();
+
+
         this.setVisible(false);
                 
     }//GEN-LAST:event_ConfirmarjLabelMouseClicked

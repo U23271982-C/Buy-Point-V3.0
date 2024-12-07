@@ -2,16 +2,10 @@ package Backend.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,6 +15,7 @@ public class Ticket{
     public int numComprobante = 0;
     DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
     DateTimeFormatter fttFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    //1//
     private String encabezadoTicketDirecto = """
             COND. LOS PARQUES DE SAN GABRIEL
             Chiclayo - Chiclayo - Lambayeque
@@ -34,6 +29,7 @@ public class Ticket{
             --------------------------------
             Descrp.     Cant.   SubT.  Total
             """;
+    // 2//
     private String encabezadoTicketDelivery = """
             COND. LOS PARQUES DE SAN GABRIEL
             Chiclayo - Chiclayo - Lambayeque
@@ -49,6 +45,7 @@ public class Ticket{
             --------------------------------
             Descrp.     Cant.   SubT.  Total
             """;
+    // 3
     private String encabezadoTicketCliente = """
             COND. LOS PARQUES DE SAN GABRIEL
             Chiclayo - Chiclayo - Lambayeque
@@ -59,14 +56,30 @@ public class Ticket{
             Fecha: %s
             Hora: %s
             Tipo Pago: %s
-            Cliente:
-                Nombre:
-                Apellidos:
-                DNI:
+            Nombre y Apellidos: %s
+            Ident.: %s
             --------------------------------
             Descrp.     Cant.   SubT.  Total
             """;
-    private String encabezadoTicketClienteDepartamento = """
+    // 4
+    private String encabezadoTicketCuenta = """
+            COND. LOS PARQUES DE SAN GABRIEL
+            Chiclayo - Chiclayo - Lambayeque
+            --------------------------------
+                    RECIBO DE VENTA
+                        Pedido 1234
+            --------------------------------
+            Fecha: %s
+            Hora: %s
+            Tipo Pago: %s
+            Nombre
+            Apellidos: %s
+            Telf.: %s
+            --------------------------------
+            Descrp.     Cant.   SubT.  Total
+            """;
+    // 5//
+    private String encabezadoTicketCuentaDepartamento = """
             COND. LOS PARQUES DE SAN GABRIEL
             Chiclayo - Chiclayo - Lambayeque
             --------------------------------
@@ -77,9 +90,9 @@ public class Ticket{
             Hora: %s
             Tipo Pago: %s
             Cliente:
-                Nombre:
-                Apellidos:
-                DNI:
+                Nombre: %s
+                Apellidos: %s
+                Iden.: %d
                 Torre: %d
                 Departamento: %d
             --------------------------------
@@ -96,11 +109,12 @@ public class Ticket{
             Total:                   s/. %.2f
             """;
     private List<String> tipoEncabezadosTickets = new ArrayList<>(Arrays.asList(
-            this.encabezadoTicketDirecto/*getEncabezadoTicketDirecto()*/,
-            getEncabezadoTicketDelivery(),
-            getEncabezadoTicketCliente(),
-            getEncabezadoTicketClienteDepartamento()
-    ));
+            this.encabezadoTicketDirecto/*getEncabezadoTicketDirecto()*/,//1*
+            getEncabezadoTicketDelivery(),//2*
+            getEncabezadoTicketCliente(),//3
+            getEncabezadoTicketCuenta(),//4
+            getEncabezadoTicketCuentaDepartamento()//5*
+            ));
     private String cuerpoTicket;
     private Font fuente;
     private Color colorFuente;
@@ -150,12 +164,20 @@ public class Ticket{
         this.encabezadoTicketCliente = encabezadoTicketCliente;
     }
 
-    public String getEncabezadoTicketClienteDepartamento() {
-        return encabezadoTicketClienteDepartamento;
+    public String getEncabezadoTicketCuenta() {
+        return encabezadoTicketCuenta;
     }
 
-    public void setEncabezadoTicketClienteDepartamento(String encabezadoTicketClienteDepartamento) {
-        this.encabezadoTicketClienteDepartamento = encabezadoTicketClienteDepartamento;
+    public void setEncabezadoTicketCuenta(String encabezadoTicketCuenta) {
+        this.encabezadoTicketCuenta = encabezadoTicketCuenta;
+    }
+
+    public String getEncabezadoTicketCuentaDepartamento() {
+        return encabezadoTicketCuentaDepartamento;
+    }
+
+    public void setEncabezadoTicketCuentaDepartamento(String encabezadoTicketCuentaDepartamento) {
+        this.encabezadoTicketCuentaDepartamento = encabezadoTicketCuentaDepartamento;
     }
 
     public String getLineaTicket() {
@@ -219,8 +241,9 @@ public class Ticket{
 
     public static void main(String[] args) {
         Ticket ticket = new Ticket();
-        BigDecimal num1 = new BigDecimal("12.20");
+        System.out.println(ticket.getTipoEncabezadosTickets().get(3));
+        /*BigDecimal num1 = new BigDecimal("12.20");
         String hola = String.format(ticket.finalTicket, num1, num1, num1);
-        System.out.println(hola);
+        System.out.println(hola);*/
     }
 }

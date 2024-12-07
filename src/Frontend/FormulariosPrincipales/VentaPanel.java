@@ -806,7 +806,12 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             // Total calculado
             jLabelTotal.getText();
             System.out.println(jLabelTotal.getText());
+            // Indece de la lista para que devuelva un tipo der Titeck
             int indice = 0;
+            // Tipo Pago
+            String tipoPagoE =
+                    Objects.requireNonNull
+                            (TipodePagoComboBox.getSelectedItem()).toString();
             // Venta Directa
             if (CheckBoxCliente.isSelected()){
                 try {
@@ -815,28 +820,110 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                                     String.format(ticket.getEncabezadoTicketDirecto(),
                                             LocalDate.now().format(ticket.getFttFecha()),
                                             LocalTime.now().format(ticket.getFttHora()),
-                                            TipodePagoComboBox.getSelectedItem()));//Falta poner el nombre del tipo de pago
+                                            tipoPagoE));//Falta poner el nombre del tipo de pago
                     cliente.setCliente("Directo");
                     cliente.setIdentificacion(null);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }else {
-                // Cliente delivery
-                if (!TipoCliente.Torre.isEmpty() & !TipoCliente.Departamento.isEmpty()){
+                // Cliente Delivery
+                if (!TipoCliente.Torre.equals("0")
+                        & !TipoCliente.Departamento.equals("0")){
                     try {
-                        indice = 1;
                         depa = new Departamento();
                         depa.setTorre(Short.parseShort(TipoCliente.Torre));
                         depa.setDepartamento(Short.parseShort(TipoCliente.Departamento));
+
+                        if (TipoCliente.Nombre.equals("0")
+                                & TipoCliente.Apellido.equals("0")) {
+                            System.out.println("ENTRE A DEPARTAMENTO");
+                            //System.out.println("entre");
+                            indice = 1;
+                            // Modificamos la cabecera de la venta
+                            ticket.getTipoEncabezadosTickets().set(indice, String.format(
+                                    ticket.getEncabezadoTicketDelivery(),
+
+                                    LocalDate.now().format(ticket.getFttFecha()),
+                                    LocalTime.now().format(ticket.getFttHora()),
+                                    (int) depa.getTorre(),
+                                    (int) depa.getDepartamento(),
+                                    tipoPagoE
+                            ));
+                        }else {
+                            System.out.println("ENTRE A DEPARTAMENTO Y CUENTA");
+                            // Cliente con Cuenta y Departamento
+                            indice = 4;
+                            cuenta = new Cuenta();
+                            cuenta.setNombre(TipoCliente.Nombre);
+                            cuenta.setApellido(TipoCliente.Apellido);
+                            cuenta.setTelefono(Integer.parseInt(TipoCliente.Telefono));
+                            // Modificamos la cabecera de la venta
+                            ticket.getTipoEncabezadosTickets().set(indice, String.format(
+                                    ticket.getEncabezadoTicketDelivery(),
+
+                                    LocalDate.now().format(ticket.getFttFecha()),
+                                    LocalTime.now().format(ticket.getFttHora()),
+                                    tipoPagoE,
+
+                                    cuenta.getNombre(),
+                                    cuenta.getApellido(),
+                                    cuenta.getTelefono(),
+                                    (int) depa.getTorre(),
+                                    (int) depa.getDepartamento()
+                            ));
+                            cliente.setCuenta(cuenta);
+                        }
+                        cliente.setDepartamento(depa);
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (!TipoCliente.Cliente.equals("0")) {
+                    System.out.println("ENTRE A CLIENTE SOLO");
+                    try {
+                        // Cliente solo
+                        indice = 2;
+                        // Modificamos la cabecera de la venta
+                        cliente.setCliente(TipoCliente.Cliente);
+                        cliente.setIdentificacion(TipoCliente.Identificacion);
+
+                        ticket.getTipoEncabezadosTickets().set(indice, String.format(
+                                ticket.getEncabezadoTicketDelivery(),
+
+                                LocalDate.now().format(ticket.getFttFecha()),
+                                LocalTime.now().format(ticket.getFttHora()),
+                                tipoPagoE,
+
+                                cliente.getCliente(),
+                                cliente.getIdentificacion()
+                        ));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (!TipoCliente.Nombre.equals("0")
+                        & !TipoCliente.Apellido.equals("0")) {
+                    try {
+                        System.out.println("ENTRE A CUENTA");
+                        // Cliente con cuenta
+                        indice = 3;
+                        // Modificamos la cabecera de la venta
+                        cuenta = new Cuenta();
+                        cuenta.setNombre(TipoCliente.Nombre);
+                        cuenta.setApellido(TipoCliente.Apellido);
+                        cuenta.setTelefono(Integer.parseInt(TipoCliente.Telefono));
                         // Modificamos la cabecera de la venta
                         ticket.getTipoEncabezadosTickets().set(indice, String.format(
                                 ticket.getEncabezadoTicketDelivery(),
 
-                                depa.getTorre(),
-                                depa.getDepartamento()
+                                LocalDate.now().format(ticket.getFttFecha()),
+                                LocalTime.now().format(ticket.getFttHora()),
+                                tipoPagoE,
+
+                                cuenta.getNombre(),
+                                cuenta.getApellido(),
+                                cuenta.getTelefono()
                         ));
-                        cliente.setDepartamento(depa);
+                        cliente.setCuenta(cuenta);
                     } catch (NumberFormatException e) {
                         throw new RuntimeException(e);
                     }
@@ -873,7 +960,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             );
 
             // Exportamos .txt
-            ticket.exportarTiteck("D:\\TestComprobantes", 0);
+            ticket.exportarTiteck("D:\\TestComprobantes", indice);
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0));
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0)+"\n"+ticket.getCuerpoTicket()+"\n"+ticket.getFinalTicket());
         } catch (RuntimeException e) {
