@@ -6,12 +6,17 @@ import Backend.Entidades.Cliente;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class TipoCliente extends javax.swing.JFrame {
 
@@ -20,14 +25,9 @@ public class TipoCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Formato_Imagen FI = new Formato_Imagen();
         FI.tamañoimagen(ConfirmarjLabel, "/img/imagenConfirmar.png");
+        /*
         DefaultTableModel dtm = (DefaultTableModel) TipoClientejTable.getModel();
-        /*dtm.addColumn("Cliente");
-        dtm.addColumn("Identificacion");
-        dtm.addColumn("Torre");
-        dtm.addColumn("Departamento");
-        dtm.addColumn("Nombre (Cuenta)");
-        dtm.addColumn("Apellido (Cuenta)");
-        dtm.addColumn("Teléfono (Cuenta)");*/
+
         CtrlCliente ctrlCliente = new CtrlCliente();
         List<Cliente> clientes = ctrlCliente.listar();
         for (int i = 0, j=1; i < clientes.size(); i++,j++) {
@@ -44,8 +44,37 @@ public class TipoCliente extends javax.swing.JFrame {
                     
 
             });
-        }
+        }*/
+        CasteodeDatosNull();
     }
+    
+    private void CasteodeDatosNull(){
+         DefaultTableModel dtm = (DefaultTableModel) TipoClientejTable.getModel();
+        
+        CtrlCliente ctrlCliente = new CtrlCliente();
+        List<Cliente> clientes = ctrlCliente.listar();
+        
+        for (int i = 0, j=1; i < clientes.size(); i++,j++) {
+                Object cliente = clientes.get(i).getCliente();
+                Object identificacion = clientes.get(i).getIdentificacion();
+                Object torre = clientes.get(i).getDepartamento().getTorre();
+                Object departamento = clientes.get(i).getDepartamento().getDepartamento();
+                Object nombre = clientes.get(i).getCuenta().getNombre();
+                Object apellido = clientes.get(i).getCuenta().getApellido();
+                Object telefono = clientes.get(i).getCuenta().getTelefono();
+
+                cliente = (cliente == null) ? "0" : cliente;
+                identificacion = (identificacion == null) ? "0" : identificacion;
+                torre = (torre == null) ? "0" : torre;
+                departamento = (departamento == null) ? "0" : departamento;
+                nombre = (nombre == null) ? "0" : nombre;
+                apellido = (apellido == null) ? "0" : apellido;
+                telefono = (telefono == null) ? "0" : telefono;
+
+                dtm.addRow( new Object[]{j,cliente, identificacion, torre, departamento, nombre, apellido, telefono});
+                
+            }
+        }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -56,7 +85,6 @@ public class TipoCliente extends javax.swing.JFrame {
         TipoClientejScrollPane = new javax.swing.JScrollPane();
         TipoClientejTable = new javax.swing.JTable();
         BuscarjLabel = new javax.swing.JLabel();
-        BuscarjTextField = new javax.swing.JTextField();
         ClientejLabel = new javax.swing.JLabel();
         ClienteTxT = new javax.swing.JTextField();
         TorrejLabel = new javax.swing.JLabel();
@@ -119,6 +147,11 @@ public class TipoCliente extends javax.swing.JFrame {
         TorrejLabel.setText("Torre");
 
         TorreTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TorreTxt.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                TorreTxtComponentAdded(evt);
+            }
+        });
 
         IdentificacionjLabel.setForeground(new java.awt.Color(0, 0, 0));
         IdentificacionjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -192,9 +225,7 @@ public class TipoCliente extends javax.swing.JFrame {
                     .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
                             .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(BuscarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(262, 262, 262)
+                            .addGap(477, 477, 477)
                             .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
                             .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,9 +275,7 @@ public class TipoCliente extends javax.swing.JFrame {
                 .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cliente_y_pagoLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BuscarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,7 +335,7 @@ public class TipoCliente extends javax.swing.JFrame {
             }
         });
         } catch (Exception e) {
-
+            
         }
     }//GEN-LAST:event_TipoClientejTableMousePressed
 
@@ -336,7 +365,14 @@ public class TipoCliente extends javax.swing.JFrame {
     private void DepartamentoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartamentoTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DepartamentoTxtActionPerformed
-    
+
+    private void TorreTxtComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_TorreTxtComponentAdded
+        /*if(TorreTxt.getText() == null){
+            TorreTxt.setText("0");
+        }*/
+    }//GEN-LAST:event_TorreTxtComponentAdded
+
+    TableRowSorter TRS;    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -389,7 +425,6 @@ public class TipoCliente extends javax.swing.JFrame {
     private javax.swing.JTextField ApellidoTxt;
     private javax.swing.JLabel ApellidojLabel;
     private javax.swing.JLabel BuscarjLabel;
-    private javax.swing.JTextField BuscarjTextField;
     private javax.swing.JTextField ClienteTxT;
     private javax.swing.JLabel ClientejLabel;
     private javax.swing.JLabel ConfirmarjLabel;
