@@ -618,61 +618,50 @@ BEGIN
 			DECLARE @id_cuenta INT
 			DECLARE @id_departamento INT
 			
-			SELECT *--@id_cliente = ID_Cliente
-			FROM Cliente C
-			LEFT JOIN Departamento D ON C.ID_Departamento = D.ID_Departamento
-			LEFT JOIN Cuenta CU ON CU.ID_Cuenta = C.ID_Cuenta
-			WHERE
-				Cliente = 'Directo' AND 
-				Identificacion IS NULL AND
-				D.Torre IS NULL AND
-				D.Departamento IS NULL AND
-				CU.Nombre = NULL AND 
-				CU.Apellido = NULL
-			SELECT * FROM Cliente WHERE Cliente = 'Directo'
-				/*Cliente = @cliente AND 
-				Identificacion = @identificacion AND
-				D.Torre = @torre AND
-				D.Departamento = @departamento AND
-				CU.Nombre = @nombre AND 
-				CU.Apellido = @apellido
-				*/
-
-/*
-			--id departamento
-			IF(@torre IS NOT NULL 
-				AND @departamento IS NOT NULL) BEGIN
-
-				SELECT @id_departamento = ID_Departamento
-				FROM Departamento
-				WHERE 
-					Torre = @torre
-					AND Departamento = @departamento
+			IF(@cliente IS NOT NULL)BEGIN
+				IF (@identificacion IS NULL)BEGIN
+					SELECT 
+						@id_cliente = ID_Cliente
+					FROM Cliente
+					WHERE 
+						Cliente = @cliente
+				END
+				ELSE BEGIN
+					SELECT 
+						@id_cliente = ID_Cliente
+					FROM Cliente
+					WHERE 
+						Cliente = @cliente
+						AND
+						Identificacion = @identificacion
+				END
+			END 
+			ELSE IF (@departamento IS NOT NULL AND @torre IS NOT NULL)BEGIN
+					SELECT 
+						@id_cliente = ID_Cliente,
+						@id_departamento = D.ID_Departamento
+					FROM Cliente C
+					INNER JOIN Departamento D 
+						ON C.ID_Departamento = D.ID_Departamento
+					WHERE 
+						D.Departamento = @departamento
+						AND
+						D.Torre = @torre
+			END 
+			ELSE IF (@nombre IS NOT NULL AND @apellido IS NOT NULL)BEGIN
+				SELECT 
+						@id_cliente = ID_Cliente,
+						@id_departamento = CU.ID_Cuenta
+					FROM Cliente C
+					INNER JOIN Cuenta CU 
+						ON CU.ID_Cuenta = C.ID_Cuenta
+					WHERE 
+						CU.Nombre = @nombre
+						AND
+						CU.Apellido = @apellido
 			END
 
-			--id cuenta
-			ELSE IF(@nombre IS NOT NULL 
-					AND @apellido IS NOT NULL
-					AND @telefono IS NOT NULL) BEGIN
 
-				SELECT @id_cuenta = ID_Cuenta
-				FROM Cuenta
-				WHERE 
-					Nombre = @nombre
-					AND Apellido = @apellido
-					AND Telefono = @telefono
-			END
-
-
-			--id cliente
-			SELECT @id_cliente = ID_Cliente
-			FROM Cliente
-			WHERE 
-				Cliente = @cliente
-				AND ID_Departamento = @id_departamento
-				AND ID_Cuenta = @id_cuenta
-				AND Identificacion = @identificacion
-*/
 			EXEC pa_registrarVenta 
 								@fecha,
 								@hora,

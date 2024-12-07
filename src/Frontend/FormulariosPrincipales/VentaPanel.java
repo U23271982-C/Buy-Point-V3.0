@@ -866,8 +866,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }//GEN-LAST:event_CheckBoxClienteActionPerformed
 
     private void CheckBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBoxClienteMouseClicked
-        /*boolean marcado = CheckBoxCliente.isSelected();
-        OtrodJButton.setEnabled(marcado);*/
+        boolean marcado = !CheckBoxCliente.isSelected();
+        OtrodJButton.setEnabled(marcado);
         
     }//GEN-LAST:event_CheckBoxClienteMouseClicked
 
@@ -945,8 +945,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             // Registramos la venta
             ctrlVenta.registrar(venta1);
             // Registramos los Detalles de Venta
-            for (int i = 0; i < venta1.getDetallesVenta(
-            ).size(); i++) {
+            for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
                 ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
             }
         } catch (RuntimeException e) {
