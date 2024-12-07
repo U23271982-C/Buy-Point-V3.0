@@ -19,6 +19,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
@@ -28,7 +29,9 @@ import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -336,6 +339,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 "Nombre Producto", "Precio Unidad", "Cantidad", "SubTotal", "Total"
             }
         ));
+        jTableVender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableVenderMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableVender);
 
         javax.swing.GroupLayout ListadoProductoLayout = new javax.swing.GroupLayout(ListadoProducto);
@@ -658,6 +666,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_PanelMiniMouseClicked
 
+    
+    
+    
     private void BuscadorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorMousePressed
         Buscador.setText("");
     }//GEN-LAST:event_BuscadorMousePressed
@@ -741,6 +752,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+                
 
 
     }//GEN-LAST:event_BuscadorKeyPressed
@@ -1108,6 +1120,40 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         System.out.println(jLabelTotal.getText());
     }//GEN-LAST:event_jLabelTotalMouseClicked
 
+    private void jTableVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableVenderMouseClicked
+        jTableVender.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            // Detectar si es un clic derecho
+            if (e.isPopupTrigger()) {
+                int row = jTableVender.rowAtPoint(e.getPoint()); // Obtener fila seleccionada
+                if (row >= 0 && row < jTableVender.getRowCount()) {
+                    jTableVender.setRowSelectionInterval(row, row); // Seleccionar fila visualmente
+
+                    // Mostrar menú contextual
+                    JPopupMenu popupMenu = new JPopupMenu();
+                    JMenuItem deleteItem = new JMenuItem("Eliminar");
+                    
+                    // Acción para eliminar la fila seleccionada
+                    deleteItem.addActionListener(event -> {
+                    DefaultTableModel model = (DefaultTableModel) jTableVender.getModel(); // Obtener modelo
+                    model.removeRow(venta1.eliminarDetalleVenta(jTableVender.rowAtPoint(e.getPoint())));
+    
+                    jTableVender.rowAtPoint(e.getPoint()); // Eliminar fila del modelo
+                    
+                    actualizarTotales();
+                }
+                );
+
+                popupMenu.add(deleteItem);
+                popupMenu.show(jTableVender, e.getX(), e.getY());
+            }
+        }
+    }
+    });
+    }//GEN-LAST:event_jTableVenderMouseClicked
+
+
 
     public VentaPanel() {
         initComponents();
@@ -1124,6 +1170,35 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
         
         Venta venta = new Venta();
         DetalleVenta detalleVenta = new DetalleVenta();
+        
+        /*
+        jTableVender.addMouseListener(new java.awt.event.MouseAdapter() {
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // Detectar si es un clic derecho
+        if (e.isPopupTrigger()) {
+            int row = jTableVender.rowAtPoint(e.getPoint()); // Obtener fila seleccionada
+            if (row >= 0 && row < jTableVender.getRowCount()) {
+                jTableVender.setRowSelectionInterval(row, row); // Seleccionar fila visualmente
+
+                // Mostrar menú contextual
+                JPopupMenu popupMenu = new JPopupMenu();
+                JMenuItem deleteItem = new JMenuItem("Eliminar");
+                
+                // Acción para eliminar la fila seleccionada
+                deleteItem.addActionListener(event -> {
+                    DefaultTableModel model = (DefaultTableModel) jTableVender.getModel(); // Obtener modelo
+                    model.removeRow(*//*jTableVender.rowAtPoint(e.getPoint())*//* row); // Eliminar fila del modelo
+
+                });
+
+                popupMenu.add(deleteItem);
+                popupMenu.show(jTableVender, e.getX(), e.getY());
+            }
+        }
+    }
+});*/
+
     }
 
     public static void main(String args[]) {

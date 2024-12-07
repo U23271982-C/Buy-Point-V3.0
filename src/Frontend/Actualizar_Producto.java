@@ -295,16 +295,22 @@ public class Actualizar_Producto extends javax.swing.JFrame {
 
     private void ConfirmarJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarJLabelMouseClicked
         try{
-            
-            Producto nuevProducto = new Producto();
-            PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
-            
+            //CtrlProducto CP = new CtrlProducto(); 
+            //PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
+            Producto producto = new Producto();
+            Codigo codigo = new Codigo();
+            codigo.setCodigo(codigoBarras);
+            producto.setCodigo(codigo);
+            //InventarioPanel IP = new InventarioPanel();
             
             
             DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate fechLocalDate = LocalDate.parse(FVTxt.getText().trim(),textFormt);
-            
-            
+
+        
+            NombreProducto.setText(producto.getNombreProducto());
+            StockTxt.setText(String.valueOf(producto.getInventario().getStock()));
+            FechaCaducidad.setText(String.valueOf(producto.getPaqueteProducto().getFechaCaducidad()));
             
             
         }catch(Exception e){
