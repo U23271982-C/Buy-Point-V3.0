@@ -154,7 +154,31 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
 
         @Override
         public void actualizar(Producto actualizarEntidad) {
+            String consultaInsert =
+                    "{ CALL pa_actualizarProducto( ?,?,?,?) }";
 
+            try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                    .conectar().prepareCall(consultaInsert)) {
+
+                comando.setString(1,
+                        actualizarEntidad.getCodigo().getCodigo());
+                comando.setString(2,
+                        actualizarEntidad.getNombreProducto());
+                comando.setString(3,
+                        actualizarEntidad.getDescripcion());
+                comando.setBigDecimal(4,
+                        actualizarEntidad.getPrecio());
+
+
+                comando.executeQuery();
+                System.out.println("Se realizó la lectura");
+                JOptionPane.showMessageDialog
+                        (null, "Se actulizo las Credenciales");
+
+                comando.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         @Override
