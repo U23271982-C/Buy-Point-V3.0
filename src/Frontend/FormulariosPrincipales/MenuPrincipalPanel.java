@@ -391,11 +391,11 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
     }//GEN-LAST:event_MaximizarMouseExited
 
     private void PanelOpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelOpMouseEntered
-        Animaciones.Agranda(panelOpciones, 2, 2, 62);
+        Animaciones.Agranda(panelOpciones, 1, 2, 62);
     }//GEN-LAST:event_PanelOpMouseEntered
 
     private void MenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPrincipalMouseEntered
-        Animaciones.Disminuye(panelOpciones, 2, 2, 0);
+        Animaciones.Disminuye(panelOpciones, 1, 2, 0);
     }//GEN-LAST:event_MenuPrincipalMouseEntered
     
     public MenuPrincipalPanel(){

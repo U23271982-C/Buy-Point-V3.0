@@ -408,7 +408,7 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, "Error \nIngrese nuevamente los datos " + e.getMessage());
             System.out.println(e.getMessage());
         }
-        this.setVisible(false);
+        setVisible(false);
     }
     
     public void CancelarActualizacion(){

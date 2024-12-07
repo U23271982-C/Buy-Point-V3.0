@@ -19,6 +19,10 @@ import Backend.Entidades.Producto;
 import Backend.Entidades.Codigo;
 import Frontend.visualFramework.Formato_Imagen;
 import Frontend.RegistrarProductoOCodigo;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -498,16 +502,6 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 VP.setVisible(true);
                 
             } else{
-                int respuesta = JOptionPane.showConfirmDialog(null
-                        ,"Producto no encontrado"
-                        ,"Ubicación no encontrada",JOptionPane.YES_NO_OPTION);
-        
-                    if (respuesta == JOptionPane.YES_OPTION) {
-                            RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
-                            RPOC.setVisible(true);
-                    } else if (respuesta == JOptionPane.NO_OPTION) {
-                            JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
-                    }
                 RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
                 RPOC.setVisible(true);
             }
@@ -540,42 +534,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
     }//GEN-LAST:event_FiiltradoComboBoxItemStateChanged
 
     private void inventarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inventarioKeyTyped
-                char lecturaCodigo = evt.getKeyChar();
-        
-        if (lecturaCodigo == KeyEvent.VK_ENTER) {
-            CtrlProducto CP = new CtrlProducto();
-            
-            this.codigoBarras = codigoLeido.toString();
-            
-            Producto P = new Producto();
-            Codigo C = new Codigo();
-            C.setCodigo(codigoBarras);
-            P.setCodigo(C);
-            
-                      
-            if (CP.leer(P) != null) {
-                VistaProducto VP = new VistaProducto();
-                VP.setVisible(true);
-                
-            } else{
-                /*int respuesta = JOptionPane.showConfirmDialog(null
-                        ,"Producto no encontrado"
-                        ,"Ubicación no encontrada",JOptionPane.YES_NO_OPTION);
-        
-                    if (respuesta == JOptionPane.YES_OPTION) {
-                            RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
-                            RPOC.setVisible(true);
-                    } else if (respuesta == JOptionPane.NO_OPTION) {
-                            JOptionPane.showMessageDialog(null, "No se realizará ninguna acción.");
-                    }*/
-                RegistrarProductoOCodigo RPOC = new RegistrarProductoOCodigo();
-                RPOC.setVisible(true);
-            }
 
-        }
-        else{
-            codigoLeido.append(lecturaCodigo); 
-        }
     }//GEN-LAST:event_inventarioKeyTyped
     
     //DefaultTableModel mode = new DefaultTableModel();
@@ -621,7 +580,16 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
        FI.tamañoimagen(Menu, "/img/menu.png");
        FI.tamañoimagen(Venta, "/img/venta.png");
        FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
-       inventario.setFocusable(true);     
+       //inventario.setFocusable(true);
+
+        // Listener para hacer clic en el JPanel
+        inventario.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Volver a establecer el foco en el JPanel al hacer clic
+                inventario.requestFocusInWindow();
+            }
+        });
     }
     
     public static void main(String args[]) {
