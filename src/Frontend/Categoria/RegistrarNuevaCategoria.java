@@ -2,9 +2,13 @@
 package Frontend.Categoria;
 
 import Backend.Controladores.CtrlCategoriaProducto;
+import Backend.Entidades.CategoriaProducto;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 public class RegistrarNuevaCategoria extends javax.swing.JFrame {
 
@@ -15,9 +19,9 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
         FI.tamañoimagen(Confirmar, "/img/imagenConfirmar.png");
         FI.tamañoimagen(Actualizar, "/img/iconoActualizacion.jpg");
         FI.tamañoimagen(Eliminar, "/img/imagenbasura.png");
-
+                
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -30,21 +34,28 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
         Confirmar = new javax.swing.JLabel();
         Actualizar = new javax.swing.JLabel();
         Eliminar = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setLocationByPlatform(true);
+        setUndecorated(true);
 
         Panel1.setBackground(new java.awt.Color(255, 255, 255));
         Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        NuevaCategoriajLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NuevaCategoriajLabel.setForeground(new java.awt.Color(0, 0, 0));
-        NuevaCategoriajLabel.setText("Nueva Categoria");
+        NuevaCategoriajLabel.setText("Nombre Categoria");
 
+        NuevaCategoriaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NuevaCategoriaTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NuevaCategoriaTxtKeyTyped(evt);
             }
         });
 
+        PanelX.setBackground(new java.awt.Color(255, 255, 255));
         PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PanelXMouseClicked(evt);
@@ -58,7 +69,8 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
         });
         PanelX.setLayout(new java.awt.GridBagLayout());
 
-        XjLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        XjLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        XjLabel.setForeground(new java.awt.Color(30, 30, 30));
         XjLabel.setText("X");
         PanelX.add(XjLabel, new java.awt.GridBagConstraints());
 
@@ -92,39 +104,41 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
                 .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(Panel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(NuevaCategoriajLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(NuevaCategoriaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
+                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel1Layout.createSequentialGroup()
+                        .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
+                        .addComponent(NuevaCategoriajLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1)
+                            .addComponent(NuevaCategoriaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         Panel1Layout.setVerticalGroup(
             Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel1Layout.createSequentialGroup()
                 .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(52, 52, 52)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NuevaCategoriajLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NuevaCategoriaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))))
+                        .addGap(8, 8, 8)
+                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,7 +149,7 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -161,15 +175,53 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelXMouseExited
 
     private void ConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarMouseClicked
-        CtrlCategoriaProducto CCP = new CtrlCategoriaProducto();
+        try {
+            CtrlCategoriaProducto CCP = new CtrlCategoriaProducto();
+            CategoriaProducto CP = new CategoriaProducto();
+        
+            String nombreCategoria = NuevaCategoriaTxt.getText().trim();
+            CP.setNombre(nombreCategoria);
+
+            boolean existe = false;
+            ArrayList<CategoriaProducto> opciones = CCP.listar();
+            for (CategoriaProducto listar : opciones) {
+                if(listar.getNombre().equals(nombreCategoria)){
+                   existe = true;
+                   return;
+                }
+            }
+        
+            if(!existe){
+                CCP.registrar(CP);
+                JOptionPane.showMessageDialog(null, "Se registro correctamente");
+                this.setVisible(false);
+            } 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        
     }//GEN-LAST:event_ConfirmarMouseClicked
 
     private void ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarMouseClicked
-        // TODO add your handling code here:
+        ActualizarCaategoria AC = new ActualizarCaategoria();
+        AC.setVisible(true);
+        this.setVisible(false);
+        AC.toFront();
+        
+        /*CtrlCategoriaProducto CCP = new CtrlCategoriaProducto();
+        CategoriaProducto CP = new CategoriaProducto();
+        
+        CP.setNombre(NuevaCategoriaTxt.getText().trim());*/
+        
     }//GEN-LAST:event_ActualizarMouseClicked
 
     private void EliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarMouseClicked
-        // TODO add your handling code here:
+        EliminarCategoria EC = new EliminarCategoria();
+        EC.setVisible(true);
+        this.setVisible(false);
+        EC.toFront();
+        
+
     }//GEN-LAST:event_EliminarMouseClicked
 
     /**
@@ -216,5 +268,6 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel PanelX;
     private javax.swing.JLabel XjLabel;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,8 +24,13 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
             comando.setString(1, nuevaEntidad.getNombre());
 
             comando.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    String.format
+                            ("Se registró la categoria %s",
+                                    nuevaEntidad.getNombre()));
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
     }
 
