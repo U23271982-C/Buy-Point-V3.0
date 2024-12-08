@@ -723,30 +723,43 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
                 Producto p1 = CP.leer(P);
                 if (p1 != null) {
+                    int stockProducto = p1.getInventario().getStock();
                     DetalleVenta detalleVenta = new DetalleVenta();
                     detalleVenta.setProducto(p1);
 
-                    /*boolean productoExistente = false;
+                    // Agregamos el porducto leido a la venta
 
-                    if (!productoExistente) {
-                        detalleVenta.setCantidad(1); // Inicializar cantidad
-                        venta1.getDetallesVenta().add(detalleVenta);
-                    }*/
-                    if (!venta1.getDetallesVenta().isEmpty()) {
+                    if (!venta1.getDetallesVenta().isEmpty()) {// Si hay detalles de venta en la venta
                         for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
-                            if (codigoescaneado.toString().equals(venta1.getDetallesVenta().get(i)
-                                    .getProducto().getCodigo().getCodigo())) {
-
-                                venta1.getDetallesVenta().get(i).setCantidad
-                                        (venta1.getDetallesVenta().get(i).getCantidad() + 1);
-                                break;
-                            }else if(i + 1 == venta1.getDetallesVenta().size()) {
+                            int cantidadVender = venta1.getDetallesVenta().get(i).getCantidad();
+                            if (stockProducto > cantidadVender) {
+                                if (codigoescaneado.toString().equals(venta1.getDetallesVenta().get(i)
+                                        .getProducto().getCodigo().getCodigo())) {
+                                    venta1.getDetallesVenta().get(i).setCantidad
+                                            (cantidadVender + 1);
+                                    break;
+                                }else if(i + 1 == venta1.getDetallesVenta().size()) {
                                 venta1.getDetallesVenta().add(detalleVenta);
-                                break;
+                                    break;
+                                }
+                            }else {
+                                JOptionPane.showMessageDialog
+                                        (null, "Cantidad insufinciente de Stock",
+                                                "Error", 0);
                             }
                         }
+                        actualizarTotales();
+                        actualizarTabla();
                     }else {
-                        venta1.getDetallesVenta().add(detalleVenta);
+                        if (stockProducto > detalleVenta.getCantidad()) {
+                            venta1.getDetallesVenta().add(detalleVenta);
+                            actualizarTotales();
+                            actualizarTabla();
+                        } else {
+                            JOptionPane.showMessageDialog
+                                    (null, "Cantidad insufinciente de Stock",
+                                            "Error", 0);
+                        }
                         /*for (DetalleVenta dv : venta1.getDetallesVenta()) {
                             if (codigoescaneado.toString().equals(dv.getProducto().getCodigo().getCodigo())) {
                                 dv.setCantidad(dv.getCantidad() + 1);
@@ -755,10 +768,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                             }
                         }*/
                     }
-                    actualizarTabla();
 
-                    actualizarTotales();
-                    //venta1.getDetallesVenta().forEach(System.out::println);
+                    venta1.getDetallesVenta().forEach(System.out::println);
                 }
                 codigoescaneado.setLength(0);
             } else {
