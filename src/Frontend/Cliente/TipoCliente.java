@@ -1,5 +1,5 @@
 
-package Frontend;
+package Frontend.Cliente;
 
 import Backend.Controladores.CtrlCliente;
 import Backend.Controladores.CtrlProducto;

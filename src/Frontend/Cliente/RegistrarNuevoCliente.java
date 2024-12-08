@@ -1,11 +1,12 @@
 
-package Frontend;
+package Frontend.Cliente;
 
+import Frontend.Cliente.TipoCliente;
 import Backend.Controladores.CtrlCliente;
 import Backend.Entidades.Cliente;
 import Backend.Entidades.Cuenta;
 import Backend.Entidades.Departamento;
-import static Frontend.RegistrarNuevoProducto.BloquearCaracteres;
+import static Frontend.Producto.RegistrarNuevoProducto.BloquearCaracteres;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Toolkit;

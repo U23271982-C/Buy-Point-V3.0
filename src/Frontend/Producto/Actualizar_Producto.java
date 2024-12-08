@@ -1,12 +1,13 @@
-package Frontend;
+package Frontend.Producto;
 
+import Frontend.Producto.RegistrarNuevoProducto;
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
 import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
-import static Frontend.RegistrarNuevoProducto.BloquearCaracteres;
+import static Frontend.Producto.RegistrarNuevoProducto.BloquearCaracteres;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Image;

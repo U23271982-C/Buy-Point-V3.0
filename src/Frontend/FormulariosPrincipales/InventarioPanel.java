@@ -2,8 +2,8 @@ package Frontend.FormulariosPrincipales;
 
 import Frontend.visualFramework.Animaciones;
 import Backend.Controladores.CtrlCategoriaProducto;
-import Frontend.AgregarCantidadyFV_Producto;
-import Frontend.VistaProducto;
+import Frontend.Producto.AgregarCantidadyFV_Producto;
+import Frontend.Producto.VistaProducto;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;

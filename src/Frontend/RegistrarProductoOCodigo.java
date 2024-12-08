@@ -1,6 +1,7 @@
 
 package Frontend;
 
+import Frontend.Producto.RegistrarNuevoProducto;
 import java.awt.Color;
 
 public class RegistrarProductoOCodigo extends javax.swing.JFrame {
