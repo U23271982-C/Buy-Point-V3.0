@@ -74,6 +74,7 @@ public class CtrlCodigo implements GestorSQLServer<Codigo> {
             }
             return codigos;
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getCause());
             throw new RuntimeException(e);
         }
 

@@ -64,49 +64,53 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace pref="135" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
+                  <Component id="ConfirmarJLabel" min="-2" pref="168" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="PanelX" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="StockProducto" min="-2" pref="68" max="-2" attributes="0"/>
-                              <Component id="NombreProducto" min="-2" pref="68" max="-2" attributes="0"/>
-                              <Component id="FechaCaducidad" min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="FotoProducto" min="-2" pref="247" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                          <Component id="PanelX" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="NuevoPrecioVenta" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="NombreProducto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="NuevaDescipcion" alignment="0" pref="81" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="SepardorFV" min="-2" pref="296" max="-2" attributes="0"/>
+                              <Component id="SepardorPrecioVenta" min="-2" pref="296" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="StockTxt" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="FVTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="DescripcionTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="PrecioVentaTxt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="SeparadorCantidad" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="SeparadorStock" max="32767" attributes="0"/>
+                                  <Component id="SeparadorDescripcion" max="32767" attributes="0"/>
                                   <Component id="NombreTxt" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="FotoProducto" min="-2" pref="247" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
-                  <Component id="ConfirmarJLabel" min="-2" pref="168" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="PanelX" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="FotoProducto" min="-2" pref="205" max="-2" attributes="0"/>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="PanelX" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="FotoProducto" min="-2" pref="205" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="103" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="NombreTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="NombreProducto" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
@@ -115,18 +119,18 @@
                   <Component id="SeparadorCantidad" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="StockTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="StockProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="DescripcionTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="NuevaDescipcion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Component id="SeparadorStock" min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="SeparadorDescripcion" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="FVTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="FechaCaducidad" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="PrecioVentaTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="NuevoPrecioVenta" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="SepardorFV" min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="SepardorPrecioVenta" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   <Component id="ConfirmarJLabel" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
@@ -157,10 +161,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="StockProducto">
+        <Component class="javax.swing.JLabel" name="NuevaDescipcion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -168,16 +173,17 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="Stock:"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Descipci&#xf3;n:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="FechaCaducidad">
+        <Component class="javax.swing.JLabel" name="NuevoPrecioVenta">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="FV:"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Precio venta:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="SeparadorCantidad">
@@ -187,7 +193,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSeparator" name="SeparadorStock">
+        <Component class="javax.swing.JSeparator" name="SeparadorDescripcion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -197,7 +203,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSeparator" name="SepardorFV">
+        <Component class="javax.swing.JSeparator" name="SepardorPrecioVenta">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -277,7 +283,7 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NombreTxtKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="StockTxt">
+        <Component class="javax.swing.JTextField" name="DescripcionTxt">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -285,21 +291,20 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StockTxtActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="StockTxtKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DescripcionTxtActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DescripcionTxtKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="FVTxt">
+        <Component class="javax.swing.JTextField" name="PrecioVentaTxt">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="dd/mm/yy"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FVTxtActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FVTxtKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PrecioVentaTxtActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PrecioVentaTxtKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="ConfirmarJLabel">
