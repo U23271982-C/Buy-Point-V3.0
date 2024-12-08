@@ -1009,7 +1009,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 );
 
                 // Exportamos .txt
-                ticket.exportarTiteck(indice, CtrlVenta.ultimoID());//cambibar por el número de bd
+                ticket.exportarTiteck(indice, CtrlVenta.ultimoID());
             }else {
                 JOptionPane.showMessageDialog
                         (null, "No se puede registrar la venta sin productos",
