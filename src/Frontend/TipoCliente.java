@@ -362,7 +362,7 @@ public class TipoCliente extends javax.swing.JFrame {
         Departamento = DepartamentoTxt.getText().trim();
         Nombre = NombreTxt.getText().trim();
         Apellido= ApellidoTxt.getText().trim();
-        Telefono = ApellidoTxt.getText().trim();
+        Telefono = TelefonoTxt.getText().trim();
 
 
         this.setVisible(false);

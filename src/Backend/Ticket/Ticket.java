@@ -72,7 +72,7 @@ public class Ticket{
             Fecha: %s
             Hora: %s
             Tipo Pago: %s
-            Nombre
+            Nombre: %s
             Apellidos: %s
             Telf.: %s
             --------------------------------
@@ -92,7 +92,7 @@ public class Ticket{
             Cliente:
                 Nombre: %s
                 Apellidos: %s
-                Iden.: %d
+                Telf.: %d
                 Torre: %d
                 Departamento: %d
             --------------------------------

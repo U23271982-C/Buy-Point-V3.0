@@ -877,7 +877,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                             cuenta.setTelefono(Integer.parseInt(TipoCliente.Telefono));
                             // Modificamos la cabecera de la venta
                             ticket.getTipoEncabezadosTickets().set(indice, String.format(
-                                    ticket.getEncabezadoTicketDelivery(),
+                                    ticket.getEncabezadoTicketCuentaDepartamento(),
 
                                     LocalDate.now().format(ticket.getFttFecha()),
                                     LocalTime.now().format(ticket.getFttHora()),
@@ -885,7 +885,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
                                     cuenta.getNombre(),
                                     cuenta.getApellido(),
-                                    cuenta.getTelefono(),
+                                    (int) cuenta.getTelefono(),
                                     (int) depa.getTorre(),
                                     (int) depa.getDepartamento()
                             ));
@@ -905,7 +905,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                         cliente.setIdentificacion(TipoCliente.Identificacion);
 
                         ticket.getTipoEncabezadosTickets().set(indice, String.format(
-                                ticket.getEncabezadoTicketDelivery(),
+                                ticket.getEncabezadoTicketCliente(),
 
                                 LocalDate.now().format(ticket.getFttFecha()),
                                 LocalTime.now().format(ticket.getFttHora()),
@@ -930,7 +930,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                         cuenta.setTelefono(Integer.parseInt(TipoCliente.Telefono));
                         // Modificamos la cabecera de la venta
                         ticket.getTipoEncabezadosTickets().set(indice, String.format(
-                                ticket.getEncabezadoTicketDelivery(),
+                                ticket.getEncabezadoTicketCuenta(),
 
                                 LocalDate.now().format(ticket.getFttFecha()),
                                 LocalTime.now().format(ticket.getFttHora()),
