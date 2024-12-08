@@ -86,6 +86,9 @@ public class ActualizarCaategoria extends javax.swing.JFrame {
             }
         });
         NuevaCategoriaTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NuevaCategoriaTxtKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NuevaCategoriaTxtKeyTyped(evt);
             }
@@ -192,6 +195,12 @@ public class ActualizarCaategoria extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_ConfirmarMouseClicked
+
+    private void NuevaCategoriaTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NuevaCategoriaTxtKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            
+        }
+    }//GEN-LAST:event_NuevaCategoriaTxtKeyPressed
 
     /**
      * @param args the command line arguments

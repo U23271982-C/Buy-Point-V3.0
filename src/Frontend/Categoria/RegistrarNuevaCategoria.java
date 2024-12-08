@@ -5,6 +5,7 @@ import Backend.Controladores.CtrlCategoriaProducto;
 import Backend.Entidades.CategoriaProducto;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -50,6 +51,9 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
 
         NuevaCategoriaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NuevaCategoriaTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NuevaCategoriaTxtKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NuevaCategoriaTxtKeyTyped(evt);
             }
@@ -175,43 +179,52 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelXMouseExited
 
     private void ConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarMouseClicked
+        ConfirmacionCategoria();
+        
+    }//GEN-LAST:event_ConfirmarMouseClicked
+
+    private void ConfirmacionCategoria(){
         try {
             CtrlCategoriaProducto CCP = new CtrlCategoriaProducto();
             CategoriaProducto CP = new CategoriaProducto();
         
             String nombreCategoria = NuevaCategoriaTxt.getText().trim();
+          
+            //Conversion del primer caracte a mayúscula y el resto en minpuscula
+            nombreCategoria = nombreCategoria.substring(0, 1).toUpperCase() 
+                        + nombreCategoria.substring(1).toLowerCase();
             CP.setNombre(nombreCategoria);
-
+            
+            System.out.println(nombreCategoria);
             boolean existe = false;
             ArrayList<CategoriaProducto> opciones = CCP.listar();
             for (CategoriaProducto listar : opciones) {
-                if(listar.getNombre().equals(nombreCategoria)){
+                if(listar.getNombre().trim().equals(nombreCategoria)){
                    existe = true;
-                   return;
+                   break;
                 }
             }
-        
+            System.out.println(existe);
             if(!existe){
                 CCP.registrar(CP);
                 JOptionPane.showMessageDialog(null, "Se registro correctamente");
+                NuevaCategoriaTxt.setText("");
                 this.setVisible(false);
-            } 
-        } catch (Exception e) {
+            } else {
+                JOptionPane.showMessageDialog(null, "Categoria ya existente");
+            }
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error");
         }
-        
-    }//GEN-LAST:event_ConfirmarMouseClicked
-
+    }
+    
     private void ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarMouseClicked
         ActualizarCaategoria AC = new ActualizarCaategoria();
         AC.setVisible(true);
         this.setVisible(false);
         AC.toFront();
         
-        /*CtrlCategoriaProducto CCP = new CtrlCategoriaProducto();
-        CategoriaProducto CP = new CategoriaProducto();
-        
-        CP.setNombre(NuevaCategoriaTxt.getText().trim());*/
+
         
     }//GEN-LAST:event_ActualizarMouseClicked
 
@@ -224,9 +237,12 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
 
     }//GEN-LAST:event_EliminarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void NuevaCategoriaTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NuevaCategoriaTxtKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            ConfirmacionCategoria();
+        }
+    }//GEN-LAST:event_NuevaCategoriaTxtKeyPressed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
