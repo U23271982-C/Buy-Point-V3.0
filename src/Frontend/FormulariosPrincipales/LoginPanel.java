@@ -38,7 +38,7 @@ public final class LoginPanel extends javax.swing.JFrame {
         PasswordBarra = new javax.swing.JSeparator();
         Encabezado = new javax.swing.JPanel();
         PanelX = new javax.swing.JPanel();
-        Exit = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         EntrarPanel = new javax.swing.JPanel();
         EntrarJLabel = new javax.swing.JLabel();
 
@@ -120,57 +120,39 @@ public final class LoginPanel extends javax.swing.JFrame {
             }
         });
 
+        PanelX.setBackground(new java.awt.Color(126, 123, 123));
+        PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelXMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelXMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelXMouseExited(evt);
+            }
+        });
+        PanelX.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setBackground(new java.awt.Color(126, 123, 123));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("X");
+        PanelX.add(jLabel1, new java.awt.GridBagConstraints());
+
         javax.swing.GroupLayout EncabezadoLayout = new javax.swing.GroupLayout(Encabezado);
         Encabezado.setLayout(EncabezadoLayout);
         EncabezadoLayout.setHorizontalGroup(
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EncabezadoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         EncabezadoLayout.setVerticalGroup(
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        PanelX.setBackground(new java.awt.Color(126, 123, 123));
-        PanelX.setPreferredSize(new java.awt.Dimension(36, 36));
-
-        Exit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Exit.setForeground(new java.awt.Color(255, 255, 255));
-        Exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Exit.setText("X");
-        Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Exit.setPreferredSize(new java.awt.Dimension(35, 35));
-        Exit.setRequestFocusEnabled(false);
-        Exit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ExitMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ExitMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ExitMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ExitMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PanelXLayout = new javax.swing.GroupLayout(PanelX);
-        PanelX.setLayout(PanelXLayout);
-        PanelXLayout.setHorizontalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelXLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelXLayout.setVerticalGroup(
-            PanelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelXLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(EncabezadoLayout.createSequentialGroup()
+                .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         EntrarPanel.setBackground(new java.awt.Color(126, 123, 123));
@@ -212,11 +194,6 @@ public final class LoginPanel extends javax.swing.JFrame {
         Login.setLayout(LoginLayout);
         LoginLayout.setHorizontalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(LoginLayout.createSequentialGroup()
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(LoginLayout.createSequentialGroup()
@@ -231,21 +208,24 @@ public final class LoginPanel extends javax.swing.JFrame {
                             .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(UserBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(PasswordBarra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 287, Short.MAX_VALUE))
+                .addGap(27, 287, Short.MAX_VALUE))
             .addGroup(LoginLayout.createSequentialGroup()
                 .addGap(327, 327, 327)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(UserTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PasswordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(LoginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LoginLayout.setVerticalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginLayout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(UserTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(UserBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,9 +236,6 @@ public final class LoginPanel extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(EntrarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -296,29 +273,8 @@ public final class LoginPanel extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y -yMouse);
     }//GEN-LAST:event_EncabezadoMouseDragged
-    //endregion
     
-//parte    
-    private void ExitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMousePressed
     
-    }//GEN-LAST:event_ExitMousePressed
-//inutil
-    
-   //cierre del software
-    private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_ExitMouseClicked
-    //end
-    
-    //color Window X
-    private void ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseEntered
-        PanelX.setBackground(Color.red);
-    }//GEN-LAST:event_ExitMouseEntered
-
-    private void ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseExited
-        PanelX.setBackground(new Color(126, 123, 123));
-    }//GEN-LAST:event_ExitMouseExited
-    //end
     
     private void UserTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserTxtMousePressed
         if(UserTxt.getText().equals("USERNAME")){
@@ -396,6 +352,18 @@ public final class LoginPanel extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_UserTxtMouseClicked
+
+    private void PanelXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_PanelXMouseClicked
+
+    private void PanelXMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseEntered
+        PanelX.setBackground(Color.red);
+    }//GEN-LAST:event_PanelXMouseEntered
+
+    private void PanelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseExited
+        PanelX.setBackground(new Color(126, 123, 123));
+    }//GEN-LAST:event_PanelXMouseExited
    
     public void inicionLogin(){
         if(!UserTxt.getText().isEmpty() && !PasswordTxt.getText().isEmpty()){
@@ -457,13 +425,13 @@ public final class LoginPanel extends javax.swing.JFrame {
     private javax.swing.JPanel Encabezado;
     private javax.swing.JLabel EntrarJLabel;
     private javax.swing.JPanel EntrarPanel;
-    private javax.swing.JLabel Exit;
     private javax.swing.JPanel Login;
     private javax.swing.JPanel PanelX;
     private javax.swing.JSeparator PasswordBarra;
     private javax.swing.JPasswordField PasswordTxt;
     private javax.swing.JSeparator UserBarra;
     private javax.swing.JTextField UserTxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 

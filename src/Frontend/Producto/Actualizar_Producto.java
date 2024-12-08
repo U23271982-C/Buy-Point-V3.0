@@ -10,11 +10,13 @@ import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import static Frontend.Producto.RegistrarNuevoProducto.BloquearCaracteres;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -308,22 +310,32 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             
             codigo.setCodigo(codigoBarras);
             producto.setCodigo(codigo);
-            //InventarioPanel IP = new InventarioPanel();
-            /*
-            NombreProducto.setText(producto.getNombreProducto());
-            DescripcionTxt.setText(String.valueOf(producto.getInventario().getStock()));
-            NuevoPrecioVenta.setText(String.valueOf(producto.getPaqueteProducto().getFechaCaducidad()));
-            */
             
-            producto.setNombreProducto(NombreTxt.getText().trim());
-            producto.setDescripcion(DescripcionTxt.getText().trim());
-            producto.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
+            String nombre = NombreTxt.getText().trim();
+            String descripcion = DescripcionTxt.getText().trim();
+            String precioventa = PrecioVentaTxt.getText().trim();
             
-            CP.actualizar(producto);
-
-            this.setVisible(false);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
+            boolean existe = false;
+            ArrayList<Producto> opciones = CP.listar();
+            for (Producto listar : opciones) {
+                if(listar.getNombreProducto().trim().equals(nombre)){
+                   existe = true;
+                   break;
+                }
+            }
+            
+            System.out.println(existe);
+            if(!existe){
+                producto.setNombreProducto(nombre);
+                producto.setDescripcion(descripcion);
+                producto.setPrecio(new BigDecimal(precioventa));
+                
+                CP.actualizar(producto);
+                this.setVisible(false);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error");
         }
         
     }//GEN-LAST:event_ConfirmarJLabelMouseClicked
