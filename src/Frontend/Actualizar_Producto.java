@@ -11,6 +11,7 @@ import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
@@ -35,8 +36,8 @@ public class Actualizar_Producto extends javax.swing.JFrame {
         PanelX = new javax.swing.JPanel();
         JLabelX = new javax.swing.JLabel();
         NombreTxt = new javax.swing.JTextField();
-        StockTxt = new javax.swing.JTextField();
-        FVTxt = new javax.swing.JTextField();
+        DescripcionTxt = new javax.swing.JTextField();
+        PrecioVentaTxt = new javax.swing.JTextField();
         ConfirmarJLabel = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jEditorPane1);
@@ -135,29 +136,29 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             }
         });
 
-        StockTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        StockTxt.setBorder(null);
-        StockTxt.addActionListener(new java.awt.event.ActionListener() {
+        DescripcionTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        DescripcionTxt.setBorder(null);
+        DescripcionTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StockTxtActionPerformed(evt);
+                DescripcionTxtActionPerformed(evt);
             }
         });
-        StockTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+        DescripcionTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                StockTxtKeyTyped(evt);
+                DescripcionTxtKeyTyped(evt);
             }
         });
 
-        FVTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        FVTxt.setBorder(null);
-        FVTxt.addActionListener(new java.awt.event.ActionListener() {
+        PrecioVentaTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PrecioVentaTxt.setBorder(null);
+        PrecioVentaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FVTxtActionPerformed(evt);
+                PrecioVentaTxtActionPerformed(evt);
             }
         });
-        FVTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+        PrecioVentaTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                FVTxtKeyTyped(evt);
+                PrecioVentaTxtKeyTyped(evt);
             }
         });
 
@@ -192,8 +193,8 @@ public class Actualizar_Producto extends javax.swing.JFrame {
                         .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SepardorPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(StockTxt)
-                                .addComponent(FVTxt)
+                                .addComponent(DescripcionTxt)
+                                .addComponent(PrecioVentaTxt)
                                 .addComponent(SeparadorCantidad)
                                 .addComponent(SeparadorDescripcion)
                                 .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -215,13 +216,13 @@ public class Actualizar_Producto extends javax.swing.JFrame {
                 .addComponent(SeparadorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(StockTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DescripcionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NuevaDescipcion))
                 .addGap(3, 3, 3)
                 .addComponent(SeparadorDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(agregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FVTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PrecioVentaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NuevoPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SepardorPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,13 +269,13 @@ public class Actualizar_Producto extends javax.swing.JFrame {
         PanelX.setBackground(Color.WHITE);
     }//GEN-LAST:event_JLabelXMouseExited
 
-    private void StockTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StockTxtActionPerformed
+    private void DescripcionTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescripcionTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_StockTxtActionPerformed
+    }//GEN-LAST:event_DescripcionTxtActionPerformed
 
-    private void FVTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FVTxtActionPerformed
+    private void PrecioVentaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioVentaTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FVTxtActionPerformed
+    }//GEN-LAST:event_PrecioVentaTxtActionPerformed
 
     private void NombreTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreTxtKeyTyped
         if(NombreTxt.getText().length() >= 30){
@@ -283,18 +284,18 @@ public class Actualizar_Producto extends javax.swing.JFrame {
        } 
     }//GEN-LAST:event_NombreTxtKeyTyped
 
-    private void StockTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StockTxtKeyTyped
-        if(StockTxt.getText().length() >= 150){
+    private void DescripcionTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DescripcionTxtKeyTyped
+        if(DescripcionTxt.getText().length() >= 150){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();    
        }
-    }//GEN-LAST:event_StockTxtKeyTyped
+    }//GEN-LAST:event_DescripcionTxtKeyTyped
 
-    private void FVTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FVTxtKeyTyped
+    private void PrecioVentaTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioVentaTxtKeyTyped
         char c = evt.getKeyChar();
         
-        RegistrarNuevoProducto.BloquearCaracteres(FVTxt, c, evt);
-    }//GEN-LAST:event_FVTxtKeyTyped
+        RegistrarNuevoProducto.BloquearCaracteres(PrecioVentaTxt, c, evt);
+    }//GEN-LAST:event_PrecioVentaTxtKeyTyped
 
     private void ConfirmarJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarJLabelMouseClicked
         try{
@@ -302,23 +303,27 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             //PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
             Producto producto = new Producto();
             Codigo codigo = new Codigo();
+            
             codigo.setCodigo(codigoBarras);
             producto.setCodigo(codigo);
             //InventarioPanel IP = new InventarioPanel();
-            
-            
-            DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate fechLocalDate = LocalDate.parse(FVTxt.getText().trim(),textFormt);
-
-        
+            /*
             NombreProducto.setText(producto.getNombreProducto());
-            StockTxt.setText(String.valueOf(producto.getInventario().getStock()));
+            DescripcionTxt.setText(String.valueOf(producto.getInventario().getStock()));
             NuevoPrecioVenta.setText(String.valueOf(producto.getPaqueteProducto().getFechaCaducidad()));
+            */
+            
+            producto.setNombreProducto(NombreTxt.getText().trim());
+            producto.setDescripcion(DescripcionTxt.getText().trim());
+            producto.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
+            
+            CP.actualizar(producto);
             
             
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        this.setVisible(false);
     }//GEN-LAST:event_ConfirmarJLabelMouseClicked
 
     public Actualizar_Producto() {
@@ -400,7 +405,7 @@ public class Actualizar_Producto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ConfirmarJLabel;
-    private javax.swing.JTextField FVTxt;
+    private javax.swing.JTextField DescripcionTxt;
     private javax.swing.JLabel FotoProducto;
     private javax.swing.JLabel JLabelX;
     private javax.swing.JLabel NombreProducto;
@@ -408,10 +413,10 @@ public class Actualizar_Producto extends javax.swing.JFrame {
     private javax.swing.JLabel NuevaDescipcion;
     private javax.swing.JLabel NuevoPrecioVenta;
     private javax.swing.JPanel PanelX;
+    private javax.swing.JTextField PrecioVentaTxt;
     private javax.swing.JSeparator SeparadorCantidad;
     private javax.swing.JSeparator SeparadorDescripcion;
     private javax.swing.JSeparator SepardorPrecioVenta;
-    private javax.swing.JTextField StockTxt;
     private javax.swing.JPanel agregarProducto;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JScrollPane jScrollPane1;

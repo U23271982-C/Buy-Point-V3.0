@@ -87,8 +87,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="SepardorPrecioVenta" min="-2" pref="296" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="StockTxt" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="FVTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="DescripcionTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="PrecioVentaTxt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="SeparadorCantidad" alignment="0" max="32767" attributes="0"/>
                                   <Component id="SeparadorDescripcion" max="32767" attributes="0"/>
                                   <Component id="NombreTxt" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
@@ -119,14 +119,14 @@
                   <Component id="SeparadorCantidad" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="StockTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="DescripcionTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="NuevaDescipcion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Component id="SeparadorDescripcion" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="FVTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="PrecioVentaTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="NuevoPrecioVenta" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -283,7 +283,7 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NombreTxtKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="StockTxt">
+        <Component class="javax.swing.JTextField" name="DescripcionTxt">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -291,11 +291,11 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StockTxtActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="StockTxtKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DescripcionTxtActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DescripcionTxtKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="FVTxt">
+        <Component class="javax.swing.JTextField" name="PrecioVentaTxt">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -303,8 +303,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FVTxtActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FVTxtKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PrecioVentaTxtActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PrecioVentaTxtKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="ConfirmarJLabel">
