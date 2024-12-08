@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Actualizar_Producto extends javax.swing.JFrame {
 
@@ -319,12 +320,12 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             producto.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
             
             CP.actualizar(producto);
-            
-            
+
+            this.setVisible(false);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        this.setVisible(false);
+        
     }//GEN-LAST:event_ConfirmarJLabelMouseClicked
 
     public Actualizar_Producto() {

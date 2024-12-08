@@ -92,6 +92,11 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
                 ConfirmarButtonMouseClicked(evt);
             }
         });
+        ConfirmarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmarButtonActionPerformed(evt);
+            }
+        });
         PanelButton.add(ConfirmarButton, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout NuevoCodePanelLayout = new javax.swing.GroupLayout(NuevoCodePanel);
@@ -169,20 +174,23 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
             CtrlCodigo CC = new CtrlCodigo();
             Producto P = new Producto();
             Codigo C = new Codigo();
-            
-           C.setCodigo(NuevoCodeBarr.getText().trim());
+                      
            P.setNombreProducto(Productosregistrados.getSelectedItem().toString());
+           C.setProducto(P);
            
-           //C.setProducto(P);//P.setCodigo(C);
-
+           C.setCodigo(NuevoCodeBarr.getText().trim());
            C.setProducto(P);
            
            CC.registrar(C);
-            
+           this.setVisible(false);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_ConfirmarButtonMouseClicked
+
+    private void ConfirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfirmarButtonActionPerformed
     
     
     public static void main(String args[]) {
