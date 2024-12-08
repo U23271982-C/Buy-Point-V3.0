@@ -220,6 +220,11 @@ public class TipoCliente extends javax.swing.JFrame {
         TelefonoTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         Registrar.setText("Registrar");
+        Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegistrarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout cliente_y_pagoLayout = new javax.swing.GroupLayout(cliente_y_pago);
         cliente_y_pago.setLayout(cliente_y_pagoLayout);
@@ -416,6 +421,13 @@ public class TipoCliente extends javax.swing.JFrame {
     }
     });*/
     }//GEN-LAST:event_TipoClientejTableMouseClicked
+
+    private void RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseClicked
+        RegistrarNuevoCliente RNC = new RegistrarNuevoCliente();
+        RNC.setVisible(true);
+        this.setVisible(false);
+        RNC.toFront();
+    }//GEN-LAST:event_RegistrarMouseClicked
 
     TableRowSorter TRS;    
     

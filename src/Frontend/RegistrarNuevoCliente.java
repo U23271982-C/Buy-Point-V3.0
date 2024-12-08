@@ -53,6 +53,7 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
         setUndecorated(true);
 
         Panel1.setBackground(new java.awt.Color(255, 255, 255));
+        Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         ClientejLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ClientejLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -101,6 +102,7 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
         tienecuenta.setForeground(new java.awt.Color(0, 0, 0));
         tienecuenta.setText("Tiene cuenta");
 
+        SIbutton.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(SIbutton);
         SIbutton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         SIbutton.setForeground(new java.awt.Color(0, 0, 0));
@@ -116,6 +118,7 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
             }
         });
 
+        NObutton.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(NObutton);
         NObutton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NObutton.setForeground(new java.awt.Color(0, 0, 0));
@@ -247,7 +250,7 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
                             .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ApellidoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +298,7 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
                     .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,40 +388,69 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelXMouseExited
 
     private void SIbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SIbuttonMouseClicked
-        if(SIbutton.isSelected()){
+        
             NombreTxt.setEnabled(true);
             ApellidoTxt.setEnabled(true);
             TelefonoTxt.setEnabled(true);
-        }
+        
     }//GEN-LAST:event_SIbuttonMouseClicked
 
     private void NObuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NObuttonMouseClicked
-        if(NObutton.isSelected()){
+        
             NombreTxt.setEnabled(false);
             ApellidoTxt.setEnabled(false);
             TelefonoTxt.setEnabled(false);
-        }
+            NombreTxt.setText(null);
+            ApellidoTxt.setText(null);
+            TelefonoTxt.setText(null);
     }//GEN-LAST:event_NObuttonMouseClicked
 
     private void ConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarMouseClicked
-        CtrlCliente CC = new CtrlCliente();
+        try{
+            
+            CtrlCliente CC = new CtrlCliente();
         
         Cliente CL = new Cliente();
         Departamento D = new Departamento();
         Cuenta CU = new Cuenta();
         
-        CL.setCliente(ClienteTxt.getText().trim());
-        CL.setIdentificacion(IdentificacionTxt.getText().trim());
-        D.setTorre(Short.parseShort(TorreTxt.getText().trim()));
-        D.setDepartamento(Short.parseShort(DepartamentoTxt.getText().trim()));
+        String cliente = ClienteTxt.getText().trim();
+        String identificacion = IdentificacionTxt.getText().trim();
+        String torre = TorreTxt.getText().trim();
+        String departamento = DepartamentoTxt.getText().trim();
+        String nombre = NombreTxt.getText().trim();
+        String apellido = ApellidoTxt.getText().trim();
+        String telefono = TelefonoTxt.getText().trim();
+               
+        cliente = (cliente == null)? null : cliente;
+        identificacion = (identificacion == null)? null : identificacion;
+        torre = (torre == null)? null : torre;
+        departamento = (departamento == null)? null : departamento;        
+        nombre = (nombre == null)? null : nombre;        
+        apellido = (apellido == null)? null : apellido;        
+        telefono = (telefono == null)? null : telefono;        
+                
+        
+        CL.setCliente(cliente);
+        CL.setIdentificacion(identificacion);
+        D.setTorre(Short.parseShort(torre));
+        D.setDepartamento(Short.parseShort(departamento));
         CL.setDepartamento(D);
-        CU.setNombre(NombreTxt.getText().trim());
-        CU.setApellido(ApellidoTxt.getText().trim());
-        CU.setTelefono(Integer.parseInt(TelefonoTxt.getText().trim()));
+        CU.setNombre(nombre);
+        CU.setApellido(apellido);
+        CU.setTelefono(Integer.parseInt(telefono));
         CL.setCuenta(CU);
         
         CC.registrar(CL);
+        
+        TipoCliente TC = new TipoCliente();
+        TC.setVisible(true);
         this.setVisible(false);
+        TC.toFront();
+            
+        }catch(NumberFormatException e){
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_ConfirmarMouseClicked
 
     public static void main(String args[]) {
