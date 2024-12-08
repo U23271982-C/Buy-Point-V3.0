@@ -653,7 +653,8 @@ CREATE OR ALTER PROCEDURE paT_registrarVentaCompuesto(
 @apellido VARCHAR(20),
 @telefono INT,
 
-@id_comprobante INT
+@comprobante VARCHAR(20),
+@tipopago VARCHAR(20)
 )
 AS
 BEGIN
@@ -662,6 +663,7 @@ BEGIN
 			DECLARE @id_cliente INT
 			DECLARE @id_cuenta INT
 			DECLARE @id_departamento INT
+			DECLARE @id_comprobante INT
 			
 			IF(@cliente IS NOT NULL)BEGIN
 				IF (@identificacion IS NULL)BEGIN
@@ -706,6 +708,14 @@ BEGIN
 						CU.Apellido = @apellido
 			END
 
+			--idcomprobante
+			SELECT @id_comprobante = ID_Comprobante
+			FROM Comprobante C
+			INNER JOIN TipoPago T
+				ON C.ID_TipoPago = T.ID_TipoPago
+			WHERE 
+			C.Comprobante = @comprobante
+			AND T.TipoPago = @tipopago
 
 			EXEC pa_registrarVenta 
 								@fecha,
