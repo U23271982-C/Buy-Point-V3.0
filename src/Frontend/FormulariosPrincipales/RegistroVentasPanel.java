@@ -8,7 +8,7 @@ import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import org.jfree.chart.ChartPanel;
 
@@ -420,7 +420,6 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
         panel.setSize(750,600);
        
        CtrlProducto ctrlProducto = new CtrlProducto();
-        
         List<String> listaNombre = ctrlProducto.listar()
                 .stream().map(p -> p.getNombreProducto()).toList();
 
@@ -437,14 +436,33 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
 
         GestorGraficadorEstadisticas gestor = new GestorGraficadorEstadisticas();
 
-       panel.add(new ChartPanel(gestor.graficar
-            ("titulo", "ejeX", "ejeY",
-                    listaNombre, 1)));
-       
-       jInternalFrame1.add(panel);
-       jInternalFrame1.setVisible(true);
+        cargarComboBoxEstadistica();
+
+        if (jComboBoxGaficos.getSelectedIndex() == 0) {
+            panel.add(new ChartPanel(gestor.graficar
+                    ("CantidaProducto", "ejeX", "ejeY",
+                            listaNombre, 0)));
+            jInternalFrame1.add(panel);
+            jInternalFrame1.setVisible(true);
+        } else if (jComboBoxGaficos.getSelectedIndex() == 1) {
+            panel.add(new ChartPanel(gestor.graficar
+                    ("Cantidalñplducto", "ejeX", "ejeY",
+                            listaNombre, 1)));
+            jInternalFrame1.add(panel);
+            jInternalFrame1.setVisible(true);
+        }
+
+
+
+
     }
-    
+    private void cargarComboBoxEstadistica(){
+        GestorGraficadorEstadisticas gg = new GestorGraficadorEstadisticas();
+        var a = gg.listaTiposCondiciones;
+        for (String s : a) {
+            jComboBoxGaficos.addItem(s);
+        }
+    }
     
     
     public static void main(String args[]) {

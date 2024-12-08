@@ -758,7 +758,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     actualizarTabla();
 
                     actualizarTotales();
-                    venta1.getDetallesVenta().forEach(System.out::println);
+                    //venta1.getDetallesVenta().forEach(System.out::println);
                 }
                 codigoescaneado.setLength(0);
             } else {
@@ -845,8 +845,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             int indice = 0;
             // Tipo Pago
             String tipoPagoE =
-                    Objects.requireNonNull
-                            (TipodePagoComboBox.getSelectedItem()).toString();
+                    Objects.requireNonNull(TipodePagoComboBox.getSelectedItem()).toString();
+            System.out.println(tipoPagoE);
             // Venta Directa
             if (CheckBoxCliente.isSelected()){
                 try {
@@ -997,6 +997,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
             // Exportamos .txt
             ticket.exportarTiteck("D:\\TestComprobantes", indice);
+            DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+            tm.setRowCount(0);
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0));
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0)+"\n"+ticket.getCuerpoTicket()+"\n"+ticket.getFinalTicket());
         } catch (RuntimeException e) {
