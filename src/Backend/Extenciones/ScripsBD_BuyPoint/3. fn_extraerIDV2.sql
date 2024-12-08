@@ -47,3 +47,19 @@ BEGIN
 	RETURN @id;
 END;
 GO
+
+CREATE OR ALTER FUNCTION fn_extraerID_UltimaVenta()
+RETURNS INT
+AS
+BEGIN
+	DECLARE @id INT;
+	
+	SELECT TOP 1 @id = ID_Venta
+	FROM Venta V
+	ORDER BY ID_Venta DESC
+	
+	RETURN @id;
+END;
+GO
+
+SELECT dbo.fn_extraerID_UltimaVenta()
