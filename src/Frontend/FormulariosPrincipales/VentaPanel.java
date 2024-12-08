@@ -1108,11 +1108,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     throw new RuntimeException(e);
                 }
                 // Exportamos el ticket
-                ticket.exportarTiteck("D:\\TestComprobantes", idx);
+                ticket.exportarTiteck("E:\\TestComprobantes", idx);
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
-
+            jTableVender.clearSelection();
         }
     }//GEN-LAST:event_ConfirmarButtomActionPerformed
 
