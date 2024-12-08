@@ -1009,16 +1009,16 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 );
 
                 // Exportamos .txt
-                ticket.exportarTiteck("D:\\TestComprobantes", indice);
+                ticket.exportarTiteck(indice, CtrlVenta.ultimoID());//cambibar por el número de bd
             }else {
                 JOptionPane.showMessageDialog
                         (null, "No se puede registrar la venta sin productos",
                                 "Error", 0);
             }
-            DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
-            tm.setRowCount(0);
-            //System.out.println(ticket.getTipoEncabezadosTickets().get(0));
-            //System.out.println(ticket.getTipoEncabezadosTickets().get(0)+"\n"+ticket.getCuerpoTicket()+"\n"+ticket.getFinalTicket());
+            venta1.getDetallesVenta().clear();
+            actualizarTabla();
+            actualizarTotales();
+
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
@@ -1147,7 +1147,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     throw new RuntimeException(e);
                 }
                 // Exportamos el ticket
-                ticket.exportarTiteck("E:\\TestComprobantes", idx);
+                //ticket.exportarTiteck(, idx);
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }

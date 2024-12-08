@@ -1,5 +1,7 @@
 package Backend.Ticket;
 
+import Backend.Controladores.CtrlVenta;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedWriter;
@@ -14,16 +16,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Ticket{
-    public int numComprobante = 0;
+    private final String repositorioComprobantes = "D:\\TestComprobantes";
     DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
     DateTimeFormatter fttFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    //1//
-    private String encabezadoTicketDirecto = """
+
+    private String inicioTiteck = """
             COND. LOS PARQUES DE SAN GABRIEL
             Chiclayo - Chiclayo - Lambayeque
             --------------------------------
                     RECIBO DE VENTA
-                        Pedido 10232
+                      Pedido %d""";
+    //1//
+    private String encabezadoTicketDirecto = """
             --------------------------------
             Fecha: %s
             Hora: %s
@@ -33,11 +37,6 @@ public class Ticket{
             """;
     // 2//
     private String encabezadoTicketDelivery = """
-            COND. LOS PARQUES DE SAN GABRIEL
-            Chiclayo - Chiclayo - Lambayeque
-            --------------------------------
-                    RECIBO DE VENTA
-                        Pedido 1402
             --------------------------------
             Fecha: %s
             Hora: %s
@@ -49,11 +48,6 @@ public class Ticket{
             """;
     // 3
     private String encabezadoTicketCliente = """
-            COND. LOS PARQUES DE SAN GABRIEL
-            Chiclayo - Chiclayo - Lambayeque
-            --------------------------------
-                    RECIBO DE VENTA
-                        Pedido 1234
             --------------------------------
             Fecha: %s
             Hora: %s
@@ -65,11 +59,6 @@ public class Ticket{
             """;
     // 4
     private String encabezadoTicketCuenta = """
-            COND. LOS PARQUES DE SAN GABRIEL
-            Chiclayo - Chiclayo - Lambayeque
-            --------------------------------
-                    RECIBO DE VENTA
-                        Pedido 1234
             --------------------------------
             Fecha: %s
             Hora: %s
@@ -82,11 +71,6 @@ public class Ticket{
             """;
     // 5//
     private String encabezadoTicketCuentaDepartamento = """
-            COND. LOS PARQUES DE SAN GABRIEL
-            Chiclayo - Chiclayo - Lambayeque
-            --------------------------------
-                    RECIBO DE VENTA
-                        Pedido 123
             --------------------------------
             Fecha: %s
             Hora: %s
@@ -214,37 +198,51 @@ public class Ticket{
         this.cuerpoTicket = cuerpoTicket;
     }
 
+    public String getInicioTiteck() {
+        return inicioTiteck;
+    }
+
+    public void setInicioTiteck(String inicioTiteck) {
+        this.inicioTiteck = inicioTiteck;
+    }
 
     //#endregion
 
-    private String formateadorCuerpoTicket(int idxEncabezado){
-        return String.format("%s\n%s\n%s",
+    private String formateadorCuerpoTicket(int idxEncabezado, int numVenta){
+        return String.format("%s\n%s\n%s\n%s",
+                String.format(inicioTiteck, numVenta),
                 tipoEncabezadosTickets.get(idxEncabezado),
                 cuerpoTicket,
                 finalTicket);
     }
-    public void exportarTiteck(String direcArchivo, int idxEncabezado){
+    public void exportarTiteck( int idxEncabezado, int numVenta){
         DateTimeFormatter d = DateTimeFormatter.ofPattern("hh.mm.ss");
-        String nombreArchivo = "\\Comprobante_"  + LocalTime.now().format(d) + "_" + LocalDate.now() + ".txt";
+        String nombreArchivo = "\\Comprobante_"  +
+                LocalTime.now().format(d) + "_" + LocalDate.now() + ".txt";
         // Generar el archivo txt
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(direcArchivo + nombreArchivo))) {
+        try (BufferedWriter writer =
+                     new BufferedWriter(new FileWriter
+                             (repositorioComprobantes + nombreArchivo))) {
 
-            writer.write(formateadorCuerpoTicket(idxEncabezado));
+            writer.write(formateadorCuerpoTicket(idxEncabezado, numVenta));
             JOptionPane.showMessageDialog
                     (null,
-                            "Ticket generado exitosamente en: " + direcArchivo);
+                            "Ticket generado exitosamente en: "
+                                    + repositorioComprobantes);
 
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
-                    e.getMessage(), "Error", 1);
+                    e.getMessage(), "Error", 0);
         }
     }
 
     public static void main(String[] args) {
         Ticket ticket = new Ticket();
-        System.out.println(ticket.getTipoEncabezadosTickets().get(3));
-        /*BigDecimal num1 = new BigDecimal("12.20");
+        //ticket.exportarTiteck(1,1);
+        System.out.println(CtrlVenta.ultimoID());
+        /*System.out.println(ticket.getTipoEncabezadosTickets().get(3));
+        BigDecimal num1 = new BigDecimal("12.20");
         String hola = String.format(ticket.finalTicket, num1, num1, num1);
         System.out.println(hola);*/
     }

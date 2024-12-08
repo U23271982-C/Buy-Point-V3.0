@@ -120,27 +120,6 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
             return producto;
         }
 
-        public static void main(String[] args) {
-            /*CtrlProducto c = new CtrlProducto();
-            Producto producto = new Producto();
-            Codigo codigo = new Codigo();
-            codigo.setCodigo("6921180820056");
-            producto.setCodigo(codigo);
-
-            System.out.println(c.leer(producto));
-            //c.listar().forEach(System.out::println);*/
-            JOptionPane.showMessageDialog
-                    (null, "Cantidad insufinciente de Stock",
-                            "Erorr", 0);
-            JOptionPane.showMessageDialog
-                    (null, "Cantidad insufinciente de Stock",
-                            "Erorr", 1);
-            JOptionPane.showMessageDialog
-                    (null, "Cantidad insufinciente de Stock",
-                            "Erorr", 2);
-        }
-
-
         @Override
         public void eliminar(Producto eliminadoEntidad) {
             String consultaSQL = "{ CALL pa_eliminarProducto(?) }";

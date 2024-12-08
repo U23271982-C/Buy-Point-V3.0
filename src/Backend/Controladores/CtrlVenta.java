@@ -8,6 +8,7 @@ import javax.sound.sampled.Port;
 import javax.swing.*;
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -128,4 +129,24 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
     public ArrayList<Venta> listar() {
         return null;
     }
+
+    public static int ultimoID(){
+        String consultaSQL = " SELECT dbo.fn_extraerID_UltimaVenta() ";
+        int res = 0;
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion()
+                             .conectar().prepareCall(consultaSQL)){
+
+            ResultSet filas = comando.executeQuery();
+            if (filas.next()) {
+                res = filas.getInt(1);
+            }
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
+        return res;
+    }
+
 }

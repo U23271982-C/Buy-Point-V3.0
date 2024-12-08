@@ -438,19 +438,19 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
 
         cargarComboBoxEstadistica();
 
-        if (jComboBoxGaficos.getSelectedIndex() == 0) {
+        /*if (jComboBoxGaficos.getSelectedIndex() == 0) {
             panel.add(new ChartPanel(gestor.graficar
                     ("CantidaProducto", "ejeX", "ejeY",
                             listaNombre, 0)));
             jInternalFrame1.add(panel);
-            jInternalFrame1.setVisible(true);
-        } else if (jComboBoxGaficos.getSelectedIndex() == 1) {
+            jInternalFrame1.setVisible(true);*/
+        //} else if (jComboBoxGaficos.getSelectedIndex() == 1) {
             panel.add(new ChartPanel(gestor.graficar
                     ("Cantidalñplducto", "ejeX", "ejeY",
                             listaNombre, 1)));
             jInternalFrame1.add(panel);
             jInternalFrame1.setVisible(true);
-        }
+        //}
     }
 
     private void cargarComboBoxEstadistica(){
