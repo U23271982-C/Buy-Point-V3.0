@@ -773,9 +773,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
     private void actualizarTotales() {
         jLabelSubTotal.setText(String.valueOf(venta1.getSubTotal()));
-        BigDecimal igv = venta1.getSubTotal().multiply(BigDecimal.valueOf(0.18)).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal igv = venta1.getTotal()
+                .multiply(BigDecimal.valueOf(0.18))
+                .setScale(2, RoundingMode.HALF_UP);
         jLabel_IGV.setText(String.valueOf(igv));
-        jLabelTotal.setText(String.valueOf(venta1.getSubTotal().add(igv).setScale(2, RoundingMode.HALF_UP)));
+        jLabelTotal.setText(String.valueOf(venta1.getTotal()));
     }
 
 
