@@ -2,6 +2,7 @@ package Backend.Gestores;
 
 import Backend.Controladores.CtrlProducto;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -29,7 +30,7 @@ public class GestorGraficadorEstadisticas {
     }
 
     public  JFreeChart graficar(String titulo, String ejeX, String ejeY,
-                               List<String> etiquetas, int indxCondicion) {
+                                List<String> etiquetas, int indxCondicion) {
 
         List<Integer> lista = condicionGraficos.get(indxCondicion);
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -38,7 +39,14 @@ public class GestorGraficadorEstadisticas {
             dataset.addValue(lista.get(i), "Total", etiquetas.get(i));
         }
         //createBarChart3D
-        return ChartFactory.createBarChart3D(
+        return /*tipoGrafico(titulo,
+                ejeX,
+                ejeY,
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false);*/ ChartFactory.createBarChart3D(
                 titulo,
                 ejeX,
                 ejeY,
@@ -49,4 +57,11 @@ public class GestorGraficadorEstadisticas {
                 false
         );
     }
+    /*public ChartPanel tipoGrafico(String titulo, String ejeX, String ejeY,
+                                  List<String> etiquetas, int indxCondicion){
+        GestorGraficadorEstadisticas gestor = new GestorGraficadorEstadisticas();
+        String titulo = null;
+        String
+        return new ChartPanel(titulo,)
+    }*/
 }

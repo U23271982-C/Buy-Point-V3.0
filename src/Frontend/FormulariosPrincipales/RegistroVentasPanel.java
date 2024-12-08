@@ -451,11 +451,8 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
             jInternalFrame1.add(panel);
             jInternalFrame1.setVisible(true);
         }
-
-
-
-
     }
+
     private void cargarComboBoxEstadistica(){
         GestorGraficadorEstadisticas gg = new GestorGraficadorEstadisticas();
         var a = gg.listaTiposCondiciones;

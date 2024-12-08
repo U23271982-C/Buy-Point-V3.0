@@ -981,36 +981,42 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             comprobante.setTipoPago(tipoPago);
             venta1.setCliente(cliente);
             venta1.setComprobante(comprobante);
-            // Registramos la venta
-            ctrlVenta.registrar(venta1);
-            // Concatenamos el cuerpo del titeck
-            StringBuilder sb = new StringBuilder();
-            // Registramos los Detalles de Venta
-            for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
-                sb.append(String.format(ticket.getLineaTicket(),
-                        venta1.getDetallesVenta().get(i).getProducto().getNombreProducto(),
-                        venta1.getDetallesVenta().get(i).getCantidad(),
-                        venta1.getDetallesVenta().get(i).getSubTotal(),
-                        venta1.getDetallesVenta().get(i).getTotal()
-                ));
-                ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
+            if (!venta1.getDetallesVenta().isEmpty()) {
+                // Registramos la venta
+                ctrlVenta.registrar(venta1);
+                // Concatenamos el cuerpo del titeck
+                StringBuilder sb = new StringBuilder();
+                // Registramos los Detalles de Venta
+                for (int i = 0; i < venta1.getDetallesVenta().size(); i++) {
+                    sb.append(String.format(ticket.getLineaTicket(),
+                            venta1.getDetallesVenta().get(i).getProducto().getNombreProducto(),
+                            venta1.getDetallesVenta().get(i).getCantidad(),
+                            venta1.getDetallesVenta().get(i).getSubTotal(),
+                            venta1.getDetallesVenta().get(i).getTotal()
+                    ));
+                    ctrlDetalleVenta.registrar(venta1.getDetallesVenta().get(i));
+                }
+
+                // Cuerpo titeck
+                ticket.setCuerpoTicket(sb.toString());
+                // Final titeck
+                ticket.setFinalTicket(
+                        String.format(ticket.getFinalTicket(),
+                                venta1.getSubTotal(),
+                                venta1.getSubTotal().multiply(new BigDecimal("0.18")),
+                                venta1.getTotal()
+                        )
+                );
+
+                // Exportamos .txt
+                ticket.exportarTiteck("D:\\TestComprobantes", indice);
+            }else {
+                JOptionPane.showMessageDialog
+                        (null, "No se puede registrar la venta sin productos",
+                                "Error", 0);
             }
-
-            // Cuerpo titeck
-            ticket.setCuerpoTicket(sb.toString());
-            // Final titeck
-            ticket.setFinalTicket(
-                    String.format(ticket.getFinalTicket(),
-                            venta1.getSubTotal(),
-                            venta1.getSubTotal().multiply(new BigDecimal("0.18")),
-                            venta1.getTotal()
-                    )
-            );
-
-            // Exportamos .txt
-            ticket.exportarTiteck("D:\\TestComprobantes", indice);
-            //DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
-            //tm.setRowCount(0);
+            DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+            tm.setRowCount(0);
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0));
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0)+"\n"+ticket.getCuerpoTicket()+"\n"+ticket.getFinalTicket());
         } catch (RuntimeException e) {
