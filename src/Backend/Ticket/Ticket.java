@@ -6,6 +6,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -222,8 +224,8 @@ public class Ticket{
                 finalTicket);
     }
     public void exportarTiteck(String direcArchivo, int idxEncabezado){
-        this.numComprobante += 1;
-        String nombreArchivo = "\\Compfdsfrobante_" + numComprobante + ".txt";
+        DateTimeFormatter d = DateTimeFormatter.ofPattern("hh.mm.ss");
+        String nombreArchivo = "\\Comprobante_"  + LocalTime.now().format(d) + "_" + LocalDate.now() + ".txt";
         // Generar el archivo txt
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(direcArchivo + nombreArchivo))) {
 
