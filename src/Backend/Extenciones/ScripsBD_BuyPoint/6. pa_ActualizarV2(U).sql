@@ -168,3 +168,56 @@ BEGIN
 END
 GO
 --FALTA ENTIDADES
+
+CREATE OR ALTER PROCEDURE pa_actualizarProducto(
+@codigoBarras VARCHAR(30),
+
+@nombreProducto VARCHAR(30),
+@descripcion VARCHAR(150),
+@precio SMALLMONEY
+)
+AS
+BEGIN
+begin try
+	DECLARE @idProducto INT
+	SET @idProducto = 
+		dbo.fn_extraerID_Producto_CodigoBarras (@codigoBarras)
+	IF(@nombreProducto IS NOT NULL)BEGIN
+		UPDATE Producto
+		SET
+		NombreProducto = @nombreProducto
+		FROM Producto
+		WHERE ID_Producto = @idProducto
+	END
+	IF(@descripcion IS NOT NULL)BEGIN
+		UPDATE Producto
+		SET
+		Descripcion = @descripcion
+		FROM Producto
+		WHERE ID_Producto = @idProducto
+	END
+	IF(@descripcion IS NOT NULL)BEGIN
+		UPDATE Producto
+		SET
+		Descripcion = @descripcion
+		FROM Producto
+		WHERE ID_Producto = @idProducto
+	END
+	IF(@precio IS NOT NULL)BEGIN
+		UPDATE Producto
+		SET
+		Precio = @precio
+		FROM Producto
+		WHERE ID_Producto = @idProducto
+	END
+	COMMIT TRANSACTION;	
+		
+	END TRY
+	BEGIN CATCH
+		PRINT 'ERROR EN pa_registrarDetalleVenta'
+		PRINT --ERROR_MESSAGE()
+		/*@ErrorMessage NVARCHAR(4000) = */'El producto ' +
+			@nombreProducto +' no cuenta con cantidad suficiente de Stock';
+	END CATCH
+END
+GO

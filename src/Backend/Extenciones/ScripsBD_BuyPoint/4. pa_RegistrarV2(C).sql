@@ -181,7 +181,16 @@ CREATE OR ALTER PROCEDURE pa_registrarDetalleVenta(
 )
 AS
 BEGIN
+BEGIN TRANSACTION
 	BEGIN TRY
+	DECLARE @stock INT
+	DECLARE @nombreProducto VARCHAR(30)
+	SELECT @stock = I.Stock,  @nombreProducto = p.NombreProducto
+			FROM Inventario AS I
+			INNER JOIN Producto AS P ON P.ID_Inventario = I.ID_Inventario
+			WHERE ID_Producto = @id_producto
+
+	IF(@stock >= @cantidad)BEGIN
 		INSERT INTO DetalleVenta(
 							Cantidad,
 							PrecioUnitario,
@@ -198,10 +207,46 @@ BEGIN
 					@id_producto,
 					@id_venta
 					)
+			--Elimina uno del Stock y aumenta uno a la Salida
+			UPDATE Inventario
+			SET	Stock = Stock - @cantidad, Salida = Salida + @cantidad
+			FROM Inventario AS I
+			INNER JOIN Producto AS P ON P.ID_Inventario = I.ID_Inventario
+			WHERE ID_Producto = @id_producto
+
+			DECLARE @idPaqueteProducto INT
+			--Busca el pauquete de producto más antiguo
+			SELECT @idPaqueteProducto = MIN(ID_PaqueteProducto)
+			FROM PaqueteProducto 
+			where ID_Producto = @id_producto
+			--Elimina uno del paquete más antiguo
+			UPDATE PaqueteProducto
+			SET Cantidad = Cantidad - @cantidad
+			FROM PaqueteProducto
+			WHERE ID_PaqueteProducto = @idPaqueteProducto
+			--Si la cantida es igual a 0 elimina la 
+			DELETE FROM PaqueteProducto
+				WHERE ID_PaqueteProducto = @idPaqueteProducto AND Cantidad = 0
+			COMMIT TRANSACTION;	
+		----------------------
+		END ELSE BEGIN
+			DECLARE 
+			@ErrorMessage NVARCHAR(4000) = 'El producto ' +
+			@nombreProducto +' no cuenta con cantidad suficiente de Stock';
+			RAISERROR (@ErrorMessage, 16, 1);	
+			IF XACT_STATE() <> 0 BEGIN
+				ROLLBACK TRANSACTION;
+		END
+		END
 	END TRY
 	BEGIN CATCH
+	IF XACT_STATE() <> 0 BEGIN
+			ROLLBACK TRANSACTION;
+		END
 		PRINT 'ERROR EN pa_registrarDetalleVenta'
-		PRINT ERROR_MESSAGE()
+		PRINT --ERROR_MESSAGE()
+		/*@ErrorMessage NVARCHAR(4000) = */'El producto ' +
+			@nombreProducto +' no cuenta con cantidad suficiente de Stock';
 	END CATCH
 END
 GO

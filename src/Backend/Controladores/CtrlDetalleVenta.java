@@ -45,7 +45,7 @@ public class CtrlDetalleVenta implements GestorSQLServer<DetalleVenta> {
             //throw new RuntimeException(e);
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
-                            ("ERROR al registrar la Venta"));
+                            ("ERROR al registrar la Venta" + e.getMessage() ));
         }
     }
 
