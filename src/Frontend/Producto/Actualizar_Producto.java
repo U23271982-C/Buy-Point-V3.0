@@ -1,12 +1,13 @@
-package Frontend;
+package Frontend.Producto;
 
+import Frontend.Producto.RegistrarNuevoProducto;
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
 import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
-import static Frontend.RegistrarNuevoProducto.BloquearCaracteres;
+import static Frontend.Producto.RegistrarNuevoProducto.BloquearCaracteres;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Image;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Actualizar_Producto extends javax.swing.JFrame {
 
@@ -318,12 +320,12 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             producto.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
             
             CP.actualizar(producto);
-            
-            
+
+            this.setVisible(false);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        this.setVisible(false);
+        
     }//GEN-LAST:event_ConfirmarJLabelMouseClicked
 
     public Actualizar_Producto() {

@@ -1,4 +1,4 @@
-package Frontend;
+package Frontend.Producto;
 
 import Backend.Controladores.CtrlCodigo;
 import Backend.Controladores.CtrlEmpaque;

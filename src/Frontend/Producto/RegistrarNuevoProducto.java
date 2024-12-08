@@ -1,5 +1,5 @@
 
-package Frontend;
+package Frontend.Producto;
 
 import Backend.Controladores.CtrlCategoriaProducto;
 import Backend.Controladores.CtrlEmpaque;

@@ -13,8 +13,8 @@ import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import Frontend.RegistrarProductoOCodigo;
-import Frontend.TipoCliente;
-import static Frontend.TipoCliente.Torre;
+import Frontend.Cliente.TipoCliente;
+import static Frontend.Cliente.TipoCliente.Torre;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -1173,6 +1173,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     // Mostrar menú contextual
                     JPopupMenu popupMenu = new JPopupMenu();
                     JMenuItem deleteItem = new JMenuItem("Eliminar");
+                    //JMenuItem actualizarItem = new JMenuItem("Actualizar");
                     
                     // Acción para eliminar la fila seleccionada
                     deleteItem.addActionListener(event -> {
@@ -1184,8 +1185,10 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     actualizarTotales();
                 }
                 );
+                    
 
                 popupMenu.add(deleteItem);
+                //popupMenu.add(actualizarItem);
                 popupMenu.show(jTableVender, e.getX(), e.getY());
             }
         }

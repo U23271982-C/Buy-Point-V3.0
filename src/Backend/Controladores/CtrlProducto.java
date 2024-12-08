@@ -184,7 +184,7 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                 JOptionPane.showMessageDialog
                         (null, "Se actulizo las Credenciales");
 
-                comando.executeUpdate();
+                //comando.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
