@@ -6,6 +6,7 @@ import Backend.Gestores.GestorGraficadorEstadisticas;
 import Frontend.visualFramework.Formato_Imagen;
 
 import java.awt.Color;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -27,7 +28,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
         PanelMini = new javax.swing.JPanel();
         Minimizar = new javax.swing.JSeparator();
         iconoUsuario = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxGaficos = new javax.swing.JComboBox<>();
         PanelOp = new javax.swing.JPanel();
         panelOpciones = new javax.swing.JPanel();
         Inventario = new javax.swing.JLabel();
@@ -163,7 +164,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EncabezadoLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxGaficos, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(470, 470, 470)
                         .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -172,7 +173,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EncabezadoLayout.createSequentialGroup()
                 .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxGaficos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(EncabezadoLayout.createSequentialGroup()
                         .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -420,10 +421,25 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
        
        CtrlProducto ctrlProducto = new CtrlProducto();
         
-        List<String> listaNombre = ctrlProducto.listar().stream().map(p -> p.getNombreProducto()).toList();
-        List<Integer> cantidadProducto = ctrlProducto.listar().stream().map(p -> p.getInventario().getStock()).toList();
-       panel.add(new ChartPanel(GestorGraficadorEstadisticas.graficar
-            ("titulo", "ejeX", "ejeY", listaNombre, cantidadProducto)));
+        List<String> listaNombre = ctrlProducto.listar()
+                .stream().map(p -> p.getNombreProducto()).toList();
+
+        /*HashMap<Integer, List<Integer>> tiposGraficos = new HashMap<>(
+
+        );
+        List<Integer> stockProducto = ctrlProducto.listar()
+                .stream().map(p -> p.getInventario().getStock()).toList();
+        List<Integer> salidaProducto = ctrlProducto.listar()
+                .stream().map(p -> p.getInventario().getSalida()).toList();
+
+        tiposGraficos.put(0, stockProducto);
+        tiposGraficos.put(1, salidaProducto);*/
+
+        GestorGraficadorEstadisticas gestor = new GestorGraficadorEstadisticas();
+
+       panel.add(new ChartPanel(gestor.graficar
+            ("titulo", "ejeX", "ejeY",
+                    listaNombre, 1)));
        
        jInternalFrame1.add(panel);
        jInternalFrame1.setVisible(true);
@@ -454,7 +470,7 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxGaficos;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelOpciones;

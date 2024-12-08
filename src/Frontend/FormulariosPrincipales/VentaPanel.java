@@ -789,9 +789,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
     private void actualizarTotales() {
         jLabelSubTotal.setText(String.valueOf(venta1.getSubTotal()));
-        BigDecimal igv = venta1.getSubTotal().multiply(BigDecimal.valueOf(0.18)).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal igv = venta1.getTotal()
+                .multiply(BigDecimal.valueOf(0.18))
+                .setScale(2, RoundingMode.HALF_UP);
         jLabel_IGV.setText(String.valueOf(igv));
-        jLabelTotal.setText(String.valueOf(venta1.getSubTotal().add(igv).setScale(2, RoundingMode.HALF_UP)));
+        jLabelTotal.setText(String.valueOf(venta1.getTotal()));
     }
 
 
@@ -834,11 +836,11 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
             venta1.setFecha(LocalDate.now());
             venta1.setHora(LocalTime.now());
             // SubTotal calculado
-            jLabelSubTotal.getText();
-            System.out.println(jLabelSubTotal.getText());
+                //jLabelSubTotal.getText();
+            //System.out.println(jLabelSubTotal.getText());
             // Total calculado
-            jLabelTotal.getText();
-            System.out.println(jLabelTotal.getText());
+                //jLabelTotal.getText();
+            //System.out.println(jLabelTotal.getText());
             // Indece de la lista para que devuelva un tipo der Titeck
             int indice = 0;
             // Tipo Pago
@@ -963,6 +965,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 }
             }
             //venta1
+
             comprobante.setIdComprobante(1);// Necesitamos cambiarlo
             venta1.setCliente(cliente);
             venta1.setComprobante(comprobante);

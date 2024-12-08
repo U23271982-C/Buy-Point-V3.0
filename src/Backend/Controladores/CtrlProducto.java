@@ -200,6 +200,7 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                     p.getInventario().setPrecioCosto(filas.getBigDecimal(4));
                     p.getInventario().setStock(filas.getInt(5));
                     p.getCategoriaProducto().setNombre(filas.getString(6));
+                    p.getInventario().setSalida(filas.getInt(7));
 
                     productos.add(p);
                 }

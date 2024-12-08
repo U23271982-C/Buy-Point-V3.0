@@ -161,7 +161,8 @@ BEGIN
 		P.Precio,
 		I.PrecioCosto,
 		I.Stock,
-		CA.NombreCategoria
+		CA.NombreCategoria,
+		I.Salida
 	FROM Producto AS P
 	INNER JOIN Empaque AS E ON P.ID_Empaque = E.ID_Empaque
 	INNER JOIN Inventario AS I ON P.ID_Inventario = I.ID_Inventario
