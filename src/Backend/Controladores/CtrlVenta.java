@@ -22,7 +22,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
     public void registrar(Venta nuevaEntidad) {
         String consultaSQL =
                 "{ CALL paT_registrarVentaCompuesto" +
-                        "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }";
+                        "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
                      SQLServerBD.instanciaConexcion()
@@ -59,9 +59,12 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
             comando.setInt
                     (11, nuevaEntidad.getCliente()
                             .getCuenta().getTelefono());
-            comando.setInt
+            comando.setString
                     (12, nuevaEntidad.getComprobante()
-                            .getIdComprobante());
+                            .getComprobante());
+            comando.setString
+                    (13, nuevaEntidad.getComprobante()
+                            .getTipoPago().getTipoPago());
 
             comando.executeUpdate();
             String aviso = "Se registró la 1Venta";

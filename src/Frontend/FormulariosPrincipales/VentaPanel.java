@@ -965,8 +965,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 }
             }
             //venta1
-
-            comprobante.setIdComprobante(1);// Necesitamos cambiarlo
+            tipoPago.setTipoPago(tipoPagoE);
+            comprobante.setComprobante("Boleta");
+            comprobante.setTipoPago(tipoPago);
             venta1.setCliente(cliente);
             venta1.setComprobante(comprobante);
             // Registramos la venta
@@ -997,8 +998,8 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
 
             // Exportamos .txt
             ticket.exportarTiteck("D:\\TestComprobantes", indice);
-            DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
-            tm.setRowCount(0);
+            //DefaultTableModel tm = (DefaultTableModel) jTableVender.getModel();
+            //tm.setRowCount(0);
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0));
             //System.out.println(ticket.getTipoEncabezadosTickets().get(0)+"\n"+ticket.getCuerpoTicket()+"\n"+ticket.getFinalTicket());
         } catch (RuntimeException e) {
