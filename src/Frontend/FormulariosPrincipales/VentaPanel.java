@@ -1150,6 +1150,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     // Mostrar menú contextual
                     JPopupMenu popupMenu = new JPopupMenu();
                     JMenuItem deleteItem = new JMenuItem("Eliminar");
+                    //JMenuItem actualizarItem = new JMenuItem("Actualizar");
                     
                     // Acción para eliminar la fila seleccionada
                     deleteItem.addActionListener(event -> {
@@ -1161,8 +1162,10 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     actualizarTotales();
                 }
                 );
+                    
 
                 popupMenu.add(deleteItem);
+                //popupMenu.add(actualizarItem);
                 popupMenu.show(jTableVender, e.getX(), e.getY());
             }
         }

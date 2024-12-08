@@ -29,7 +29,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
             comando.setString
                     (1,nuevaEntidad.getCliente());
             comando.setString
-                    (2,nuevaEntidad.getCliente());
+                    (2,nuevaEntidad.getIdentificacion());
             comando.setInt
                     (3,nuevaEntidad.getDepartamento()
                             .getTorre());

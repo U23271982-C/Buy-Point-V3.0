@@ -2,7 +2,10 @@
 package Frontend;
 
 import Backend.Controladores.CtrlCliente;
+import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Cliente;
+import Backend.Entidades.Cuenta;
+import Backend.Entidades.Departamento;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Point;
@@ -11,7 +14,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -84,7 +89,6 @@ public class TipoCliente extends javax.swing.JFrame {
         cliente_y_pago = new javax.swing.JPanel();
         TipoClientejScrollPane = new javax.swing.JScrollPane();
         TipoClientejTable = new javax.swing.JTable();
-        BuscarjLabel = new javax.swing.JLabel();
         ClientejLabel = new javax.swing.JLabel();
         ClienteTxT = new javax.swing.JTextField();
         TorrejLabel = new javax.swing.JLabel();
@@ -102,6 +106,7 @@ public class TipoCliente extends javax.swing.JFrame {
         ApellidoTxt = new javax.swing.JTextField();
         TelefonojLabel = new javax.swing.JLabel();
         TelefonoTxt = new javax.swing.JTextField();
+        Registrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -126,15 +131,14 @@ public class TipoCliente extends javax.swing.JFrame {
         ));
         TipoClientejTable.setToolTipText("");
         TipoClientejTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TipoClientejTableMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 TipoClientejTableMousePressed(evt);
             }
         });
         TipoClientejScrollPane.setViewportView(TipoClientejTable);
-
-        BuscarjLabel.setForeground(new java.awt.Color(0, 0, 0));
-        BuscarjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        BuscarjLabel.setText("Buscar");
 
         ClientejLabel.setForeground(new java.awt.Color(0, 0, 0));
         ClientejLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -215,6 +219,8 @@ public class TipoCliente extends javax.swing.JFrame {
 
         TelefonoTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        Registrar.setText("Registrar");
+
         javax.swing.GroupLayout cliente_y_pagoLayout = new javax.swing.GroupLayout(cliente_y_pago);
         cliente_y_pago.setLayout(cliente_y_pagoLayout);
         cliente_y_pagoLayout.setHorizontalGroup(
@@ -223,20 +229,17 @@ public class TipoCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
-                            .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(477, 477, 477)
-                            .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PanelX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
                             .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(123, 123, 123))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
-                            .addComponent(ConfirmarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(370, 370, 370))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cliente_y_pagoLayout.createSequentialGroup()
-                            .addComponent(ApellidojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(ApellidoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ConfirmarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(cliente_y_pagoLayout.createSequentialGroup()
+                                    .addComponent(ApellidojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(ApellidoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(29, 29, 29)
                             .addComponent(TelefonojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -266,18 +269,16 @@ public class TipoCliente extends javax.swing.JFrame {
                 .addGap(117, 117, 117)
                 .addComponent(NombrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         cliente_y_pagoLayout.setVerticalGroup(
             cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cliente_y_pagoLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(BuscarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(PanelX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(TipoClientejScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -298,7 +299,9 @@ public class TipoCliente extends javax.swing.JFrame {
                     .addComponent(TelefonojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addComponent(ConfirmarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(cliente_y_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ConfirmarjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -379,6 +382,41 @@ public class TipoCliente extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_TorreTxtComponentAdded
 
+    private void TipoClientejTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TipoClientejTableMouseClicked
+     /*
+    TipoClientejTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            // Detectar si es un clic derecho
+            if (e.isPopupTrigger()) {
+                int row = TipoClientejTable.rowAtPoint(e.getPoint()); // Obtener fila seleccionada
+                if (row >= 0 && row < TipoClientejTable.getRowCount()) {
+                    TipoClientejTable.setRowSelectionInterval(row, row); // Seleccionar fila visualmente
+
+                    // Mostrar menú contextual
+                    JPopupMenu popupMenu = new JPopupMenu();
+                    JMenuItem registrarNuevoCliente = new JMenuItem("Registrar");
+                    JMenuItem actualizarItem = new JMenuItem("Actualizar");
+                                      
+                    registrarNuevoCliente.addActionListener( event -> {
+                        *//*Cliente C = new Cliente();
+                        Departamento D = new Departamento();
+                        Cuenta CU = new Cuenta();*//*
+                        
+                        RegistrarNuevoCliente RNC = new RegistrarNuevoCliente();
+                        RNC.setVisible(true);
+                        
+                        
+                    });
+                    
+                    popupMenu.add(registrarNuevoCliente);
+                    popupMenu.add(actualizarItem);
+            }
+        }
+    }
+    });*/
+    }//GEN-LAST:event_TipoClientejTableMouseClicked
+
     TableRowSorter TRS;    
     
     public static void main(String args[]) {
@@ -431,7 +469,6 @@ public class TipoCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApellidoTxt;
     private javax.swing.JLabel ApellidojLabel;
-    private javax.swing.JLabel BuscarjLabel;
     private javax.swing.JTextField ClienteTxT;
     private javax.swing.JLabel ClientejLabel;
     private javax.swing.JLabel ConfirmarjLabel;
@@ -442,6 +479,7 @@ public class TipoCliente extends javax.swing.JFrame {
     private javax.swing.JTextField NombreTxt;
     private javax.swing.JLabel NombrejLabel;
     private javax.swing.JPanel PanelX;
+    private javax.swing.JButton Registrar;
     private javax.swing.JTextField TelefonoTxt;
     private javax.swing.JLabel TelefonojLabel;
     private javax.swing.JScrollPane TipoClientejScrollPane;
