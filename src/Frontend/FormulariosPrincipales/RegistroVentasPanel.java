@@ -6,6 +6,7 @@ import Backend.Gestores.GestorGraficadorEstadisticas;
 import Frontend.visualFramework.Formato_Imagen;
 
 import java.awt.Color;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -414,10 +415,25 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
        
        CtrlProducto ctrlProducto = new CtrlProducto();
         
-        List<String> listaNombre = ctrlProducto.listar().stream().map(p -> p.getNombreProducto()).toList();
-        List<Integer> cantidadProducto = ctrlProducto.listar().stream().map(p -> p.getInventario().getStock()).toList();
-       panel.add(new ChartPanel(GestorGraficadorEstadisticas.graficar
-            ("titulo", "ejeX", "ejeY", listaNombre, cantidadProducto)));
+        List<String> listaNombre = ctrlProducto.listar()
+                .stream().map(p -> p.getNombreProducto()).toList();
+
+        /*HashMap<Integer, List<Integer>> tiposGraficos = new HashMap<>(
+
+        );
+        List<Integer> stockProducto = ctrlProducto.listar()
+                .stream().map(p -> p.getInventario().getStock()).toList();
+        List<Integer> salidaProducto = ctrlProducto.listar()
+                .stream().map(p -> p.getInventario().getSalida()).toList();
+
+        tiposGraficos.put(0, stockProducto);
+        tiposGraficos.put(1, salidaProducto);*/
+
+        GestorGraficadorEstadisticas gestor = new GestorGraficadorEstadisticas();
+
+       panel.add(new ChartPanel(gestor.graficar
+            ("titulo", "ejeX", "ejeY",
+                    listaNombre, 1)));
        
        jInternalFrame1.add(panel);
        jInternalFrame1.setVisible(true);
