@@ -58,5 +58,16 @@ public class Cliente extends Entidad {
 
 
     //#endregion
-    
+
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", cliente='" + cliente + '\'' +
+                ", identificacion='" + identificacion + '\'' +
+                ", departamento=" + departamento +
+                ", cuenta=" + cuenta +
+                '}';
+    }
 }
