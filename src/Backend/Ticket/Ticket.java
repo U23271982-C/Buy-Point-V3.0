@@ -236,14 +236,4 @@ public class Ticket{
                     e.getMessage(), "Error", 0);
         }
     }
-
-    public static void main(String[] args) {
-        Ticket ticket = new Ticket();
-        //ticket.exportarTiteck(1,1);
-        System.out.println(CtrlVenta.ultimoID());
-        /*System.out.println(ticket.getTipoEncabezadosTickets().get(3));
-        BigDecimal num1 = new BigDecimal("12.20");
-        String hola = String.format(ticket.finalTicket, num1, num1, num1);
-        System.out.println(hola);*/
-    }
 }

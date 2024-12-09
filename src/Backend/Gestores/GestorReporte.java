@@ -2,7 +2,12 @@ package Backend.Gestores;
 
 import Backend.Controladores.CtrlVenta;
 
+import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,24 +18,18 @@ public class GestorReporte {
             Reporte
             Fecha emisión: %s
             ------------------------------------
-            """;
-    String fomCuerpoReporte = """
             Ingreso máximo:
-                Fecha: %s
                 Monto: %.2f
             Ingreso mínimo:
-                Fecha: %s
                 Monto: %.2f
             Ingreso promedio:
-                Monto: %.2f
-            Ingreso Medio:
                 Monto: %.2f
             ------------------------------------
             """;
     public GestorReporte() {
     }
 
-    public String cuerpoReporte(int num){
+    private String cuerpoReporte(int num){
         List<Object[]> lista = CtrlVenta.utilidadFecha(num);
         List<Object> listFechas = new ArrayList<>();
         List<Object> utilidadesTotales = new ArrayList<>();
@@ -66,16 +65,31 @@ public class GestorReporte {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return String.format(fomCabeceraReporte,
 
-                LocalDate.now().format(df)
+                LocalDate.now().format(df),
+                maxUtilidades,
+                minUtilidades,
+                promedioUtilidades
         );
     }
+    public void generar(int num, String nombreRepositorioReportes){
+        DateTimeFormatter d = DateTimeFormatter.ofPattern("hh.mm.ss");
+        String nombreArchivo = "\\Reporte_"  +
+                LocalTime.now().format(d) + "_" + LocalDate.now() + ".txt";
+        // Generar el archivo txt
+        try (BufferedWriter writer =
+                     new BufferedWriter(new FileWriter
+                             (nombreRepositorioReportes + nombreArchivo))) {
 
-    public static void main(String[] args) {
-        GestorReporte gestorReporte = new GestorReporte();
-        gestorReporte.cuerpoReporte(3);
-    }
+            writer.write(cuerpoReporte(num));
+            JOptionPane.showMessageDialog
+                    (null,
+                            "Ticket generado exitosamente en: "
+                                    + nombreRepositorioReportes);
 
-    public void generar(){
-
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    e.getMessage(), "Error", 0);
+        }
     }
 }
