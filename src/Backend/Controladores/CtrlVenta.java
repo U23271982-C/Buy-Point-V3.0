@@ -127,7 +127,36 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
 
     @Override
     public ArrayList<Venta> listar() {
-        return null;
+        ArrayList<Venta> ventas = new ArrayList<>();
+        String consulta = "{ CALL pa_listarVenta() }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consulta)) {
+
+            ResultSet filas = comando.executeQuery();
+            Venta co = null;
+            while (filas.next()) {
+                co = new Venta();
+                co.setFecha(filas.getDate(1).toLocalDate());
+                co.setHora(filas.getTime(2).toLocalTime());
+                co.setSubTotal(filas.getBigDecimal(3));
+                co.setTotal(filas.getBigDecimal(4));
+                co.getCliente().setCliente(filas.getString(5));
+                co.getCliente().setIdentificacion(filas.getString(6));
+                co.getCliente().getDepartamento().setTorre(filas.getShort(7));
+                co.getCliente().getDepartamento().setDepartamento(filas.getShort(8));
+                co.getCliente().getCuenta().setNombre(filas.getString(9));
+                co.getCliente().getCuenta().setApellido(filas.getString(10));
+                co.getCliente().getCuenta().setTelefono(filas.getInt(11));
+
+                ventas.add(co);
+            }
+
+            return ventas;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static int ultimoID(){
