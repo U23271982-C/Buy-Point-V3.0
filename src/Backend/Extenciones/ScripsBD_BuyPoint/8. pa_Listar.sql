@@ -191,7 +191,8 @@ BEGIN
 		D.Departamento,
 		CU.Nombre,
 		CU.Apellido,
-		CU.Telefono
+		CU.Telefono,
+		V.ID_Venta
 	FROM Venta AS V
 	INNER JOIN Cliente AS C ON V.ID_Cliente = C.ID_Cliente
 	LEFT JOIN Comprobante AS CO ON CO.ID_Comprobante = V.ID_Comprobante

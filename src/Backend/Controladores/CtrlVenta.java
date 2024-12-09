@@ -148,6 +148,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
                 co.getCliente().getCuenta().setNombre(filas.getString(9));
                 co.getCliente().getCuenta().setApellido(filas.getString(10));
                 co.getCliente().getCuenta().setTelefono(filas.getInt(11));
+                co.setIdVenta(filas.getInt(12));
 
                 ventas.add(co);
             }
@@ -157,7 +158,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }|
 
     public static int ultimoID(){
         String consultaSQL = " SELECT dbo.fn_extraerID_UltimaVenta() ";
