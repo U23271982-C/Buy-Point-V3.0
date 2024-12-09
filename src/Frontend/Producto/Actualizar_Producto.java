@@ -161,6 +161,9 @@ public class Actualizar_Producto extends javax.swing.JFrame {
             }
         });
         PrecioVentaTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PrecioVentaTxtKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 PrecioVentaTxtKeyTyped(evt);
             }
@@ -340,6 +343,12 @@ public class Actualizar_Producto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ConfirmarJLabelMouseClicked
 
+    private void PrecioVentaTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioVentaTxtKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+                
+        }
+    }//GEN-LAST:event_PrecioVentaTxtKeyPressed
+
     public Actualizar_Producto() {
         initComponents();
         setLocationRelativeTo(null);
@@ -365,18 +374,6 @@ public class Actualizar_Producto extends javax.swing.JFrame {
         FechaCaducidad.setText(String.valueOf(producto.getPaqueteProducto().getFechaCaducidad()));
     }
     
-    public void CantidadStock(JLabel jLabel){
-        
-    }
-    
-    public void FechaCaducidad(JLabel jLabel){
-        
-    }
-    
-    public void tamañoimagen(JLabel label, String ruta){
-        label.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ruta)). getImage()
-        .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
-    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

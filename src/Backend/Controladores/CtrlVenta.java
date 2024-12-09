@@ -3,17 +3,11 @@ package Backend.Controladores;
 import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.*;
 import Backend.Gestores.GestorSQLServer;
-import org.jfree.ui.action.ActionRadioButton;
 
-import javax.sound.sampled.Port;
 import javax.swing.*;
-import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class CtrlVenta implements GestorSQLServer<Venta> {
@@ -37,9 +31,9 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
                     (2,
                     java.sql.Time.valueOf(nuevaEntidad.getHora()));
             comando.setBigDecimal
-                    (3, nuevaEntidad.getSubTotal());
+                    (3, nuevaEntidad.calcularSubTotal());
             comando.setBigDecimal
-                    (4, nuevaEntidad.getTotal());
+                    (4, nuevaEntidad.calcularTotal());
 
             comando.setString
                     (5, nuevaEntidad.getCliente().getCliente());
@@ -81,8 +75,8 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         }
     }
 
-    public static void main(String[] args) {
-        /*DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+    /*public static void main(String[] args) {
+        *//*DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
         DateTimeFormatter fttFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         CtrlVenta ctrlVenta = new CtrlVenta();
@@ -106,12 +100,12 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         v.setCliente(cliente);
         v.setComprobante(comprobante);
 
-        System.out.println(v.getTotal());*/
+        System.out.println(v.getTotal());*//*
 
         //ctrlVenta.registrar(v);
         Object[] nol = CtrlVenta.fechaMasVenta();
         System.out.println(nol[0]);
-    }
+    }*/
 
     @Override
     public Venta leer(Venta leerEntidad) {

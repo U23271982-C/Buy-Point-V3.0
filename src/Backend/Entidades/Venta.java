@@ -50,8 +50,7 @@ public class Venta extends Entidad {
     }
 
     public BigDecimal getSubTotal() {
-        return subTotal = detallesVenta.stream().map(DetalleVenta::getSubTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(1, RoundingMode.HALF_UP);
+        return subTotal;
     }
 
     public void setSubTotal(BigDecimal subTotal) {
@@ -59,13 +58,9 @@ public class Venta extends Entidad {
     }
 
     public BigDecimal getTotal() {
-
-        return total = /*detallesVenta.stream().map(DetalleVenta::getTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);*/
-                detallesVenta.stream().map(DetalleVenta::getTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add)
-                        .setScale(1, RoundingMode.HALF_UP);
+        return total;
     }
+
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
@@ -96,6 +91,19 @@ public class Venta extends Entidad {
 
 
     //#endregion
+
+    public BigDecimal calcularTotal() {
+
+        return /*total = /*detallesVenta.stream().map(DetalleVenta::getTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);*/
+                detallesVenta.stream().map(DetalleVenta::getTotal)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add)
+                        .setScale(1, RoundingMode.HALF_UP);
+    }
+    public BigDecimal calcularSubTotal() {
+        return /*subTotal = */detallesVenta.stream().map(DetalleVenta::getSubTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(1, RoundingMode.HALF_UP);
+    }
 
     public void agregarDetalleVenta(DetalleVenta nuevoDetalleVenta){
         detallesVenta.add(nuevoDetalleVenta);

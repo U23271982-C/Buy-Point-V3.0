@@ -1,11 +1,9 @@
 package Backend;
 
-import Backend.Controladores.CtrlProducto;
-import Backend.Gestores.GestorGraficadorEstadisticas;
+import Backend.Controladores.CtrlVenta;
+import Backend.Entidades.Venta;
 
-import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.util.ArrayList;
 //import org.jfree.chart.ChartPanel;
 
 public class PruebaApp {
@@ -111,5 +109,10 @@ public class PruebaApp {
 //        ventana.add(panel);
 //        //ventana.add(new ChartPanel(grafico));
 //        ventana.setVisible(true);
+        CtrlVenta CV = new CtrlVenta();
+        //DefaultTableModel DFM = (DefaultTableModel) jTable.getModel();
+
+        ArrayList<Venta> lista = CV.listar();
+        System.out.println(lista.get(9).calcularTotal());
     }
 }

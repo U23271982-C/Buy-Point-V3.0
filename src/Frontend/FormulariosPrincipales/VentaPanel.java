@@ -1,7 +1,6 @@
 package Frontend.FormulariosPrincipales;
 
 import Backend.Controladores.CtrlDetalleVenta;
-import Backend.Controladores.CtrlEmpaque;
 import Backend.Controladores.CtrlVenta;
 import Backend.Entidades.*;
 import Backend.Ticket.Ticket;
@@ -9,35 +8,21 @@ import Frontend.visualFramework.Animaciones;
 import Backend.Controladores.CtrlProducto;
 import Backend.Controladores.CtrlTipoPago;
 import Frontend.visualFramework.Formato_Imagen;
-import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
-import Frontend.FormulariosPrincipales.InventarioPanel;
-import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
-import Frontend.Producto.Codigo_del_Producto.RegistrarProductoOCodigo;
 import Frontend.Cliente.TipoCliente;
-import static Frontend.Cliente.TipoCliente.Torre;
+
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public final class VentaPanel extends javax.swing.JFrame implements Animaciones {
@@ -799,12 +784,12 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
     }
 
     private void actualizarTotales() {
-        jLabelSubTotal.setText(String.valueOf(venta1.getSubTotal()));
-        BigDecimal igv = venta1.getTotal()
+        jLabelSubTotal.setText(String.valueOf(venta1.calcularSubTotal()));
+        BigDecimal igv = venta1.calcularTotal()
                 .multiply(BigDecimal.valueOf(0.18))
                 .setScale(2, RoundingMode.HALF_UP);
         jLabel_IGV.setText(String.valueOf(igv));
-        jLabelTotal.setText(String.valueOf(venta1.getTotal()));
+        jLabelTotal.setText(String.valueOf(venta1.calcularTotal()));
     }
 
 
@@ -1002,9 +987,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 // Final titeck
                 ticket.setFinalTicket(
                         String.format(ticket.getFinalTicket(),
-                                venta1.getSubTotal(),
-                                venta1.getSubTotal().multiply(new BigDecimal("0.18")),
-                                venta1.getTotal()
+                                venta1.calcularSubTotal(),
+                                venta1.calcularSubTotal().multiply(new BigDecimal("0.18")),
+                                venta1.calcularTotal()
                         )
                 );
 
@@ -1138,9 +1123,9 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                     // Fianl titeck
                     ticket.setFinalTicket(
                             String.format(ticket.getFinalTicket(),
-                                    venta1.getSubTotal(),
-                                    venta1.getSubTotal().multiply(new BigDecimal("0.18")),
-                                    venta1.getTotal()
+                                    venta1.calcularSubTotal(),
+                                    venta1.calcularSubTotal().multiply(new BigDecimal("0.18")),
+                                    venta1.calcularTotal()
                             )
                     );
                 } catch (Exception e) {

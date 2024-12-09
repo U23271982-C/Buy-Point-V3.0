@@ -48,6 +48,9 @@ public class RegistrarEmpaques extends javax.swing.JFrame {
         jLabel1.setText("Nuevo Paquete");
 
         NuevoPaqueteTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NuevoPaqueteTxtKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NuevoPaqueteTxtKeyTyped(evt);
             }
@@ -220,6 +223,12 @@ public class RegistrarEmpaques extends javax.swing.JFrame {
         this.setVisible(false);
         EE.toFront();
     }//GEN-LAST:event_EliminarMouseClicked
+
+    private void NuevoPaqueteTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NuevoPaqueteTxtKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+        ConfirmacionPaquete();
+        }
+    }//GEN-LAST:event_NuevoPaqueteTxtKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

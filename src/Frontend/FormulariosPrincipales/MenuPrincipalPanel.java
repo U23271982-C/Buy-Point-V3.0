@@ -1,7 +1,13 @@
 package Frontend.FormulariosPrincipales;
 
+import Backend.Controladores.CtrlPaqueteProducto;
+import Backend.Controladores.CtrlProducto;
+import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Producto;
+import Backend.Gestores.GestorDeFiltro;
 import Frontend.Categoria.RegistrarNuevaCategoria;
 import Frontend.Cliente.RegistrarNuevoCliente;
+import Frontend.EliminarVenta;
 import Frontend.visualFramework.Animaciones;
 import Frontend.visualFramework.Formato_Imagen;
 import Frontend.FormulariosPrincipales.InventarioPanel;
@@ -10,10 +16,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileView;
+import javax.swing.table.DefaultTableModel;
 
 
 public final class MenuPrincipalPanel extends javax.swing.JFrame implements Animaciones{
@@ -40,6 +50,11 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
         EmpaqueButton = new javax.swing.JLabel();
         CategoriaButton = new javax.swing.JLabel();
         ClienteButton = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextArea = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabladeProductosaCaducar = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -287,6 +302,36 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
             }
         });
 
+        TextArea.setEditable(false);
+        TextArea.setBackground(new java.awt.Color(255, 255, 255));
+        TextArea.setColumns(20);
+        TextArea.setRows(5);
+        jScrollPane1.setViewportView(TextArea);
+
+        TabladeProductosaCaducar.setForeground(new java.awt.Color(0, 0, 0));
+        TabladeProductosaCaducar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Producto", "Fecha de Caducidad"
+            }
+        ));
+        jScrollPane2.setViewportView(TabladeProductosaCaducar);
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Gestor Ventas");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
         MenuPrincipal.setLayout(MenuPrincipalLayout);
         MenuPrincipalLayout.setHorizontalGroup(
@@ -296,27 +341,49 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
                 .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuPrincipalLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, 1198, Short.MAX_VALUE))
+                        .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, 1243, Short.MAX_VALUE))
                     .addGroup(MenuPrincipalLayout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CategoriaButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EmpaqueButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ClienteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ClienteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                        .addComponent(EmpaqueButton, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                                .addComponent(CategoriaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(110, 110, 110)))
                 .addContainerGap())
         );
         MenuPrincipalLayout.setVerticalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(EmpaqueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91)
-                .addComponent(CategoriaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(ClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202)
+                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(EmpaqueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(CategoriaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPrincipalLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE))
+                    .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(ClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)))
                 .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -325,7 +392,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,6 +521,33 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
         RNC.setVisible(true);
         RNC.toFront();
     }//GEN-LAST:event_ClienteButtonMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        EliminarVenta EV = new EliminarVenta();
+        EV.setVisible(true);
+        EV.toFront();
+    }//GEN-LAST:event_jLabel1MouseClicked
+    
+    private void CargarDatosProductosCaducar(JTable jTable){
+        //GestorDeFiltro GSF = new GestorDeFiltro();
+        CtrlPaqueteProducto CP = new CtrlPaqueteProducto();
+        
+        List<PaqueteProducto> lista = CP.listar();
+
+        List<PaqueteProducto> listaFiltrado =
+                GestorDeFiltro.filtrarPorCaducar(lista, 7);
+        //lista.forEach(System.out::println);
+        
+        DefaultTableModel dtm = (DefaultTableModel) TabladeProductosaCaducar.getModel();
+        
+        for (int i = 0; i < listaFiltrado.size(); i++) {
+            Object producto = listaFiltrado.get(i).getProducto().getNombreProducto();
+            Object fv = listaFiltrado.get(i).getFechaCaducidad();
+            
+            dtm.addRow(new Object[]{producto,fv} );
+        }
+        
+    }
     
     public MenuPrincipalPanel(){
        initComponents();
@@ -464,9 +558,12 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
        FI.tamañoimagen(Menu, "/img/menu.png");
        FI.tamañoimagen(Venta, "/img/venta.png");
        FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
-       EmpaqueButton.setBackground(Color.WHITE);
-       CategoriaButton.setBackground(Color.WHITE);
-       ClienteButton.setBackground(Color.WHITE);
+//       EmpaqueButton.setBackground(Color.WHITE);
+//       CategoriaButton.setBackground(Color.WHITE);
+//       ClienteButton.setBackground(Color.WHITE);
+        TextArea.setLineWrap(true);
+        CargarDatosProductosCaducar(TabladeProductosaCaducar);
+        
     }
     
     public static void main(String args[]) {
@@ -492,9 +589,14 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
     private javax.swing.JPanel PanelOp;
     private javax.swing.JPanel PanelX;
     private javax.swing.JLabel RegistroVentas;
+    private javax.swing.JTable TabladeProductosaCaducar;
+    private javax.swing.JTextArea TextArea;
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelOpciones;
     // End of variables declaration//GEN-END:variables
 

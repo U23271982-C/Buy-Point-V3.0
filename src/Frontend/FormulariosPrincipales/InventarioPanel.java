@@ -1,5 +1,6 @@
 package Frontend.FormulariosPrincipales;
 
+import Backend.Gestores.GestorDeFiltro;
 import Frontend.visualFramework.Animaciones;
 import Backend.Controladores.CtrlCategoriaProducto;
 import Frontend.Producto.AgregarCantidadyFV_Producto;
@@ -13,7 +14,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import Backend.Controladores.CtrlProducto;
-import Backend.Controladores.Filtro;
+
 import Backend.Entidades.CategoriaProducto;
 import Backend.Entidades.Producto;
 import Backend.Entidades.Codigo;
@@ -551,7 +552,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
             
             CtrlProducto CP = new CtrlProducto();
         
-            Filtro<Producto> F = new Filtro();
+            GestorDeFiltro F = new GestorDeFiltro();
             
             List<Producto> listado = CP.listar();
             listado = F.ordenarProductos(listado, inx);

@@ -1,5 +1,9 @@
 package Backend.Gestores;
 
+import Backend.Controladores.CtrlPaqueteProducto;
+import Backend.Controladores.CtrlProducto;
+import Backend.Controladores.CtrlVenta;
+import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Backend.Entidades.Venta;
 
@@ -41,14 +45,21 @@ public class GestorDeFiltro {
         return listaOrdenar.stream().sorted
                 (compaProducto.get(posicionCondicion)).toList();
     }
-    public List<Producto> filtrarPorCaducar
-            (List<Producto> listaFiltrar, int diasFalta){
+    public static List<PaqueteProducto> filtrarPorCaducar
+            (List<PaqueteProducto> listaFiltrar, int diasFalta){
         return
                 listaFiltrar.stream().filter
                         (p -> ChronoUnit.DAYS.between(LocalDate.now(),
-                                p.getPaqueteProducto().getFechaCaducidad())
-                                == diasFalta).toList();
+                                p.getFechaCaducidad()) == diasFalta).toList();
     }
+
+/*    public static void main(String[] args) {
+        CtrlPaqueteProducto ctrlProducto = new CtrlPaqueteProducto();
+        List<PaqueteProducto> k = ctrlProducto.listar();
+        //k.forEach(System.out::println);
+        GestorDeFiltro.filtrarPorCaducar(k, 1).forEach(System.out::println);
+
+    }*/
     public List<Venta> filtrarRangoFecha
             (List<Venta> listaFiltrar,
              ChronoLocalDate inicioRango, ChronoLocalDate finRango){

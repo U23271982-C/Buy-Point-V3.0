@@ -277,19 +277,19 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
         registro_ventasLayout.setHorizontalGroup(
             registro_ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelOp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelOp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1210, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registro_ventasLayout.createSequentialGroup()
-                .addContainerGap(195, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
+                .addGap(170, 170, 170))
         );
         registro_ventasLayout.setVerticalGroup(
             registro_ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registro_ventasLayout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -438,21 +438,24 @@ public final class RegistroVentasPanel extends javax.swing.JFrame implements Ani
 
         cargarComboBoxEstadistica();
 
-        /*if (jComboBoxGaficos.getSelectedIndex() == 0) {
+        if (jComboBoxGaficos.getSelectedIndex() == 0) {
             panel.add(new ChartPanel(gestor.graficar
                     ("CantidaProducto", "ejeX", "ejeY",
                             listaNombre, 0)));
             jInternalFrame1.add(panel);
-            jInternalFrame1.setVisible(true);*/
-        //} else if (jComboBoxGaficos.getSelectedIndex() == 1) {
+            jInternalFrame1.setVisible(true);
+        } else if (jComboBoxGaficos.getSelectedIndex() == 1) {
             panel.add(new ChartPanel(gestor.graficar
                     ("Cantidalñplducto", "ejeX", "ejeY",
                             listaNombre, 1)));
             jInternalFrame1.add(panel);
             jInternalFrame1.setVisible(true);
-        //}
-    }
+        }
 
+
+
+
+    }
     private void cargarComboBoxEstadistica(){
         GestorGraficadorEstadisticas gg = new GestorGraficadorEstadisticas();
         var a = gg.listaTiposCondiciones;
