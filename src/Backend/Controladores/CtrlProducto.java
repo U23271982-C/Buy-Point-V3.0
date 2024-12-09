@@ -158,12 +158,12 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                         actualizarEntidad.getPrecio());
 
 
-                comando.executeQuery();
+                comando.executeUpdate();
                 System.out.println("Se realizó la lectura");
                 JOptionPane.showMessageDialog
                         (null, "Se actulizo las Credenciales");
 
-                //comando.executeUpdate();
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

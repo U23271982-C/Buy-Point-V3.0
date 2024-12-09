@@ -195,7 +195,7 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
                         + nombreCategoria.substring(1).toLowerCase();
             CP.setNombre(nombreCategoria);
             
-            System.out.println(nombreCategoria);
+            //System.out.println(nombreCategoria);
             boolean existe = false;
             ArrayList<CategoriaProducto> opciones = CCP.listar();
             for (CategoriaProducto listar : opciones) {

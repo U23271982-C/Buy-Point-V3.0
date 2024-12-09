@@ -1,6 +1,7 @@
 
-package Frontend;
+package Frontend.Producto.Codigo_del_Producto;
 
+import Frontend.Producto.Codigo_del_Producto.RegistrarNuevoCodigo;
 import Frontend.Producto.RegistrarNuevoProducto;
 import java.awt.Color;
 
