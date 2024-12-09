@@ -85,7 +85,27 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
 
     @Override
     public void actualizar(CategoriaProducto actualizarEntidad) {
-        // FALTA
+        String consultaInsert =
+                "{ CALL pa_actualizarCategoriaProducto( ?,?) }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consultaInsert)) {
+
+            comando.setInt(1,
+                    actualizarEntidad.getIdCategoriaProducto());
+            comando.setString(2,
+                    actualizarEntidad.getNombre());
+
+
+            comando.executeUpdate();
+            System.out.println("Se realizó la actualización");
+            JOptionPane.showMessageDialog
+                    (null, "Se actulizo la categoría de producto");
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

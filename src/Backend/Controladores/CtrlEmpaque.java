@@ -97,7 +97,27 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
 
     @Override
     public void actualizar(Empaque actualizarEntidad) {
-        //FALTA LÓGICA
+        String consultaInsert =
+                "{ CALL pa_actualizarEmpaque( ?,?) }";
+
+        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
+                .conectar().prepareCall(consultaInsert)) {
+
+            comando.setInt(1,
+                    actualizarEntidad.getIdEmpaque());
+            comando.setString(2,
+                    actualizarEntidad.getTipoEmpaque());
+
+
+            comando.executeUpdate();
+            System.out.println("Se realizó la actualización");
+            JOptionPane.showMessageDialog
+                    (null, "Se actulizo la el empaque");
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

@@ -3,14 +3,14 @@ GO--UPDATE
 
 
 CREATE OR ALTER PROCEDURE pa_actualizarCategoriaProducto(
-@nombreCategoriaProductoN VARCHAR(20),
-@nombreCategoriaProducto VARCHAR(20)
+@idcategoria INT,
+@nombreCategoriaProductoN VARCHAR(20)
 )
 AS
 BEGIN
 	UPDATE CategoriaProducto SET
 		NombreCategoria = @nombreCategoriaProductoN
-	WHERE NombreCategoria = @nombreCategoriaProducto
+	WHERE ID_CategoriaProducto = @idcategoria
 END
 
 GO
@@ -123,7 +123,7 @@ BEGIN
 END
 GO
 CREATE OR ALTER PROCEDURE pa_actualizarEmpaque(
-@tipoempaque VARCHAR(30),
+@idtipoempaque INT,
 @tipoempaqueN VARCHAR(30)
 )
 AS
@@ -132,7 +132,7 @@ BEGIN
 	SET
 		TipoEmpaque = @tipoempaqueN
 	WHERE
-		TipoEmpaque = @tipoempaque
+		ID_Empaque = @idtipoempaque
 END
 GO
 --Inventario se actualiza en conjunto con producto
