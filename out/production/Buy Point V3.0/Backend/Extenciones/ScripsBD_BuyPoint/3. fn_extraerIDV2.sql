@@ -47,3 +47,28 @@ BEGIN
 	RETURN @id;
 END;
 GO
+
+CREATE OR ALTER FUNCTION fn_extraerID_UltimaVenta()
+RETURNS INT
+AS
+BEGIN
+	DECLARE @id INT;
+	
+	SELECT TOP 1 @id = ID_Venta
+	FROM Venta V
+	ORDER BY ID_Venta DESC
+	
+	RETURN @id;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE pa_FechaMasVenta
+AS
+BEGIN
+	SELECT TOP 1
+		Fecha,
+		SUM(Total) AS TotalVenta
+	FROM Venta
+	GROUP BY Fecha
+	ORDER BY SUM(Total) DESC
+END

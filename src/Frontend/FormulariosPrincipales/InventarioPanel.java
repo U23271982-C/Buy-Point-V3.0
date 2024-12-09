@@ -1,38 +1,22 @@
 package Frontend.FormulariosPrincipales;
 
 import Frontend.visualFramework.Animaciones;
-import Backend.Controladores.CtrlCategoriaProducto;
-import Frontend.Producto.AgregarCantidadyFV_Producto;
 import Frontend.Producto.VistaProducto;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
+
 import Backend.Controladores.CtrlProducto;
-import Backend.Controladores.Filtro;
-import Backend.Entidades.CategoriaProducto;
+import Backend.Gestores.GestorDeFiltro;
 import Backend.Entidades.Producto;
 import Backend.Entidades.Codigo;
 import Frontend.Categoria.RegistrarNuevaCategoria;
 import Frontend.visualFramework.Formato_Imagen;
 import Frontend.RegistrarProductoOCodigo;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public final class InventarioPanel extends javax.swing.JFrame implements Animaciones{
         @SuppressWarnings("unchecked")
@@ -609,7 +593,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
             
             CtrlProducto CP = new CtrlProducto();
         
-            Filtro<Producto> F = new Filtro();
+            GestorDeFiltro F = new GestorDeFiltro();
             
             List<Producto> listado = CP.listar();
             listado = F.ordenarProductos(listado, inx);

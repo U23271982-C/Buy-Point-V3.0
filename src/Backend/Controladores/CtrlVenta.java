@@ -3,6 +3,7 @@ package Backend.Controladores;
 import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.*;
 import Backend.Gestores.GestorSQLServer;
+import org.jfree.ui.action.ActionRadioButton;
 
 import javax.sound.sampled.Port;
 import javax.swing.*;
@@ -81,7 +82,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
     }
 
     public static void main(String[] args) {
-        DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+        /*DateTimeFormatter fttHora = DateTimeFormatter.ofPattern("HH:mm:ss");
         DateTimeFormatter fttFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         CtrlVenta ctrlVenta = new CtrlVenta();
@@ -105,9 +106,11 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         v.setCliente(cliente);
         v.setComprobante(comprobante);
 
-        System.out.println(v.getTotal());
+        System.out.println(v.getTotal());*/
 
         //ctrlVenta.registrar(v);
+        Object[] nol = CtrlVenta.fechaMasVenta();
+        System.out.println(nol[0]);
     }
 
     @Override
@@ -158,7 +161,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }|
+    }
 
     public static int ultimoID(){
         String consultaSQL = " SELECT dbo.fn_extraerID_UltimaVenta() ";
@@ -179,4 +182,23 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         return res;
     }
 
+    public static Object[] fechaMasVenta(){
+        String consultaSQL = "{ CALL pa_FechaMasVenta() }";
+        Object[] cosas = new Object[2];
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion()
+                             .conectar().prepareCall(consultaSQL)){
+
+            ResultSet filas = comando.executeQuery();
+            if (filas.next()) {
+                cosas[0] = filas.getDate(1).toLocalDate();
+                cosas[1] = filas.getDouble(2);
+            }
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
+        return cosas;
+    }
 }

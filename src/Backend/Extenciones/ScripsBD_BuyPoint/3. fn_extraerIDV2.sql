@@ -62,4 +62,13 @@ BEGIN
 END;
 GO
 
-SELECT dbo.fn_extraerID_UltimaVenta()
+CREATE OR ALTER PROCEDURE pa_FechaMasVenta
+AS
+BEGIN
+	SELECT TOP 1
+		Fecha,
+		SUM(Total) AS TotalVenta
+	FROM Venta
+	GROUP BY Fecha
+	ORDER BY SUM(Total) DESC
+END
