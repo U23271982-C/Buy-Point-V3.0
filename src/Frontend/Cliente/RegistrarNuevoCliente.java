@@ -422,26 +422,33 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
         String nombre = NombreTxt.getText().trim();
         String apellido = ApellidoTxt.getText().trim();
         String telefono = TelefonoTxt.getText().trim();
-               
-        cliente = (cliente == null)? null : cliente;
+
+        /*cliente = (cliente == null)? null : cliente;
         identificacion = (identificacion == null)? null : identificacion;
         torre = (torre == null)? null : torre;
         departamento = (departamento == null)? null : departamento;        
         nombre = (nombre == null)? null : nombre;        
         apellido = (apellido == null)? null : apellido;        
-        telefono = (telefono == null)? null : telefono;        
-                
-        
-        CL.setCliente(cliente);
-        CL.setIdentificacion(identificacion);
-        D.setTorre(Short.parseShort(torre));
-        D.setDepartamento(Short.parseShort(departamento));
-        CL.setDepartamento(D);
-        CU.setNombre(nombre);
-        CU.setApellido(apellido);
-        CU.setTelefono(Integer.parseInt(telefono));
-        CL.setCuenta(CU);
-        
+        telefono = (telefono == null)? null : telefono;*/
+            if (!cliente.isEmpty() & !identificacion.isEmpty()){
+                CL.setCliente(cliente);
+                CL.setIdentificacion(identificacion);
+                System.out.println(cliente);
+            }if (!torre.isEmpty() & !departamento.isEmpty()){
+                D.setTorre(Short.parseShort(torre));
+                D.setDepartamento(Short.parseShort(departamento));
+
+                CL.setDepartamento(D);
+                System.out.println(torre);
+            }if(!nombre.isEmpty() & !apellido.isEmpty()){
+                CU.setNombre(nombre);
+                CU.setApellido(apellido);
+                CU.setTelefono(Integer.parseInt(telefono));
+
+                CL.setCuenta(CU);
+                System.out.println(nombre);
+            }
+
         CC.registrar(CL);
         
         TipoCliente TC = new TipoCliente();
