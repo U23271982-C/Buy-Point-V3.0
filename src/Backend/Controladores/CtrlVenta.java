@@ -9,6 +9,8 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CtrlVenta implements GestorSQLServer<Venta> {
     public CtrlVenta() {
@@ -195,4 +197,33 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         }
         return cosas;
     }
+
+    public static List<Object[]> utilidadFecha(int reporteDias){
+        String consultaSQL = "{ CALL pa_UtilidadFecha(?) }";
+        List<Object[]> lista = new ArrayList<>();
+        Object[] cosas = null;
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion()
+                             .conectar().prepareCall(consultaSQL)){
+            comando.setInt(1, reporteDias);
+
+            ResultSet filas = comando.executeQuery();
+            if (filas.next()) {
+                cosas = new Object[2];
+
+                cosas[0] = filas.getDate(1).toLocalDate();
+                cosas[1] = filas.getDouble(2);
+                lista.add(cosas);
+            }
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
+        }
+        return lista;
+    }
+
+/*    public static void main(String[] args) {
+        System.out.println(Arrays.toString(CtrlVenta.utilidadFecha(2).get(0)));
+    }*/
 }

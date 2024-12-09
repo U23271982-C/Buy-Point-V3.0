@@ -72,3 +72,16 @@ BEGIN
 	GROUP BY Fecha
 	ORDER BY SUM(Total) DESC
 END
+go
+CREATE OR ALTER PROCEDURE pa_UtilidadFecha(
+@dias INT
+)
+AS
+BEGIN
+	SELECT TOP (@dias) 
+		Fecha, 
+		SUM(Total) - SUM(SubTotal) AS Utilidad
+	FROM Venta
+	GROUP BY Fecha
+	ORDER BY Fecha DESC
+END
