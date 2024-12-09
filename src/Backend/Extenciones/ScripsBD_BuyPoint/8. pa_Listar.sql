@@ -194,8 +194,8 @@ BEGIN
 		CU.Telefono
 	FROM Venta AS V
 	INNER JOIN Cliente AS C ON V.ID_Cliente = C.ID_Cliente
-	INNER JOIN Comprobante AS CO ON CO.ID_Comprobante = V.ID_Comprobante
-	INNER JOIN Cuenta AS CU ON C.ID_Cuenta= CU.ID_Cuenta
-	INNER JOIN Departamento AS D ON C.ID_Departamento = D.ID_Departamento
+	LEFT JOIN Comprobante AS CO ON CO.ID_Comprobante = V.ID_Comprobante
+	LEFT JOIN Cuenta AS CU ON C.ID_Cuenta= CU.ID_Cuenta
+	LEFT JOIN Departamento AS D ON C.ID_Departamento = D.ID_Departamento
 END
 GO
