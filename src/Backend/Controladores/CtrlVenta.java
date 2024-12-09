@@ -116,7 +116,21 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
 
     @Override
     public void eliminar(Venta eliminadoEntidad) {
+        String consultaSQL = "{ CALL pa_eliminarVenta(?) }";
 
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
+
+            comando.setInt(1, eliminadoEntidad.getIdVenta());
+
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Producto eliminado");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override

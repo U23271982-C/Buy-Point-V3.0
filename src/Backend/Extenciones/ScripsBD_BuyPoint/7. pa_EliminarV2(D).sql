@@ -283,27 +283,20 @@ BEGIN
 	END CATCH;
 END;
 GO
-CREATE OR ALTER PROCEDURE pa_eliminarVenta(--FALTA
-	@Codigo VARCHAR(30)
+CREATE OR ALTER PROCEDURE pa_eliminarVenta(
+	@id INT
 )
 AS
 BEGIN
 	BEGIN TRANSACTION
 	BEGIN TRY
-		
-		DECLARE @idProductoEliminar INT;
-		SET @idProductoEliminar = dbo.fn_extraerID_Producto_CodigoBarras(@Codigo);
-		
+			
 		--Elimando producto
-		DELETE Producto
-		WHERE ID_Producto = @idProductoEliminar
-		--Eliminando Codigo
-		DELETE Codigo
-		WHERE ID_Producto = @idProductoEliminar
-		--Eliminando Invenrario
-		--Eliminando Paquete de los Productos
-		DELETE PaqueteProducto
-		WHERE ID_Producto = @idProductoEliminar
+		DELETE Venta
+		WHERE ID_Venta = @id
+
+		DELETE DetalleVenta
+		WHERE ID_Venta = @id
 
 		COMMIT TRANSACTION;
 	END TRY
