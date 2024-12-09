@@ -1,6 +1,8 @@
 
 package Frontend;
 
+import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
+import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,15 +14,29 @@ public class LogoCarga extends javax.swing.JFrame {
     public LogoCarga() {
         initComponents();
         setLocationRelativeTo(null);
-        this.tamañoimagen(Logo, "/img/logo.png");
+        Formato_Imagen FI = new Formato_Imagen();
+        FI.tamañoimagen(Logo, "/img/logo.png");
+        InicioSesion();
     }
 
-    public void tamañoimagen(JLabel label, String ruta){
-        label.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ruta)). getImage()
-        .getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH))); 
+    private void InicioSesion (){
+        MenuPrincipalPanel MPP = new MenuPrincipalPanel();
+        
+        for (int i = 1; i < 100 ; i+=2) {
+            
+            try {
+                Thread.sleep(80);
+                progressBar.setValue(i);
+                if(i == 99){
+                    this.setVisible(false);
+                    MPP.setVisible(true);
+                    MPP.toFront();
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(LogoCarga.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
-    
-    
     
     
     
@@ -103,10 +119,7 @@ public class LogoCarga extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
                
         java.awt.EventQueue.invokeLater(new Runnable() {

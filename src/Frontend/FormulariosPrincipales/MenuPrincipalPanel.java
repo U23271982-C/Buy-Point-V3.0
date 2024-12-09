@@ -1,8 +1,11 @@
 package Frontend.FormulariosPrincipales;
 
+import Frontend.Categoria.RegistrarNuevaCategoria;
+import Frontend.Cliente.RegistrarNuevoCliente;
 import Frontend.visualFramework.Animaciones;
 import Frontend.visualFramework.Formato_Imagen;
 import Frontend.FormulariosPrincipales.InventarioPanel;
+import Frontend.PaqueteProductos.RegistrarEmpaques;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -19,9 +22,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JPanel();
-        Notificaciones = new javax.swing.JLabel();
         Encabezado = new javax.swing.JPanel();
         PanelX = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
@@ -36,8 +37,9 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
         Venta = new javax.swing.JLabel();
         Menu = new javax.swing.JLabel();
         RegistroVentas = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
+        EmpaqueButton = new javax.swing.JLabel();
+        CategoriaButton = new javax.swing.JLabel();
+        ClienteButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -54,10 +56,6 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
                 MenuPrincipalMouseEntered(evt);
             }
         });
-
-        Notificaciones.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
-        Notificaciones.setForeground(new java.awt.Color(0, 0, 0));
-        Notificaciones.setText("Notificaciones");
 
         Encabezado.setBackground(new java.awt.Color(255, 255, 255));
         Encabezado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -180,8 +178,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
                     .addComponent(PanelMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelMini, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         PanelOp.setBackground(new java.awt.Color(255, 255, 255));
@@ -257,27 +254,69 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
 
         PanelOp.add(panelOpciones, new java.awt.GridBagConstraints());
 
+        EmpaqueButton.setBackground(new java.awt.Color(255, 255, 255));
+        EmpaqueButton.setForeground(new java.awt.Color(0, 0, 0));
+        EmpaqueButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EmpaqueButton.setText("Gestor Empaques");
+        EmpaqueButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EmpaqueButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EmpaqueButtonMouseClicked(evt);
+            }
+        });
+
+        CategoriaButton.setBackground(new java.awt.Color(255, 255, 255));
+        CategoriaButton.setForeground(new java.awt.Color(0, 0, 0));
+        CategoriaButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CategoriaButton.setText("Gestor Categorias");
+        CategoriaButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CategoriaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CategoriaButtonMouseClicked(evt);
+            }
+        });
+
+        ClienteButton.setBackground(new java.awt.Color(255, 255, 255));
+        ClienteButton.setForeground(new java.awt.Color(0, 0, 0));
+        ClienteButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ClienteButton.setText("Gestor Clientes");
+        ClienteButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ClienteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ClienteButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
         MenuPrincipal.setLayout(MenuPrincipalLayout);
         MenuPrincipalLayout.setHorizontalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(Notificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, 1198, Short.MAX_VALUE)
+                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, 1198, Short.MAX_VALUE))
+                    .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(CategoriaButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmpaqueButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClienteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         MenuPrincipalLayout.setVerticalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(52, 52, 52)
-                .addComponent(Notificaciones)
-                .addGap(430, 430, 430)
+                .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(EmpaqueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
+                .addComponent(CategoriaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(ClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(202, 202, 202)
                 .addComponent(PanelOp, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -291,7 +330,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -397,6 +436,24 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
     private void MenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPrincipalMouseEntered
         Animaciones.Disminuye(panelOpciones, 1, 2, 0);
     }//GEN-LAST:event_MenuPrincipalMouseEntered
+
+    private void EmpaqueButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpaqueButtonMouseClicked
+        RegistrarEmpaques RE = new RegistrarEmpaques();
+        RE.setVisible(true);
+        RE.toFront();
+    }//GEN-LAST:event_EmpaqueButtonMouseClicked
+
+    private void CategoriaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoriaButtonMouseClicked
+        RegistrarNuevaCategoria RNC = new RegistrarNuevaCategoria();
+        RNC.setVisible(true);
+        RNC.toFront();
+    }//GEN-LAST:event_CategoriaButtonMouseClicked
+
+    private void ClienteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClienteButtonMouseClicked
+        RegistrarNuevoCliente RNC = new RegistrarNuevoCliente();
+        RNC.setVisible(true);
+        RNC.toFront();
+    }//GEN-LAST:event_ClienteButtonMouseClicked
     
     public MenuPrincipalPanel(){
        initComponents();
@@ -407,6 +464,9 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
        FI.tamañoimagen(Menu, "/img/menu.png");
        FI.tamañoimagen(Venta, "/img/venta.png");
        FI.tamañoimagen(RegistroVentas, "/img/registroventas.png");
+       EmpaqueButton.setBackground(Color.WHITE);
+       CategoriaButton.setBackground(Color.WHITE);
+       ClienteButton.setBackground(Color.WHITE);
     }
     
     public static void main(String args[]) {
@@ -418,13 +478,15 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CategoriaButton;
+    private javax.swing.JLabel ClienteButton;
+    private javax.swing.JLabel EmpaqueButton;
     private javax.swing.JPanel Encabezado;
     private javax.swing.JLabel Inventario;
     private javax.swing.JLabel Maximizar;
     private javax.swing.JLabel Menu;
     private javax.swing.JPanel MenuPrincipal;
     private javax.swing.JSeparator Minimizar;
-    private javax.swing.JLabel Notificaciones;
     private javax.swing.JPanel PanelMax;
     private javax.swing.JPanel PanelMini;
     private javax.swing.JPanel PanelOp;
@@ -433,7 +495,6 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
     private javax.swing.JLabel Venta;
     private javax.swing.JLabel X;
     private javax.swing.JLabel iconoUsuario;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelOpciones;
     // End of variables declaration//GEN-END:variables
 

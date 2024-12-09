@@ -12,7 +12,7 @@ import Frontend.visualFramework.Formato_Imagen;
 import Frontend.FormulariosPrincipales.MenuPrincipalPanel;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
-import Frontend.RegistrarProductoOCodigo;
+import Frontend.Producto.Codigo_del_Producto.RegistrarProductoOCodigo;
 import Frontend.Cliente.TipoCliente;
 import static Frontend.Cliente.TipoCliente.Torre;
 import java.awt.Color;

@@ -1,5 +1,5 @@
 
-package Frontend;
+package Frontend.Producto.Codigo_del_Producto;
 
 import Backend.Controladores.CtrlCodigo;
 import Backend.Controladores.CtrlProducto;
