@@ -51,7 +51,7 @@ public class GestorGraficadorEstadisticas {
                 ejeX,
                 ejeY,
                 dataset,
-                PlotOrientation.VERTICAL,
+                PlotOrientation.HORIZONTAL,
                 true,
                 true,
                 false
