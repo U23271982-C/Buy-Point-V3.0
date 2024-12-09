@@ -103,12 +103,69 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
 
     @Override
     public void eliminar(Cliente eliminadoEntidad) {
-        // FALTA
+        String consultaSQL = "{ CALL pa_eliminarCliente(?) }";
+
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
+
+            comando.setInt(1, eliminadoEntidad.getIdCliente());
+
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Producto eliminado");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override
     public void actualizar(Cliente actualizarEntidad) {
+        String consultaSQL =
+                "{ CALL paT_registrarClienteCompuesto" +
+                        "(?, ?, ?, ?, ?, ?, ?, ?) }";
 
+        try (CallableStatement comando =
+                     SQLServerBD.instanciaConexcion()
+                             .conectar().prepareCall(consultaSQL)){
+
+            comando.setString
+                    (1,actualizarEntidad.getCliente());
+            comando.setString
+                    (2,actualizarEntidad.getIdentificacion());
+            comando.setInt
+                    (3,actualizarEntidad.getDepartamento()
+                            .getTorre());
+            comando.setInt
+                    (4,actualizarEntidad.getDepartamento()
+                            .getDepartamento());
+            comando.setString
+                    (5,actualizarEntidad.getCuenta()
+                            .getNombre());
+            comando.setString
+                    (6,actualizarEntidad.getCuenta()
+                            .getApellido());
+            comando.setInt
+                    (7,actualizarEntidad.getCuenta()
+                            .getTelefono());
+            comando.setInt(8, actualizarEntidad.getIdCliente());
+
+            comando.executeUpdate();
+            System.out.printf("Se registró el producto: %s",
+                    actualizarEntidad.getCliente());
+            JOptionPane.showMessageDialog(null,
+                    String.format
+                            ("Se registró el Cliente %s",
+                                    actualizarEntidad.getCliente()));
+
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    String.format
+                            ("ERROR al registrar el cliente"));
+        }
     }
 
     @Override

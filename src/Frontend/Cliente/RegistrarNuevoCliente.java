@@ -447,8 +447,8 @@ public class RegistrarNuevoCliente extends javax.swing.JFrame {
                 CL.setCuenta(CU);
                 System.out.println(nombre);
             }
-
-        CC.registrar(CL);
+            System.out.println(CL);
+            CC.registrar(CL);
         
         TipoCliente TC = new TipoCliente();
         TC.setVisible(true);
