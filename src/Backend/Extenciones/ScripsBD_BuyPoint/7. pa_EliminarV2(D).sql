@@ -20,15 +20,14 @@ BEGIN
 END;
 GO
 CREATE OR ALTER PROCEDURE pa_eliminarCliente(
-	@nombreCategoriaProducto VARCHAR(20)
+	@idCliente INT
 )
 AS
 BEGIN
 	BEGIN TRY
-		--FALTA
-		DELETE CategoriaProducto
+		DELETE Cliente
 		WHERE
-			NombreCategoria = @nombreCategoriaProducto
+			ID_Cliente = @idCliente
 
 	END TRY
 	BEGIN CATCH

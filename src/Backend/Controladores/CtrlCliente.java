@@ -103,7 +103,21 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
 
     @Override
     public void eliminar(Cliente eliminadoEntidad) {
-        // FALTA
+        String consultaSQL = "{ CALL pa_eliminarCliente(?) }";
+
+        try(CallableStatement comando =
+                    SQLServerBD.instanciaConexcion().conectar()
+                            .prepareCall(consultaSQL)) {
+
+            comando.setInt(1, eliminadoEntidad.getIdCliente());
+
+
+            comando.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Producto eliminado");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //e.printStackTrace();
+        }
     }
 
     @Override
