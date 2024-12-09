@@ -78,6 +78,7 @@ public class EliminarVenta extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         PanelX.setBackground(new java.awt.Color(255, 255, 255));
         PanelX.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -191,6 +192,7 @@ public class EliminarVenta extends javax.swing.JFrame {
 //
 //        CE.eliminar(E);
 //        this.setVisible(false);
+
     }//GEN-LAST:event_ConfirmarMouseClicked
 
     public static void main(String args[]) {

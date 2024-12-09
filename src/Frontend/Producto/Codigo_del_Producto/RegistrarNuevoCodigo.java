@@ -85,6 +85,11 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
         PanelX.add(XTxt, new java.awt.GridBagConstraints());
 
         Confirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imagenConfirmar.png"))); // NOI18N
+        Confirmar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConfirmarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout NuevoCodePanelLayout = new javax.swing.GroupLayout(NuevoCodePanel);
         NuevoCodePanel.setLayout(NuevoCodePanelLayout);
@@ -157,6 +162,19 @@ public class RegistrarNuevoCodigo extends javax.swing.JFrame {
     private void PanelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseExited
         PanelX.setBackground(Color.WHITE);
     }//GEN-LAST:event_PanelXMouseExited
+
+    private void ConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarMouseClicked
+        CtrlCodigo CC = new CtrlCodigo();
+        Codigo C = new Codigo();
+        Producto P = new Producto();
+        
+        P.setNombreProducto(Productosregistrados.getSelectedItem().toString());
+        C.setProducto(P);
+        C.setCodigo(NuevoCodeBarr.getText().trim());
+        
+        CC.registrar(C);
+        this.setVisible(false);
+    }//GEN-LAST:event_ConfirmarMouseClicked
     
     
     public static void main(String args[]) {

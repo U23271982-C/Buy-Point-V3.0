@@ -270,7 +270,7 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_CantiTxtMouseClicked
 
     private void FvTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FvTextKeyPressed
-        this.setForeground(Color.BLACK);
+        FvText.setForeground(Color.BLACK);
         if(evt.getKeyCode() == evt.VK_ENTER){
             this.ConfirmarActualizacion();
         }

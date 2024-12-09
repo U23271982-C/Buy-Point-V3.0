@@ -388,8 +388,7 @@ public class TipoCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_TorreTxtComponentAdded
 
     private void TipoClientejTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TipoClientejTableMouseClicked
-     /*
-    TipoClientejTable.addMouseListener(new java.awt.event.MouseAdapter() {
+    /*TipoClientejTable.addMouseListener(new java.awt.event.MouseAdapter() {
         @Override
         public void mouseReleased(MouseEvent e) {
             // Detectar si es un clic derecho
@@ -404,9 +403,9 @@ public class TipoCliente extends javax.swing.JFrame {
                     JMenuItem actualizarItem = new JMenuItem("Actualizar");
                                       
                     registrarNuevoCliente.addActionListener( event -> {
-                        *//*Cliente C = new Cliente();
+                        Cliente C = new Cliente();
                         Departamento D = new Departamento();
-                        Cuenta CU = new Cuenta();*//*
+                        Cuenta CU = new Cuenta();
                         
                         RegistrarNuevoCliente RNC = new RegistrarNuevoCliente();
                         RNC.setVisible(true);

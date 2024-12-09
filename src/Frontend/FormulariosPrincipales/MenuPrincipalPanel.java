@@ -2,6 +2,7 @@ package Frontend.FormulariosPrincipales;
 
 import Backend.Controladores.CtrlPaqueteProducto;
 import Backend.Controladores.CtrlProducto;
+import Backend.Controladores.CtrlVenta;
 import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Backend.Gestores.GestorDeFiltro;
@@ -16,11 +17,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileView;
 import javax.swing.table.DefaultTableModel;
@@ -344,20 +347,17 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
                         .addComponent(PanelOp, javax.swing.GroupLayout.DEFAULT_SIZE, 1243, Short.MAX_VALUE))
                     .addGroup(MenuPrincipalLayout.createSequentialGroup()
                         .addGap(121, 121, 121)
-                        .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ClienteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                                        .addComponent(EmpaqueButton, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuPrincipalLayout.createSequentialGroup()
-                                .addComponent(CategoriaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(110, 110, 110)))
+                        .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(ClienteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                .addComponent(EmpaqueButton, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CategoriaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(92, 92, 92)))
                 .addContainerGap())
         );
         MenuPrincipalLayout.setVerticalGroup(
@@ -549,6 +549,24 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
         
     }
     
+    private void LlenadoTextArea(JTextArea jTextArea){
+        //CtrlVenta CV = new CtrlVenta();
+
+        String formatoAviso = """
+                ¡Gran trabajo, equipo!
+                Queremos compartir con ustedes una gran noticia:
+                el día con mayor ganancia fue el pasado %s,
+                alcanzando un total de S/ %.2f.
+                
+                ¡Sigamos así y hagamos que cada día sea aún mejor!
+                """;
+        Object[] vector = CtrlVenta.fechaMasVenta();
+        LocalDate fecha = LocalDate.parse(vector[0].toString());
+        double monto = Double.parseDouble(vector[1].toString());
+        
+        jTextArea.setText(String.format(formatoAviso, fecha, monto));
+    }
+    
     public MenuPrincipalPanel(){
        initComponents();
        setLocationRelativeTo(null);
@@ -563,6 +581,7 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
 //       ClienteButton.setBackground(Color.WHITE);
         TextArea.setLineWrap(true);
         CargarDatosProductosCaducar(TabladeProductosaCaducar);
+        LlenadoTextArea(TextArea);
         
     }
     

@@ -8,8 +8,8 @@ import javax.swing.*;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CtrlVenta implements GestorSQLServer<Venta> {
@@ -223,7 +223,18 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         return lista;
     }
 
-/*    public static void main(String[] args) {
-        System.out.println(Arrays.toString(CtrlVenta.utilidadFecha(2).get(0)));
-    }*/
+   public static void main(String[] args) {
+       String formatoAviso = """
+                ¡Gran trabajo, equipo! 💪
+                
+                Queremos compartir con ustedes una gran noticia: el día con mayor ganancia fue el pasado [fecha del día], alcanzando un total de S/ [monto exacto]. Este logro es gracias al esfuerzo y compromiso que todos ustedes ponen en su trabajo cada día. 🙌
+                
+                Esto demuestra que, trabajando juntos y con dedicación, podemos superar cualquier meta. ¡Sigamos así y hagamos que cada día sea aún mejor! 
+                             %s %.2f
+                """;
+       Object[] vector = CtrlVenta.fechaMasVenta();
+       LocalDate fecha = LocalDate.parse(vector[0].toString());
+       double monto = Double.parseDouble(vector[1].toString());
+       System.out.println(String.format(formatoAviso, fecha, monto));
+   }
 }
