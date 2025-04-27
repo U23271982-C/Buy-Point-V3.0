@@ -18,7 +18,7 @@ public class SQLServerBD {
     public SQLServerBD() {
         final String nombreBD = "BD_BuyPoint";
         final String usuario = "sa";
-        final String contrasena = "12345689";
+        final String contrasena = "TuPasswordSegura123";
         final String strConexion = String.format
                 ("jdbc:sqlserver://localhost:1433;databaseName=%s;" +
                         "encrypt=true;trustServerCertificate=true", nombreBD);
@@ -39,12 +39,22 @@ public class SQLServerBD {
     }
 
     public Connection conectar() {
-        //try {
-            //Server de USERISRAEL
             return conn;
-        //}catch (Exception e){
-        //    e.printStackTrace();
-        //}
-        //return null;
     }
+
+    // Prueba de conexion
+   /* public static void main(String[] args) {
+        try {
+            // Obtener la instancia del Singleton
+            SQLServerBD connectionInstance = SQLServerBD.instanciaConexcion();
+            // Probar la conexión
+            if (connectionInstance.conectar() != null) {
+                System.out.println("¡Conexión exitosa!");
+            } else {
+                System.out.println("Conexión fallida.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 }
