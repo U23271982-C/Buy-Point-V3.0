@@ -563,7 +563,7 @@ public final class InventarioPanel extends javax.swing.JFrame implements Animaci
                 listado.get(i).getNombreProducto(),
                 listado.get(i).getDescripcion(),
                 listado.get(i).getPrecio(),
-                listado.get(i).getInventario().getPrecioCosto(),
+                listado.get(i).getPrecioCosto(),
                 listado.get(i).getInventario().getStock(),
                 listado.get(i).getCategoriaProducto().getNombre(),
             });

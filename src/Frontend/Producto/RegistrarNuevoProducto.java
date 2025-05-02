@@ -402,8 +402,8 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
             
             
             nuevoLote.setFechaCaducidad(fechLocalDate);
-            nuevoInventario.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
-            nuevoInventario.setPrecioCosto(new BigDecimal(PrecioProovedorTxt.getText().trim()));
+            nuevProducto.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
+            nuevProducto.setPrecioCosto(new BigDecimal(PrecioProovedorTxt.getText().trim()));
             nuevoEmpaque.setTipoEmpaque(EmpaqueCombobox.getSelectedItem().toString());
             nuevCategoriaProductoca.setNombre(CategoriaCombobox.getSelectedItem().toString());
             
