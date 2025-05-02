@@ -15,6 +15,8 @@ public class Producto extends Entidad {
     private String nombreProducto;
     private String descripcion;
     private BigDecimal precio;
+    private BigDecimal precioCosto;
+    private BigDecimal utilidad;
 
 
     Empaque empaque;
