@@ -115,6 +115,21 @@ public class Producto extends Entidad {
         this.lote = lote;
     }
 
+    public BigDecimal getPrecioCosto() {
+        return precioCosto;
+    }
+
+    public void setPrecioCosto(BigDecimal precioCosto) {
+        this.precioCosto = precioCosto;
+    }
+
+    public BigDecimal getUtilidad() {
+        return utilidad;
+    }
+
+    public void setUtilidad(BigDecimal utilidad) {
+        this.utilidad = utilidad;
+    }
     //#endregion
 
     /*public boolean productoRegistrado(String codigoBarras){
