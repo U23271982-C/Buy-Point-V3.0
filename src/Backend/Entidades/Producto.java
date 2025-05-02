@@ -15,20 +15,20 @@ public class Producto extends Entidad {
     private String nombreProducto;
     private String descripcion;
     private BigDecimal precio;
-    //private boolean tieneEmpaque;
+
 
     Empaque empaque;
     CategoriaProducto categoriaProducto;
     Inventario inventario;
     Codigo codigo;
-    PaqueteProducto paqueteProducto;
+    Lote lote;
 
     public Producto() {
         this.empaque = new Empaque();
         this.categoriaProducto = new CategoriaProducto();
         this.inventario = new Inventario();
         this.codigo = new Codigo();
-        this.paqueteProducto = new PaqueteProducto();
+        this.lote = new Lote();
     }
     
     //#region Getters and Setters
@@ -105,12 +105,12 @@ public class Producto extends Entidad {
         this.codigo = codigo;
     }
 
-    public PaqueteProducto getPaqueteProducto() {
-        return paqueteProducto;
+    public Lote getPaqueteProducto() {
+        return lote;
     }
 
-    public void setPaqueteProducto(PaqueteProducto paqueteProducto) {
-        this.paqueteProducto = paqueteProducto;
+    public void setPaqueteProducto(Lote lote) {
+        this.lote = lote;
     }
 
     //#endregion
@@ -130,7 +130,7 @@ public class Producto extends Entidad {
                 ", categoriaProducto=" + categoriaProducto +
                 ", inventario=" + inventario +
                 ", codigo=" + codigo +
-                ", paqueteProducto=" + paqueteProducto +
+                ", paqueteProducto=" + lote +
                 '}';
     }
 }

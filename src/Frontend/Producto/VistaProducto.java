@@ -1,22 +1,16 @@
 package Frontend.Producto;
 
-import Backend.Controladores.CtrlCodigo;
-import Backend.Controladores.CtrlEmpaque;
 import Backend.Controladores.CtrlPaqueteProducto;
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
-import Backend.Entidades.Empaque;
-import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Lote;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
-import java.awt.Image;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -361,7 +355,7 @@ public class VistaProducto extends javax.swing.JFrame {
         
         CtrlPaqueteProducto CPP = new CtrlPaqueteProducto();
         
-        PaqueteProducto PP = new PaqueteProducto();
+        Lote PP = new Lote();
         Producto P = new Producto();
         Codigo C = new Codigo();
 
@@ -371,8 +365,8 @@ public class VistaProducto extends javax.swing.JFrame {
         
         DefaultTableModel DFM = (DefaultTableModel) jTable.getModel();
         
-        List<PaqueteProducto> paquetes = CPP.codigoProducto(PP);
-        for (PaqueteProducto paquete : paquetes) {
+        List<Lote> paquetes = CPP.codigoProducto(PP);
+        for (Lote paquete : paquetes) {
             DFM.addRow(new Object[] {
                 paquete.getIdPaqueteProducto(),
                 paquete.getCantidad(),

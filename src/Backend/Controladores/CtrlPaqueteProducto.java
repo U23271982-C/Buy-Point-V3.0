@@ -1,9 +1,8 @@
 package Backend.Controladores;
 
-import Backend.Entidades.Comprobante;
 import Backend.Gestores.GestorSQLServer;
 import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Lote;
 import Backend.Entidades.Producto;
 
 import javax.swing.*;
@@ -11,16 +10,15 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Set;
 
-public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
+public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
 
     public CtrlPaqueteProducto() {
 
     }
 
     @Override
-    public void registrar(PaqueteProducto nuevaEntidad) {
+    public void registrar(Lote nuevaEntidad) {
         String consultaSQL = "{ CALL paT_registrarPaqueteProducto(?, ?, ?) }";
 
         try (CallableStatement comando = SQLServerBD.instanciaConexcion()
@@ -48,8 +46,8 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
     }
 
     @Override
-    public PaqueteProducto leer(PaqueteProducto leerEntidad) {
-        PaqueteProducto paqueteProducto = null;
+    public Lote leer(Lote leerEntidad) {
+        Lote lote = null;
         String consultaSQL = "{ CALL pa_leerPaqueteProducto(?) }";
 
         try (CallableStatement comando =
@@ -61,19 +59,19 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
-                paqueteProducto = new PaqueteProducto();
+                lote = new Lote();
 
-                paqueteProducto.
+                lote.
                         getProducto().setNombreProducto
                                 (filas.getString(1));
 
-                paqueteProducto.setCantidad
+                lote.setCantidad
                         (filas.getInt(2));
 
-                paqueteProducto.setFechaCaducidad
+                lote.setFechaCaducidad
                         (filas.getDate(3).toLocalDate());
 
-                paqueteProducto.setCaducado(filas.getBoolean(4));
+                lote.setCaducado(filas.getBoolean(4));
 
             }//else {
             //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
@@ -86,11 +84,11 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
             //JOptionPane.showMessageDialog(null, "Error al leer las Credenciales");
         }
 
-        return paqueteProducto;
+        return lote;
     }
 
     @Override
-    public void eliminar(PaqueteProducto eliminadoEntidad) {
+    public void eliminar(Lote eliminadoEntidad) {
         String consultaSQL = "{ CALL pa_eliminarPaqueteProducto(?) }";
 
         try(CallableStatement comando =
@@ -110,13 +108,13 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
     }
 
     @Override
-    public void actualizar(PaqueteProducto actualizarEntidad) {
+    public void actualizar(Lote actualizarEntidad) {
         // FALTA LÓGICA
     }
 
     @Override
-    public ArrayList<PaqueteProducto> listar() {
-        ArrayList<PaqueteProducto> paqueteProductos = new ArrayList<>();
+    public ArrayList<Lote> listar() {
+        ArrayList<Lote> lotes = new ArrayList<>();
         String consulta = "{ CALL pa_listarPaqueteProducto() }";
 
         try(CallableStatement comando = SQLServerBD.instanciaConexcion()
@@ -125,10 +123,10 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
             //leer()
             //comando.setString(1, );
             ResultSet filas = comando.executeQuery();
-            PaqueteProducto co = null;
+            Lote co = null;
             Producto p = null;
             while (filas.next()) {
-                co = new PaqueteProducto();
+                co = new Lote();
                 p = new Producto();
                 
                 co.setProducto(p);
@@ -139,30 +137,30 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
                 co.setCaducado(filas.getBoolean(4));
                 co.setIdPaqueteProducto(filas.getInt(5));
 
-                paqueteProductos.add(co);
+                lotes.add(co);
             }
 
-            return paqueteProductos;
+            return lotes;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
     // Listar paquete de producto a partir de un codigo de barras del producto
-    public ArrayList<PaqueteProducto> codigoProducto(PaqueteProducto paqueteProducto){
-        ArrayList<PaqueteProducto> paqueteProductos = new ArrayList<>();
+    public ArrayList<Lote> codigoProducto(Lote lote){
+        ArrayList<Lote> lotes = new ArrayList<>();
         String consulta = "{ CALL pa_listarPaqueteProductoCodigo(?) }";
 
         try(CallableStatement comando = SQLServerBD.instanciaConexcion()
                     .conectar().prepareCall(consulta)) {
 
             //leer()
-            comando.setString(1, paqueteProducto.getProducto().getCodigo().getCodigo());
+            comando.setString(1, lote.getProducto().getCodigo().getCodigo());
             ResultSet filas = comando.executeQuery();
-            PaqueteProducto co = null;
+            Lote co = null;
             Producto p = null;
             while (filas.next()) {
-                co = new PaqueteProducto();
+                co = new Lote();
                 p = new Producto();
 
                 co.setProducto(p);
@@ -173,10 +171,10 @@ public class CtrlPaqueteProducto implements GestorSQLServer<PaqueteProducto>{
                 co.setCaducado(filas.getBoolean(4));
                 co.setIdPaqueteProducto(filas.getInt(5));
 
-                paqueteProductos.add(co);
+                lotes.add(co);
             }
 
-            return paqueteProductos;
+            return lotes;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

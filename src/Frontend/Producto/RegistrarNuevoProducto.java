@@ -8,9 +8,9 @@ import Backend.Entidades.CategoriaProducto;
 import Backend.Entidades.Codigo;
 import Backend.Entidades.Empaque;
 import Backend.Entidades.Inventario;
-import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Lote;
 import Backend.Entidades.Producto;
-import Frontend.FormulariosPrincipales.InventarioPanel;
+
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -19,8 +19,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -387,7 +385,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
         
         try {
             Producto nuevProducto = new Producto();
-            PaqueteProducto nuevoPaqueteProducto = new PaqueteProducto();
+            Lote nuevoLote = new Lote();
             Inventario nuevoInventario = new Inventario();
             CategoriaProducto nuevCategoriaProductoca = new CategoriaProducto();
             Empaque nuevoEmpaque = new Empaque();
@@ -397,13 +395,13 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
             codigo.setCodigo(codigoBarras); // 1
             nuevProducto.setNombreProducto(NombreTxt.getText().trim()); // 2
             nuevProducto.setDescripcion(DescriptionTxt.getText().trim()); // 3
-            nuevoPaqueteProducto.setCantidad(Integer.parseInt(CantidadTxt.getText())); 
+            nuevoLote.setCantidad(Integer.parseInt(CantidadTxt.getText()));
             
             DateTimeFormatter textFormt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate fechLocalDate = LocalDate.parse(FvTxt.getText().trim(),textFormt);
             
             
-            nuevoPaqueteProducto.setFechaCaducidad(fechLocalDate);
+            nuevoLote.setFechaCaducidad(fechLocalDate);
             nuevoInventario.setPrecio(new BigDecimal(PrecioVentaTxt.getText().trim()));
             nuevoInventario.setPrecioCosto(new BigDecimal(PrecioProovedorTxt.getText().trim()));
             nuevoEmpaque.setTipoEmpaque(EmpaqueCombobox.getSelectedItem().toString());
@@ -413,7 +411,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
             nuevProducto.setEmpaque(nuevoEmpaque);
             nuevProducto.setCategoriaProducto(nuevCategoriaProductoca);
             nuevProducto.setInventario(nuevoInventario);
-            nuevProducto.setPaqueteProducto(nuevoPaqueteProducto);
+            nuevProducto.setPaqueteProducto(nuevoLote);
         
         
             CtrlProducto CP = new CtrlProducto();

@@ -1,23 +1,16 @@
 package Frontend.Producto;
 
-import Frontend.Producto.RegistrarNuevoProducto;
 import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Codigo;
-import Backend.Entidades.PaqueteProducto;
 import Backend.Entidades.Producto;
 import Frontend.FormulariosPrincipales.InventarioPanel;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
-import static Frontend.Producto.RegistrarNuevoProducto.BloquearCaracteres;
+
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
-import java.awt.HeadlessException;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 

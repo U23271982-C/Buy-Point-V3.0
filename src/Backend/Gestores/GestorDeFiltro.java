@@ -1,9 +1,6 @@
 package Backend.Gestores;
 
-import Backend.Controladores.CtrlPaqueteProducto;
-import Backend.Controladores.CtrlProducto;
-import Backend.Controladores.CtrlVenta;
-import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Lote;
 import Backend.Entidades.Producto;
 import Backend.Entidades.Venta;
 
@@ -14,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class GestorDeFiltro {
     public GestorDeFiltro() {
@@ -45,8 +41,8 @@ public class GestorDeFiltro {
         return listaOrdenar.stream().sorted
                 (compaProducto.get(posicionCondicion)).toList();
     }
-    public static List<PaqueteProducto> filtrarPorCaducar
-            (List<PaqueteProducto> listaFiltrar, int diasFalta){
+    public static List<Lote> filtrarPorCaducar
+            (List<Lote> listaFiltrar, int diasFalta){
         return
                 listaFiltrar.stream().filter
                         (p -> ChronoUnit.DAYS.between(LocalDate.now(),

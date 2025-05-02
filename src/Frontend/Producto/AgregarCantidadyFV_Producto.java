@@ -2,21 +2,16 @@ package Frontend.Producto;
 
 import Backend.Controladores.CtrlPaqueteProducto;
 import Backend.Entidades.Codigo;
-import Backend.Entidades.PaqueteProducto;
+import Backend.Entidades.Lote;
 import Backend.Entidades.Producto;
 import static Frontend.FormulariosPrincipales.InventarioPanel.codigoBarras;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
@@ -387,7 +382,7 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
             CtrlPaqueteProducto CPP = new CtrlPaqueteProducto();
             Producto P = new Producto();
             Codigo C = new Codigo();
-            PaqueteProducto PP = new PaqueteProducto();
+            Lote PP = new Lote();
             
             C.setCodigo(codigoBarras);
             P.setCodigo(C);

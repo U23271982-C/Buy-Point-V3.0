@@ -1,31 +1,20 @@
 package Frontend.FormulariosPrincipales;
 
 import Backend.Controladores.CtrlPaqueteProducto;
-import Backend.Controladores.CtrlProducto;
 import Backend.Controladores.CtrlVenta;
-import Backend.Entidades.PaqueteProducto;
-import Backend.Entidades.Producto;
+import Backend.Entidades.Lote;
 import Backend.Gestores.GestorDeFiltro;
 import Frontend.Categoria.RegistrarNuevaCategoria;
 import Frontend.Cliente.RegistrarNuevoCliente;
 import Frontend.EliminarVenta;
 import Frontend.visualFramework.Animaciones;
 import Frontend.visualFramework.Formato_Imagen;
-import Frontend.FormulariosPrincipales.InventarioPanel;
 import Frontend.PaqueteProductos.RegistrarEmpaques;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
-import javax.swing.filechooser.FileView;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -532,9 +521,9 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
         //GestorDeFiltro GSF = new GestorDeFiltro();
         CtrlPaqueteProducto CP = new CtrlPaqueteProducto();
         
-        List<PaqueteProducto> lista = CP.listar();
+        List<Lote> lista = CP.listar();
 
-        List<PaqueteProducto> listaFiltrado =
+        List<Lote> listaFiltrado =
                 GestorDeFiltro.filtrarPorCaducar(lista, 7);
         //lista.forEach(System.out::println);
         
