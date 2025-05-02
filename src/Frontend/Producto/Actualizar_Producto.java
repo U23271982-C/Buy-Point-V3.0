@@ -364,7 +364,7 @@ public class Actualizar_Producto extends javax.swing.JFrame {
         producto = CP.leer(producto);
         NombreProducto.setText(producto.getNombreProducto());
         CantidadStock.setText(String.valueOf(producto.getInventario().getStock()));
-        FechaCaducidad.setText(String.valueOf(producto.getPaqueteProducto().getFechaCaducidad()));
+        FechaCaducidad.setText(String.valueOf(producto.getLote().getFechaCaducidad()));
     }
     
     

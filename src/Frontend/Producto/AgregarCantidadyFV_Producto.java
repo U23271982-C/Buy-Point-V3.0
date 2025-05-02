@@ -392,8 +392,8 @@ public class AgregarCantidadyFV_Producto extends javax.swing.JFrame {
             
             int cantidad = Integer.parseInt(CantiTxt.getText().trim());
             
-            P.getPaqueteProducto().setCantidad(cantidad);
-            P.getPaqueteProducto().setFechaCaducidad(FVDate);
+            P.getLote().setCantidad(cantidad);
+            P.getLote().setFechaCaducidad(FVDate);
             
             PP.setProducto(P);
             CPP.registrar(PP);

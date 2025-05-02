@@ -25,9 +25,9 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
                 .conectar().prepareCall(consultaSQL)){
 
             comando.setInt
-                    (1, nuevaEntidad.getProducto().getPaqueteProducto().getCantidad());
+                    (1, nuevaEntidad.getProducto().getLote().getCantidad());
             comando.setDate
-                    (2, java.sql.Date.valueOf(nuevaEntidad.getProducto().getPaqueteProducto().getFechaCaducidad()   ));
+                    (2, java.sql.Date.valueOf(nuevaEntidad.getProducto().getLote().getFechaCaducidad()   ));
             comando.setString
                     (3, nuevaEntidad.getProducto().getCodigo()
                             .getCodigo());

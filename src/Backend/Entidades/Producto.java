@@ -107,11 +107,11 @@ public class Producto extends Entidad {
         this.codigo = codigo;
     }
 
-    public Lote getPaqueteProducto() {
+    public Lote getLote() {
         return lote;
     }
 
-    public void setPaqueteProducto(Lote lote) {
+    public void setLote(Lote lote) {
         this.lote = lote;
     }
 

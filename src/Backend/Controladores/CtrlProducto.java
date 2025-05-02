@@ -27,11 +27,11 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                                 nuevaEntidad.getCodigo().getCodigo());
                 comando.setInt
                         (2,
-                                nuevaEntidad.getPaqueteProducto()
+                                nuevaEntidad.getLote()
                                         .getCantidad());
                 comando.setDate
                         (3,java.sql.Date.valueOf
-                                (nuevaEntidad.getPaqueteProducto()
+                                (nuevaEntidad.getLote()
                                 .getFechaCaducidad()));
                 comando.setString
                         (4,nuevaEntidad

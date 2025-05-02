@@ -411,7 +411,7 @@ public class RegistrarNuevoProducto extends javax.swing.JFrame {
             nuevProducto.setEmpaque(nuevoEmpaque);
             nuevProducto.setCategoriaProducto(nuevCategoriaProductoca);
             nuevProducto.setInventario(nuevoInventario);
-            nuevProducto.setPaqueteProducto(nuevoLote);
+            nuevProducto.setLote(nuevoLote);
         
         
             CtrlProducto CP = new CtrlProducto();
