@@ -46,11 +46,9 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                         (7,nuevaEntidad
                                 .getCategoriaProducto().getNombre());
                 comando.setBigDecimal
-                        (8,nuevaEntidad.getInventario()
-                                .getPrecio());
+                        (8,nuevaEntidad.getPrecio());
                 comando.setBigDecimal
-                        (9, nuevaEntidad.getInventario()
-                                .getPrecioCosto());
+                        (9, nuevaEntidad.getPrecioCosto());
 
                 comando.executeUpdate();
                 String aviso = String.format
@@ -97,8 +95,7 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                                             .getString(4));
                             producto.setPrecio
                                     (filas.getBigDecimal(5));
-                            producto.getInventario()
-                                    .setPrecioCosto(filas
+                            producto.setPrecioCosto(filas
                                             .getBigDecimal
                                                     (6));
                             producto.getInventario()
@@ -185,7 +182,7 @@ public class CtrlProducto implements GestorSQLServer<Producto> {
                     p.setNombreProducto(filas.getString(1));
                     p.setDescripcion(filas.getString(2));
                     p.setPrecio(filas.getBigDecimal(3));
-                    p.getInventario().setPrecioCosto(filas.getBigDecimal(4));
+                    p.setPrecioCosto(filas.getBigDecimal(4));
                     p.getInventario().setStock(filas.getInt(5));
                     p.getCategoriaProducto().setNombre(filas.getString(6));
                     p.getInventario().setSalida(filas.getInt(7));
