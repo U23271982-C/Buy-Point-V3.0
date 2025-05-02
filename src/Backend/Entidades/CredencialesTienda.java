@@ -1,6 +1,6 @@
 package Backend.Entidades;
 
-public class CredencialesTienda extends Entidad {
+public class CredencialesTienda {
     private int id;
     private String usuario;
     private String contrasenna;

@@ -8,7 +8,7 @@ package Backend.Entidades;
  *
  * @author ISRAEL
  */
-public class CategoriaProducto extends Entidad {
+public class CategoriaProducto {
     private int idCategoriaProducto;
     private String nombre;
 

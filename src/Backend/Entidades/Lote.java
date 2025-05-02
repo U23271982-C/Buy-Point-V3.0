@@ -2,7 +2,7 @@ package Backend.Entidades;
 
 import java.time.LocalDate;
 
-public class Lote extends Entidad {
+public class Lote {
     private int idPaqueteProducto;
     private int cantidad;
     private LocalDate fechaCaducidad;

@@ -1,6 +1,6 @@
 package Backend.Entidades;
 
-public class Comprobante extends Entidad {
+public class Comprobante {
     private int idComprobante;
     private String comprobante;
 

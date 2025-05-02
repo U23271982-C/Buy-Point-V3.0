@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  *
  * @author ISRAEL
  */
-public class Producto extends Entidad {
+public class Producto {
     private int idProducto;
     private String nombreProducto;
     private String descripcion;

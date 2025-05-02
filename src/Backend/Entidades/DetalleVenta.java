@@ -1,13 +1,9 @@
 package Backend.Entidades;
 
-import javax.swing.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
 
-public class DetalleVenta extends Entidad {
+public class DetalleVenta {
     private int idDetalleVenta;
     private int cantidad;
     private BigDecimal precioUnitario;

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  *
  * @author ISRAEL
  */
-public class Inventario extends Entidad {
+public class Inventario {
 
     private int idInventario;
     private int salida;

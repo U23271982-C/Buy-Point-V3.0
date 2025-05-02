@@ -1,6 +1,6 @@
 package Backend.Entidades;
 
-public class Cuenta extends Entidad {
+public class Cuenta {
     private int idCuenta;
     private String nombre;
     private String apellido;

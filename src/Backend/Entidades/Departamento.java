@@ -1,6 +1,6 @@
 package Backend.Entidades;
 
-public class Departamento extends Entidad {
+public class Departamento {
     private int idDepartamento;
     private short Torre;
     private short Departamento;

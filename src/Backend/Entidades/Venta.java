@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Venta extends Entidad {
+public class Venta {
     private int idVenta;
     private LocalDate fecha;
     private LocalTime hora;
