@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 public class Inventario extends Entidad {
 
     private int idInventario;
-    private BigDecimal precio;
     private int salida;
     private int stock;
     private BigDecimal valorStock;
@@ -29,14 +28,6 @@ public class Inventario extends Entidad {
 
     public void setIdInventario(int idInventario) {
         this.idInventario = idInventario;
-    }
-
-    public BigDecimal getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
     }
 
     public int getSalida() {
