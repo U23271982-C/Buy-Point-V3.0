@@ -14,6 +14,7 @@ public class SQLServerBD {
     private Connection conn = null;
     private static SQLServerBD instancia = null;
 
+    //cambios de prueba
     //Patrón Singleton
     public SQLServerBD() {
         final String nombreBD = "BD_BuyPoint";
