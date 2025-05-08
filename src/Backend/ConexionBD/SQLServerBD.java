@@ -1,38 +1,70 @@
 package Backend.ConexionBD;
 
 import Backend.Gestores.GestorSQLServer;
-
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.*;
+import java.util.logging.*;
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Properties;
 
 public class SQLServerBD {
-    public static Logger logger = Logger.getLogger(GestorSQLServer.class.getName());
+    public static Logger logger = Logger.getLogger(SQLServerBD.class.getName());
     private Connection conn = null;
     private static SQLServerBD instancia = null;
+    private static final String ENCRYPTION_KEY = "tuClaveDeEncriptacion";
 
-    //Encriptar datos
     //Patrón Singleton
     public SQLServerBD() {
-        final String nombreBD = "BD_BuyPoint";
-        final String usuario = "sa";
-        final String contrasena = "TuPasswordSegura123";
-        final String strConexion = String.format
-                ("jdbc:sqlserver://localhost:1433;databaseName=%s;" +
-                        "encrypt=true;trustServerCertificate=true", nombreBD);
         try {
-            conn = DriverManager.getConnection(strConexion, usuario, contrasena);
-            System.out.println("¡Conexión exitosa a SQL Server!");
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error de conexión de Baase de Datos", e);
+            Properties props = loadProperties();
+            String nombreBD = props.getProperty("db.name");
+            String host = props.getProperty("db.host");
+            String port = props.getProperty("db.port");
+            String usuario = decrypt(props.getProperty("db.user").substring(4));
+            String contrasena = decrypt(props.getProperty("db.password").substring(4));
 
-            JOptionPane.showMessageDialog(null,
-                    "Error de conexión de Base de Datos");
+            String strConexion = String.format(
+                    "jdbc:sqlserver://%s:%s;databaseName=%s;" +
+                            "encrypt=true;trustServerCertificate=true",
+                    host, port, nombreBD);
+
+            conn = DriverManager.getConnection(strConexion, usuario, contrasena);
+            logger.info("¡Conexión exitosa a SQL Server!");
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error de conexión de Base de Datos", e);
+            throw new RuntimeException("Error al conectar con la base de datos", e);
         }
+
     }
+    private Properties loadProperties() {
+        Properties props = new Properties();
+        try (InputStream input = SQLServerBD.class.getClassLoader()
+                .getResourceAsStream("database.properties")) {
+            if (input == null) {
+                throw new RuntimeException("No se puede encontrar database.properties");
+            }
+            props.load(input);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al cargar la configuración", e);
+        }
+        return props;
+    }
+
+    private String decrypt(String encryptedText) throws Exception {
+        SecretKeySpec key = new SecretKeySpec(
+                ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.DECRYPT_MODE, key);
+        byte[] decryptedBytes = cipher.doFinal(
+                Base64.getDecoder().decode(encryptedText));
+        return new String(decryptedBytes);
+    }
+
+
 
     public static SQLServerBD instanciaConexcion(){
         if (instancia == null) instancia = new SQLServerBD();
