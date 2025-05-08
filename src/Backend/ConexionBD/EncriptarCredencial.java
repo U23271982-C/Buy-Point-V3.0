@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class EncriptarCredencial {
-    private static final String ENCRYPTION_KEY = "tuClaveDeEncriptacion";
+    private static final String ENCRYPTION_KEY = "1234567891234567";
 
     public static String encrypt(String value) throws Exception {
         SecretKeySpec key = new SecretKeySpec(

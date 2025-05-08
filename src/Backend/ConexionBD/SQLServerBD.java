@@ -15,8 +15,9 @@ public class SQLServerBD {
     public static Logger logger = Logger.getLogger(SQLServerBD.class.getName());
     private Connection conn = null;
     private static SQLServerBD instancia = null;
-    private static final String ENCRYPTION_KEY = "tuClaveDeEncriptacion";
+    private static final String ENCRYPTION_KEY = "1234567891234567";
 
+    //Se modificó la clase SQLServerBD para poder recibir los datos del archivo database.properties
     //Patrón Singleton
     public SQLServerBD() {
         try {
@@ -40,6 +41,8 @@ public class SQLServerBD {
         }
 
     }
+
+    //cargamos los datos almacenamos en el archivo database.properties
     private Properties loadProperties() {
         Properties props = new Properties();
         try (InputStream input = SQLServerBD.class.getClassLoader()
@@ -54,6 +57,7 @@ public class SQLServerBD {
         return props;
     }
 
+    //Descencriptamos las credenciales para la conexion a la bd
     private String decrypt(String encryptedText) throws Exception {
         SecretKeySpec key = new SecretKeySpec(
                 ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
