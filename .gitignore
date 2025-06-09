@@ -1,3 +1,10 @@
 /build/
 .DS_Store
 .idea/compiler.xml
+# NeatBeans specific
+build/
+target/
+nbproject/
+private/
+.idea
+
