@@ -45,11 +45,10 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
-                cp = new CategoriaProducto();
-                cp.setIdCategoriaProducto
-                        (filas.getInt(1));
-                cp.setNombre
-                        (filas.getString(2));
+                cp = CategoriaProducto.builder()
+                        .idCategoriaProducto(filas.getInt(1))
+                        .nombre(filas.getString(2))
+                        .build();
 
             }//else {
             //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
@@ -119,9 +118,11 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
             ResultSet filas = comando.executeQuery();
 
             while (filas.next()) {
-                CategoriaProducto categoriaProducto = new CategoriaProducto();
+                CategoriaProducto categoriaProducto = null;
                 categoriaProductos.add(categoriaProducto);
-                categoriaProducto.setNombre(filas.getString(1));
+                categoriaProducto = CategoriaProducto.builder()
+                        .nombre(filas.getString(1))
+                        .build();
             }
 
             return categoriaProductos;

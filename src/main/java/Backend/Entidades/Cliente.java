@@ -1,14 +1,13 @@
 package Backend.Entidades;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Builder
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+
 public class Cliente {
 
     private int idCliente;

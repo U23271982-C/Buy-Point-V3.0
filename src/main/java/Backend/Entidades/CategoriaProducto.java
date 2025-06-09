@@ -4,10 +4,7 @@
  */
 package Backend.Entidades;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  *
@@ -17,10 +14,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class CategoriaProducto {
     private int idCategoriaProducto;
     private String nombre;
-
-    public CategoriaProducto() {}
 
 }

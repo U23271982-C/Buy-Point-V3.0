@@ -4,10 +4,7 @@
  */
 package Backend.Entidades;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -19,6 +16,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class Producto {
     private int idProducto;
     private String nombreProducto;

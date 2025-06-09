@@ -141,9 +141,7 @@ public class EliminarCategoria extends javax.swing.JFrame {
 
     private void ConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarMouseClicked
         CtrlCategoriaProducto CCP = new CtrlCategoriaProducto();
-        CategoriaProducto CP = new CategoriaProducto();
-        
-        CP.setNombre(CategoriasActuales.getSelectedItem().toString());
+        CategoriaProducto CP = CategoriaProducto.builder().nombre(CategoriasActuales.getSelectedItem().toString()).build();
         
         CCP.eliminar(CP);
         this.setVisible(false);

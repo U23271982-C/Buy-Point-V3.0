@@ -186,14 +186,17 @@ public class RegistrarNuevaCategoria extends javax.swing.JFrame {
     private void ConfirmacionCategoria(){
         try {
             CtrlCategoriaProducto CCP = new CtrlCategoriaProducto();
-            CategoriaProducto CP = new CategoriaProducto();
+            CategoriaProducto CP = null;
         
             String nombreCategoria = NuevaCategoriaTxt.getText().trim();
           
             //Conversion del primer caracte a mayúscula y el resto en minpuscula
             nombreCategoria = nombreCategoria.substring(0, 1).toUpperCase() 
                         + nombreCategoria.substring(1).toLowerCase();
-            CP.setNombre(nombreCategoria);
+
+            CP = CategoriaProducto.builder()
+                    .nombre(nombreCategoria)
+                    .build();
             
             //System.out.println(nombreCategoria);
             boolean existe = false;

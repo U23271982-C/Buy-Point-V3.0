@@ -4,10 +4,7 @@
  */
 package Backend.Entidades;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -15,6 +12,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Inventario {
 
     private int idInventario;
@@ -22,5 +21,4 @@ public class Inventario {
     private int stock;
     private BigDecimal valorStock;
 
-    public Inventario() {}
 }

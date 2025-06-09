@@ -1,9 +1,6 @@
 package Backend.Entidades;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -14,6 +11,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class Venta {
     private int idVenta;
     private LocalDate fecha;
