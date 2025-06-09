@@ -4,14 +4,12 @@
  */
 package Backend.Entidades;
 
-import Backend.Entidades.Contructor.PatternBuilder;
-import Backend.Entidades.Contructor.CategorioProductoBuilder;
+import lombok.Builder;
 
 /**
  *
  * @author ISRAEL
  */
-
 public final class CategoriaProducto {
     private int idCategoriaProducto;
     private String nombre;
@@ -43,9 +41,6 @@ public final class CategoriaProducto {
     }
     //#endregion
 
-    public static CategorioProductoBuilder builder() {
-        return new CategorioProductoBuilder();
-    }
     @Override
     public String toString() {
         return "CategoriaProducto{" +

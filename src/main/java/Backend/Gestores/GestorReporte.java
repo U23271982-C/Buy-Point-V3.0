@@ -34,7 +34,7 @@ public class GestorReporte {
         List<Object> listFechas = new ArrayList<>();
         List<Object> utilidadesTotales = new ArrayList<>();
         for (int i = 0; i < lista.size(); i++) {
-            for (int j = 0; j < lista.getFirst().length; j++) {
+            for (int j = 0; j < lista.get(0).length; j++) {
 
                 Object n = lista.get(i)[j];
                 Object k = lista.get(i)[j + 1];

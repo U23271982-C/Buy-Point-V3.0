@@ -46,7 +46,7 @@ public class GestorGraficadorEstadisticas {
                 PlotOrientation.VERTICAL,
                 true,
                 true,
-                false);*/ ChartFactory.createBarChart3D(
+                false);*/ ChartFactory.createBarChart(
                 titulo,
                 ejeX,
                 ejeY,
