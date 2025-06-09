@@ -1,7 +1,6 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.Comprobante;
 import Backend.Entidades.Departamento;
 import Backend.Gestores.GestorSQLServer;
 

@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Departamento {
     private int idDepartamento;
-    private short Torre;
-    private short Departamento;
+    private short torre;
+    private short departamento;
 
 }

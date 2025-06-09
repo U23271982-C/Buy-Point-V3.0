@@ -2,25 +2,15 @@
 package Frontend.Cliente;
 
 import Backend.Controladores.CtrlCliente;
-import Backend.Controladores.CtrlProducto;
 import Backend.Entidades.Cliente;
-import Backend.Entidades.Cuenta;
-import Backend.Entidades.Departamento;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 import javax.swing.JTable;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class TipoCliente extends javax.swing.JFrame {
