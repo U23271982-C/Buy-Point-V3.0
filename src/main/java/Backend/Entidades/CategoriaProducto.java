@@ -4,15 +4,24 @@
  */
 package Backend.Entidades;
 
+import Backend.Entidades.Contructor.PatternBuilder;
+import Backend.Entidades.Contructor.CategorioProductoBuilder;
+
 /**
  *
  * @author ISRAEL
  */
-public class CategoriaProducto {
+
+public final class CategoriaProducto {
     private int idCategoriaProducto;
     private String nombre;
 
     public CategoriaProducto() {
+    }
+
+    public CategoriaProducto(int idCategoriaProducto, String nombre) {
+        this.idCategoriaProducto = idCategoriaProducto;
+        this.nombre = nombre;
     }
 
     //#region Getters and Setters
@@ -34,7 +43,9 @@ public class CategoriaProducto {
     }
     //#endregion
 
-
+    public static CategorioProductoBuilder builder() {
+        return new CategorioProductoBuilder();
+    }
     @Override
     public String toString() {
         return "CategoriaProducto{" +

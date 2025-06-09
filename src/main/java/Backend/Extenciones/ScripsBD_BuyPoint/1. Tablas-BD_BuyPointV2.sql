@@ -101,7 +101,7 @@ GO
 CREATE TABLE Departamento(
 	ID_Departamento INT IDENTITY(1,1) NOT NULL,
 	Torre SMALLINT NOT NULL,
-	Departamento SMALLINT NULL
+	Departamento SMALLINT NULL
 )
 GO
 CREATE TABLE Cuenta(
