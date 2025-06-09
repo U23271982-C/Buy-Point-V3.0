@@ -1,30 +1,18 @@
 package Backend.Entidades;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Builder
+@Getter
+@Setter
+@ToString
 public class TipoPago {
     private int idTipoPago;
     private String TipoPago;
 
     public TipoPago() {
     }
-
-    //#region Getters and Setters
-
-    public int getIdTipoPago() {
-        return idTipoPago;
-    }
-
-    public void setIdTipoPago(int idTipoPago) {
-        this.idTipoPago = idTipoPago;
-    }
-
-    public String getTipoPago() {
-        return TipoPago;
-    }
-
-    public void setTipoPago(String tipoPago) {
-        TipoPago = tipoPago;
-    }
-
-    //#endregion
-
 }

@@ -4,12 +4,17 @@
  */
 package Backend.Entidades;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.math.BigDecimal;
 
-/**
- *
- * @author ISRAEL
- */
+@Builder
+@Getter
+@Setter
+@ToString
 public class Inventario {
 
     private int idInventario;
@@ -17,34 +22,5 @@ public class Inventario {
     private int stock;
     private BigDecimal valorStock;
 
-    public Inventario() {
-    }
-
-    //#region Getters and Setters
-
-    public int getIdInventario() {
-        return idInventario;
-    }
-
-    public void setIdInventario(int idInventario) {
-        this.idInventario = idInventario;
-    }
-
-    public int getSalida() {
-        return salida;
-    }
-
-    public void setSalida(int salida) {
-        this.salida = salida;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-    //#endregion
-
+    public Inventario() {}
 }

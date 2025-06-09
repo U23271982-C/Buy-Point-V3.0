@@ -5,47 +5,22 @@
 package Backend.Entidades;
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author ISRAEL
  */
-public final class CategoriaProducto {
+@Builder
+@Getter
+@Setter
+@ToString
+public class CategoriaProducto {
     private int idCategoriaProducto;
     private String nombre;
 
-    public CategoriaProducto() {
-    }
+    public CategoriaProducto() {}
 
-    public CategoriaProducto(int idCategoriaProducto, String nombre) {
-        this.idCategoriaProducto = idCategoriaProducto;
-        this.nombre = nombre;
-    }
-
-    //#region Getters and Setters
-
-    public int getIdCategoriaProducto() {
-        return idCategoriaProducto;
-    }
-
-    public void setIdCategoriaProducto(int idCategoriaProducto) {
-        this.idCategoriaProducto = idCategoriaProducto;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    //#endregion
-
-    @Override
-    public String toString() {
-        return "CategoriaProducto{" +
-                "idCategoriaProducto=" + idCategoriaProducto +
-                ", nombre='" + nombre + '\'' +
-                '}';
-    }
 }

@@ -1,5 +1,14 @@
 package Backend.Entidades;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Builder
+@Getter
+@Setter
+@ToString
 public class Comprobante {
     private int idComprobante;
     private String comprobante;
@@ -9,34 +18,5 @@ public class Comprobante {
     public Comprobante() {
         this.tipoPago = new TipoPago();
     }
-
-    //#region Getters and Setters
-
-    public int getIdComprobante() {
-        return idComprobante;
-    }
-
-    public void setIdComprobante(int idComprobante) {
-        this.idComprobante = idComprobante;
-    }
-
-    public String getComprobante() {
-        return comprobante;
-    }
-
-    public void setComprobante(String comprobante) {
-        this.comprobante = comprobante;
-    }
-
-    public TipoPago getTipoPago() {
-        return tipoPago;
-    }
-
-    public void setTipoPago(TipoPago tipoPago) {
-        this.tipoPago = tipoPago;
-    }
-
-
-    //#endregion
 
 }

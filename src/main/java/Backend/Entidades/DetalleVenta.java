@@ -1,8 +1,16 @@
 package Backend.Entidades;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
+@Builder
+@Getter
+@Setter
+@ToString
 public class DetalleVenta {
     private int idDetalleVenta;
     private int cantidad;
@@ -11,44 +19,15 @@ public class DetalleVenta {
     private BigDecimal total;
     final private double IGV = 0.18;
 
-    //Venta venta;
     Producto producto;
 
     public DetalleVenta() {
-        this.cantidad = 1;
-    }
-
-    //#region Getters and Setters
-
-    public int getIdDetalleVenta() {
-        return idDetalleVenta;
-    }
-
-    public void setIdDetalleVenta(int idDetalleVenta) {
-        this.idDetalleVenta = idDetalleVenta;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public BigDecimal getPrecioUnitario() {
-        return getProducto().getPrecio().setScale(1, RoundingMode.HALF_UP);
-    }
-
-    public void setPrecioUnitario(BigDecimal precioUnitario) {
-        this.precioUnitario = precioUnitario;
+        this.cantidad = 1; // Si no se especifica cantidad, por defecto es 1
     }
 
     public BigDecimal getSubTotal() {
         BigDecimal t = getPrecioUnitario().multiply(new BigDecimal(getCantidad()));
         return t.subtract(t.multiply(new BigDecimal(IGV))).setScale(1, RoundingMode.HALF_UP);
-                /*(getPrecioUnitario().multiply(new BigDecimal
-                (getCantidad()))).setScale(1, RoundingMode.HALF_UP);*/
     }
 
     public void setSubTotal(BigDecimal subTotal) {
@@ -56,47 +35,6 @@ public class DetalleVenta {
     }
 
     public BigDecimal getTotal() {
-        return
-                getPrecioUnitario().multiply(new BigDecimal(getCantidad()));
-                /*(getSubTotal().add(getSubTotal().multiply
-                (BigDecimal.valueOf(IGV)))).setScale
-                (1, RoundingMode.HALF_UP);*/
-    }
-
-    public void setTotal(BigDecimal total) {
-        this.total = total;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-    
-    
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    //#endregion
-/*    public static void main(String[] args) {
-        Producto p = new Producto();
-        p.setPrecio(new BigDecimal(12));
-        DetalleVenta d = new DetalleVenta();
-        d.setProducto(p);
-        
-        System.out.println(d.getCantidad());
-    }*/
-
-    @Override
-    public String toString() {
-        return "DetalleVenta{" +
-                "idDetalleVenta=" + idDetalleVenta +
-                ", cantidad=" + cantidad +
-                ", precioUnitario=" + precioUnitario +
-                ", subTotal=" + subTotal +
-                ", total=" + total +
-                ", IGV=" + IGV +
-                ", producto=" + producto +
-                '}';
+        return getPrecioUnitario().multiply(new BigDecimal(getCantidad()));
     }
 }
