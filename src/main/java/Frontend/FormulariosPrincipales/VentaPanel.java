@@ -961,7 +961,7 @@ public final class VentaPanel extends javax.swing.JFrame implements Animaciones 
                 }
             }
             //venta1
-            tipoPago.setTipoPago(tipoPagoE);
+            tipoPago.setNombreTipoPago(tipoPagoE);
             comprobante.setComprobante("Boleta");
             comprobante.setTipoPago(tipoPago);
             venta1.setCliente(cliente);
@@ -1186,7 +1186,7 @@ private void cargarDatosEnComboBoxTipodePago(JComboBox jComboBox) {
 
         ArrayList<TipoPago> opciones = CTP.listar();
         for(TipoPago lista: opciones){
-            jComboBox.addItem(lista.getTipoPago());
+            jComboBox.addItem(lista.getNombreTipoPago());
         }
     }
 

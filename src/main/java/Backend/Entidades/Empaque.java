@@ -10,6 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 public class Empaque {
     private int idEmpaque;
-    private String TipoEmpaque;
+    private String tipoEmpaque;
 
 }

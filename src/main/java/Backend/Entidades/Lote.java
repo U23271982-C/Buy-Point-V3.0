@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 
 public class Lote {
-    private int idPaqueteProducto;
+    private int idLote;
     private int cantidad;
     private LocalDate fechaCaducidad;
     private boolean caducado;

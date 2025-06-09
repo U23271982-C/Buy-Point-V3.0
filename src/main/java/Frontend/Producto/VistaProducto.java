@@ -368,7 +368,7 @@ public class VistaProducto extends javax.swing.JFrame {
         List<Lote> paquetes = CPP.codigoProducto(PP);
         for (Lote paquete : paquetes) {
             DFM.addRow(new Object[] {
-                paquete.getIdPaqueteProducto(),
+                paquete.getIdLote(),
                 paquete.getCantidad(),
                 paquete.getFechaCaducidad()
             });

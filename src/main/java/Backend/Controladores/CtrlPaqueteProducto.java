@@ -96,7 +96,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
                             .prepareCall(consultaSQL)) {
 
             comando.setInt(1,
-                    eliminadoEntidad.getIdPaqueteProducto());
+                    eliminadoEntidad.getIdLote());
 
             comando.executeUpdate();
             JOptionPane.showMessageDialog(null,
@@ -135,7 +135,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
                 co.setCantidad(filas.getInt(2));
                 co.setFechaCaducidad(filas.getDate(3).toLocalDate());
                 co.setCaducado(filas.getBoolean(4));
-                co.setIdPaqueteProducto(filas.getInt(5));
+                co.setIdLote(filas.getInt(5));
 
                 lotes.add(co);
             }
@@ -169,7 +169,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
                 co.setCantidad(filas.getInt(2));
                 co.setFechaCaducidad(filas.getDate(3).toLocalDate());
                 co.setCaducado(filas.getBoolean(4));
-                co.setIdPaqueteProducto(filas.getInt(5));
+                co.setIdLote(filas.getInt(5));
 
                 lotes.add(co);
             }

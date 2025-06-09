@@ -7,6 +7,8 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
+
 @Builder
 @Getter
 @Setter
@@ -21,7 +23,7 @@ public class Venta {
 
     Cliente cliente;
     Comprobante comprobante;
-    ArrayList<DetalleVenta> detallesVenta;
+    List<DetalleVenta> detallesVenta;
 
     public Venta() {
         this.cliente = new Cliente();

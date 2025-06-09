@@ -2,7 +2,6 @@ package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
 import Backend.Entidades.Comprobante;
-import Backend.Entidades.CredencialesTienda;
 import Backend.Gestores.GestorSQLServer;
 
 import javax.swing.*;
@@ -27,7 +26,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
             comando.setString(1,
                     nuevaEntidad.getComprobante());
             comando.setString(2,
-                    nuevaEntidad.getTipoPago().getTipoPago());
+                    nuevaEntidad.getTipoPago().getNombreTipoPago());
 
             comando.executeUpdate();
             System.out.printf("Se registró el comprobante: %s",
@@ -36,7 +35,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
                     String.format
                             ("Se registró el comprobante: %s y %s",
                             nuevaEntidad.getComprobante(),
-                            nuevaEntidad.getTipoPago().getTipoPago()));
+                            nuevaEntidad.getTipoPago().getNombreTipoPago()));
 
         } catch (SQLException e) {
             //throw new RuntimeException(e);
@@ -57,14 +56,14 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
                              .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getComprobante());
-            comando.setString(2, leerEntidad.getTipoPago().getTipoPago());
+            comando.setString(2, leerEntidad.getTipoPago().getNombreTipoPago());
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
                 comprobante = new Comprobante();
 
                 comprobante.setComprobante(filas.getString(1));
-                comprobante.getTipoPago().setTipoPago(filas.getString(2));
+                comprobante.getTipoPago().setNombreTipoPago(filas.getString(2));
 
             }//else {
             //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
@@ -116,7 +115,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
             while (filas.next()) {
                 co = new Comprobante();
                 co.setComprobante(filas.getString(1));
-                co.getTipoPago().setTipoPago(filas.getString(2));
+                co.getTipoPago().setNombreTipoPago(filas.getString(2));
 
                 comprobantes.add(co);
             }

@@ -62,7 +62,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
                             .getComprobante());
             comando.setString
                     (13, nuevaEntidad.getComprobante()
-                            .getTipoPago().getTipoPago());
+                            .getTipoPago().getNombreTipoPago());
 
             comando.executeUpdate();
             String aviso = "Se registró la 1Venta";

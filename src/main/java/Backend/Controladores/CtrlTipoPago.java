@@ -1,7 +1,6 @@
 package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.Comprobante;
 import Backend.Entidades.TipoPago;
 import Backend.Gestores.GestorSQLServer;
 
@@ -25,12 +24,12 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
                              .conectar().prepareCall(consultaSQL)){
 
             comando.setString(1,
-                    nuevaEntidad.getTipoPago());
+                    nuevaEntidad.getNombreTipoPago());
 
             comando.executeUpdate();
             String aviso = String.format
                     ("Se registró el Tipo de Pago: %s",
-                    nuevaEntidad.getTipoPago());
+                    nuevaEntidad.getNombreTipoPago());
 
             System.out.printf(aviso);
             JOptionPane.showMessageDialog(null,aviso);
@@ -52,14 +51,14 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
                      SQLServerBD.instanciaConexcion().conectar()
                              .prepareCall(consultaSQL)){
 
-            comando.setString(1, leerEntidad.getTipoPago());
+            comando.setString(1, leerEntidad.getNombreTipoPago());
 
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
                 tipoPago = new TipoPago();
 
-                tipoPago.setTipoPago(filas.getString(1));
+                tipoPago.setNombreTipoPago(filas.getString(1));
             }//else {
             //JOptionPane.showMessageDialog(null, "Erro al leer Credenciales Usuarios");
             //}
@@ -82,7 +81,7 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
                     SQLServerBD.instanciaConexcion().conectar()
                             .prepareCall(consultaSQL)) {
 
-            comando.setString(1, eliminadoEntidad.getTipoPago());
+            comando.setString(1, eliminadoEntidad.getNombreTipoPago());
 
             comando.executeUpdate();
             JOptionPane.showMessageDialog(null, "Comprobante eliminado");
@@ -109,7 +108,7 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
             TipoPago co = null;
             while (filas.next()) {
                 co = new TipoPago();
-                co.setTipoPago(filas.getString(1));
+                co.setNombreTipoPago(filas.getString(1));
 
                 tipoPagos.add(co);
             }

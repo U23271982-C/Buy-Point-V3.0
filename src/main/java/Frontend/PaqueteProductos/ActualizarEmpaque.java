@@ -1,9 +1,7 @@
 
 package Frontend.PaqueteProductos;
 
-import Backend.Controladores.CtrlCategoriaProducto;
 import Backend.Controladores.CtrlEmpaque;
-import Backend.Entidades.CategoriaProducto;
 import Backend.Entidades.Empaque;
 import Frontend.visualFramework.Formato_Imagen;
 import java.awt.Toolkit;
