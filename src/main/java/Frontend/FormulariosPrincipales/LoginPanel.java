@@ -366,14 +366,14 @@ public final class LoginPanel extends javax.swing.JFrame {
     private void PanelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelXMouseExited
         PanelX.setBackground(new Color(126, 123, 123));
     }//GEN-LAST:event_PanelXMouseExited
-   
+
     public void inicionLogin(){
-        if(!UserTxt.getText().isEmpty() && !PasswordTxt.getText().isEmpty()){
+        if(!UserTxt.getText().isEmpty() && !PasswordTxt.getPassword().toString().isEmpty()){
             //ControladorApp cs = new ControladorApp();
             CtrlCredencialesTienda ctr = new CtrlCredencialesTienda();
             CredencialesTienda CU =  new CredencialesTienda();
             CU.setUsuario(UserTxt.getText().trim());
-            CU.setContrasenna(PasswordTxt.getText().trim());
+            CU.setContrasenna(PasswordTxt.getPassword().toString().trim());
             // ControladorApp.iniciarSesion(ctr,CU) 
           if(ctr.leer(CU ) != null){
             MenuPrincipalPanel mn = new MenuPrincipalPanel();
