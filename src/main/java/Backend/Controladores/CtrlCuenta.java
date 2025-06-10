@@ -2,7 +2,7 @@ package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Cuenta;
-import Backend.Gestores.GestorSQLServer;
+import Backend.Gestores.DAO;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CtrlCuenta implements GestorSQLServer<Cuenta> {
+public class CtrlCuenta implements DAO<Cuenta> {
     public CtrlCuenta() {
     }
 

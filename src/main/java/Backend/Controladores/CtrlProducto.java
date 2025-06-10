@@ -1,7 +1,7 @@
 
 package Backend.Controladores;
 
-    import Backend.Gestores.GestorSQLServer;
+    import Backend.Gestores.DAO;
     import Backend.ConexionBD.SQLServerConexion;
     import Backend.Entidades.*;
 
@@ -9,7 +9,7 @@ package Backend.Controladores;
     import java.sql.*;
     import java.util.ArrayList;
 
-public class CtrlProducto implements GestorSQLServer<Producto> {
+public class CtrlProducto implements DAO<Producto> {
 
     public CtrlProducto() {
     }

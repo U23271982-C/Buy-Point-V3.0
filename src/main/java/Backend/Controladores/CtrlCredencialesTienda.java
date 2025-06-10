@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.Gestores.GestorSQLServer;
+import Backend.Gestores.DAO;
 import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.CredencialesTienda;
 
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTienda> {
+public class CtrlCredencialesTienda implements DAO<CredencialesTienda> {
     String condicionActualizar = ""; // Ingresar la contraseña antigua
     public CtrlCredencialesTienda() {
     }

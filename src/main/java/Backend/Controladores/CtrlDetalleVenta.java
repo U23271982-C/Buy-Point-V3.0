@@ -2,14 +2,14 @@ package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.DetalleVenta;
-import Backend.Gestores.GestorSQLServer;
+import Backend.Gestores.DAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.sql.CallableStatement;
 
-public class CtrlDetalleVenta implements GestorSQLServer<DetalleVenta> {
+public class CtrlDetalleVenta implements DAO<DetalleVenta> {
     //ArrayList<DetalleVenta> detallesVenta1;
 
     public CtrlDetalleVenta() {

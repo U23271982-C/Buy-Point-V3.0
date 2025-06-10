@@ -2,7 +2,7 @@ package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Empaque;
-import Backend.Gestores.GestorSQLServer;
+import Backend.Gestores.DAO;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CtrlEmpaque implements GestorSQLServer<Empaque> {
+public class CtrlEmpaque implements DAO<Empaque> {
     public CtrlEmpaque() {
     }
 

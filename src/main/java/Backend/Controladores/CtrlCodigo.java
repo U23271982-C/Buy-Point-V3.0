@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.Gestores.GestorSQLServer;
+import Backend.Gestores.DAO;
 import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Codigo;
 
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CtrlCodigo implements GestorSQLServer<Codigo> {
+public class CtrlCodigo implements DAO<Codigo> {
     public CtrlCodigo() {
     }
 

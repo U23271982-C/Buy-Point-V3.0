@@ -2,7 +2,7 @@ package Backend.Controladores;
 
 import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.*;
-import Backend.Gestores.GestorSQLServer;
+import Backend.Gestores.DAO;
 
 import javax.swing.*;
 import java.sql.CallableStatement;
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CtrlVenta implements GestorSQLServer<Venta> {
+public class CtrlVenta implements DAO<Venta> {
     public CtrlVenta() {
     }
 
