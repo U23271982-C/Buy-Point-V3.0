@@ -1,18 +1,20 @@
 package Backend.ConexionBD;
 
-public class CassandraConexion extends BaseDatosConexion {
+import com.datastax.oss.driver.api.core.CqlSession;
+
+public class CassandraConexion extends BaseDatosConexion<CqlSession> {
     @Override
-    public void connect() {
+    protected void connect() {
 
     }
 
     @Override
-    public void disconnect() {
+    protected void disconnect() {
 
     }
 
     @Override
-    public Object getConnection() {
+    public CqlSession getConnection() {
         return null;
     }
 }

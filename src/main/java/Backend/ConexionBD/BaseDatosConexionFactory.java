@@ -27,4 +27,8 @@ public class BaseDatosConexionFactory {
             throw new RuntimeException("No se encontró una conexión para la clase: " + clazz.getSimpleName(), e);
         }
     }
+
+    public static void main(String[] args) {
+        BaseDatosConexionFactory.getConexion(SQLServerConexion.class);
+    }
 }

@@ -14,7 +14,7 @@ public class RedisConexion extends BaseDatosConexion<Jedis> {
     }
 
     @Override
-    protected Jedis getConnection() {
+    public Jedis getConnection() {
         return null;
     }
 }

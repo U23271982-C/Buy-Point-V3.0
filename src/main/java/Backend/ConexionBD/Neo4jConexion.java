@@ -14,7 +14,7 @@ public class Neo4jConexion extends BaseDatosConexion<Driver> {
     }
 
     @Override
-    protected Driver getConnection() {
+    public Driver getConnection() {
         return null;
     }
 }
