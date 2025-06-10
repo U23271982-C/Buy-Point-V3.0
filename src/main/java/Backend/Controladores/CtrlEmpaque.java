@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Empaque;
 import Backend.Gestores.GestorSQLServer;
 
@@ -20,8 +20,8 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
                 "{ CALL pa_registrarEmpaque(?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setString(1,
                     nuevaEntidad.getTipoEmpaque());
@@ -48,7 +48,7 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
         String consultaSQL = "{ CALL pa_leerEmpaque(?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getTipoEmpaque());
@@ -78,7 +78,7 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
         String consultaSQL = "{ CALL pa_eliminarEmpaque(?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setString(1,
@@ -98,8 +98,8 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
         String consultaInsert =
                 "{ CALL pa_actualizarEmpaque( ?,?) }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consultaInsert)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consultaInsert)) {
 
             comando.setInt(1,
                     actualizarEntidad.getIdEmpaque());
@@ -123,8 +123,8 @@ public class CtrlEmpaque implements GestorSQLServer<Empaque> {
         ArrayList<Empaque> empaques = new ArrayList<>();
         String consulta = "{ CALL pa_listarEmpaque() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
 

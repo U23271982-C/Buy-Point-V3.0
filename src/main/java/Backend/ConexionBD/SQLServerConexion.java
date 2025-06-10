@@ -1,7 +1,5 @@
 package Backend.ConexionBD;
 
-import Backend.Gestores.GestorSQLServer;
-import javax.swing.*;
 import java.sql.*;
 import java.util.logging.*;
 import javax.crypto.*;
@@ -11,15 +9,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Properties;
 
-public class SQLServerBD {
-    public static Logger logger = Logger.getLogger(SQLServerBD.class.getName());
+public class SQLServerConexion implements BaseDatosConexion {
+    public static Logger logger = Logger.getLogger(SQLServerConexion.class.getName());
     private Connection conn = null;
-    private static SQLServerBD instancia = null;
+    private static SQLServerConexion instancia = null;
     private static final String ENCRYPTION_KEY = "1234567891234567";
 
     //Se modificó la clase SQLServerBD para poder recibir los datos del archivo database.properties
     //Patrón Singleton
-    public SQLServerBD() {
+    public SQLServerConexion() {
         try {
             Properties props = loadProperties();
             String nombreBD = props.getProperty("db.name");
@@ -45,7 +43,7 @@ public class SQLServerBD {
     //cargamos los datos almacenamos en el archivo database.properties
     private Properties loadProperties() {
         Properties props = new Properties();
-        try (InputStream input = SQLServerBD.class.getClassLoader()
+        try (InputStream input = SQLServerConexion.class.getClassLoader()
                 .getResourceAsStream("database.properties")) {
             if (input == null) {
                 throw new RuntimeException("No se puede encontrar database.properties");
@@ -70,28 +68,23 @@ public class SQLServerBD {
 
 
 
-    public static SQLServerBD instanciaConexcion(){
-        if (instancia == null) instancia = new SQLServerBD();
+    public static SQLServerConexion instanciaConexcion(){
+        if (instancia == null) instancia = new SQLServerConexion();
         return instancia;
     }
 
-    public Connection conectar() {
-            return conn;
+    @Override
+    public Connection getConnection() {
+        return conn;
     }
 
-    // Prueba de conexion
-   /* public static void main(String[] args) {
-        try {
-            // Obtener la instancia del Singleton
-            SQLServerBD connectionInstance = SQLServerBD.instanciaConexcion();
-            // Probar la conexión
-            if (connectionInstance.conectar() != null) {
-                System.out.println("¡Conexión exitosa!");
-            } else {
-                System.out.println("Conexión fallida.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
+    @Override
+    public void connect() {
+        instanciaConexcion();
+    }
+
+    @Override
+    public void disconnect() {
+
+    }
 }

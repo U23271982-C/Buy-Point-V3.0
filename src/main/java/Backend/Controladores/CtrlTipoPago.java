@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.TipoPago;
 import Backend.Gestores.GestorSQLServer;
 
@@ -20,8 +20,8 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
                 "{ CALL pa_registrarTipoPago(?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setString(1,
                     nuevaEntidad.getNombreTipoPago());
@@ -48,7 +48,7 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
         String consultaSQL = "{ CALL pa_leerTipoPagoe(?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getNombreTipoPago());
@@ -78,7 +78,7 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
         String consultaSQL = "{ CALL pa_eliminarTipoProducto(?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setString(1, eliminadoEntidad.getNombreTipoPago());
@@ -101,8 +101,8 @@ public class CtrlTipoPago implements GestorSQLServer<TipoPago> {
         ArrayList<TipoPago> tipoPagos = new ArrayList<>();
         String consulta = "{ CALL pa_listarTipoPago() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
             TipoPago co = null;

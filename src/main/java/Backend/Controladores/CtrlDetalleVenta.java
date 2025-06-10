@@ -1,9 +1,9 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.DetalleVenta;
 import Backend.Gestores.GestorSQLServer;
-import java.math.BigDecimal;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -22,8 +22,8 @@ public class CtrlDetalleVenta implements GestorSQLServer<DetalleVenta> {
                         "(?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setInt
                     (1, nuevaEntidad.getCantidad());

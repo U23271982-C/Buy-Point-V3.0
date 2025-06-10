@@ -1,9 +1,7 @@
 package Backend.Controladores;
 
-import Backend.Entidades.Cliente;
-import Backend.Entidades.Producto;
 import Backend.Gestores.GestorSQLServer;
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Codigo;
 
 import javax.swing.*;
@@ -21,7 +19,7 @@ public class CtrlCodigo implements GestorSQLServer<Codigo> {
         String consultaSQL = "{ CALL pa_registrarCodigo(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion().getConnection().prepareCall(consultaSQL)){
 
             comando.setString
                     (1, nuevaEntidad.getCodigo());
@@ -58,8 +56,8 @@ public class CtrlCodigo implements GestorSQLServer<Codigo> {
         ArrayList<Codigo> codigos = new ArrayList<>();
         String consulta = "{ CALL pa_listarCliente() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
             Codigo c = null;

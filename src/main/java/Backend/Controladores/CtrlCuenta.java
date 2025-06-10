@@ -1,7 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.Comprobante;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Cuenta;
 import Backend.Gestores.GestorSQLServer;
 
@@ -21,8 +20,8 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
                 "{ CALL pa_registrarCuenta(?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setString(1,
                     nuevaEntidad.getNombre());
@@ -53,7 +52,7 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
         String consultaSQL = "{ CALL pa_leerCuenta(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getNombre());
@@ -86,7 +85,7 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
         String consultaSQL = "{ CALL pa_eliminarCuenta(?, ?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setString(1, eliminadoEntidad.getNombre());
@@ -110,8 +109,8 @@ public class CtrlCuenta implements GestorSQLServer<Cuenta> {
         ArrayList<Cuenta> cuentas = new ArrayList<>();
         String consulta = "{ CALL pa_listarCuenta() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
             Cuenta co = null;

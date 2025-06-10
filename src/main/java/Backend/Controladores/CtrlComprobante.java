@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Comprobante;
 import Backend.Gestores.GestorSQLServer;
 
@@ -20,8 +20,8 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
                 "{ CALL paT_registrarComprobanteCompuesto(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setString(1,
                     nuevaEntidad.getComprobante());
@@ -52,7 +52,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
         String consultaSQL = "{ CALL pa_leerComprobante(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getComprobante());
@@ -84,7 +84,7 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
         String consultaSQL = "{ CALL pa_eliminarComprobante(?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setString(1, eliminadoEntidad.getComprobante());
@@ -107,8 +107,8 @@ public class CtrlComprobante implements GestorSQLServer<Comprobante> {
         ArrayList<Comprobante> comprobantes = new ArrayList<>();
         String consulta = "{ CALL pa_listarComprobante() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
             Comprobante co = null;

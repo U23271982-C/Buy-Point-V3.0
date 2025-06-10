@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.*;
 import Backend.Gestores.GestorSQLServer;
 
@@ -23,8 +23,8 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
                         "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setDate
                     (1,
@@ -119,7 +119,7 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         String consultaSQL = "{ CALL pa_eliminarVenta(?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setInt(1, eliminadoEntidad.getIdVenta());
@@ -143,8 +143,8 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         ArrayList<Venta> ventas = new ArrayList<>();
         String consulta = "{ CALL pa_listarVenta() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
             Venta co = null;
@@ -177,8 +177,8 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         String consultaSQL = " SELECT dbo.fn_extraerID_UltimaVenta() ";
         int res = 0;
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
@@ -196,8 +196,8 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         String consultaSQL = "{ CALL pa_FechaMasVenta() }";
         Object[] cosas = new Object[2];
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             ResultSet filas = comando.executeQuery();
             if (filas.next()) {
@@ -217,8 +217,8 @@ public class CtrlVenta implements GestorSQLServer<Venta> {
         List<Object[]> lista = new ArrayList<>();
         Object[] cosas = null;
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
             comando.setInt(1, reporteDias);
 
             ResultSet filas = comando.executeQuery();

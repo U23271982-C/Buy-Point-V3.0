@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Cliente;
 import Backend.Gestores.GestorSQLServer;
 
@@ -21,8 +21,8 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
                         "(?, ?, ?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setString
                     (1,nuevaEntidad.getCliente());
@@ -66,7 +66,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
         String consultaSQL = "{ CALL pa_leerCliente(?, ?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getCliente());
@@ -104,7 +104,7 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
         String consultaSQL = "{ CALL pa_eliminarCliente(?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setInt(1, eliminadoEntidad.getIdCliente());
@@ -125,8 +125,8 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
                         "(?, ?, ?, ?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setString
                     (1,actualizarEntidad.getCliente());
@@ -171,8 +171,8 @@ public class CtrlCliente implements GestorSQLServer<Cliente> {
         ArrayList<Cliente> clientes = new ArrayList<>();
         String consulta = "{ CALL pa_listarCliente() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
             Cliente c = null;

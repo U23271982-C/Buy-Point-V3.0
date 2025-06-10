@@ -1,7 +1,7 @@
 package Backend.Controladores;
 
 import Backend.Gestores.GestorSQLServer;
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.CredencialesTienda;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
         String consultaSQL = "{ CALL pa_registrarCredencialesTienda(?, ?, ?, ?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion().getConnection().prepareCall(consultaSQL)){
 
             comando.setString(1,nuevaEntidad.getUsuario());
             comando.setString(2,nuevaEntidad.getContrasenna());
@@ -44,7 +44,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
         String consultaSQL = "{ CALL pa_leerCredencialesTienda(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setString(1, leerEntidad.getUsuario());
@@ -79,7 +79,7 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
         String consultaSQL = "{ CALL pa_eliminarCredencialesTienda(?, ?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setString(1, eliminadoEntidad.getUsuario());
@@ -98,8 +98,8 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
         String consultaInsert =
                 "{ CALL pa_actualizarCredencialesTienda( ?,?,?,?,?,?) }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consultaInsert)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consultaInsert)) {
 
             comando.setString(1,
                     actualizarEntidad.getUsuario());
@@ -128,8 +128,8 @@ public class CtrlCredencialesTienda implements GestorSQLServer<CredencialesTiend
         ArrayList<CredencialesTienda> credencialesTienda = new ArrayList<>();
         String consulta = "{ CALL pa_listarCredencialesTienda() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                            .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                            .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
 

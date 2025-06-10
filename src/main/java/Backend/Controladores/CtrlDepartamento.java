@@ -1,6 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Departamento;
 import Backend.Gestores.GestorSQLServer;
 
@@ -20,8 +20,8 @@ public class CtrlDepartamento implements GestorSQLServer<Departamento> {
                 "{ CALL pa_registrarDepartamento(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setInt(1,
                     nuevaEntidad.getTorre());
@@ -51,7 +51,7 @@ public class CtrlDepartamento implements GestorSQLServer<Departamento> {
         String consultaSQL = "{ CALL pa_leerDepartamento(?, ?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setShort(1, leerEntidad.getTorre());
@@ -83,7 +83,7 @@ public class CtrlDepartamento implements GestorSQLServer<Departamento> {
         String consultaSQL = "{ CALL pa_eliminarDepartamento(?, ?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setShort(1, eliminadoEntidad.getTorre());
@@ -107,8 +107,8 @@ public class CtrlDepartamento implements GestorSQLServer<Departamento> {
         ArrayList<Departamento> departamentos = new ArrayList<>();
         String consulta = "{ CALL pa_listarDepartamento() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
             Departamento co = null;

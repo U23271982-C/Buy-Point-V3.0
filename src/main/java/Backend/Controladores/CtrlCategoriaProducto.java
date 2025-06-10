@@ -1,7 +1,6 @@
 package Backend.Controladores;
 
-import Backend.ConexionBD.SQLServerBD;
-import Backend.Entidades.Producto;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Gestores.GestorSQLServer;
 import Backend.Entidades.CategoriaProducto;
 
@@ -19,7 +18,7 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
     public void registrar(CategoriaProducto nuevaEntidad) {
         String consultaSQL = "{ CALL pa_registrarCategoriaProducto(?) }";
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar().prepareCall(consultaSQL);){
+                     SQLServerConexion.instanciaConexcion().getConnection().prepareCall(consultaSQL);){
 
             comando.setString(1, nuevaEntidad.getNombre());
 
@@ -37,8 +36,8 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
         String consultaSQL = "{ CALL pa_leerCategoriaProducto(?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion()
-                             .conectar().prepareCall(consultaSQL)){
+                     SQLServerConexion.instanciaConexcion()
+                             .getConnection().prepareCall(consultaSQL)){
 
             comando.setString(1,
                     leerEntidad.getNombre());
@@ -69,7 +68,7 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
         String consultaSQL = "{ CALL pa_eliminarCategoriaProducto(?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setString(1, eliminadoEntidad.getNombre());
@@ -87,8 +86,8 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
         String consultaInsert =
                 "{ CALL pa_actualizarCategoriaProducto( ?,?) }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consultaInsert)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consultaInsert)) {
 
             comando.setInt(1,
                     actualizarEntidad.getIdCategoriaProducto());
@@ -112,8 +111,8 @@ public class CtrlCategoriaProducto implements GestorSQLServer<CategoriaProducto>
         ArrayList<CategoriaProducto> categoriaProductos = new ArrayList<>();
         String consulta = "{ CALL pa_listarCategoriaProducto() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             ResultSet filas = comando.executeQuery();
 

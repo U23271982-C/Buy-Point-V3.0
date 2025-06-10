@@ -1,7 +1,7 @@
 package Backend.Controladores;
 
 import Backend.Gestores.GestorSQLServer;
-import Backend.ConexionBD.SQLServerBD;
+import Backend.ConexionBD.SQLServerConexion;
 import Backend.Entidades.Lote;
 import Backend.Entidades.Producto;
 
@@ -21,8 +21,8 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
     public void registrar(Lote nuevaEntidad) {
         String consultaSQL = "{ CALL paT_registrarPaqueteProducto(?, ?, ?) }";
 
-        try (CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consultaSQL)){
+        try (CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consultaSQL)){
 
             comando.setInt
                     (1, nuevaEntidad.getProducto().getLote().getCantidad());
@@ -51,7 +51,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
         String consultaSQL = "{ CALL pa_leerPaqueteProducto(?) }";
 
         try (CallableStatement comando =
-                     SQLServerBD.instanciaConexcion().conectar()
+                     SQLServerConexion.instanciaConexcion().getConnection()
                              .prepareCall(consultaSQL)){
 
             comando.setString(1,leerEntidad
@@ -92,7 +92,7 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
         String consultaSQL = "{ CALL pa_eliminarPaqueteProducto(?) }";
 
         try(CallableStatement comando =
-                    SQLServerBD.instanciaConexcion().conectar()
+                    SQLServerConexion.instanciaConexcion().getConnection()
                             .prepareCall(consultaSQL)) {
 
             comando.setInt(1,
@@ -117,8 +117,8 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
         ArrayList<Lote> lotes = new ArrayList<>();
         String consulta = "{ CALL pa_listarPaqueteProducto() }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                .getConnection().prepareCall(consulta)) {
 
             //leer()
             //comando.setString(1, );
@@ -151,8 +151,8 @@ public class CtrlPaqueteProducto implements GestorSQLServer<Lote>{
         ArrayList<Lote> lotes = new ArrayList<>();
         String consulta = "{ CALL pa_listarPaqueteProductoCodigo(?) }";
 
-        try(CallableStatement comando = SQLServerBD.instanciaConexcion()
-                    .conectar().prepareCall(consulta)) {
+        try(CallableStatement comando = SQLServerConexion.instanciaConexcion()
+                    .getConnection().prepareCall(consulta)) {
 
             //leer()
             comando.setString(1, lote.getProducto().getCodigo().getCodigo());
