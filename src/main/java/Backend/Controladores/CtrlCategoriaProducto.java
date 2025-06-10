@@ -1,5 +1,6 @@
 package Backend.Controladores;
 
+import Backend.ConexionBD.BaseDatosConexionFactory;
 import Backend.ConexionBD.SQLServerConexion;
 import Backend.Gestores.DAO;
 import Backend.Entidades.CategoriaProducto;
@@ -18,7 +19,8 @@ public class CtrlCategoriaProducto implements DAO<CategoriaProducto> {
     public void registrar(CategoriaProducto nuevaEntidad) {
         String consultaSQL = "{ CALL pa_registrarCategoriaProducto(?) }";
         try (CallableStatement comando =
-                     SQLServerConexion.instanciaConexcion().getConnection().prepareCall(consultaSQL);){
+                     /*SQLServerConexion.instanciaConexcion().getConnection()*/
+             BaseDatosConexionFactory.getConexion(SQLServerConexion.class).prepareCall(consultaSQL);){
 
             comando.setString(1, nuevaEntidad.getNombre());
 

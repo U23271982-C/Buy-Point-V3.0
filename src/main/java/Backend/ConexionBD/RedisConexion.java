@@ -1,18 +1,20 @@
 package Backend.ConexionBD;
 
-public class RedisConexion implements BaseDatosConexion {
+import redis.clients.jedis.Jedis;
+
+public class RedisConexion extends BaseDatosConexion<Jedis> {
     @Override
-    public void connect() {
+    protected void connect() {
 
     }
 
     @Override
-    public void disconnect() {
+    protected void disconnect() {
 
     }
 
     @Override
-    public Object getConnection() {
+    protected Jedis getConnection() {
         return null;
     }
 }

@@ -1,6 +1,6 @@
 package Backend.ConexionBD;
 
-public class CassandraConexion implements BaseDatosConexion {
+public class CassandraConexion extends BaseDatosConexion {
     @Override
     public void connect() {
 

@@ -1,18 +1,20 @@
 package Backend.ConexionBD;
 
-public class Neo4jConexion implements BaseDatosConexion {
+import org.neo4j.driver.Driver;
+
+public class Neo4jConexion extends BaseDatosConexion<Driver> {
     @Override
-    public void connect() {
+    protected void connect() {
 
     }
 
     @Override
-    public void disconnect() {
+    protected void disconnect() {
 
     }
 
     @Override
-    public Object getConnection() {
+    protected Driver getConnection() {
         return null;
     }
 }

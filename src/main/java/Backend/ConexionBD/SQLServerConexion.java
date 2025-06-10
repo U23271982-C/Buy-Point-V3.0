@@ -9,9 +9,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Properties;
 
-public class SQLServerConexion implements BaseDatosConexion {
+public class SQLServerConexion extends BaseDatosConexion<Connection> {
     public static Logger logger = Logger.getLogger(SQLServerConexion.class.getName());
-    private Connection conn = null;
+    //private Connection conn = null;
     private static SQLServerConexion instancia = null;
     private static final String ENCRYPTION_KEY = "1234567891234567";
 
@@ -19,25 +19,22 @@ public class SQLServerConexion implements BaseDatosConexion {
     //Patrón Singleton
     public SQLServerConexion() {
         try {
+            //Cargamos las propiedades de la base de datos desde el archivo database.properties
             Properties props = loadProperties();
-            String nombreBD = props.getProperty("db.name");
-            String host = props.getProperty("db.host");
-            String port = props.getProperty("db.port");
-            String usuario = decrypt(props.getProperty("db.user").substring(4));
-            String contrasena = decrypt(props.getProperty("db.password").substring(4));
+            super.nameBD = props.getProperty("db.name");
+            super.host = props.getProperty("db.host");
+            super.port = props.getProperty("db.port");
+            super.user = decrypt(props.getProperty("db.user").substring(4));
+            super.password = decrypt(props.getProperty("db.password").substring(4));
 
-            String strConexion = String.format(
+            super.url = String.format(
                     "jdbc:sqlserver://%s:%s;databaseName=%s;" +
                             "encrypt=true;trustServerCertificate=true",
-                    host, port, nombreBD);
-
-            conn = DriverManager.getConnection(strConexion, usuario, contrasena);
-            logger.info("¡Conexión exitosa a SQL Server!");
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error de conexión de Base de Datos", e);
-            throw new RuntimeException("Error al conectar con la base de datos", e);
+                    host, port, nameBD);
+        } catch (Exception e){
+            logger.log(Level.SEVERE, "Error al inicializar la conexión a SQL Server", e);
+            throw new RuntimeException("Error al inicializar la conexión a SQL Server", e);
         }
-
     }
 
     //cargamos los datos almacenamos en el archivo database.properties
@@ -66,25 +63,41 @@ public class SQLServerConexion implements BaseDatosConexion {
         return new String(decryptedBytes);
     }
 
-
-
-    public static SQLServerConexion instanciaConexcion(){
+    public static SQLServerConexion instanciaConexcion() {
+        // Verificamos si la instancia es nula, si es así, creamos una nueva instancia
         if (instancia == null) instancia = new SQLServerConexion();
         return instancia;
     }
 
     @Override
     public Connection getConnection() {
-        return conn;
+        return connection;
     }
 
     @Override
-    public void connect() {
-        instanciaConexcion();
+    protected void connect() {
+        if (connection == null) {
+            try {
+                connection = DriverManager.getConnection(url, user, password);
+                logger.info("¡Conexión exitosa a SQL Server!");
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, "Error de conexión de Base de Datos", e);
+                throw new RuntimeException("Error al conectar con la base de datos", e);
+            }
+        }
+
     }
 
     @Override
-    public void disconnect() {
-
+    protected void disconnect() {
+        try {
+            // Verificamos si la conexión no es nula y está abierta antes de cerrarla
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+                System.out.println("Conexión a SQL Server cerrada.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al cerrar conexión SQL Server", e);
+        }
     }
 }
