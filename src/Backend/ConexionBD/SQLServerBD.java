@@ -28,12 +28,6 @@ public class SQLServerBD {
             String usuario = decrypt(props.getProperty("db.user"));
             String contrasena = decrypt(props.getProperty("db.password"));
 
-            /*String strConexion = String.format(
-                    "jdbc:sqlserver://%s:%s;databaseName=%s;" +
-                            "encrypt=true;trustServerCertificate=true",
-                    host, port, nombreBD);*/
-
-
             String strConexion = "jdbc:sqlserver://"+host+":"+port+";"
                     + "database="+nombreBD+";"
                     + "user="+usuario+";"
