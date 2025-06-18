@@ -10,12 +10,13 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Properties;
+import static Backend.ConexionBD.CargarDatos.loadProperties;
+import static Backend.ConexionBD.Decrypt.decrypt;
 
 public class SQLServerBD {
     public static Logger logger = Logger.getLogger(SQLServerBD.class.getName());
     private Connection conn = null;
     private static SQLServerBD instancia = null;
-    private static final String ENCRYPTION_KEY = "1234567891234567";
 
     //Se modificó la clase SQLServerBD para poder recibir los datos del archivo database.properties
     //Patrón Singleton
@@ -45,38 +46,6 @@ public class SQLServerBD {
         }
 
     }
-
-    //cargamos los datos almacenamos en el archivo database.properties
-    private Properties loadProperties() {
-        Properties props = new Properties();
-        try (InputStream input = SQLServerBD.class.getClassLoader()
-                .getResourceAsStream("resources/database.properties")) {
-            if (input == null) {
-                throw new RuntimeException("No se puede encontrar database.properties");
-            }
-            props.load(input);
-        } catch (Exception e) {
-            throw new RuntimeException("Error al cargar la configuración", e);
-        }
-        return props;
-    }
-
-    //Descencriptamos las credenciales para la conexion a la bd
-    private String decrypt(String encryptedText) throws Exception {
-        if (encryptedText == null || encryptedText.isEmpty()) {
-            return "";
-        }
-
-        SecretKeySpec key = new SecretKeySpec(
-                ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] decryptedBytes = cipher.doFinal(
-                Base64.getDecoder().decode(encryptedText));
-        return new String(decryptedBytes);
-    }
-
-
 
     public static SQLServerBD instanciaConexcion(){
         if (instancia == null) instancia = new SQLServerBD();
