@@ -22,18 +22,28 @@ public class SQLServerBD {
     public SQLServerBD() {
         try {
             Properties props = loadProperties();
-            String nombreBD = props.getProperty("db.name");
-            String host = props.getProperty("db.host");
-            String port = props.getProperty("db.port");
-            String usuario = decrypt(props.getProperty("db.user").substring(4));
-            String contrasena = decrypt(props.getProperty("db.password").substring(4));
+           String nombreBD = decrypt(props.getProperty("db.name"));
+            String host = decrypt(props.getProperty("db.host"));
+            String port = decrypt(props.getProperty("db.port"));
+            String usuario = decrypt(props.getProperty("db.user"));
+            String contrasena = decrypt(props.getProperty("db.password"));
 
-            String strConexion = String.format(
+            /*String strConexion = String.format(
                     "jdbc:sqlserver://%s:%s;databaseName=%s;" +
                             "encrypt=true;trustServerCertificate=true",
-                    host, port, nombreBD);
+                    host, port, nombreBD);*/
 
-            conn = DriverManager.getConnection(strConexion, usuario, contrasena);
+
+            String strConexion = "jdbc:sqlserver://"+host+":"+port+";"
+                    + "database="+nombreBD+";"
+                    + "user="+usuario+";"
+                    + "password="+contrasena+";"
+                    + "encrypt=true;"
+                    + "trustServerCertificate=false;"
+                    + "loginTimeout=30;";
+
+
+            conn = DriverManager.getConnection(strConexion);
             logger.info("¡Conexión exitosa a SQL Server!");
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error de conexión de Base de Datos", e);
@@ -46,7 +56,7 @@ public class SQLServerBD {
     private Properties loadProperties() {
         Properties props = new Properties();
         try (InputStream input = SQLServerBD.class.getClassLoader()
-                .getResourceAsStream("database.properties")) {
+                .getResourceAsStream("resources/database.properties")) {
             if (input == null) {
                 throw new RuntimeException("No se puede encontrar database.properties");
             }
@@ -59,9 +69,13 @@ public class SQLServerBD {
 
     //Descencriptamos las credenciales para la conexion a la bd
     private String decrypt(String encryptedText) throws Exception {
+        if (encryptedText == null || encryptedText.isEmpty()) {
+            return "";
+        }
+
         SecretKeySpec key = new SecretKeySpec(
                 ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
-        Cipher cipher = Cipher.getInstance("AES");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.DECRYPT_MODE, key);
         byte[] decryptedBytes = cipher.doFinal(
                 Base64.getDecoder().decode(encryptedText));

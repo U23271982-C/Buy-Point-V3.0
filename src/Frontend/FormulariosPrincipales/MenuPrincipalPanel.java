@@ -550,8 +550,19 @@ public final class MenuPrincipalPanel extends javax.swing.JFrame implements Anim
                 ¡Sigamos así y hagamos que cada día sea aún mejor!
                 """;
         Object[] vector = CtrlVenta.fechaMasVenta();
-        LocalDate fecha = LocalDate.parse(vector[0].toString());
-        double monto = Double.parseDouble(vector[1].toString());
+        LocalDate fecha;
+        double monto=0;
+        if (vector[0]!=null){
+            fecha = LocalDate.parse(vector[0].toString());
+        }else{
+            System.err.println("vector[0] es null, no se puede convertir a LocalDate");
+            fecha=null;
+        }
+        if (vector[1]!=null){
+            monto = Double.parseDouble(vector[1].toString());
+        }else{
+            System.err.println("vector[1] es null, no se puede convertir a double");
+        }
         
         jTextArea.setText(String.format(formatoAviso, fecha, monto));
     }

@@ -9,12 +9,12 @@ import java.util.logging.Logger;
 
 public class InicioAplicacion {
     public static void main(String[] args) {
-        /*LogoCarga lg = new LogoCarga();
+       LogoCarga lg = new LogoCarga();
         //LoginPanel lp = new LoginPanel();
-        MenuPrincipalPanel MPP = new MenuPrincipalPanel();
-        lg.setVisible(true);
+        //MenuPrincipalPanel MPP = new MenuPrincipalPanel();
+        //lg.setVisible(true);
         
-        for (int i = 1; i < 100 ; i++) {
+       /* for (int i = 1; i < 100 ; i++) {
             
             try {
                 Thread.sleep(50);
