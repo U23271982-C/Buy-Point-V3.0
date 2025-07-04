@@ -34,7 +34,7 @@ public class MongoDBConexion extends BaseDatosConexion<MongoDatabase> {
     }
 
     @Override
-    protected MongoDatabase getConnection() {
+    public MongoDatabase getConnection() {
         // Obtenemos la conexión a la base de datos MongoDB.
         return super.connection;
     }

@@ -24,8 +24,8 @@ public class SQLServerConexion extends BaseDatosConexion<Connection> {
             super.nameBD = props.getProperty("db.name");
             super.host = props.getProperty("db.host");
             super.port = props.getProperty("db.port");
-            super.user = decrypt(props.getProperty("db.user").substring(4));
-            super.password = decrypt(props.getProperty("db.password").substring(4));
+            super.user = decrypt(props.getProperty("db.user"));
+            super.password = decrypt(props.getProperty("db.password"));
 
             super.url = String.format(
                     "jdbc:sqlserver://%s:%s;databaseName=%s;" +
