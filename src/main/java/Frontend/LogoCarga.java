@@ -20,8 +20,9 @@ public class LogoCarga extends javax.swing.JFrame {
     }
 
     private void InicioSesion (){
+        this.setVisible(true);
         MenuPrincipalPanel MPP = new MenuPrincipalPanel();
-        
+
         for (int i = 1; i < 100 ; i+=2) {
             
             try {
@@ -120,14 +121,14 @@ public class LogoCarga extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
                
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogoCarga().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
