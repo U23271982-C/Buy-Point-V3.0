@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="AppEncryptor:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/AppEncryptor_jar</output-path>
-    <root id="archive" name="AppEncryptor.jar">
-      <element id="module-output" name="AppEncryptor" />
-    </root>
-  </artifact>
-</component>
